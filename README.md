@@ -1,6 +1,7 @@
 # oweng.github.io
-study notes
-Based on the construction of my blog site Hexo
+   study notes
+
+My blog site is based on Hexo build
 
 ## Quick Start
 
