@@ -1,7 +1,10 @@
 ---
 title: JavaScript OOP(二)
 date: 2019-03-05 21:55:38
-tags:
+categories:
+- JavaScript
+tags: 
+- OOP
 ---
 ### 原型对象
 > 作用定义所有实例对象共享的属性和方法
