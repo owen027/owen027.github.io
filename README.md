@@ -9,11 +9,14 @@ My blog site is based on Hexo build
 
 ``` bash
 $ npm  install 
+$ cd themes/next
+$ npm install 
 ```
 
 ### Generate static files
 
 ``` bash
+$ cd ../../
 $ hexo  g -w
 ```
 
