@@ -30,16 +30,33 @@ var son = new Son();
 ```
 
 ####  借用构造函数  使用call/appply 
-- 不真正继承，因为不能调用原型上的方法，而且每调用一次都会调用多此函数，实际上步骤没有变少
+- 不是真正继承，因为不能调用原型上的方法，而且每调用一次都会调用多次函数，实际上步骤没有变少
 - 工业级推荐使用
 - 缺点无法添加私有原型
+
+```Javascript
+ function Father() { }
+
+function Son() {
+  Father.call(this); // 调用父类构造函数
+}
+
+Son.prototype.print = function() {
+  Father.prototype.print.call(this);//只使用单个方法
+}
+// 子类继承父类的原型
+Son.prototype = Object.create(Father.prototype);
+Son.prototype.constructor = Son;
+```
+
+###共有原型
 ```javascript
-//公有原型
+
 Father.prototype ={
     name:"common"
 }
 function Father(){}
-Son.prototype = Father.prototype ;
+Son.prototype =  Object.create(Father.prototype)
 function Son(){}
 
 function inherit (Target,Origin){//继承源
@@ -64,6 +81,24 @@ var inherit =(function(){
   }())
 
 ```
+### 多重继承 
+JavaScript 不提供多重继承功能，即不允许一个对象同时继承多个对象。但是，可以通过`Object.assign`，实现这个功能。这种模式称之为 Mixin (混入)
+```javascript
+function Fn1(){ }
+function Fn2(){ }
+function Son(){
+  F1.call(this);
+  F2.call(this);
+ }
+//继承F1
+Son.prototype =Object.create(Fn1.prototype);
+//继承F2
+Object.assign(Son.prototype,Fn2.prototype);
+Son.prototype.constructor =Son;
+var a =new Son();
+
+```
+
 ### call，apply and bind
 > 都可改变函数内部this的指向（即函数执行时所在的作用域），然后在所指定的作用域中，调用该函数。
  #### call and apply
