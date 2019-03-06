@@ -6,8 +6,8 @@ categories:
 tags: 
 - OOP
 ---
-### 原型对象
-> 作用定义所有实例对象共享的属性和方法
+### 原型对象 `prototype`
+> 原型对象的所有属性和方法,都能被实例对象共享
 
 JavaScript 通过构造函数生成新对象，因此构造函数可以视为对象的模板。实例对象的属性和方法，可以定义在构造函数内部。
 ```javascript
@@ -21,10 +21,13 @@ var cat1 = new Cat('小明', '白色');
 cat1.name // '小明'
 cat1.color // '白色'
 ```
-构造函数缺点：
+
+
+**构造函数缺点：**
 - 一个构造函数的多个实例之间，无法共享属性，从而造成对系统资源的浪费。
 
 解决方法，就是 JavaScript 的<label style="color:#409eff; padding: 0 8px;">原型对象</label> `prototype`，因为原型对象的所有属性和方法，都能被实例对象共享。
+
 ```javascript
 function Cat (name, color) {
   this.name = name;
@@ -49,6 +52,18 @@ typeof f.prototype // "object"
 每个 JS 对象都有 `__proto__` 属性，这个属性可以访问到  原型（`[[prototype]]`） 内部属性。这个属性在现在来说已经不推荐直接去使用它了。
 
 ### 原型链
+
+> 任何对象，都可以充当其他对象的原型；原型对象也有自己的原型。
+对象到原型，再到原型的原型，一层层向上找到`Object.prototype`。
+
+可以说 <label>基本上所有对象都继承了`Object.prototype`的属性；</label>而 `Object.prototype` 的原型是 `null` 
+通过 `getPrototypeOf` 方法返回参数对象原型
+```javascript
+Object.getPrototypeOf(Object.prototype) //null 
+```
+<label>读取对象属性时，引擎会先在自身属性上查找，没有就查找原型，一级级向上查找，如果到`Object.prototype`还是没有，则返回`undefined`。
+**一级级向上，对性能有影响，寻找的层级越多，性能影响越大**
+
 ![原型链](../static/img/prototype.png)
 - 实例 F1 通过`__proto__` 访问对应构造函数的原型 ->  `FOO.prototype`
 
@@ -60,7 +75,7 @@ typeof f.prototype // "object"
 
 - 每个构造函数通过 `prototype` 访问原型
 
-**只有函数才拥有`prototype`属性,<label style="color:#409eff; padding: 0 8px;">基本上</label>所有函数都有这个属性**
+**只有函数才拥有`prototype`属性,<label >基本上</label>所有函数都有这个属性**
 
 ```javascript
 let fun = Function.prototype.bind()
@@ -68,7 +83,21 @@ let fun = Function.prototype.bind()
 当声明一个函数时自动创建 `prototype` 属性，
 这个属性的值是一个对象（也就是原型），且只有一个属性 `constructor`
 
-`constructor `是一个公有且不可枚举的属性。一旦我们改变了函数的 prototype ，那么新对象就没有这个属性了（当然可以通过原型链取到 constructor）。
+
+### `constructor`
+ `prototype` 有一个属性 `constructor`，默认指向原型所在的构造函数
+
+ ```JavaScript
+  function Fn (){}
+  var f = new Fn ();
+  f.constructor == Fn //true
+  f.constructor == Function //false
+
+  //可以从实例对象新建另一个实例
+  var b =new f.constructor();
+  b.constructor == Fn //true
+ ```
+ `constructor `是一个公有且不可枚举的属性。一旦我们改变了函数的 prototype ，那么新对象就没有这个属性了,如果修改了原型对象，一般会同时修改constructor属性，防止引用的时候出错。
 
 ```javascript
 function A(){}
@@ -78,6 +107,7 @@ console.log(A.prototype) //"a"
 ```
 constructor作用：
 - 让实例对象知道是什么函数构造了它
+ > 可以得知某个实例对象，是哪一个构造函数产生的。
 - 如果想给某些类库中的构造函数增加一些自定义的方法，就可以通过 xx.constructor.method 来扩展
 
 ###  \_\_proto\_\_
