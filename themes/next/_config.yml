@@ -28,7 +28,7 @@ favicon:
   #ms_browserconfig: /images/browserconfig.xml
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "javascript"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -105,9 +105,9 @@ menu_icons:
 
 # Schemes
 #scheme: Muse
-scheme: Mist
+#scheme: Mist
 #scheme: Pisces
-#scheme: Gemini
+scheme: Gemini
 
 
 # ---------------------------------------------------------------
@@ -209,8 +209,8 @@ excerpt_description: true
 # Automatically Excerpt. Not recommend.
 # Please use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
-  enable: false
-  length: 150
+  enable: true
+  length: 80
 
 # Post meta display settings
 post_meta:
@@ -672,9 +672,9 @@ pace: true
 Themes list:
 #pace-theme-big-counter
 #pace-theme-bounce
-#pace-theme-barber-shop
+ ace-theme-barber-shop
 #pace-theme-center-atom
- pace-theme-center-circle
+#pace-theme-center-circle
 #pace-theme-center-radar
 #pace-theme-center-simple
 #pace-theme-corner-indicator
