@@ -34,6 +34,7 @@ module1.f2()
 module1.count //undefined
 ```
 使用<label>立即执行函数</label> 将相应的方法和属性封装在函数中,这样就不会暴露私有成员
+
 #### 利用构造函数封装对象
 ```javascript
 function Father (){
@@ -68,19 +69,21 @@ ToString.prototype = {
 };
 ```
 虽然上面的构造函数未生成闭包，但是外部可以修改方法和属性，不安全
+
+
 #### 放大模式
 如果一个模块很大或者一个模块需要继承另一个模块可以利用立即执行函数的特效来封装
 ```javascript
 var module1 = (function(m1){
-m1.m2=function(){
+mod1.col=function(){
   console.log(this)
 };
-return m1;
+return mod1;
 }(window.modlue2 ||{})) //有些模块可能是null 确保函数正常执行 采用兼容模式 window.modlue2 ||{}
 ```
 - 独立性是模块的重要特点，模块内部最好不与程序的其他部分直接交互。
 ```javascript
-var module1 = (function ($, swiper) {
+var module1 = (function ($, Swiper) {
 　//...
 }(jQuery, Swiper));
 ```
@@ -115,10 +118,18 @@ var module1 = (function ($, swiper) {
 但是都有缺点：
  - 不知道模块(库) 的加载顺序
  - 还是有可能引起命名冲突，比如两个库都有相同的名称，或者使用哪个版本
-有两种流行且实施良好的方法：CommonJS和AMD。可以解决上面的缺陷
+有几种良好实施的方法：CommonJS、AMD和CMD。可以解决以上的缺陷
+
  ### CommonJS 
-> CommonJS 本质上是可复用的JavaScript,它导出特定的对象，提供其它程序使用。
- 每个JavaScript 文件 都将模块存储在自己独有的作用域中。需要使用 `module.expots`来导出对象，并在需要它的程序中使用 `require('module')` 导入
+ - `CommonJS` 是一种思想, 本质上是可复用的JavaScript,它导出特定的对象，提供其它程序使用。
+
+ - 由于 `JavaScript` 没有模块系统、标准库较少、缺乏包管理工具,因此`CommonJS `是为它的表现来制定规范。
+  
+ - 每个JavaScript 文件 都将模块存储在自己独有的作用域中。
+  
+ - 需要使用 `module.exports` 和 `exports.obj` 来导出对象，并在需要它的程序中使用 `require('module')` 加载
+
+
  ```javascript
  //文件1
  function myModule() {
@@ -141,20 +152,43 @@ var myModuleInstance = new myModule();
 myModuleInstance.hello(); // 'hello!'
 myModuleInstance.goodbye(); // 'goodbye!'
  ```
+#### 实现原理
+  ```javascript
+   var module1 = { 
+     export1:{}
+   };
+
+   (function (module,exports){
+      exports.add = functon(val){
+         return val *10
+      }
+   }(module1,module1.export1));
+
+   var fn = module1.export1.add;
+   fn(2)//20
+  ```
+利用立即执行函数 接受两个参数 module 和 exports， 模块就通过立即执行函数赋值，然后导出模块，即可实现模块的加载 
 **这种方法的好处：**
   - 避免全局污染
   - 明确依赖项目
   - 语法清晰
-  但是有个缺点 因为 `CommonJS` 采用服务器优先方法并且同步加载模块，在浏览器中使用它会阻止浏览器运行其他内容，直到加载完成。 
+**缺点：**
+  - 由于 `CommonJS` 采用服务器优先方法并且同步加载模块，因此在浏览器中使用它会阻止浏览器运行其他内容，直到加载完成。
+   
   我们可以使用 `AMD` 来异步加载
- ### AMD
+### AMD(Asynchromous Module Definition)
+  - 定义了一套 JavaScript 模块依赖异步加载标准，来解决同步加载的问题。
+  - AMD模块加载不影响后面语句的运行。所有依赖某些模块的语句均放置在回调函数中。
+  - 定义了一个函数 `define`，通过 `define` 方法定义模块。
+  - 
  ```JavaScript
  define(['myModule', 'myOtherModule'], function(myModule, myOtherModule) {
   console.log(myModule.hello());
+
 });
  ```
- 上面的 `define` 函数将每个模块的依赖项，以数组的形式作为第一个参数。
-  - 这些依赖项会在后台异步加载，一旦加载完成，`define` 函数就调用模块给出的回调函数
+ 上面的 `define` 函数将每个模块的依赖项，以数组的形式作为参数。
+ > 这些依赖项会在后台异步加载，一旦加载完成，`define` 函数就调用模块给出的回调函数
    `myModule` 可能像下面一样定义：
 
 ```javascript
@@ -171,16 +205,47 @@ myModuleInstance.goodbye(); // 'goodbye!'
 });
 
 ```
-<label> `AMD` 和 `CommonJS` 不同点：</label>
-AMD：
- - 采用浏览器优先的方法，异步加载
+#### CMD(Common Module Definition)
+ - `CMD`由玉伯大佬提出并用于[SeaJS](https://github.com/seajs/seajs/issues/242) 
+ - CMD 和 AMD 很相似，都有 define 函数， 通过 require 加载 
+  
+ CMD和AMD 不同点：
+  - 对于依赖的模块 CMD 延迟执行， AMD 提前执行(requireJS 高版本也开始延迟执行)
+  - CMD使用依赖就近原则：
+       ```javascript
+       define(function(require, exports, module) {   
+         var near = require('./a')   
+         near.doSomething()   
+         // 此处略去 100 行  
+          var nearOne = require('./b') // 依赖可以就近书写   
+          nearOne.doSomething()   // ...
+           })
+       ``` 
+  - AMD使用依赖前置原则：
+      ```javascript
+      define(['./a', './b'], function(nearTow, nearThree) { // 必须一开始加载
+            nearTow.doSomething()
+            // 此处略去 100 行
+            nearThree.doSomething()
+            ...
+            })
+      ```
+  - `CMD` 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。   `AMD` 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫 require。 
+  
+
+
+#### <label> `AMD` 和 `CommonJS` 不同点：</label>
+`AMD`：
+ - 采用浏览器优先的方法，异步加载，主要用于浏览器
  - 先加载依赖项
  - 依赖项可以说 对象、函数、构造函数、字符串等等其他JS类型
-CommonJS:
- - 采用服务器优先的方法，同步加载
+
+`CommonJS`:
+ - 采用服务器优先的方法，同步加载，主要用于服务器
  - 支持对象作为模块
  共同点： 先加载依赖项
  
+
 ###  通用模块定义 `UMD`
 > 同时支持 `AMD `和 `CommonJS`
 > 本质 创建了一种方法来使用两者的任何一种，同时支持全局变量定义，(JS兼容性的常用思想)所以 `UMD` 可以在客户端和服务器上工作
@@ -191,18 +256,15 @@ CommonJS:
     define(['myModule', 'myOtherModule'], factory);
   } else if (typeof exports === 'object') {
       // CommonJS
-    module.exports = factory(require('myModule'), require('myOtherModule'));
-  } else {
-    // Browser globals (Note: root is window)
+    module.exports = factory(require('myModule'),
+     require('myOtherModule'));
+  } else { 
     root.returnExports = factory(root.myModule, root.myOtherModule);
   }
 }(this, function (myModule, myOtherModule) {
-  // Methods
-  function notHelloOrGoodbye(){}; // A private method
-  function hello(){}; // A public method because it's returned (see below)
-  function goodbye(){}; // A public method because it's returned (see below)
-
-  // Exposed public methods
+  function notHelloOrGoodbye(){}; 
+  function hello(){}; 
+  function goodbye(){}; 
   return {
       hello: hello,
       goodbye: goodbye
@@ -210,8 +272,12 @@ CommonJS:
 }));
 ```
 
-### ES6模块
-> `CommonJS`、`AMD`相比，ES6模块的优点在于:紧凑和声明性语法和异步加载，以及更好的支持循环依赖等附加优势。
+### ES6模块（即 [ES2015/ECMAScript 6、ES6](http://es6.ruanyifeng.com/#docs/module#%E6%A6%82%E8%BF%B0)）
+
+- 
+
+
+> `CommonJS`、`AMD`和`CMD`相比，ES6模块的优点在于:紧凑和声明性语法和异步加载，以及更好的支持循环依赖等附加优势。
 ```javascript
 // lib/counter.js
 
