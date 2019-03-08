@@ -211,7 +211,7 @@ myModuleInstance.goodbye(); // 'goodbye!'
   
  CMD和AMD 不同点：
   - 对于依赖的模块 CMD 延迟执行， AMD 提前执行(requireJS 高版本也开始延迟执行)
-  - CMD使用依赖就近原则：
+  - CMD使用依赖就近原则（按需加载）：
        ```javascript
        define(function(require, exports, module) {   
          var near = require('./a')   
@@ -221,7 +221,7 @@ myModuleInstance.goodbye(); // 'goodbye!'
           nearOne.doSomething()   // ...
            })
        ``` 
-  - AMD使用依赖前置原则：
+  - AMD使用依赖前置原则（必须先加载完依赖）：
       ```javascript
       define(['./a', './b'], function(nearTow, nearThree) { // 必须一开始加载
             nearTow.doSomething()
@@ -274,10 +274,48 @@ myModuleInstance.goodbye(); // 'goodbye!'
 
 ### ES6模块（即 [ES2015/ECMAScript 6、ES6](http://es6.ruanyifeng.com/#docs/module#%E6%A6%82%E8%BF%B0)）
 
-- 
+- 使用 `import` 关键字引入模块，通过 `export` 关键字导出模块
+- ES6目前无法在浏览器中执行,只能通过babel将不被支持的import编译为当前受到广泛支持的 require。
+```javascript
+//a.js
+export let cun =1; 
+export function add() {
+  cun++;
+}
+//----------------
+import { cun, add } from './a';
+console.log(cun); // 1
+incCounter();
+console.log(cun); // 2
+//ES6 输入的模块变量，只是一个“符号连接”，所以这个变量是只读的，对它进行重新赋值会报错。
+```
+严格模式主要有以下限制：
 
+1. 变量必须声明后再使用
+2. 函数的参数不能有同名属性，否则报错
+3. 不能使用`with`语句
+4. 不能对只读属性赋值，否则报错
+5. 不能使用前缀 0 表示八进制数，否则报错
+6. 不能删除不可删除的属性，否则报错
+7. 不能删除变量`delete prop`，会报错，只能删除属性`delete global[prop]`
+8. `eval`不会在它的外层作用域引入变量
+9.` eval`和`arguments`不能被重新赋值
+10. arguments不会自动反映函数参数的变化
+11. 不能使用`arguments.callee`
+12. 不能使用`arguments.caller`
+13. 禁止this指向全局对象
+14. 不能使用`fn.caller`和`fn.arguments`获取函数调用的堆栈
+15. 增加了保留字（比如`protected`、`static`和`interface`）
+上面这些限制，模块都必须遵守。
 
-> `CommonJS`、`AMD`和`CMD`相比，ES6模块的优点在于:紧凑和声明性语法和异步加载，以及更好的支持循环依赖等附加优势。
+> 其中，尤其需要注意this的限制。ES6 模块之中，顶层的this指向undefined，即不应该在顶层代码使用this。
+`CommonJS`、`AMD`和`CMD`相比:
+- `ES6`模块是动态引用，并且不会缓存值，模块里面的变量绑定其所在的模块。
+-  ES6 对外接口只是一种静态定义，在代码静态解析阶段就会生成。
+-  ES6 module编译时输出接口(加载)，输出的是值的引用。(静态编译)
+-  CommonJS 加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。
+- CommonJS 模块运行时加载，输出的是一个值的拷贝。(动态编译)
+一旦输出一个值，模块内部的变化就影响不到这个值。
 ```javascript
 // lib/counter.js
 
