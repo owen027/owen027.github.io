@@ -289,26 +289,8 @@ incCounter();
 console.log(cun); // 2
 //ES6 输入的模块变量，只是一个“符号连接”，所以这个变量是只读的，对它进行重新赋值会报错。
 ```
-严格模式主要有以下限制：
 
-1. 变量必须声明后再使用
-2. 函数的参数不能有同名属性，否则报错
-3. 不能使用`with`语句
-4. 不能对只读属性赋值，否则报错
-5. 不能使用前缀 0 表示八进制数，否则报错
-6. 不能删除不可删除的属性，否则报错
-7. 不能删除变量`delete prop`，会报错，只能删除属性`delete global[prop]`
-8. `eval`不会在它的外层作用域引入变量
-9.` eval`和`arguments`不能被重新赋值
-10. arguments不会自动反映函数参数的变化
-11. 不能使用`arguments.callee`
-12. 不能使用`arguments.caller`
-13. 禁止this指向全局对象
-14. 不能使用`fn.caller`和`fn.arguments`获取函数调用的堆栈
-15. 增加了保留字（比如`protected`、`static`和`interface`）
-上面这些限制，模块都必须遵守。
-
-> 其中，尤其需要注意this的限制。ES6 模块之中，顶层的this指向undefined，即不应该在顶层代码使用this。
+- ES6 模块之中，顶层的this指向undefined，即不应该在顶层代码使用this。
 `CommonJS`、`AMD`和`CMD`相比:
 - `ES6`模块是动态引用，并且不会缓存值，模块里面的变量绑定其所在的模块。
 -  ES6 对外接口只是一种静态定义，在代码静态解析阶段就会生成。
