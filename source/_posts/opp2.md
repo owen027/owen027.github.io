@@ -62,18 +62,23 @@ typeof f.prototype // "object"
 Object.getPrototypeOf(Object.prototype) //null 
 ```
 <label>读取对象属性时，引擎会先在自身属性上查找，没有就查找原型，一级级向上查找，如果到`Object.prototype`还是没有，则返回`undefined`。
+
 **一级级向上，对性能有影响，寻找的层级越多，性能影响越大**
+
+ **原型链：**
 
 ![原型链](../static/img/prototype.png)
 - 实例 F1 通过`__proto__` 访问对应构造函数的原型 ->  `FOO.prototype`
 
-- 函数原型 通过`__proto__` 访问Object的原型 ->  `Object.prototype`
+- 函数原型再通过`__proto__` 访问Object的原型 ->  `Object.prototype`
 
-- Object的原型的`__proto__`  指向 null
+- Object的原型的`__proto__`  指向 `null`
 
-- 构造函数  `Object.prototype` 通过`constructor`访问构造函数本身
-
-- 每个构造函数通过 `prototype` 访问原型
+- 构造函数  `Foo.prototype` 通过`constructor`访问构造函数本身
+- `Object.constructo` 指向 `Function`
+- `Function.constructo` 指向 本身
+- `Function.__proto__`  指向一个匿名函数
+- 每个构造函数通过 `prototype` 访问原型 
 
 **只有函数才拥有`prototype`属性,<label >基本上</label>所有函数都有这个属性**
 
@@ -127,7 +132,8 @@ const a =1;
 const fn = new Function("console.log(a)") // Function 的this始终指向 全局对象，除非手动改变this指向
 fn()//1
 ```
-> 所有对象都可以通过原型链最终找到 Object.prototype ，虽然 Object.prototype 也是一个对象，但是这个对象却不是 Object 创造的，而是引擎自己创建了 `Object.prototype` 。可以这样说，<label style="color:#409eff; padding: 0 8px;">所有实例都是对象，但是对象不一定都是实例。</label>
+> 所有对象都可以通过原型链最终找到 Object.prototype ，虽然 Object.prototype 也是一个对象，但是这个对象却不是 Object 创造的，而是引擎自己创建了 `Object.prototype` 。
+可以这样说，<label style="color:#409eff; padding: 0 8px;">所有实例都是对象，但是对象不一定都是实例。</label>
 
 -首先引擎创建了 Object.prototype ，然后创建了 Function.prototype ，并且通过__proto__ 将两者联系了起来。
 

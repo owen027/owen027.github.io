@@ -283,11 +283,19 @@ export function add() {
   cun++;
 }
 //----------------
-import { cun, add } from './a';
+import { cun, add } from './a.js';
 console.log(cun); // 1
 incCounter();
 console.log(cun); // 2
+export var fo ='a';
+setTimeout(() => fo ='b',500);
+
+import {fo} from './a.js';
+console.log(fo);//'a'
+setTimeout(()=> console.log(fo),500)//'b'
+
 //ES6 输入的模块变量，只是一个“符号连接”，所以这个变量是只读的，对它进行重新赋值会报错。
+fo = 's' //error
 ```
 
 - ES6 模块之中，顶层的this指向undefined，即不应该在顶层代码使用this。

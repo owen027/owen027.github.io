@@ -18,15 +18,15 @@ JavaScript 语言的继承不通过 class，而是通过“原型对象”`proto
 function Grand(){};
 Grand.prototype.name="grand";
 
-var grand = new Grand();
+let grand = new Grand();
 
 Father.prototype=grand;
 function Father(){}
-var father = new Father();
+let father = new Father();
 
 Son.prototype=father;
 function Son(){}
-var son = new Son();
+let son = new Son();
 ```
 
 ####  借用构造函数  使用call/appply 
@@ -49,7 +49,7 @@ Son.prototype = Object.create(Father.prototype);
 Son.prototype.constructor = Son;
 ```
 
-###共有原型
+#### 共有原型
 ```javascript
 
 Father.prototype ={
@@ -65,11 +65,11 @@ function inherit (Target,Origin){//继承源
 
 ```
 
-#### 圣杯模式
+####  圣杯模式
 >隐式附加的东西就私有化，可以公共定义的东西提取出来公有化
 ```JavaScript
-var inherit =(function(){
-    var Interim =function Interim() {};
+let inherit =(function(){
+    let Interim =function Interim() {};
    return  function (Target,Origin){//继承源
    Interim.prototype =Object.create(Origin);
    Target.prototype = Interim.prototype;
@@ -81,7 +81,7 @@ var inherit =(function(){
   }())
 
 ```
-### 多重继承 
+#### 多重继承 
 JavaScript 不提供多重继承功能，即不允许一个对象同时继承多个对象。但是，可以通过`Object.assign`，实现这个功能。这种模式称之为 Mixin (混入)
 ```javascript
 function Fn1(){ }
@@ -95,7 +95,7 @@ Son.prototype =Object.create(Fn1.prototype);
 //继承F2
 Object.assign(Son.prototype,Fn2.prototype);
 Son.prototype.constructor =Son;
-var a =new Son();
+let a =new Son();
 
 ```
 
@@ -107,7 +107,7 @@ var a =new Son();
 function test() {} 
 //test() == test.call()
 
-var obj ={};
+let obj ={};
 Object.prototype.toString.call(obj) //"[object Object]"
 //因为call 和 apply 会将函数中的this指向第一个参数
 //相当于 obj.toString()
@@ -119,7 +119,7 @@ Object.prototype.toString.call(obj) //"[object Object]"
 - apply 第二个参数为数组或类数组
 ```javascript
 //返回数组中最大的数
-var a = [1, 2, 4, 1, 15];
+let a = [1, 2, 4, 1, 15];
 Math.max.apply(null, a) // 15
 
 //将数组的空元素变为undefined
@@ -132,7 +132,7 @@ Array.apply(null [1,,3,,4)//[1,undefined,3,undefined,4];
 <label>转换类似数组的对象</label>
 
 ```
-var obj={0: 1, length: 2}
+let obj={0: 1, length: 2}
 Array.protetype.slice.apply(obj);//[1,undefined]
 
 ```
@@ -145,27 +145,27 @@ Array.protetype.slice.apply(obj);//[1,undefined]
 bind方法用于将函数体内的this绑定到某个对象，然后返回一个新函数。
 
 ```javascript
-var counter = {
+let counter = {
   count: 0,
   inc: function () {
     this.count++;
   }
 };
 
-var func = counter.inc.bind(counter);
+let func = counter.inc.bind(counter);
 func();
 counter.count // 1
 
-var add = function (x, y) {
+let add = function (x, y) {
   return x * this.m + y * this.n;
 }
 
-var obj = {
+let obj = {
   m: 2,
   n: 2
 };
 
-var newAdd = add.bind(obj, 5); //将x 绑定为 5 
+let newAdd = add.bind(obj, 5); //将x 绑定为 5 
 newAdd(5) // 20
 newAdd(1,5)//12
 ```
@@ -176,7 +176,7 @@ newAdd(1,5)//12
 
 - 结合回调函数使用
 ```javascript
-var counter = {
+let counter = {
   count: 0,
   inc: function () {
     'use strict';
@@ -200,14 +200,14 @@ Array.prototype.slice.call([1, 2, 3], 0, 1) // [1]
 //将Array.prototype.slice变成Function.prototype.call方法所在的对象
 //调用时就变成了Array.prototype.slice.call。
 
-var slice = Function.prototype.call.bind(Array.prototype.slice);
+let slice = Function.prototype.call.bind(Array.prototype.slice);
 Function.prototype.slice.call([1, 2, 3], 0, 1) // [1]
 //slice([1, 2, 3], 0, 1) 
 
-var push = Function.prototype.call.bind(Array.prototype.push);
-var pop = Function.prototype.call.bind(Array.prototype.pop);
+let push = Function.prototype.call.bind(Array.prototype.push);
+let pop = Function.prototype.call.bind(Array.prototype.pop);
 
-var a = [1 ,2 ,3];
+let a = [1 ,2 ,3];
 push(a, 4)
 a // [1, 2, 3, 4]
 
@@ -222,7 +222,129 @@ function f() {
   console.log(this.v);
 }
 
-var o = { v: 123 };
-var bind = Function.prototype.call.bind(Function.prototype.bind);
+let o = { v: 123 };
+let bind = Function.prototype.call.bind(Function.prototype.bind);
 bind(f, o)() // 123
+```
+###  `Object 系统默认方法`
+
+ - `getPrototypeOf` 获取对象原型,只有一个参数
+ ```javascript
+   function Foo (){}
+   let obj = new Foo ();
+   Object.getPrototypeOf(obj) // Foo.prototype
+
+   //空对象原型
+    Object.getPrototypeOf({}) // Object.prototype
+   // Object.prototype 原型
+    Object.getPrototypeOf(Object.prototype) //null
+   // Foo
+   Object.getPrototypeOf(Foo) // Function.prototype
+
+   ```
+ - `setPrototypeOf` 设置对象原型 
+   有两个参数：
+    1. 现有对象
+    2. 继承的原型对象
+ ```javascript
+ let now = {};
+ let pro = {name:"Owen"};
+
+ Object.setPrototypeOf(now,pro);
+ now.name //"Owen"
+
+ ```
+
+#### `Object.create()` 
+> 生成实例对象的常用方法 参数必须为对象 或 null
+  - 参数为 `null` 会生成一个不会继承任何属性和方法的对象
+```javascript
+  let obj = Object.create(null);
+  obj.toString()// Error
+
+    //会继承第二个参数的属性和方法
+  let obj = Object.create({}, {
+      p1: {
+        value: 123,
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      },
+      p2: {
+        value: 'Owen',
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      }
+    });
+
+  // 等同于
+  let obj = Object.create({});
+  obj.p1 = 123;
+  obj.p2 = 'Owen';
+
+  //生成的对象会继承它的原型对象的构造函数。
+  function Foo() {}
+  let f = new Foo();
+  let b = Object.create(f);
+
+  b.constructor === Foo // true
+  b instanceof Foo // true
+
+```
+
+#### `object.isPrototypeOf` 
+ > 判断对象是否再参数对象的原型链上
+
+```javascript
+ function F(){}
+ let f = new F()
+ F.prototype.isPrototypeOf(f) //true
+```
+#####  获取原型的三种方法
+ 1. `obj.__proto__`
+ 2. `obj.constructor.prototype`
+ 3. `Object.getPrototypeOf(obj)`
+
+ - 前两种不可靠，都个一手动修改， 而且 `__proto__` 只有浏览器才需要部署
+
+ #### `getOwnPropertyNames` 和 `keys` 
+ > 以数组形式返回参数对象所有属性名(不包含继承属性)
+```javascript
+//不管可不可遍历都会返回出来
+Object.getOwnPropertyNames(Date);//["length", "name", "prototype", "now", "parse", "UTC"]
+//返回可遍历属性
+Object.keys(Date)// []
+```
+
+#### `hasOwnProperty` 
+ > 判断参数是否是自身的属性，唯一一个不会遍历原型链的方法
+```javascript
+Array.hasOwnProperty('length')//true
+```
+### 拷贝对象
+
+拷贝对象需要确保两件事情：
+- 与原对象具有同样的原型。
+- 与原对象具有同样的实例属性。
+
+```javascript
+
+function copyOwn (target,origin){
+    Object.getOwnPropertyNames(origin).forEach((key)=>{
+      let desc =Object.getOwnPropertyDescriptor(origin,key);
+      Object.defineProperty(target,origin,desc);
+    })
+    return target
+}
+
+function copy(origin){
+  let clone = Object.create (Object.getPrototypeOf(origin));
+    copyOwn(clone,origin)
+  return clone
+}
+
+//es8
+const copyTwo = origin =>Object.create( Object.getPropertyOf(origin),Object.getOwnPropertyDescriptor(origin) );
+
 ```
