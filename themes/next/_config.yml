@@ -120,9 +120,9 @@ scheme: Gemini
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
- GitHub: https://github.com/gaoguowen || github
+ GitHub: https://github.com/owen027 || github
  E-Mail: mailto:zgaoguowen@gmail.com || envelope
- 博客园: https://home.cnblogs.com/u/gaoguowen || heartbeat
+ 博客园:  https://www.cnblogs.com/gaoguowen/ || heartbeat
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
   #VK Group: https://vk.com/yourname || vk
@@ -418,9 +418,9 @@ gitment:
 # This plugin is more useful in China, make sure you known how to use it.
 # And you can find the use guide at official webiste: http://www.jiathis.com/.
 # Warning: JiaThis does not support https.
-jiathis:
+jiathis: 
   ##uid: Get this uid from http://www.jiathis.com/
-#add_this_id:
+add_this_id:
 
  Share
 duoshuo_share: true

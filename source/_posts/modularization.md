@@ -63,6 +63,7 @@ exprot 2  //error  输出的是值 而不是一个对外接口 => 须改成 expo
 - 全局只能有一个 `export default`
 - `export default`  后面不能有 变量声明的关键字
 - 使用 `export default` ，import 就不需要使用 `{}`,只需要自定义一个变量即可
+
 ```javascript
 export default var a=1; //error
 export default obj ={name:'Owen'};
@@ -70,6 +71,7 @@ export default obj ={name:'Owen'};
 let num = 1;
 let obj1 = {name:"Owen"};
 export default {num, obj1}
+
 ```
 
 
@@ -85,14 +87,17 @@ import {age, monicker as obj, multiply} from './preson.js';
 ```
 - `import` 具有提升的效果，会提升到作用域顶部执行，同一个模块多次引入只执行一次，并且不能再局部作用域中引入。
 ```javascript
-  multiply(2,2); //4
+
+multiply(2,2); //4
 import {age, monicker as obj, multiply} from './preson.js';
 
 if (true){
 import {age, monicker as obj, multiply} from './preson.js'; //error
 
 }
-``` 
+
+```
+
 ### `import()`
 
 - 因为require是运行时加载模块，import命令无法取代require的动态加载功能。因此，有一个提案，引入`import()`函数，完成动态加载。
@@ -126,3 +131,5 @@ const path =import('path');
  }).catch(error => {
                 /* Error handling */
             })
+
+```
