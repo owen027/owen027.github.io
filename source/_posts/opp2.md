@@ -67,7 +67,7 @@ Object.getPrototypeOf(Object.prototype) //null
 
  **原型链：**
 
-![原型链](../static/img/prototype.png)
+![原型链](/static/img/prototype.png)
 - 实例 F1 通过`__proto__` 访问对应构造函数的原型 ->  `FOO.prototype`
 
 - 函数原型再通过`__proto__` 访问Object的原型 ->  `Object.prototype`

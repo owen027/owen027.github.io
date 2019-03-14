@@ -4,7 +4,7 @@ date: 2019-03-05 23:36:51
 categories:
 - JavaScript
 tags: 
-- oop
+- OOP
 ---
 
 ### 对象继承
