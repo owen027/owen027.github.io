@@ -208,7 +208,13 @@ module.exports = new Promise((resolve, reject) => {
 })
 
 ```
- ### babel-loader
+
+### pluguin
+
+```bash
+npm i -D happypack html-webpack-plugin  clean-webpack-plugin progress-bar-webpack-plugin yargs-parser  friendly-errors-webpack-plugin  portfinder  webpack-merge extract-text-webpack-plugin@next optimize-css-assets-webpack-plugin  uglifyjs-webpack-plugin chalk rimraf
+```
+### babel-loader
 
 ```bash
   npm i babel-loader @babel/cli  @babel/core @babel/  @babel/preset-env plugin-proposal-class-properties @babel/ plugin-proposal-decorators @babel/ plugin-syntax-dynamic-import @babel/plugin-transform-classes @babel/plugin-transform-runtime -D
