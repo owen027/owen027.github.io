@@ -88,10 +88,49 @@ set2.clear() //Set(0) {}
 // [4, 4]
 // [5, 5]
 
+//推荐使用for of 
+const sI = new Set([1,2,3,4,5]);
+for (let key of sI) {
+ console.log(key); //1 2 3 4 5
+}
 // Set的遍历顺序就是插入顺序。使用 Set 保存一个回调函数列表，调用时能保证按照添加顺序调用。
 
-
+//forEach
+sI.forEach((value, key) => console.log(key + ' : ' + value))
+// 1 : 1
+// 2 : 2
+// 3 : 3
+// 4 : 4
+// 5 : 5
 ```
+### weakSet 
+> 和Set 类似 但是只能存储对象，不可遍历
+> 如果其他对象未应用该对象，垃圾回收机制会自动收回所占用的内存
+> 适合存储临时对象和绑定对应对象的信息
 
+```javascript
+const ws = new WeakSet([[1, 2], [3, 4]]); //WeakSet {[1, 2], [3, 4]}
+//a 的成员自动成为 weakSet 的成员
 
+//add 方法
+let arr =[[1]];
+ws.add(arr);
+//delete 删除对应成员
+ws.delete(arr); //true
+// has 是否包含
+ws.has(arr) //false
+```
+由于 WeakSet 的成员都是弱引用随时可能被回收，因此可以存储DOM节点，不用担心节点移除时，发生内存泄漏。
 
+```javascript
+const foo = new WeakSet()
+ class Foo {
+   constructor(){
+     foo.add(this)
+   }
+   method (){
+     if(!foo.has (this)){
+       throw new TypeError("method 只能在Foo 实例上使用");
+     }
+   }
+ }
