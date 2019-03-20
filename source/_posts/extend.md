@@ -65,4 +65,194 @@ pd.padStart(9,'Aay ')//'ABrother!'
 pd.padStart(9)//' Brother!'
 ```
 
+**模板字符**
+> 通过反引号 “ `` ” 当普通字符串使用
+```javascript
+//所有换行和空格会保留，嵌入变量，须将变量包含在 `${}` 中，并且可进行运算,函数调用，对象调用
+let num =1,obj ={name:'Owen'}, fn=()=> 3;
+const str =` 
+${num * 3 + 1 + fn() + obj.name}`;
 
+console.log(str)
+/* 
+" 
+7Owen"
+*/
+
+//如果紧更在函数名后，函数将被调用（标签模板）
+alert`123`  // 等同于
+alert(123)
+
+```
+**转义符 `\`**
+```javascript
+//以 x 开头,会被当做 16 进制
+
+ `\x23` // #
+
+ //以 u 开头,会被当做 unicode  字符
+ `\u004F` //"O"
+
+//如果无法编译将会报错
+
+ ```
+ES2018 放松了对`标签模板`里面的字符串转义的限制，无法转义的返回`undefined`；
+```javascript
+console.log`\uw`;
+//[undefined, raw: Array(1)]
+//undefined
+
+```
+
+### Function Extend
+
+**形参指定默认值**
+> 形参 不能再次使用 let 和 const 声明
+> 形参不能重名 
+> 函数 length 不包含设置默认值和后面的形参个数
+> 使用 `...arg` 中的参数 length 也不包含
+```javascript
+
+const fn = (x, y = 'Owen') =>( console.log(x,y));
+fn(1) // 1 "Owen"
+
+//默认参数 惰性求值
+let x = 99;
+function foo(y = x + 1) {
+  console.log(y);
+}
+foo() // 100
+x = 100;
+foo() // 101
+//调用一次计算一次
+
+
+```
+ > 事实上 每次调用函数，如果不传递参数， 形参默认传递 `undefined`
+ ```javascript
+ // 默认参数最好定义再尾部，因为使用形参默认参数，那么那个位置的形参必传
+
+function f(x, y = 5, z， ...arg) {
+  return [x, y, z];
+}
+
+f() // [undefined, 5, undefined]
+f(1) // [1, 5, undefined]
+f(1, ,2) // 报错
+f(1, undefined, 2) // [1, 5, 2]
+
+//length 不包含设置默认值 和后面的形参 的个数，
+f().length // 1
+
+```
+**作用域**
+> 函数中的<label>变量无法访问</label> 默认值
+> 函数中的形参名不能和默认名一样
+```javascript
+//函数变量无法访问默认值
+function f(y = x) {
+  let x = 2;
+  console.log(y);
+}
+
+f() // ReferenceError: x is not defined
+
+//函数中的形参名不能和默认名一样
+//参数x = x形成一个单独作用域。实际执行的是let x = x，由于暂时性死区的原因，这行代码会报错
+function f(x = x) {
+  console.log(x);
+}
+f()//  x is not defined
+
+var x = 1;
+function foo(x, y = function() { x = 2; }) {
+  var x = 3;
+  y();
+  console.log(x);
+}
+
+foo() // 3
+x // 1
+```
+由于  var 声明的 x 和函数形参 x 不再同一个作用域 ， 因此调用 y() x值不变；
+如果 去掉 var , 那么 x 就指向 形参 x ,调用 y() x = 2。
+
+**reset 参数 （...）**
+> 使用形式 `...arg`  实数以数组的形势赋给变量
+> reset 参数后不能再有形参，否则报错
+```javascript
+function fn (a,...arg){
+    return arg;
+}
+fn(0,2,3,4,5)//[2,3,4,5]
+
+function foo (a,...arg,b){
+    return arg;
+}
+//ught SyntaxError: Rest parameter must be last formal parameter
+```
+<label>只要函数参数使用了默认值、解构赋值、或者扩展运算符，那么函数内部就不能显式设定为严格模式，否则会报错。 </label>
+```javascript
+// 报错
+function f(a, b = a) {
+  'use strict';
+  // code
+}
+
+// 报错
+const foo = function ({a, b}) {
+  'use strict';
+  // code
+};
+
+// 报错
+const fn = (...a) => {
+  'use strict';
+  // code
+};
+
+const obj = {
+  // 报错
+  fn({a, b}) {
+    'use strict';
+    // code
+  }
+};
+```
+
+**箭头函数**
+>使用 ` () => `  定义函数
+注意：
+- 函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+
+- 不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。
+
+- 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。
+
+- 不可以使用yield命令，因此箭头函数不能用作 Generator 函数。
+
+```javascript 
+
+//定义简单函数
+let fn = () => 'Owen';
+fn()// 'Owen'
+
+let foo = r => r;
+foo('Owen') // 'Owen'
+
+let f = (num1,num2) => num1 + num2;
+f(1,2)//3
+
+//如果返回一个对象需要小括号包裹,f否则会报错
+let f = (name,age) => ({name,age});
+f('Owen',18)//{name: "Owen", age: 18}
+
+
+//如果代码部分大于一条语句，那么需要 大括号包裹，使用return 返回值
+
+let fn1 = r => {
+    let a = 1;
+    console.log(a);
+    return r + a;
+
+}
