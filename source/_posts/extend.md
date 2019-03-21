@@ -223,7 +223,7 @@ const obj = {
 **箭头函数**
 >使用 ` () => `  定义函数
 注意：
-- 函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+- this 指向函数定义时所绑定的对象，不会更改。
 
 - 不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。
 
@@ -256,3 +256,73 @@ let fn1 = r => {
     return r + a;
 
 }
+
+**不推荐使用场景**
+
+- 在对象中使用 this.
+
+```javascript
+var obj = {
+  gender:"man",
+  getSex: () =>  {console.log(this.gender)}
+}
+obj.getSex() //undefined
+//this -> global
+
+```
+- 动态使用 this. 
+
+```javascript
+var lis = document.querySelector('li');
+lis.addEventListener('click',() => {
+  console.log(this)
+})
+// this -> global
+```
+- 内部有大量的读写操作，不单纯是为了计算值，这时也不应该使用箭头函数
+
+
+**双冒号运算符 `::`**
+
+> 目前只是一个提案，用来绑定函数的 this 类似于 (bind,call,apply)
+> 将做边的对象作为参数，绑定到右边函数上。
+
+```javascript
+bar:: fn
+//等同于
+fn.bind(bar);
+
+bar::fn(...arguments);
+//等同于
+fn.apply(bar, arguments);
+
+```
+
+**尾调用**
+> 指某个函数的最后一步是调用另一个函数。
+> 不一定出现在函数尾部，只要是最后一步操作即可。
+```javascript
+//尾调用
+function f(x){
+  return fn(x);
+}
+
+
+//不属于尾调用
+// 情况一
+function f(x){
+  let y = g(x);
+  return y;
+}
+
+// 情况二
+function f(x){
+  return g(x) + 1;
+}
+
+// 情况三
+function f(x){
+  g(x);
+}
+```
+
