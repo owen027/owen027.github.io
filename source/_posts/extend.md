@@ -7,9 +7,9 @@ tags:
 - Extend Methods
 ---
 
-### String Extend
+###  String Extend
 
-**被 `for ... of` 遍历**
+#### **被 `for ... of` 遍历**
 ```javascript
 
 for (let val of 'abc'){
@@ -19,7 +19,7 @@ for (let val of 'abc'){
     //c
 }
 ```
-**查找字符**
+#### **查找字符**
 ```javascript
 let str = 'Hello Brother!';
 
@@ -33,7 +33,7 @@ str.startsWith('Hello') //true
 str.endsWith('er!')//true
 
 ```
-**重复字符**
+#### **重复字符**
 ```javascript
 //repeat  重复 n 次，  n 为参数,返回新字符串
 let re = 'Hello Brother!';
@@ -47,7 +47,7 @@ re.repeat(1.9) // "Hello Brother!"
 re.repeat(-0.9) // ""
 
 ```
-**补全字符**
+#### **补全字符**
 ```javascript
 //补全开头 padStart 补齐尾部 padEnd
 let pd = 'Brother!'; 
@@ -65,7 +65,7 @@ pd.padStart(9,'Aay ')//'ABrother!'
 pd.padStart(9)//' Brother!'
 ```
 
-**模板字符**
+#### **模板字符**
 > 通过反引号 “ `` ” 当普通字符串使用
 ```javascript
 //所有换行和空格会保留，嵌入变量，须将变量包含在 `${}` 中，并且可进行运算,函数调用，对象调用
@@ -97,6 +97,7 @@ alert(123)
 
  ```
 ES2018 放松了对`标签模板`里面的字符串转义的限制，无法转义的返回`undefined`；
+
 ```javascript
 console.log`\uw`;
 //[undefined, raw: Array(1)]
@@ -104,9 +105,11 @@ console.log`\uw`;
 
 ```
 
+----
+
 ### Function Extend
 
-**形参指定默认值**
+####  **形参指定默认值**
 > 形参 不能再次使用 let 和 const 声明
 > 形参不能重名 
 > 函数 length 不包含设置默认值和后面的形参个数
@@ -126,8 +129,8 @@ x = 100;
 foo() // 101
 //调用一次计算一次
 
-
 ```
+
  > 事实上 每次调用函数，如果不传递参数， 形参默认传递 `undefined`
  ```javascript
  // 默认参数最好定义再尾部，因为使用形参默认参数，那么那个位置的形参必传
@@ -145,7 +148,7 @@ f(1, undefined, 2) // [1, 5, 2]
 f().length // 1
 
 ```
-**作用域**
+#### **作用域**
 > 函数中的<label>变量无法访问</label> 默认值
 > 函数中的形参名不能和默认名一样
 ```javascript
@@ -177,7 +180,7 @@ x // 1
 由于  var 声明的 x 和函数形参 x 不再同一个作用域 ， 因此调用 y() x值不变；
 如果 去掉 var , 那么 x 就指向 形参 x ,调用 y() x = 2。
 
-**reset 参数 （...）**
+####  **reset 参数 （...）**
 > 使用形式 `...arg`  实数以数组的形势赋给变量
 > reset 参数后不能再有形参，否则报错
 ```javascript
@@ -220,13 +223,41 @@ const obj = {
 };
 ```
 
-**箭头函数**
+####  **箭头函数**
 >使用 ` () => `  定义函数
 注意：
-- this 指向函数定义时所绑定的对象，不会更改。
+- this 指向函数定义时所绑定的普通函数，不会被(bind,call,apply)更改,也不会被调用时的上下文改变。
+```javascript
+let fn = () =>console.log(this);
+let obj = {name:"Owen"};
 
-- 不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。
+fn.call(obj) //window
 
+fn.bind(obj)
+fn() //window
+
+fn.apply(obj)  //window
+ 
+ 
+ //可以通过改变宿主环境来改变 this 指向
+ 
+ function foo (){
+ 
+return () =>{ 
+  console.log(this);
+
+  return ()=> {console.log(this)};
+  }
+}
+foo.call(obj)() //{name: "Owen"}
+foo.call(obj)()() //{name: "Owen"} {name: "Owen"}
+
+```
+
+- 外层没有普通函数 ，严格模式和非严格模式下它的this都会指向window(全局对象)。
+
+- 不可以当作构造函数，也就是说，不可以使用new命令，没有`prototype`属性，不支持`new.target`,否则会抛出一个错误。
+- 参数和箭头之间不能换行
 - 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。
 
 - 不可以使用yield命令，因此箭头函数不能用作 Generator 函数。
@@ -257,7 +288,7 @@ let fn1 = r => {
 
 }
 
-**不推荐使用场景**
+####  **不推荐使用场景**
 
 - 在对象中使用 this.
 
@@ -282,7 +313,7 @@ lis.addEventListener('click',() => {
 - 内部有大量的读写操作，不单纯是为了计算值，这时也不应该使用箭头函数
 
 
-**双冒号运算符 `::`**
+####  **双冒号运算符 `::`**
 
 > 目前只是一个提案，用来绑定函数的 this 类似于 (bind,call,apply)
 > 将做边的对象作为参数，绑定到右边函数上。
@@ -297,8 +328,23 @@ bar::fn(...arguments);
 fn.apply(bar, arguments);
 
 ```
+####  **函数调用**
+```javascript
+function f(){
+ foo()
+}
+function foo(){
+fn()
+}
+function fn(){
+}
+f()
+```
 
-**尾调用**
+> 函数调用会在内存中形成一个 调用记录（`调用帧`），保存着调用位置和内部变量等信息。
+> 函数 `f`内部调用 `foo`函数，`f`调用帧的上方会形成 `foo`的调用帧， `foo`运行接受并且将结果返回给 `f`，`foo`的调用帧才会消失，同理，`foo`函数 内部调用`fn`函数，还会有 `fn` 的调用帧，以此类推，形成一个`调用栈`。
+
+####  **尾调用**
 > 指某个函数的最后一步是调用另一个函数。
 > 不一定出现在函数尾部，只要是最后一步操作即可。
 ```javascript
@@ -324,5 +370,23 @@ function f(x){
 function f(x){
   g(x);
 }
+  //等同于
+function f(x){
+  g(x);
+  return undefined;
+}
 ```
+---
 
+### Array Extend
+
+#### **扩展运算 (...)**
+
+>主要用于函数调用， 将一个数组，变为参数序列。
+```javascript
+function add(x, y) {
+  return x + y;
+}
+
+add(... [1,2]) // 3
+```
