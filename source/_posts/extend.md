@@ -390,3 +390,127 @@ function add(x, y) {
 
 add(... [1,2]) // 3
 ```
+ **clone数组**
+ ```javascript 
+ //es5 
+let arr = [1,2];
+
+let arr1 = arr.concat();
+
+ //es6
+let [...arr2] = arr;
+
+let arr3 = [...arr];
+```
+**合并数组**
+```javascript
+let arr = [1,2];
+let arr1 = [3,4];
+let arr2 = [5,6];
+//es5
+let arr3 = arr.concat(arr1,arr2);
+//es6
+let arr4 = [...arr,...arr1,...arr2];
+```
+合并和clone 都是浅拷贝；
+
+**配合解构赋值**
+```javascript
+
+const [first, ...rest] = [1, 2, 3, 4, 5];
+first // 1
+rest  // [2, 3, 4, 5]
+
+const [first, ...rest] = [];
+first // undefined
+rest  // []
+
+const [first, ...rest] = ["foo"];
+first  // "foo"
+rest   // []
+
+//扩展运算符，只能放在参数的最后一位，否则会报错。
+
+const [first, ...middle, last] = [1, 2, 3, 4, 5];
+//error
+```
+**将伪数组(内部实现了Iterator)转化伪数组**
+```javascript
+
+//内部实现Iterator
+//字符串， Set, Map, Generator, NodeList, htmlcollection, classList ,argument内部都实现了迭代接口
+let nodes = document.querySelectorAll('div');
+
+let divs = [...nodes];
+
+//内部未实现Iterator
+let objs = {
+  '0': 'a',
+  '1': 'b',
+  '2': 'c',
+  length: 3
+};
+let arr =[...objs];//error
+//可通过 Array.from方法转化
+let arr1 = Array.from(objs)
+
+```
+#### Array.from
+> 将伪数组转化为数组
+
+```javascript
+let arrLike = {
+  '0': 'a',
+  '1': 'b',
+  '2': 'c',
+  length: 3
+};
+
+let arr = Array.from(arrLike)
+
+/*第二个参数
+ 遍历每个元素并返回运算结果
+*/
+Array.from(arrLike, x => x * x);
+// 等同于
+Array.from(arrLike).map(x => x * x);
+
+Array.from([1, 2, 3], (x) => x * x)
+// [1, 4, 9]
+
+//将布尔值为false的成员转为0
+Array.from([1, , 2, , 3], (n) => n || 0)
+// [1, 0, 2, 0, 3]
+
+//获取DOM 节点的文本内容。
+Array.from
+(document.querySelectorAll('span.name');, s => s.textContent)
+//第三个参数 绑定第二个参数中回调函数的this 
+```
+**find and findIndex**
+> 回调函数遍历所有成员，返回符合条件的值， 没有则返回 undefined
+> find 返回值为，第一个符合条件的成员
+>findIndex ，没有则返回 -1
+> 回调函数接受三个参数（成员，位置，原数组）
+> 第二个参数 绑定回调函数 this 
+> 可以识别NaN
+```javascript
+[1, 4, -5, 10].find(function(v,i,arr){
+  return v<0;
+})
+// -5
+
+[1, 4, -5, 10].findIndex((n) => n < 0)
+// 2
+```
+**fill**
+> 填充数组,修改原数组
+> 第一个参数为填充值，第二个参数为开始填充的位置，第三个参数为结束位置
+```javascript
+let arr =[1,2,3];
+arr.fill('Owen');
+//["Owen","Owen","Owen"]
+arr.fill(1,0,2);
+//[1,1,3]
+
+```
