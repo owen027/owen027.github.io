@@ -514,3 +514,26 @@ arr.fill(1,0,2);
 //[1,1,3]
 
 ```
+**Interator**
+> keys,values,entries 对应属性遍历
+```javascript
+// keys
+let arr = ['o','w','e','n'];
+for (let key of arr.keys()){
+   console.log(key);
+   //0 1 2 3
+}
+
+for (let item of arr.values()){
+   console.log(item);
+   //o w e n
+}
+
+for (let [i,item] of arr.entries()){
+   console.log(i,item)
+//1 "w"
+//2 "e"
+//3 "n"
+}
+
+```
