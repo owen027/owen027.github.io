@@ -487,7 +487,7 @@ Array.from
 (document.querySelectorAll('span.name');, s => s.textContent)
 //第三个参数 绑定第二个参数中回调函数的this 
 ```
-**find and findIndex**
+#### **find and findIndex**
 > 回调函数遍历所有成员，返回符合条件的值， 没有则返回 undefined
 > find 返回值为，第一个符合条件的成员
 >findIndex ，没有则返回 -1
@@ -503,7 +503,7 @@ Array.from
 [1, 4, -5, 10].findIndex((n) => n < 0)
 // 2
 ```
-**fill**
+#### **fill**
 > 填充数组,修改原数组
 > 第一个参数为填充值，第二个参数为开始填充的位置，第三个参数为结束位置
 ```javascript
@@ -514,7 +514,7 @@ arr.fill(1,0,2);
 //[1,1,3]
 
 ```
-**Interator**
+#### **Interator**
 > keys,values,entries 对应属性遍历
 ```javascript
 // keys
@@ -537,3 +537,72 @@ for (let [i,item] of arr.entries()){
 }
 
 ```
+#### **includes**
+> 返回一个Boolean ,数组是否包含给定的值
+```javascript
+[1,2,3,4].includes(3)//true
+//第二个参数为搜索的起始位置
+[1,2,3,4].includes(3,4)//false
+
+/* 是否支持 */
+const contains = (() =>
+  Array.prototype.includes
+    ? (arr, value) => arr.includes(value)
+    : (arr, value) => arr.some(el => el === value)
+)();
+contains(['foo', 'bar'], 'baz'); // => false
+```
+
+#### **flat ,flatMap**
+> 将二维数组变成一位数组，并返回新数组
+```javascript
+[1,2,[3,4]].flat()
+//[1,2,3,4]
+//默认拉平1层
+[1,2,[3,[4]]].flat(2)
+//[1,2,3,4]
+//将所有维度变成一维
+array.flat(Infinty)
+//会忽略空位
+[1,,[3,4]].flat()
+//[1,3,4]
+```
+
+### Object extend
+
+#### 对象中的简写
+```javascript
+//函数
+const obj ={
+  methode(){
+    return 'Owen'
+  },
+  * m() {
+    yield 'hello world';
+  }
+}
+//等同于
+const obj ={
+  methode:function(){
+    return 'Owen'
+  }
+  m:function* (){
+    yield 'hello world';
+  }
+}
+
+//使用变量定义对象
+let lastWord = 'last word';
+
+const obj = {
+  'first word': 'hello',
+  [lastWord]: 'world',
+  ['h' + 'ello']() {
+    return 'hi';
+  }
+};
+
+obj['first word'] // "hello"
+obj[lastWord] // "world"
+obj['last word'] // "world"
+obj.hello() // hi
