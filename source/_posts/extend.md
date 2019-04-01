@@ -571,6 +571,7 @@ array.flat(Infinty)
 ### Object extend
 
 #### 对象中的简写
+
 ```javascript
 //函数
 const obj ={
@@ -592,6 +593,7 @@ const obj ={
 }
 
 //使用变量定义对象
+  //默认情况下会自动将对象转为字符串[object Object]，这一点要特别小心。
 let lastWord = 'last word';
 
 const obj = {
@@ -606,3 +608,94 @@ obj['first word'] // "hello"
 obj[lastWord] // "world"
 obj['last word'] // "world"
 obj.hello() // hi
+
+
+//对象中 函数 name属性
+//对象的方法是一个 Symbol 值，那么name属性返回的是这个 Symbol 值的描述。
+const key1 = Symbol('description');
+const key2 = Symbol();
+let obj = {
+  [key1]() {},
+  [key2]() {},
+  sayName() {
+    console.log('Owen');
+  },
+  get foo() {},
+  set foo(x) {}
+};
+obj[key1].name // "[description]"
+obj[key2].name // ""
+obj.sayName.name   // "sayName"
+const descriptor = Object.getOwnPropertyDescriptor(obj, 'foo');
+
+descriptor.get.name // "get foo"
+descriptor.set.name // "set foo"
+
+//通过构造函数创立的函数
+(new Function()).name // "anonymous"
+
+//通过 bind 绑定的函数
+var doSomething = function() {
+  // ...
+};
+doSomething.bind().name // "bound doSomething"
+
+```
+
+#### 枚举和遍历
+
+> Object.getOwnPropertyDescriptor方法可以获取该属性的描述对象
+
+```javascript 
+let obj = {
+  name:'Owen'
+}
+Objct.getOwnPropertyDescriptor(obj,'name');
+//  {
+//    value: Owen,
+//    writable: true,
+//    enumerable: true, //可枚举
+//    configurable: true
+//  }
+```
+**如果 enumerable 为 false**
+有些操作会忽略，当前属性
+- for...in循环：只遍历对象自身的和继承的可枚举的属性。
+- Object.keys()：返回对象自身的所有可枚举的属性的键名。
+- JSON.stringify()：只串行化对象自身的可枚举的属性。
+- (ES6) Object.assign()： 忽略enumerable为false的属性，只拷贝对象自身的可枚举的属性。
+
+
+> 共有 5 种方法可以遍历对象的属性。
+- for...in
+
+for...in循环遍历对象自身的和继承的可枚举属性（不含 Symbol 属性）。
+
+- Object.keys(obj)
+
+Object.keys返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含 Symbol 属性）的键名。
+
+- Object.getOwnPropertyNames(obj)
+
+Object.getOwnPropertyNames返回一个数组，包含对象自身的所有属性（不含 Symbol 属性，但是包括不可枚举属性）的键名。
+
+- Object.getOwnPropertySymbols(obj)
+
+Object.getOwnPropertySymbols返回一个数组，包含对象自身的所有 Symbol 属性的键名。
+
+- Reflect.ownKeys(obj)
+Reflect.ownKeys返回一个数组，包含对象自身的所有键名，不管键名是 Symbol 或字符串，也不管是否可枚举。
+
+**都遵守同样的属性遍历的次序规则。**
+
+- 首先遍历所有数值键，按照数值升序排列。
+- 其次遍历所有字符串键，按照加入时间升序排列。
+- 最后遍历所有 Symbol 键，按照加入时间升序排列。
+```javascript
+Reflect.ownKeys({ [Symbol()]:0, b:0, 10:0, 2:0, a:0 })
+// ['2', '10', 'b', 'a', Symbol()]
+```
+上面代码中，Reflect.ownKeys方法返回一个数组，包含了参数对象的所有属性。这个数组的属性次序是这样的，首先是数值属性2和10，其次是字符串属性b和a，最后是 Symbol 属性。
+
+**super**
+> 指向当前对象的原型对象。
