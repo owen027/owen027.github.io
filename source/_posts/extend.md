@@ -84,7 +84,8 @@ alert`123`  // 等同于
 alert(123)
 
 ```
-**转义符 `\`**
+
+##### **转义符 `\`**
 ```javascript
 //以 x 开头,会被当做 16 进制
 
@@ -104,16 +105,16 @@ console.log`\uw`;
 //undefined
 
 ```
-
-----
+------------
 
 ### Function Extend
 
-####  **形参指定默认值**
+#### **形参指定默认值**
 > 形参 不能再次使用 let 和 const 声明
 > 形参不能重名 
 > 函数 length 不包含设置默认值和后面的形参个数
 > 使用 `...arg` 中的参数 length 也不包含
+
 ```javascript
 
 const fn = (x, y = 'Owen') =>( console.log(x,y));
@@ -330,14 +331,13 @@ fn.apply(bar, arguments);
 ```
 ####  **函数调用**
 ```javascript
-function f(){
- foo()
+ function f(){
+   foo()
 }
-function foo(){
-fn()
+ function foo(){
+   fn()
 }
-function fn(){
-}
+function fn(){}
 f()
 ```
 
@@ -376,7 +376,7 @@ function f(x){
   return undefined;
 }
 ```
----
+------
 
 ### Array Extend
 
@@ -390,7 +390,7 @@ function add(x, y) {
 
 add(... [1,2]) // 3
 ```
- **clone数组**
+##### **clone数组**
  ```javascript 
  //es5 
 let arr = [1,2];
@@ -402,7 +402,7 @@ let [...arr2] = arr;
 
 let arr3 = [...arr];
 ```
-**合并数组**
+##### **合并数组**
 ```javascript
 let arr = [1,2];
 let arr1 = [3,4];
@@ -414,7 +414,7 @@ let arr4 = [...arr,...arr1,...arr2];
 ```
 合并和clone 都是浅拷贝；
 
-**配合解构赋值**
+##### **配合解构赋值**
 ```javascript
 
 const [first, ...rest] = [1, 2, 3, 4, 5];
@@ -434,7 +434,7 @@ rest   // []
 const [first, ...middle, last] = [1, 2, 3, 4, 5];
 //error
 ```
-**将伪数组(内部实现了Iterator)转化伪数组**
+##### **将伪数组(内部实现了Iterator)转化伪数组**
 ```javascript
 
 //内部实现Iterator
@@ -567,6 +567,7 @@ array.flat(Infinty)
 [1,,[3,4]].flat()
 //[1,3,4]
 ```
+---
 
 ### Object extend
 
@@ -658,7 +659,7 @@ Objct.getOwnPropertyDescriptor(obj,'name');
 //    configurable: true
 //  }
 ```
-**如果 enumerable 为 false**
+##### **如果 enumerable 为 false**
 有些操作会忽略，当前属性
 - for...in循环：只遍历对象自身的和继承的可枚举的属性。
 - Object.keys()：返回对象自身的所有可枚举的属性的键名。
@@ -686,7 +687,7 @@ Object.getOwnPropertySymbols返回一个数组，包含对象自身的所有 Sym
 - Reflect.ownKeys(obj)
 Reflect.ownKeys返回一个数组，包含对象自身的所有键名，不管键名是 Symbol 或字符串，也不管是否可枚举。
 
-**都遵守同样的属性遍历的次序规则。**
+##### **都遵守同样的属性遍历的次序规则。**
 
 - 首先遍历所有数值键，按照数值升序排列。
 - 其次遍历所有字符串键，按照加入时间升序排列。
@@ -698,4 +699,293 @@ Reflect.ownKeys({ [Symbol()]:0, b:0, 10:0, 2:0, a:0 })
 上面代码中，Reflect.ownKeys方法返回一个数组，包含了参数对象的所有属性。这个数组的属性次序是这样的，首先是数值属性2和10，其次是字符串属性b和a，最后是 Symbol 属性。
 
 **super**
-> 指向当前对象的原型对象。
+> `this` 总是指向函数所在的当前对象
+> `super` 指向当前对象的原型对象。
+> super关键字表示原型对象时，`只能用在对象的方法之中`，用在其他地方都会报错。
+目前，只有对象<label>方法的简写法可以让 JavaScript 引擎确认，定义的是对象的方法。</label>
+```javascript
+const proto = {
+  foo: 'hello'
+};
+
+const obj = {
+  foo: 'world',
+  find() {
+    return super.foo;
+  }
+};
+
+Object.setPrototypeOf(obj, proto);
+obj.find() // "hello"
+```
+#### 对象扩展运算符
+> ES2018 将这个运算符引入了对象。
+> 解构赋值的拷贝是浅拷贝
+> 不能复制继承自原型对象的属性。
+```javascript
+
+// 解构
+
+//必须保证右方为对象，否则报错
+let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
+x // 1
+y // 2
+z // { a: 3, b: 4 }
+
+//与函数参数扩展运算类似，解构赋值须最后一个参数
+let { ...x, y, z } = someObject; // 句法错误
+let { x, ...y, ...z } = someObject; // 句法错误
+
+//无法继承原型
+let o1 = { a: 1 };
+let o2 = { b: 2 };
+o2.__proto__ = o1;
+let { ...o3 } = o2;
+o3 // { b: 2 }
+o3.a // undefined
+
+
+//扩展运算
+
+//数组是特殊的对象，所以对象的扩展运算符也可以用于数组
+let foo = { ...['a', 'b', 'c'] };
+foo
+// {0: "a", 1: "b", 2: "c"}
+
+//扩展运算符后面是一个空对象，无效果
+{...{}, a: 1}
+// { a: 1 }
+
+//扩展运算符后面不是对象，则会自动将其转为对象 
+{...1} // {}
+
+//扩展运算符后面是字符串，它会自动转成一个类似数组的对象
+{...'Owen'}
+//{0: "O", 1: "w", 2: "e", 3: "n"}
+
+let ab = { ...a, ...b };
+// 等同于
+let ab = Object.assign({}, a, b);
+
+//完整克隆一个对象，还拷贝对象原型的属性，可以采用下面的写法。
+
+// 写法一 非浏览器环境不一定部署 __proto__
+const clone1 = {
+  __proto__: Object.getPrototypeOf(obj),
+  ...obj
+};
+
+// 写法二
+const clone2 = Object.assign(
+  Object.create(Object.getPrototypeOf(obj)),
+  obj
+);
+
+// 写法三
+const clone3 = Object.create(
+  Object.getPrototypeOf(obj),
+  Object.getOwnPropertyDescriptors(obj)
+)
+
+//对象的扩展运算符后面可以跟表达式
+const obj = {
+  ...(x > 1 ? {a: 1} : {}),
+  b: 2,
+};
+
+//扩展运算符的参数对象之中，如果有取值函数get，这个函数是会执行let aWithXGetter = {
+  ...a,
+  get x() {
+    throw new Error('not throw yet');
+  }
+};
+
+// 会抛出错误，因为 x 属性被执行了
+let runtimeError = {
+  ...a,
+  ...{
+    get x() {
+      throw new Error('throw now');
+    }
+  }
+};
+
+```
+---
+###  New method for objects
+
+#### Object.is() 比较两个值是否严格相等
+>和 `===` 的区别
+```javascript
++0 === -0 //true
+NaN === NaN // false
+
+Object.is(+0, -0) // false
+Object.is(NaN, NaN) // true
+es5 实现
+Object.defineProperty(Object,'is',{
+  value: function(x, y) {
+    if (x === y) {
+      // 针对+0 不等于 -0的情况
+      return x !== 0 || 1 / x === 1 / y;
+    }
+    // 针对NaN的情况
+    return x !== x && y !== y;
+  },
+  configurable: true,
+  enumerable: false,
+  writable: true
+})
+```
+#### Object.assign()
+> 浅拷贝对象，无法拷贝原型,也不拷贝不可枚举的属性。
+> 总是拷贝一个属性的值，而不会拷贝它背后的赋值方法或取值方法。
+> 同属性后面的覆盖前面的值
+
+```javascript
+Object.assign({b: 'c'},
+  Object.defineProperty({}, 'invisible', {
+    enumerable: false,
+    value: 'hello'
+  }) )
+// { b: 'c' }
+Object.assign([1, 2, 3], [4, 5])
+//[4,5,3]
+```
+
+#### Object.getOwnPropertyDescriptors()
+> 返回目标对象所有自身属性（非继承） 的描述对象
+```javascript
+const obj = {
+  foo: 123,
+  get bar() { return 'Owen' }
+};
+
+Object.getOwnPropertyDescriptors(obj)
+// { foo:
+//    { value: 123,
+//      writable: true,
+//      enumerable: true,
+//      configurable: true },
+//   bar:
+//    { get: [Function: get bar],
+//      set: undefined,
+//      enumerable: true,
+//      configurable: true } }
+```
+> 主要是为了解决Object.assign()无法正确拷贝get属性和set属性的问题。
+```javascript
+const source = {
+  set foo(value) {
+    console.log(value);
+  }
+};
+
+const target = {};
+const shallowMerge = (target, source) => Object.defineProperties(
+  target,
+  Object.getOwnPropertyDescriptors(source)
+);
+shallowMerge(target,source)
+Object.getOwnPropertyDescriptor(target, 'foo')
+// { get: undefined,
+//   set: [Function: set foo],
+//   enumerable: true,
+//   configurable: true }
+```
+> 配合Object.create()方法，将对象属性克隆到一个新对象
+```javascript
+const shallowClone = (obj) => Object.create(
+  Object.getPrototypeOf(obj),
+  Object.getOwnPropertyDescriptors(obj)
+);
+
+```
+> 实现一个对象继承另一个对象。
+```javascript
+//一
+const obj1 = Object.create(prot);
+obj.foo = 123;
+
+//二
+const obj2 = Object.assign(
+  Object.create(prot),
+  {
+    foo: 123,
+  }
+//三
+const  obj3 = Object.create(prot,Object.getOwnPropertyDescriptors({
+  name:'Owen'
+}))
+);
+```
+> 实现`Mixin` 
+```javascript
+let mix = (obj) => (
+  {
+    with:(...mixins) => mixins.reduce(
+      (c,mixin) => Object.create(  c, Object.getOwePropertyDescriptors( minxin )), obj
+    )
+  })
+let a = {a: 'a'};
+let b = {b: 'b'};
+let c = {c: 'c'};
+let d = mix(c).with(a, b);
+
+d.c // "c"
+d.b // "b"
+d.a // "a"
+```
+#### __proto__属性，Object.setPrototypeOf()，Object.getPrototypeOf()
+ > 设置，和 获取原型
+```javascript
+//set
+let proto = {};
+let obj = { x: 10 };
+Object.setPrototypeOf(obj, proto);
+
+proto.y = 20;
+proto.z = 40;
+
+obj.x // 10
+obj.y // 20
+obj.z // 40
+
+//get
+function Rectangle() {
+  // ...
+}
+
+const rec = new Rectangle();
+
+Object.getPrototypeOf(rec) === Rectangle.prototype
+// true
+
+Object.setPrototypeOf(rec, Object.prototype);
+Object.getPrototypeOf(rec) === Rectangle.prototype
+// false
+```
+#### Object.keys()，Object.values()，Object.entries()
+```javascript
+//keys
+let obj = { foo: 'bar', baz: 42 }; //es5
+Object.keys(obj)
+// ["foo", "baz"]
+
+//values
+Object.values(obj)
+//['bar,42]
+
+Object.entries(obj)
+// [['foo', 'bar'],  ['baz', 42]]
+```
+#### Object.fromEntries()
+>  Object.entries 方法的逆操作
+```javascript
+Object.fromEntries([
+  ['foo', 'bar'],
+  ['baz', 42]
+])
+// { foo: "bar", baz: 42 }
+```
+目前谷歌版本 Chrome/72.0.3626.121 Safari/537.36  及以下不支持
