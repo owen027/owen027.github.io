@@ -250,7 +250,7 @@ nun.next() // { value: 7, done: true }
 ### yield*
 > Generator 函数默认不在内部调用另一个 Generator 函数 是没有效果的，如果<label>放到 `yield` 后面 会返回一个遍历器对象</label>
 > `yield*` 后面的 `Generator` 函数（没有return语句时），等同于在 `Generator` 函数内部，部署一个 `for...of` 循环。
-> 如果 `
+> 如果 `yield*` 后面紧跟数组，会遍历数组成员（数组原始支持遍历器）
 ```javascript
 //默认
 function* f(){
@@ -298,4 +298,148 @@ function* concat(iter1, iter2) {
     yield value;
   }
 }
+
+// yield* array 如果去掉 * 会返回整个数组
+//任何数据结构只要有 Iterator 接口，就可以被yield*遍历。
+function* gen(){
+  yield* ["a", "b", "c"];
+}
+var g = gen();
+
+g.next() //{value: "a", done: false}
+g.next() //{value: "b", done: false}
+g.next() //{value: "c", done: false}
+g.next() //{value: undefined, done: true}
+
+//取出嵌套数组的所有成员
+function* iterTree(tree) {
+    if (Array.isArray(tree)){
+         for (let arr of tree) {
+             yield* iterTree(arr)
+         }
+    }else{
+        yield tree
+    }
+}
+
+const tree = [1,[2,3],[4,[5,6],7],8];
+
+for (let v of iterTree(tree)){
+console.log(v)
+}
+//1 2 3 4 5 6 7 8
+
+[...iterTree(tree)] //[1, 2, 3, 4, 5, 6, 7, 8]
+
+//遍历完全二叉树
+
+// 下面是二叉树的构造函数，
+// 三个参数分别是左树、当前节点和右树
+function Tree(left, label, right) {
+  this.left = left;
+  this.label = label;
+  this.right = right;
+}
+
+// 下面是中序（inorder）遍历函数。
+// 由于返回的是一个遍历器，所以要用generator函数。
+// 函数体内采用递归算法，所以左树和右树要用yield*遍历
+function* inorder(t) {
+  if (t) {
+    yield* inorder(t.left);
+    yield t.label;
+    yield* inorder(t.right);
+  }
+}
+
+// 下面生成二叉树
+function make(array) {
+  // 判断是否为叶节点
+  if (array.length == 1) return new Tree(null, array[0], null);
+  return new Tree(make(array[0]), array[1], make(array[2]));
+}
+let tree = make([[['a'], 'b', ['c']], 'd', [['e'], 'f', ['g']]]);
+
+// 遍历二叉树
+var result = [];
+for (let node of inorder(tree)) {
+  result.push(node);
+}
+
+result // ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 ```
+### 对象属性中的 Generator 函数
+
+```javascript
+let obj = {
+    * generator(){
+        
+    }
+}
+//or
+
+let obj1 = {
+    generator :function* () {
+    }
+}
+```
+### Generator 函数的this
+> Generator 函数不能和 new 一起使用
+> <label>函数总返回一个遍历器，并且它指向 函数实例，同时继承 函数原型对象上的方法</label>
+```javascript
+function* g() {
+    this.say = function(){
+        return 18
+    };
+}
+
+g.prototype.say = function () {
+    return "Owen"
+}
+
+let obj =g() //g {<suspended>}
+obj instanceof g //true
+obj.say() //"Owen"
+
+obj.next() //{value: undefined, done: true}
+obj.say() //"Owen"
+//因为 next 返回的是遍历器对象而不是 this 对象,所以不会返回 18
+
+
+//通过call 绑定this
+function* Gen(){
+    this.age = 18;
+    yield this.name = "Owen";
+}
+let obj = Gen.call(Gen.prototype);
+obj.next()
+obj.age // 18
+obj.next();
+obj.name //"Owen"
+
+// 使用 new 的变通方法
+
+function G(){
+    return Gen.call(Gen.prototype)
+}
+let obj1 = new G();
+obj1.next()
+obj1.age // 18
+obj1.next();
+obj1.name //"Owen"
+```
+
+## Generator 函数异步应用
+
+> 异步: 执行一个任务的时候还不能马上返回结果，那么先将其搁置到后台，执行其他任务，等到有结果返回并且其他主线程任务执行完毕后，再执行对应任务（callback）。
+> 同步： 执行一个任务，中间无法中断，只能等待任务返回结果，才能执行其他任务。
+
+异步编程：
+- 回调函数
+- 事件监听
+- 发布/订阅
+- Promise 对象
+- Generator 函数（es6）
+- async/await（es7)
+
+
