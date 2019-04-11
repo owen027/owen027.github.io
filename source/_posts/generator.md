@@ -431,15 +431,181 @@ obj1.name //"Owen"
 
 ## Generator 函数异步应用
 
-> 异步: 执行一个任务的时候还不能马上返回结果，那么先将其搁置到后台，执行其他任务，等到有结果返回并且其他主线程任务执行完毕后，再执行对应任务（callback）。
+> 异步: 执行一个任务的时候还不能马上返回结果，那么先将其搁置到后台，执行其他任务，等到有结果返回之后放到消息队列中，等主线程任务执行完毕后，再从消息队列中取出对应任务（callback），执行。
 > 同步： 执行一个任务，中间无法中断，只能等待任务返回结果，才能执行其他任务。
 
 异步编程：
-- 回调函数
-- 事件监听
-- 发布/订阅
-- Promise 对象
-- Generator 函数（es6）
-- async/await（es7)
+### 回调函数
+```javascipt
+$.ajax({
+  url:'url',
+  success:function(res){
+    console.log(res)
+  }
+})
+
+```
+### 事件监听
+> 起初由网景公司知道一套事件驱动机制（事件捕获），之后IE 推出自己的驱动机制（事件冒泡）
+> 利用驱动机制实现事件代理委托
+```javascript
+el.addEventListener(event,function(){
+
+},boolean);
+
+//IE8 以下
+el.attachEvent(event,function(){})
+
+//事件代理委托
+var parent = document.getElementById('parent');
+parent.addEventListener('click',showColor,false);
+    function showColor(e){
+        var son = e.target;
+        if(son.nodeName.toLowerCase() === 'li'){
+            console.log('The color is ' + son.innerHTML);
+        }
+    }
+```
+### 发布/订阅（观察者模式）
+```javascript
+//实现一个简单的发布订阅
+/* 
+  订阅一个事件，发布对应事件并且执行方法
+  需要先有代理主题 message proxy
+  然后订阅者去订阅
+  然后发布者发布消息执行方法
+ */
+
+   function PubSub () {};
+  // message proxy
+  PubSub.prototype.message = {};
+
+  // publish
+  PubSub.prototype.pub = function () {
+     // Turn arguments  into real array
+    let args = [].slice.call(arguments,0);
+    
+    let event = args.shift();
+
+    if(!this.message[event]) return this;
+    
+    let list = this.message[event];
+    
+    for (let item of  list) {
+       item.apply(this,args);
+    }
+    return this;
+  }
+
+  // subscribe
+  PubSub.prototype.sub = function (event,callback){      
+    if( !this.message[event]) {
+        this.message[event] = [];
+     }
+    
+    this.message[event].push(callback);
+    
+    return this;
+  } 
+  // unsubscribe
+  PubSub.prototype.unsub = function (event) {
+     if (!this.message[event]) return this;
+
+     this.message[event] = null;
+  }
+
+```
+### Promise 对象
+> 为了解决 “回调地狱”（callback hell）而提出的写法
+> 允许将 `callback ` 变成链式调用
+```javascript
+// read I/O
+let readFile = require('fs-readfile-promise');
+
+readFile(fileA)
+    .then( (data) => console.log(data.toString()))
+    .then( () =>   readFile(fileB))
+    .then( (data) => console.log(data.toString()))
+    .catch((err) => console.log(err));
+```
+Promise 的最大问题是代码冗余，原来的任务被 Promise 包装了一下，不管什么操作，一眼看去都是一堆then，原来的语义变得很不清楚。
+### Generator 函数（es6）
+#### **协程**
+> 多个线程相互协作，完成异步任务
+步骤
+- A方法开始任务
+- A方法执行到一半，暂停，将执行权转移到主线程
+- 一段时间后主线程交还执行权
+- A方法恢复执行
+
+```javascript
+//example
+function* async () {
+  //... do something
+  let file = yield readFile(fileA);
+  //... do something
+}
+
+//异步操作需要暂停的地方，都用yield语句注明。
+
+```
+<label> 协程代码的写法非常像同步操作，Generator 函数最大优点是可以交出函数执行权</label>
+
+函数通过`next` 进行数据交换，通过 `throw `进行错误处理
+```javascript
+function* async (num) {
+  let n;
+  try{
+     n =  yield ++num;
+  }catch(err){
+    console.log(err)
+  }
+  return n
+}
+let g = async(1);
+g.next()
+g.throw('error');
+```
+
+#### 封装异步任务
+使用`node-fetch` 模块 返回一个Promise 对象
+```javascript
+
+let fetch = require('node-fetch');
+let g = gen();
+let result = g.next();
+
+result.value.then((data) => data.json())
+            .then((data) => g.next(data) );
+
+function* gen() {
+  let url = '/index.json';
+  let result = yield fetch(url);
+}
+
+
+```
+#### Thunk (形实转换)
+**函数传值策略**
+- 传值调用（参数在传入函数前计算）,简单易懂，不过可能会造成性能损失
+- 传名调用（将参数放到一个临时函数，再将这个临时函数传入函数体（`Thunk` 函数)）
+
+```javascript
+//传值
+var x = 3;
+function fn (x,b) { return x * 3 };
+fn(x + 1) //   4 * 3
+
+//传名
+fn(x + 1)  //    (x + 1) * 3 
+//等同于
+var thunk = function (){ return x + 1}
+
+fn (thunk) // thunk() * 3
+
+```
+
+
+### async/await（es7)
 
 

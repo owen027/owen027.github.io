@@ -48,9 +48,20 @@ ajax(url, () => {
 
 #### 事件监听
    > 采用事件驱动。
-   
-   类似 jQuery写法
+   > W3C规范中定义3个事件阶段：捕获(Netscape)，目标，冒泡（IE）。
+   > 事件冒泡：在目标元素上发生click事件的顺序 目标元素 -> 父级元素 -> body -> html -> document
+   > 事件捕获： 与冒泡相反，document -> html -> body -> 父级元素 -> 目标元素
    ```javascript
+// 原生事件委托
+    var parent = document.getElementById('parent');
+    parent.addEventListener('click',showColor,false);
+        function showColor(e){
+            var son = e.target;
+            if(son.nodeName.toLowerCase() === 'li'){
+                console.log('The color is ' + son.innerHTML);
+            }
+        }
+   //类似 jQuery写法
     fn.on('click',function(){});
     //等同于
     function fn (){
@@ -63,25 +74,46 @@ ajax(url, () => {
    这种方法比较容易理解，可以绑定多个事件，每个事件可以指定多个回调函数，可以去“耦合”(`decoupling`),便于实现模块化。 但是整个程序都会变成事件驱动，流程不清晰。
 
 #### 发布/订阅
-
- > 可以把事件理解成“信号”,如果存在一个“信号中心”；
+> 消息的发送者（称为发布者） 不会将消息直接发送给特定的接收者（称为订阅者），而是将不消息分为不同的类别，不需要了解哪些订阅者；
+> 订阅者,只接收感兴趣的消息，不需要了解哪些发布者
+> 可以把事件理解成“信号”,如果存在一个“信号中心”；
  某个任务执行完成，就向信号中心“发布” (`publish`) 一个信号，其他任务可以向信号中心“订阅”(`subscribe`)这个信号，从而知道什么时候自己开始执行
 
 ```javascript 
-//订阅
-jQuery.subscribe("done",fn);
-// 发布
-function foo(){
-    setTimeout(function(){
-        //do someing
-        jQuery.publish('done')
-    },1000)
-}
-//取消订阅
-jQuery.unsubscribe('done',fn)
+
+var obj = $({});
+
+obj.on("aaa", function () {
+        console.log(111111111111);
+    })
+
+obj.on("aaa", function () {
+        console.log(222222222222);
+    })
+
+$(dom).click(function() {
+        obj.trigger("aaa");
+    });
+
 ```
 
 当 `foo` 执行完毕后，想消息纵向发布 `done`信号，引发执行`fn`
+
+##### 消息过滤
+订阅者通常接收信号中心中(消息代理)的一个子集，选择接受和处理的消息过程叫过滤
+**过滤形式**
+- 基于主题
+> 消息被发布到主题或命名通道上；订阅者将受到所有信息，并且所有订阅同一主题的订阅者都将收到同样的信息；发布者赋值定义订阅者所订阅的消息类别
+- 基于内容
+> 订阅者定义感兴趣的条件，只有当消息的属性或内容满足订阅者的条件，消息才投递到该订阅者。订阅者负责堆消息分类。
+
+##### 拓扑
+发布者 发布消息到一个消息代理，订阅者向其注册订阅，由消息代理来过滤
+
+优缺点：
+ - 松耦合，发布者和订阅者只需要关注主题内容，相互独立地运行。
+ - 扩展性强，通过并行操作，消息缓存，基于树或网路路由等技术，比传统客户端具有更好的扩展性。
+- 缺点： 发布者解耦订阅者，问题难以跟踪，无法知道消息传送是成功的还是失败的
 
 ### 异步操作的流程控制（多个异步操作如何确定异步操作的执行顺序，如何保证这种顺序执行）
  

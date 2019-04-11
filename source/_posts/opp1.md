@@ -8,7 +8,7 @@ tags:
 ---
 
 ###  什么是对象 
-<link href="../static/css/index.css" rel="stylesheet">
+ 
 对象是单个实物的抽象，通常需要一个模板，表示某一类实物的共同特征，然后对象根据这个模板生成。
    面向对象编程的第一步，就是要生成对象。
  对象是一个容器，封装了属性（property）和方法（method），属性是对象的状态，方法是对象的行为（完成某种任务）。
@@ -88,9 +88,9 @@ function _new(constuctor,param) {
 }
  var fn = _new(
    function Person (name,age){
-   this.name =name; this.age=age
-    }, '张三', 28);
-fn.name // '张三'
+   this.name = name; this.age = age
+    }, 'Owen', 28);
+fn.name // 'Owen'
 ```
 ### new.target
 
@@ -197,7 +197,7 @@ obj.f()
 ```javascript   
 var o = {
   v: 'hello',
-  p: [ 'a1', 'a2' ],
+  p: [ 'Owen', 18 ],
   f: function f() {
     this.p.forEach(function (item) {
       console.log(this.v + '-' + item);
@@ -205,7 +205,7 @@ var o = {
   }
 }
 
-o.f() // hello-a1 hello-a2
+o.f() // hello-Owen hello-18
 
 ```
 end

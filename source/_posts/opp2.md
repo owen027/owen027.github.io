@@ -61,7 +61,7 @@ typeof f.prototype // "object"
 ```javascript
 Object.getPrototypeOf(Object.prototype) //null 
 ```
-<label>读取对象属性时，引擎会先在自身属性上查找，没有就查找原型，一级级向上查找，如果到`Object.prototype`还是没有，则返回`undefined`。
+<label>读取对象属性时，引擎会先在自身属性上查找，没有就查找原型，一级级向上查找，如果到`Object.prototype`还是没有，则返回`undefined`。</label>
 
 **一级级向上，对性能有影响，寻找的层级越多，性能影响越大**
 
