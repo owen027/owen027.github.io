@@ -5,6 +5,7 @@ categories:
 - ES6
 tags:
 - Generator
+- async
 ---
 
 ##  Generator
