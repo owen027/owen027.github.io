@@ -228,11 +228,142 @@ promise.then(
 
 ### all
 
-> 用于将多个 Promise 实例，包装成一个新 Promise 实例
-> 参数是一个数组或者具有 Interator的接口（返回成员必须是promise)，如果成员不是 Promise 实例，会将其包装成一个porimse 实例
+- 用于将多个 Promise 实例，包装成一个新 Promise 实例
+- 参数是一个数组或者具有 Interator的接口（返回成员必须是promise)，如果成员不是 Promise 实例，会将其包装成一个porimse 实例
+- 等待所以成员的状态都变成 `resolved` 状态， `Promise.all` 才变成 `resolved` 状态，并且<label>成员返回值将以数组形式传递给 `then`</label>
+- 数组成员中只有又一位成员为`rejectd` 状态，`Promise.all` 就会变成 `rejected` , 并<label>将第一个变为`rejectd`的成员返回值传递给 `catch`</label>
+- 如果成员自己定义了 `then` 或者 `catch`  对应成员的返回值不会传递到 `all` 的回调当中
+
+
 ```javascript
-const promise = [2,3,4,5].map(function(v){
-    return 
+//example
+const p1 = new Promise((resolve,reject) => setTimeout(resolve,1000,'Owen'))
+            //.then(result =>console.log(result))
+           // .catch(err =>console.log(err));
+
+const p2 = new Promise(res => {  throw new Error('报错了');})
+            .then(re => console.log(re))
+            .catch(err => console.log(err));//error
+            
+const promise = Promise.all([p1,p2])
+            .then(res=>console.log(res)) //1s 后 ["Owen",undefined]  
+            .catch(err => console.log(err));
+```
+
+### race
+- 和 `all` 方法一样  只是成员状态发生改变的情况不同
+- 数组中只要有一个成员改变状态， `race` 就改变状态，并将返回值传递给 `race`方法
+
+```javascript
+//example
+const p1 = new Promise((resolve,reject) => setTimeout(resolve,1000,'Owen'))
+            //.then(result =>console.log(result))
+           // .catch(err =>console.log(err));
+
+const p2 = new Promise(res => {  throw new Error('报错了');})
+            .then(re => console.log(re))
+            .catch(err => console.log(err));//error
+            
+const promise = Promise.race([p1,p2])
+            .then(res=>console.log(res)) //undefined 
+            .catch(err => console.log(err));
+
+```
+### resolve
+
+- 将对象转化为Promise对象
+```javascript
+Promise.resolve('Owen')
+// 等同
+new Promise(resolve => resolve('Owen'))
+```
+传参情况
+#### Promise实例
+- 返回出入的实例
+
+#### 传入 `thenable`对象
+- 具有 `then`方法的对象,将其转化为 `Promise` 对象 
+
+```javascript
+var obj = {
+    then: function(resolve,reject){
+        resolve("Owen")
+    }
+}
+
+var p = Promise.resolve(obj);
+p.then(function(res){
+    console.log(res) //"Owen"
 })
+```
+#### 不是对象或者没有 `thenable`方法
+
+- 返回一个新的Promise，状态为 `resolved`
+```javascript
+const p = Promise.resolve(18);
+p.then(function(re){
+    console.log(re) //18
+})
+```
+
+####  reject 
+- 返回一个新的Promise，状态为 ` rejectd`
+```javascript
+const p = Promise.reject('出错了');
+// 等同 
+const p = new Promise((resolve, reject) => reject('出错了'))
+
+
+const thenable = {
+  then(resolve, reject) {
+    reject('出错了');
+  }
+};
+
+Promise.reject(thenable)
+.catch(e => {
+  console.log(e === thenable) //true
+})
+```
+
+### 结合 Generator 使用
+
+```javascript
+
+const g = function* () {
+  try {
+    const foo = yield getFoo();
+    console.log(foo);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+function getFoo () {
+  return new Promise(function (resolve, reject){
+    resolve('foo');
+  });
+}
+
+
+function run (generator) {
+  const it = generator();
+
+  function go(result) {
+    if (result.done) return result.value;
+
+    return result.value.then(function (value) {
+      return go(it.next(value));
+    }, function (error) {
+      return go(it.throw(error));
+    });
+  }
+
+  go(it.next());
+}
+
+run(g);
+
+
 
 ```
