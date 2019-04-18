@@ -568,7 +568,156 @@ array.flat(Infinty)
 //[1,3,4]
 ```
 ---
+#### ES5 methods
+##### every
+-  访问每一个成员,给定某个条件，如果<label>所有成员满足条件</label>就返回true
+```javascript
+var num  = [0,1,2,2,3,4,5,3,5];
+ 
+var n = num.every(function(item,key,array){
+  return ( item>2 )
+})
+ n //false
 
+```
+#### some
+- 访问每一个成员,给定某个条件，<label>只要有一个成员满足条件就返回true</label>
+- 有一个满足条件的成员之后的不再执行
+```javascript
+var num  = [0,1,2,2,3,4,5,3,5];
+ 
+var n = num.some(function(item,key,array){
+  return ( item > 2 )
+})
+ n //true
+```
+##### filter 
+- 访问每一个成员,给定某个条件，<label>将满足条件的成员组成数组返回</label>， 否则返回 `[]`
+- <label>只会在已经赋值的索引上被调用，对于那些已经被删除或者从未被赋值的索引不会被调用</label>
+
+```javascript
+var num  = [0,1,2,2,3,4,5,3,5];
+ 
+var n = num.filter(function(item,key,array){
+  return ( item > 2 )
+})
+ n //[3, 4, 5, 4, 3]
+
+```
+##### map 
+- 访问每一个成员,将每次访问执行的结果组成数组返回，也就是说<label>每个成员都 必须要有return返回结果，否则都是`unndefined`</label>
+- map不支持continue跳出循环
+
+```javascript
+var num  = [0,1,2,2,3,4,5,3,5];
+ 
+var n = num.map(function(item,key,array){
+  return item * 2
+})
+ n // [0, 2, 4, 4, 6, 8, 10, 6, 10]
+```
+##### forEach
+- 访问每一个成员,没有返回值
+- 中途不能用常规操作跳出循环
+- 不支持链式操作
+```javascript
+var num  = [0,1,2,2,3,4,5,3,5];
+ 
+var n = num.map(function(item,key,array){
+  return item * 2
+})
+ n // undefined
+```
+
+
+##### reduce and reduceRight
+- reduce 从数组的第一项开始，逐个遍历到最后。
+- reduceRight  从数组的最后一项开始，向前遍历到第一项。
+- 接收两个参数 回调函数和 回调函数第一个参数的值，默认数组第一个元素。
+- 返回 累计处理的结果
+
+```javascript
+ /**
+  * @param
+  *  prev 上次调用回调时的累积值
+  *  cur  当前数组成员
+  *  i  数组索引
+  *  arrary 原数组
+  * 
+   */
+var num  = [0,1,2,2,3,4,5,3,5];
+var n = num.reduce(function(prev,cur,i,array){
+  return prev*2 + cur
+})
+ n // 431
+
+ var num  = [0,1,2,2,3,4,5,3,5];
+var n = num.reduce(function(prev,cur,i,array) {
+  return prev*2 + cur
+})
+ n // 2186
+ ```
+ 以上都不会修改原数组，除非使用第三个参数做些操作，注意<label>数组成员是值类型，还是引用类型</label>
+
+##### sort 
+- 对数组排序 默认排序按字母升序（根据字符串Unicode ）
+- 参数为回调函数`callback(a,b)`  
+- 返回值为负数 那么 a 会被排列到 b 之前
+- 返回值为 0 位置不变
+- 返回值为正数 b 会被排列到 a 之前
+```javascript
+var num = [1,3,2,7,44,2,3,4,9];
+num.sort(function(a,b){
+    return a-b
+})
+num // [1, 2, 2, 3, 3, 4, 7, 9, 44]
+```
+#### reverse
+- 翻转数组
+```javascript
+var num = [1,3,2,7,44,2,3,4,9];
+num //[9, 4, 3, 2, 44, 7, 2, 3, 1]
+num.reverse()
+```
+#### 数组去重 
+
+ - has方法 会发生隐式转化 1 =='1' 
+ ```javascript
+ var arr = [2,3,4,2,3,5,6,4,3,2];
+var unique = function(arr) {
+      var obj = {};
+      var res = [];     
+      arr.forEach(function(item,i){
+          if(!obj[item]){
+              obj[item] = true;
+              res.push(item) 
+          }
+       })
+    return  res
+}
+unique(arr)
+```
+- filter 
+```javascript
+//会忽略 undefined
+var arr = [null,null,null,undefined,undefined,'','',1,1,1];
+var unique = function (arr) {
+   return  arr.sort().filter(function(item,i,array) { 
+     return item !== array[i+1]; 
+     })
+}
+ unique(arr) //  ["", 1, null]
+
+
+var unique = function(arr) {
+  return  arr.filter( function(item, idx )  {
+        return arr.indexOf(item) === idx;
+  })
+}
+
+unique(arr) //[null, undefined, "", 1]
+
+```
 ### Object extend
 
 #### 对象中的简写
