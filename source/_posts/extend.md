@@ -696,6 +696,23 @@ var unique = function(arr) {
     return  res
 }
 unique(arr)
+<<<<<<< HEAD
+=======
+
+- map has方法 不会发生隐式转化
+var unique = function(arr) {
+      var m = new Map();
+      var res = [];     
+      arr.forEach(function(item,i){
+          if(!m.has(item)){
+              res.push(item) 
+          }
+          m.set(item,2);
+       })
+    return  res
+}
+unique(arr)
+>>>>>>> d71c39e5118389885ef986735a9a15598115e5b9
 ```
 - filter 
 ```javascript
