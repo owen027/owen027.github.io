@@ -139,7 +139,10 @@ var isPalindrome = function(x) {
      
     return  x < 0? false: (parseInt((x+'').split('').reverse().join('')) === x ? true : false);
 };
-// 方法二
+/**
+ * 方法二  中间数的右边反转后 等于 左边 
+ * 提取中间数的右边 通过 *10 、 %10 来提取   
+ * */ 
 var isPalindrome = function(int) {
    if(int < 0 ||  (int%10 === 0 && int !== 0)) return false;
     
