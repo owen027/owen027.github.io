@@ -65,7 +65,7 @@ var twoSum = function(nums, target) {
 /**
  * 存储对应的值 和 索引 
  */
-var twoSum = function(nums, target) {
+var twoSum = function(nums, target) {userManage
       const m = new Map();
       const len = nums.length；
     for (let i = 0; i < len; i++ ) {
@@ -139,7 +139,7 @@ var isPalindrome = function(x) {
      
     return  x < 0? false: (parseInt((x+'').split('').reverse().join('')) === x ? true : false);
 };
-
+// 方法二
 var isPalindrome = function(int) {
    if(int < 0 ||  (int%10 === 0 && int !== 0)) return false;
     
@@ -148,7 +148,7 @@ var isPalindrome = function(int) {
         num = num * 10 + int % 10;
         int = parseInt(int/10);
     }
-
+console.log(int,num)
     return  int === num || int === parseInt(num/10);
 };
  
