@@ -4,7 +4,10 @@ date: 2019-04-17 20:40:28
 tags:
 ---
 ### 原生ajax
+
 #### `XMLHttpRequest` 对象
+
+
 ```javascript
 
 function Ajax(obj) {
@@ -71,6 +74,7 @@ var ajax = new Ajax({
         }).send();
 ```
 ####  `XMLHttpRequest Level 2` 相比于 老版本的 `XMLHttpRequest` 新增以下内容：
+
 ##### 可以设置 HTTP 请求超时时间
   ```javascript
    var xhr = XMLHttpRequest();
@@ -150,5 +154,27 @@ var ajax = new Ajax({
     xhr.upload.addEventListener('error', onErrorHandler, false);
 
     ```
+#### 兼容性 
+![XMLHttpRequest](/static/img/xml.png)
 
-    [更多资料参考 阮一峰的文章](http://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html)
+更多资料参考:
+[阮一峰的文章](http://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html)
+[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)
+
+
+---
+
+ 
+### Axios 
+- 基于 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 的 Http 库 
+- 可以在客户端 和 nodeJs中使用
+- 在客户端创基 XMLHttpRequests
+- 在nodeJs 创建 [HTTP](https://nodejs.org/api/http.html) 请求
+- 支持Promise
+- 可拦截转化请求和响应数据
+- 取消请求
+- 自动转化JSON数据
+- 支持客户端 [XSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)
+
+#### 兼容性
+![axios](/static/img/axios.png)
