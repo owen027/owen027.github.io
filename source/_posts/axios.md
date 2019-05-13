@@ -178,3 +178,225 @@ var ajax = new Ajax({
 
 #### 兼容性
 ![axios](/static/img/axios.png)
+
+#### 安装
+```bash
+npm install axios
+```
+
+#### methods
+
+##### Get 
+```javascript
+const axios = require('axios')
+
+axios.get('url?id=xxx')
+     .then(res => {
+       console.log(res)
+     })
+     .catch(err =>{
+       console.log(err)
+     })
+//or
+axios.get('url',{
+  params:{
+    id:'xxxxx'
+  }
+    })
+   .then(res =>{
+     console.log(res)
+   })
+   .catch(err =>{
+       console.log(err)
+     })
+```
+- 同样的传参方法有 delete
+##### post 
+```javascript
+axios.post('url',{name:'Owen'})
+     .then(res =>{
+       console.log(res)
+     })
+     .catch(err =>{
+       console.log(err)
+     })
+```
+- 同样的传参方法有  put patch
+##### concurrent requests 
+```javascript
+axios.all([axios.get('url1'),axios.get('url2')])
+```
+
+#### API
+```javascript
+// post 
+axios({
+  method:'get', // default is get 
+  url:'url', // request  url
+  data:{ // 仅支持post，put和patch方法，数据作为请求主体发送 ( Only the post,put and patch methods are supported, and the data is sent as the request body )
+  /* 浏览器仅支持传递 FormData, File, Blob （The browser only supports passing FormData, File and Blob)
+     Node 仅支持传递 Stream, Buffer (The Node only supports passing Stream, Buffer)
+  */
+    name:'owen'
+  },
+  baseURL:'base/url', // 除非url是绝对路径，否则将baseURL添加到url的前面 (Add baseURL to then front of the url unless the url is an absolute path)
+  transformRequest: [function (data, headers) {
+    // 可以修改发送的请求数据和请求头，只支持put，post和patch，回调函数必须返回Buffer，ArrayBuffer，FormData或Stream数据
+    // Can modify the sent request data and request header,only support put, post and patch.
+    // Callback must return Buffer, ArrayBuffer, FormData or Stream data
+    
+    // Do whatever you want to transform the data
+
+    return data;
+  }],
+  transformResponse: [function (data) {
+     // 修改响应数据，再传递给 then或catch 方法 （Modify the response data and pass it to the then or catch method)
+    // Do whatever you want to transform the data
+
+    return data;
+  }],
+  headers: {'X-Requested-With': 'XMLHttpRequest'}, // 自定义请求头 (Custom request header)
+  params:{ // 添加到url尾部的参数，一般用于get 和 delete（ Parameters addde to the end of the url,generally used for get and delete )
+    id:'xxx'
+  },
+   paramsSerializer: function (params) { //序列化 [params] (https://www.npmjs.com/package/qs)
+    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  },
+  timeout:1000,// default is 0 , 设置请求超时时间，单位毫秒 （ Set request timeout in milliseconds )
+  withCredentials: true, // default is false, 跨域时是否携带cookie（ Whether to carry cookies when crossing domains )
+  adapter: function (config) {
+    /*拦截响应数据*/
+      // At this point:
+    //  - config has been merged with defaults
+    //  - request transformers have already run
+    //  - request interceptors have already run
+    
+    // Make the request using config provided
+    // Upon response settle the Promise
+      return new Promise(function(resolve, reject) {
+  
+    var response = {
+      data: responseData,
+      status: request.status,
+      statusText: request.statusText,
+      headers: responseHeaders,
+      config: config,
+      request: request
+    };
+
+    settle(resolve, reject, response);
+
+    // From here:
+    //  - response transformers will run
+    //  - response interceptors will run
+
+      /**
+       * Resolve or reject a Promise based on response status.
+       *
+       * @param {Function} resolve A function that resolves the promise.
+       * @param {Function} reject A function that rejects the promise.
+       * @param {object} response The response.
+       */
+        function settle(resolve, reject, response) {
+            var validateStatus = response.config.validateStatus;
+            if (!validateStatus || validateStatus(response.status)) {
+              resolve(response);
+            } else {
+              reject(createError(
+                'Request failed with status code ' + response.status,
+                response.config,
+                null,
+                response.request,
+                response
+              ));
+            }
+          };
+        /**
+         * Create an Error with the specified message, config, error code, request and response.
+         *
+         * @param {string} message The error message.
+         * @param {Object} config The config.
+         * @param {string} [code] The error code (for example, 'ECONNABORTED').
+         * @param {Object} [request] The request.
+         * @param {Object} [response] The response.
+         * @returns {Error} The created error.
+         */
+        function createError(message, config, code, request, response) {
+          var error = new Error(message);
+        return enhanceError(error, config, code, request, response);
+          }
+
+        /**
+         * Update an Error with the specified config, error code, and response.
+         *
+         * @param {Error} error The error to update.
+         * @param {Object} config The config.
+         * @param {string} [code] The error code (for example, 'ECONNABORTED').
+         * @param {Object} [request] The request.
+         * @param {Object} [response] The response.
+         * @returns {Error} The error.
+         */
+        function enhanceError(error, config, code, request, response) {
+            error.config = config;
+            if (code) {
+              error.code = code;
+            }
+
+            error.request = request;
+            error.response = response;
+            error.isAxiosError = true;
+
+            error.toJSON = function() {
+              return {
+                // Standard
+                message: this.message,
+                name: this.name,
+                // Microsoft
+                description: this.description,
+                number: this.number,
+                // Mozilla
+                fileName: this.fileName,
+                lineNumber: this.lineNumber,
+                columnNumber: this.columnNumber,
+                stack: this.stack,
+                // Axios
+                config: this.config,
+                code: this.code
+              };
+            };
+          return error;
+        }
+    });
+  },
+  auth:{ //  表示应使用HTTP Basic身份验证，并提供凭据 ( indicates that HTTP Basic auth should be used, and supplies credentials. )
+    user:'xxx',
+    password:'***'
+  },
+  responseType: 'json',/* 服务器响应的数据类型（ The server response data type ） 
+                         支持 arraybuffer, blob, document, json, text, stream 
+                        */
+  responseEncoding:'utf8', // 用于解码响应的编码 (Encoding for decoding the response )
+
+  }) 
+  .then(res =>{
+       console.log(res)
+     })
+  .catch(err =>{
+       console.log(err)
+     })
+// get 
+axios({
+  method:'get',
+  url:'url',
+  data:{
+    name:'owen'
+  }
+  }) 
+  .then(res =>{
+       console.log(res)
+     })
+  .catch(err =>{
+       console.log(err)
+     })
+```
+#### 二次封装
