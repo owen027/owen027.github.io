@@ -3,13 +3,14 @@ title: Axios
 date: 2019-04-17 20:40:28
 tags:
 ---
-### 原生ajax
-
+### 原生Ajax
+- 异步的JavaScript与XML技术（ Asynchronous JavaScript and XML ）
+- Ajax 不需要任何浏览器插件，能在不更新整个页面的前提下维护数据，但需要用户允许JavaScript在浏览器上执行。
 #### `XMLHttpRequest` 对象
 
 
 ```javascript
-
+// 创建 构造函数
 function Ajax(obj) {
     this.url = obj.url ||'';
     this.type = obj.type || 'get';
@@ -17,7 +18,7 @@ function Ajax(obj) {
     this.success = obj.success || null;
     this.error = obj.error || null;
 }
-
+// 再原型上创建方法
 Ajax.prototype.send = function(){
     var self = this;
     var  toStr = Object.prototype.toString; 
@@ -58,6 +59,7 @@ Ajax.prototype.send = function(){
 function isFunction(obj){
     return toStr.call(obj) === "[object Function]"
 }
+
 var ajax = new Ajax({
      type:'post',
      url:"/login",

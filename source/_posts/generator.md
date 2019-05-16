@@ -181,7 +181,7 @@ for (let [key,value] of person){
 ### Generator throw
 > 在函数体外抛出错误，再在 函数体内捕获。
 > throw方法抛出的错误要被内部捕获，前提是必须至少执行过一次next方法。因为只有执行一次 `next`方法，函数才开始执行。
-> 
+
 ```javascript
   function* g() {
        try {  yield;  } catch (e) {
