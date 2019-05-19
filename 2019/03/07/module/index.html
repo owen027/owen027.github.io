@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="传统的模块化做法。 模块是实现特定功能的一组属性和方法的封装。  将模块写成一个对象，所有的模块成员都放到这个对象里面。1234567var module1 = new Object(&amp;#123;  _count:0,  f1:function()&amp;#123;&amp;#125;,  f2:function()&amp;#123;&amp;#125;&amp;#125;)module1.f1()module1.f2() 上面的对">
+<meta name="description" content="什么是模块化 将一组模块（及其依赖项）以正确的顺序拼接到一个文件（或一组文件）中的过程。  传统的模块化做法。 模块是实现特定功能的一组属性和方法的封装。  将模块写成一个对象，所有的模块成员都放到这个对象里面。1234567var module1 = new Object(&amp;#123;  _count:0,  f1:function()&amp;#123;&amp;#125;,  f2:function()&amp;#">
 <meta name="keywords" content="moduleDevelop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="模块化开发(一)">
 <meta property="og:url" content="https://owen027.github.io/2019/03/07/module/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="传统的模块化做法。 模块是实现特定功能的一组属性和方法的封装。  将模块写成一个对象，所有的模块成员都放到这个对象里面。1234567var module1 = new Object(&amp;#123;  _count:0,  f1:function()&amp;#123;&amp;#125;,  f2:function()&amp;#123;&amp;#125;&amp;#125;)module1.f1()module1.f2() 上面的对">
+<meta property="og:description" content="什么是模块化 将一组模块（及其依赖项）以正确的顺序拼接到一个文件（或一组文件）中的过程。  传统的模块化做法。 模块是实现特定功能的一组属性和方法的封装。  将模块写成一个对象，所有的模块成员都放到这个对象里面。1234567var module1 = new Object(&amp;#123;  _count:0,  f1:function()&amp;#123;&amp;#125;,  f2:function()&amp;#">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-21T15:59:13.600Z">
+<meta property="og:updated_time" content="2019-05-19T01:56:06.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模块化开发(一)">
-<meta name="twitter:description" content="传统的模块化做法。 模块是实现特定功能的一组属性和方法的封装。  将模块写成一个对象，所有的模块成员都放到这个对象里面。1234567var module1 = new Object(&amp;#123;  _count:0,  f1:function()&amp;#123;&amp;#125;,  f2:function()&amp;#123;&amp;#125;&amp;#125;)module1.f1()module1.f2() 上面的对">
+<meta name="twitter:description" content="什么是模块化 将一组模块（及其依赖项）以正确的顺序拼接到一个文件（或一组文件）中的过程。  传统的模块化做法。 模块是实现特定功能的一组属性和方法的封装。  将模块写成一个对象，所有的模块成员都放到这个对象里面。1234567var module1 = new Object(&amp;#123;  _count:0,  f1:function()&amp;#123;&amp;#125;,  f2:function()&amp;#">
 
 
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k
+                  2.1k
                 </span>
               
 
@@ -425,7 +425,10 @@
       
 
       
-        <h3 id="传统的模块化做法。"><a href="#传统的模块化做法。" class="headerlink" title="传统的模块化做法。"></a>传统的模块化做法。</h3><blockquote>
+        <h3 id="什么是模块化"><a href="#什么是模块化" class="headerlink" title="什么是模块化"></a>什么是模块化</h3><blockquote>
+<p>将一组模块（及其依赖项）以正确的顺序拼接到一个文件（或一组文件）中的过程。</p>
+</blockquote>
+<h3 id="传统的模块化做法。"><a href="#传统的模块化做法。" class="headerlink" title="传统的模块化做法。"></a>传统的模块化做法。</h3><blockquote>
 <p>模块是实现特定功能的一组属性和方法的封装。</p>
 </blockquote>
 <p>将模块写成一个对象，所有的模块成员都放到这个对象里面。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> module1 = <span class="keyword">new</span> <span class="built_in">Object</span>(&#123;</span><br><span class="line">  _count:<span class="number">0</span>,</span><br><span class="line">  f1:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">  f2:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line">module1.f1()</span><br><span class="line">module1.f2()</span><br></pre></td></tr></table></figure></p>
@@ -738,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统的模块化做法。"><span class="nav-number">1.</span> <span class="nav-text">传统的模块化做法。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#利用构造函数封装对象"><span class="nav-number">1.1.</span> <span class="nav-text">利用构造函数封装对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#放大模式"><span class="nav-number">1.2.</span> <span class="nav-text">放大模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CommonJS"><span class="nav-number">2.</span> <span class="nav-text">CommonJS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现原理"><span class="nav-number">2.1.</span> <span class="nav-text">实现原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD-Asynchromous-Module-Definition"><span class="nav-number">3.</span> <span class="nav-text">AMD(Asynchromous Module Definition)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CMD-Common-Module-Definition"><span class="nav-number">3.1.</span> <span class="nav-text">CMD(Common Module Definition)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AMD-和-CommonJS-不同点："><span class="nav-number">3.2.</span> <span class="nav-text"> AMD 和 CommonJS 不同点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通用模块定义-UMD"><span class="nav-number">4.</span> <span class="nav-text">通用模块定义 UMD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6模块（即-ES2015-ECMAScript-6、ES6）"><span class="nav-number">5.</span> <span class="nav-text">ES6模块（即 ES2015/ECMAScript 6、ES6）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是模块化"><span class="nav-number">1.</span> <span class="nav-text">什么是模块化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传统的模块化做法。"><span class="nav-number">2.</span> <span class="nav-text">传统的模块化做法。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#利用构造函数封装对象"><span class="nav-number">2.1.</span> <span class="nav-text">利用构造函数封装对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#放大模式"><span class="nav-number">2.2.</span> <span class="nav-text">放大模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CommonJS"><span class="nav-number">3.</span> <span class="nav-text">CommonJS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现原理"><span class="nav-number">3.1.</span> <span class="nav-text">实现原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMD-Asynchromous-Module-Definition"><span class="nav-number">4.</span> <span class="nav-text">AMD(Asynchromous Module Definition)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CMD-Common-Module-Definition"><span class="nav-number">4.1.</span> <span class="nav-text">CMD(Common Module Definition)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AMD-和-CommonJS-不同点："><span class="nav-number">4.2.</span> <span class="nav-text"> AMD 和 CommonJS 不同点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通用模块定义-UMD"><span class="nav-number">5.</span> <span class="nav-text">通用模块定义 UMD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6模块（即-ES2015-ECMAScript-6、ES6）"><span class="nav-number">6.</span> <span class="nav-text">ES6模块（即 ES2015/ECMAScript 6、ES6）</span></a></li></ol></div>
             
 
           </div>
@@ -774,7 +777,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">30.9k</span>
+    <span title="Site words total count">30.8k</span>
   
   -->
 </div>
