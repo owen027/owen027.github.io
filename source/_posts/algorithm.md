@@ -6,9 +6,6 @@ categories:
 tags: 
 - Sum of two numbers
 ---
-<<<<<<< HEAD
-### 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
-=======
 
 ### 术语
 - 时间复杂度: 一个算法执行所耗费的时间。
@@ -28,7 +25,6 @@ tags:
 ### 两数之和
 
 - 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素(自己不能跟自己加起来等于target)。
->>>>>>> d71c39e5118389885ef986735a9a15598115e5b9
 
 ```
 给定 nums = [2, 7, 11, 15], target = 9
@@ -44,12 +40,6 @@ tags:
  * @param {number} target
  * @return {number[]}
  */
-<<<<<<< HEAD
-var twoSum = function(nums, target) {
-    
-};
-```
-=======
 // 方法一  嵌套循环  时间复杂度：O(n^2) 空间：O(2)
 var twoSum = function(nums, target) {
     for (let [i,k] of nums.entries()){
@@ -166,4 +156,3 @@ var isPalindrome = function(int) {
 };
  
 ```
->>>>>>> d71c39e5118389885ef986735a9a15598115e5b9
