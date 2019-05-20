@@ -568,7 +568,7 @@ array.flat(Infinty)
 //[1,3,4]
 ```
 ---
-#### ES5 methods
+#### ES5 interator methods 
 ##### every
 -  访问每一个成员,给定某个条件，如果<label>所有成员满足条件</label>就返回true
 ```javascript
