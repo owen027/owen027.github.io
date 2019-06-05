@@ -366,3 +366,110 @@ run(g);
 
 
 ```
+### [Promise/A+ 规范](https://promisesaplus.com/)
+- 实现者为开发者提供开放的 Promise标准，实现可靠，可互操作的JavaScript承诺。
+
+#### 术语（Terminology）
+1. `promise` 是一个对象或函数，其`then` 方法 的行为符合此规范
+2. `thenable` 定义 `then` 方法的对象或函数
+3. `value` 是任何合法的 `JavaScript` 值 （包括 `undefined` 、`thenable` 和 `promise`）
+4. `exception` 是使用 `throw` 语句抛出的值
+5. `reason` 是一个值（拒因），表明承诺被拒绝的原因（拒绝回调的值）
+
+#### 要求（Requirements）
+ 
+##### Promise states
+- Promise 只有三种状态：pending 、 fulfilled（resolved） 和 rejected 状态
+1. pending（等待状态）：可以过渡到 resolved 或 rejected 状态
+2. fulfilled (执行状态）：无法再改变状态，且只有一个无法改变的`value`
+3. rejected （拒绝状态）：无法再改变状态，必须有一个 `reason`
+- 这里的 ‘无法再改变’ 意味着不可改变的身份 使用 `===` 判断 `value` 或 `reason`  
+
+##### `then` 方法（The `then` method）
+- 一个 `Promise` 必须提供一个 `then` 方法来访问当前 或 最终`value` 或 `reason`
+  此方法接收两个参数： `onFulfilled`,`onRejected`  必须忽略其中不是函数是参数
+
+  1. `onFulfilled`：必须在 `promise` 执行状态（`fufilled` ）结束后调用，其第一个参数为 `value`，只能调用一次
+  2. `onRejected`： 必须在 `promise` 拒绝状态（`rejected` ）结束后调用, 其第一个参数为 `reason`，只能调用一次
+
+- onFulfilled or onRejected 在[执行上下文](https://es5.github.io/#x10.3) (作用域)堆栈仅包含平台代码之前不得调用
+  意味着调用 `onFulfilled`,`onRejected` 须在新一轮 `event loop ` 中执行， 可用 `macro-task`（setTimout,setInterval,I/O,UI rendering, `script`主线程) 或 `micro-task`（Promise, Object.observe,process.nextTick,MutationObserver） 机制来实现
+- onFulfilled or onRejected 必须作为函数调用，在 `use strict ` 下 `this 为 undefined `
+- `then`在同一个 promise 中可以链式调用，按照对应注册顺序一次回调
+- `then`返回一个Promise对象 
+  ```javascript
+    promise2 = promise1.then(onFulfilled, onRejected);
+  ```
+   1. 任一 `onFulfilled`或`onRejected`返回一个值x ,则执行 `Promise 解决过程`
+   2. `onFulfilled`或`onRejected` 抛出异常 e, 则 `promise2` 必须拒绝执行，并返回 `reason`
+   3. 如果`onFulfilled` 不是函数且 Promise1 为执行 `fulfilled `状态，那么  promise2 必须返回和 Promise1  相同的`value`
+   4. 如果`onRejected`不是函数且 Promise1 为 `rejected`状态，那么  promise2 必须返回和 Promise1  相同的`reason`
+
+ ###### Promise 解决过程 (The Promise Resolution Procedure)
+  - Promise 解决过程是一个抽象的操作，作为输入一个Promise,和一个值，用 `[[Resolve]](Promise2,x)` 表示；
+    如果 `x` 有 `then` 方法并且看上去像一个Promise,Promise 解决过程程序会尝试promise采用状态 `x`，否则用 `x` 的 `value`执行Promise;
+    对thenables的这种处理使promise的实现进行互操作，只要它们暴露出一个遵循  `Promise/A+`规范 兼容`then`方法即可。它还允许`Promise/A+`规范来“吸收”与合理不符合标准的实现then方法。
+
+ 运行 [[Resolve]](promise, x) 需遵循以下步骤：
+  1. 如果promise和`x`指向同一个对象，以`TypeError`为理由拒绝执行`promise`。
+  2. 如果 `x` 是 promise，则接收其状态：
+       2.1 如果 `x` 为 `pending`， 则 Promise 保持等待直至 `x`改变状态
+       2.2 如果 `x` 为 `resolved`，则 用相同的 `value` 执行 promise
+       2.3 如果 `x` 为 `rejected`，则 用相同的 `reason`执行 promise
+  3. 如果 `x` 是 Object or Function:
+       3.1 把 `x.then` 赋值给 `then` 
+       3.2 如果 `xthen` 抛出异常 结果 `e`，promise 状态变为 `rejected`，`reason` 为 `e`
+       3.3 如果 `then`是一个函数，将`x`作为函数作用域 `this` 调用，传递两个回调函数作为参数，第一个为 `resolvePromise`, 第二个参数为 `rejectPromise`
+              3.3.1 如果 `resolvePromise` 以值 `y`为参数被调用，以 `r`为 `reason` ，则运行 `[[Resolve]](promise, y)`
+              3.3.2 如果 `rejectPromise` 用`r`为参数调用 ，则以 `r`拒绝 promise
+              3.3.3 如果 resolvePromise 和 rejectPromise 均被调用，或者被同一参数调用了多次，则优先采用第一次调用并忽略剩下的调用
+              3.3.4 如果调用then抛出异常`e`，resolvePromise或rejectPromise已被调用，请忽略它；否则以 `e` 为`reason`(据因)拒绝 promise
+       3.4 如果then不是一个函数, 则以`x`为参数执行 promise
+   4. 如果 `x `不为Object or Function，以 `x` 为参数执行 promise    
+
+ 如果一个 promise 被一个循环的 thenable 链中的对象解决，而`[[Resolve]](promise, thenable)` 的递归性质又使得其被再次调用，根据上述的算法将会陷入无限递归之中。
+ 算法虽不强制要求，但也鼓励施者检测这样的递归是否存在，若检测到存在则以一个可识别的 `TypeError` 为`reason`(据因)来拒绝 promise  
+ ### 手写简版 Promise
+
+```javascript
+// 常用变量大写
+const PENDING ='pending'
+const RESOLVEd = 'resolved'
+const REJECTEd = 'rejected'
+
+class myPromise {
+  constructor(callback) {
+    const that = this
+    that.state = PENDING;
+    that.resolveCallback = [];
+    that.rejectCallback = [];
+    
+    const resolve = value =>{
+      if (that.state === PENDING){
+          that.state = RESOLVED;
+          that.value = value
+          that.resolveCallback.map(cb => cb(that.value))
+          }
+      }
+    const reject = value =>{
+        if (that.state === PENDING){
+          that.state = REJECTED;
+          that.value = value
+          that.rejectCallback.map(cb => cb(that.value))
+          }
+      }
+
+    try {
+      callback(resolve,reject)
+    }catch(e){
+      reject(e)
+    }
+  }
+  then(onResolved,onRejected){
+      const that = this
+
+  }
+}
+
+  
+```

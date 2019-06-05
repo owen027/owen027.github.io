@@ -133,7 +133,7 @@ new Foo(); // ReferenceError
 class Foo {}
 ```
 继承类 
-```
+```javascript
 {
   let Foo = class {};
   class Bar extends Foo {

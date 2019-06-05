@@ -5,7 +5,7 @@ categroies: Question
 tags: JSquestion
 ---
 
-#### 赋值运算符多次出现，优先计算问题(结合性)
+### 赋值运算符多次出现，优先计算问题(结合性)
 > 赋值表达式为右结合
 > 先从左到右解析各个引用，然后计算最右侧的表达式的值，最后把值从右到左赋给各个引用。
 ```javascript
@@ -55,7 +55,7 @@ foo.x //undefined
 bar.x // {n: 1, x: {n:2}};
 ```
 
-#### split
+### split
 
 ```javascript
 '81 newO'.split('') //["8", "1", " ", "n", "e", "w", "O"] 
@@ -66,3 +66,5 @@ bar.x // {n: 1, x: {n:2}};
 //"Owen 18"
 
 ```
+
+###
