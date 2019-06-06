@@ -1,7 +1,10 @@
 ---
 title: class
 date: 2019-04-17 18:32:50
-tags:
+categories:
+- ES6
+tags: 
+- class
 ---
 ## class
 - 生成类的实例对象的写法，与 ES5 完全一样，也是使用new命令

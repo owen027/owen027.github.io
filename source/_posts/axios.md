@@ -1,7 +1,10 @@
 ---
 title: Axios 
 date: 2019-04-17 20:40:28
-tags:
+categories:
+- XMLHttpRequest
+tags: 
+- axios
 ---
 ### 原生Ajax
 - 异步的JavaScript与XML技术（ Asynchronous JavaScript and XML ）
@@ -80,7 +83,7 @@ var ajax = new Ajax({
 ##### 可以设置 HTTP 请求超时时间
   ```javascript
    var xhr = XMLHttpRequest();
-   xhr.open('GET'.'url');
+   xhr.open('GET','url');
    // 超时 2s
    xhr.timeout = 2000;
    // 超时处理
