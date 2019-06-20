@@ -8,6 +8,8 @@ tags:
 ---
 # css3 原生 var 变量
 - 可以降低维护成本，有更高性能，文件更高压缩率。
+
+
 ## 语法
 1. 声明 `--*  `
     - `*` 表示变量名称，对于命名不能包含特殊字符（ $，[，^，(，%  ）等等
@@ -56,12 +58,40 @@ body {
 }
 ```
 
+## CSS变量的相互传递特性
+- 声明CSS变量时候可以引入其他变量
+```css
+body {
+  --width: 20px;
+  --width: var(--width);
+  --height: calc( var(--width) / 10);
+}
+```
+## 兼容性
+![var](/static/img/var.png)
+
+
 ---
 
 
 # setProperty
-- 给一个样式设置新值 `style.setProperty(propertyName, value, priority);`
+- 给一个样式设置新值 dom.style.setProperty(propertyName, value, priority);`
 
 ## 参数
 1. propertyName 必须是一个字符串，代表被更改的CSS属性。
-  
+2. `value` 对应 `propertyName` css 属性值。如果未传，则为空字符串
+3. priority 设置css 的权重 "important" ,"undefined", ""
+4. 如果不设置权重 则可简写为 `dom.style.propertyName = "value"`
+
+---
+
+# getPropertyPriority
+- 获取一个样式属性的权重
+- `dom.getPropertyPriority('property') `
+- 返回值 'important' 或  ''
+
+---
+# removeProperty
+- 删除属性 `dom.getPropertyPriority('property')`
+- 返回被删除的属性值
+- 多个单词组成的属性要用连字符连接各个单词，不接收驼峰命名法的形式。
