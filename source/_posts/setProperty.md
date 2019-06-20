@@ -95,3 +95,30 @@ body {
 - 删除属性 `dom.getPropertyPriority('property')`
 - 返回被删除的属性值
 - 多个单词组成的属性要用连字符连接各个单词，不接收驼峰命名法的形式。
+
+---
+
+# getComputedStyle
+- 兼容 IE9及以上
+- 获取当前元素所以最终使用的 CSS属性值
+- 返回一个实时的 `CSSStyleDeclaration` 对象，当元素的样式更改时，它会自动更新本身。
+
+## 语法
+- `let styles = window.getComputedStyle(element, [pseudoElt]);`
+- `element`: Dom 元素
+- `[pseudoElt]`: 可选指定一个伪元素 （在Gecko2.0 (Firefox 4 / Thunderbird 3.3 / SeaMonkey 2.1)之前版本，参数pseudoElt是必要的。如果为null，则不指定其他主要浏览器必须指定此参数。Gecko已经更改为匹配其他浏览器的行为。）
+
+## `getComputedStyle` 和 `style` 区别
+- `element.style` 同样可以获取 `css` 对象，可读写，而`getComputedStyle(el)` 只能读
+- `element.style`返回已设置的样式属性,而 `getComputedStyle(el)` 会将所有属性给返回
+`getComputedStyle(el)`
+![CSSStyleDeclaration](/static/img/CSSStyleDeclaration.png)
+`element.style`
+![el.style](/static/img/elStyle.png)
+
+
+## defaultView 
+- 此属性只读。
+- 在浏览器中，`document.defaultView` 返回window与文档关联的对象，或者null如果没有可用的对象。
+- `getComputedStyle` 不仅挂载在 window对象上，而且还挂载在 `defaultView`对象上
+- 因为在firefox3.6上访问（iframe)必须在 `defaultView`对象上访问
