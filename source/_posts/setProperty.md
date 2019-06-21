@@ -75,7 +75,7 @@ body {
 
 
 # setProperty
-- 给一个样式设置新值 dom.style.setProperty(propertyName, value, priority);`
+- 给一个样式设置新值 `dom.style.setProperty(propertyName, value, priority);`
 
 ## 参数
 1. propertyName 必须是一个字符串，代表被更改的CSS属性。
@@ -87,7 +87,7 @@ body {
 
 # getPropertyPriority
 - 获取一个样式属性的权重
-- `dom.getPropertyPriority('property') `
+- `dom.getPropertyPriority('property')`
 - 返回值 'important' 或  ''
 
 ---
@@ -121,4 +121,24 @@ body {
 - 此属性只读。
 - 在浏览器中，`document.defaultView` 返回window与文档关联的对象，或者null如果没有可用的对象。
 - `getComputedStyle` 不仅挂载在 window对象上，而且还挂载在 `defaultView`对象上
-- 因为在firefox3.6上访问（iframe)必须在 `defaultView`对象上访问
+- 因为在firefox3.6上访问（iframe)必须 `defaultView`对象上访问
+
+
+## css属性解析值（resolved value），计算值（computed value） 和 应用值（used value）
+- 属于 `getComputedStyle`方法返回的值，大多数属性是一个计算值，有些是应用值
+
+### 计算值（computed value）
+- 子元素继承父元素的值，通过指定值计算出来
+- 处理特殊的值 `inherit`(元素获取其父元素的计算值),`initial `(属性的初始默认值),`unset`(优先用 `inherit` 的样式，其次会应该用`initial`的样式)
+- 进行计算，达到对应属性值的要求
+- 计算值所需要的计算通常包括将相对值（em,rem %,)转换成绝对值（px）
+
+
+### 应用值（used value）
+- 完成所有计算后最终使用的值
+
+计算出CSS属性的最终值有三个步骤
+1. 指定值（Specified value） 从样式表中接收（按权重规则来接收）未设置将使用继承值或者默认值
+2. 按规范算出计算值（span 指定 position: absolute 后display 变为 block） 
+3. 计算布局（尺寸比如 auto 或 百分数 换算为像素值） 最后就是应用值， 只能使用 `getComputedStyle`来获取最终的应用值
+
