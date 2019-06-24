@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="Promise 为了解决 “回调地狱”（callback hell）而提出的写法允许将 callback 变成链式调用它是一个容器，保存着某个异步操作的结果。  特点  对象的状态部受外界影响；有三种状态， 进行中( pending ) 、 成功( fulfilled ) 、 失败( rejected );只有异步操作的结果可以决定那种状态。  状态一旦改变，就不会更改（resolved 定型），">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-21T15:59:13.601Z">
+<meta property="og:updated_time" content="2019-06-05T15:15:29.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pormise">
 <meta name="twitter:description" content="Promise 为了解决 “回调地狱”（callback hell）而提出的写法允许将 callback 变成链式调用它是一个容器，保存着某个异步操作的结果。  特点  对象的状态部受外界影响；有三种状态， 进行中( pending ) 、 成功( fulfilled ) 、 失败( rejected );只有异步操作的结果可以决定那种状态。  状态一旦改变，就不会更改（resolved 定型），">
@@ -107,7 +107,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -156,8 +156,7 @@
 
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-    <a href="https://github.com/gaoguowen/oweng.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-
+    <a href="https://github.com/gaoguowen/oweng.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
@@ -388,7 +387,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
+                  2.9k
                 </span>
               
 
@@ -404,7 +403,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  13
                 </span>
               
             </div>
@@ -492,6 +491,66 @@
 </li>
 </ul>
 <h3 id="结合-Generator-使用"><a href="#结合-Generator-使用" class="headerlink" title="结合 Generator 使用"></a>结合 Generator 使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> g = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> foo = <span class="keyword">yield</span> getFoo();</span><br><span class="line">    <span class="built_in">console</span>.log(foo);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFoo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    resolve(<span class="string">'foo'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span> (<span class="params">generator</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> it = generator();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">go</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (result.done) <span class="keyword">return</span> result.value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result.value.then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> go(it.next(value));</span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> go(it.throw(error));</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  go(it.next());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">run(g);</span><br></pre></td></tr></table></figure>
+<h3 id="Promise-A-规范"><a href="#Promise-A-规范" class="headerlink" title="Promise/A+ 规范"></a><a href="https://promisesaplus.com/" target="_blank" rel="noopener">Promise/A+ 规范</a></h3><ul>
+<li>实现者为开发者提供开放的 Promise标准，实现可靠，可互操作的JavaScript承诺。</li>
+</ul>
+<h4 id="术语（Terminology）"><a href="#术语（Terminology）" class="headerlink" title="术语（Terminology）"></a>术语（Terminology）</h4><ol>
+<li><code>promise</code> 是一个对象或函数，其<code>then</code> 方法 的行为符合此规范</li>
+<li><code>thenable</code> 定义 <code>then</code> 方法的对象或函数</li>
+<li><code>value</code> 是任何合法的 <code>JavaScript</code> 值 （包括 <code>undefined</code> 、<code>thenable</code> 和 <code>promise</code>）</li>
+<li><code>exception</code> 是使用 <code>throw</code> 语句抛出的值</li>
+<li><code>reason</code> 是一个值（拒因），表明承诺被拒绝的原因（拒绝回调的值）</li>
+</ol>
+<h4 id="要求（Requirements）"><a href="#要求（Requirements）" class="headerlink" title="要求（Requirements）"></a>要求（Requirements）</h4><h5 id="Promise-states"><a href="#Promise-states" class="headerlink" title="Promise states"></a>Promise states</h5><ul>
+<li>Promise 只有三种状态：pending 、 fulfilled（resolved） 和 rejected 状态</li>
+</ul>
+<ol>
+<li>pending（等待状态）：可以过渡到 resolved 或 rejected 状态</li>
+<li>fulfilled (执行状态）：无法再改变状态，且只有一个无法改变的<code>value</code></li>
+<li>rejected （拒绝状态）：无法再改变状态，必须有一个 <code>reason</code></li>
+</ol>
+<ul>
+<li>这里的 ‘无法再改变’ 意味着不可改变的身份 使用 <code>===</code> 判断 <code>value</code> 或 <code>reason</code>  </li>
+</ul>
+<h5 id="then-方法（The-then-method）"><a href="#then-方法（The-then-method）" class="headerlink" title="then 方法（The then method）"></a><code>then</code> 方法（The <code>then</code> method）</h5><ul>
+<li><p>一个 <code>Promise</code> 必须提供一个 <code>then</code> 方法来访问当前 或 最终<code>value</code> 或 <code>reason</code><br>此方法接收两个参数： <code>onFulfilled</code>,<code>onRejected</code>  必须忽略其中不是函数是参数</p>
+<ol>
+<li><code>onFulfilled</code>：必须在 <code>promise</code> 执行状态（<code>fufilled</code> ）结束后调用，其第一个参数为 <code>value</code>，只能调用一次</li>
+<li><code>onRejected</code>： 必须在 <code>promise</code> 拒绝状态（<code>rejected</code> ）结束后调用, 其第一个参数为 <code>reason</code>，只能调用一次</li>
+</ol>
+</li>
+<li><p>onFulfilled or onRejected 在<a href="https://es5.github.io/#x10.3" target="_blank" rel="noopener">执行上下文</a> (作用域)堆栈仅包含平台代码之前不得调用<br>意味着调用 <code>onFulfilled</code>,<code>onRejected</code> 须在新一轮 <code>event loop</code> 中执行， 可用 <code>macro-task</code>（setTimout,setInterval,I/O,UI rendering, <code>script</code>主线程) 或 <code>micro-task</code>（Promise, Object.observe,process.nextTick,MutationObserver） 机制来实现</p>
+</li>
+<li>onFulfilled or onRejected 必须作为函数调用，在 <code>use strict</code> 下 <code>this 为 undefined</code></li>
+<li><code>then</code>在同一个 promise 中可以链式调用，按照对应注册顺序一次回调</li>
+<li><p><code>then</code>返回一个Promise对象 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promise2 = promise1.then(onFulfilled, onRejected);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>任一 <code>onFulfilled</code>或<code>onRejected</code>返回一个值x ,则执行 <code>Promise 解决过程</code></li>
+<li><code>onFulfilled</code>或<code>onRejected</code> 抛出异常 e, 则 <code>promise2</code> 必须拒绝执行，并返回 <code>reason</code></li>
+<li>如果<code>onFulfilled</code> 不是函数且 Promise1 为执行 <code>fulfilled</code>状态，那么  promise2 必须返回和 Promise1  相同的<code>value</code></li>
+<li>如果<code>onRejected</code>不是函数且 Promise1 为 <code>rejected</code>状态，那么  promise2 必须返回和 Promise1  相同的<code>reason</code></li>
+</ol>
+<h6 id="Promise-解决过程-The-Promise-Resolution-Procedure"><a href="#Promise-解决过程-The-Promise-Resolution-Procedure" class="headerlink" title="Promise 解决过程 (The Promise Resolution Procedure)"></a>Promise 解决过程 (The Promise Resolution Procedure)</h6><ul>
+<li>Promise 解决过程是一个抽象的操作，作为输入一个Promise,和一个值，用 <code>[[Resolve]](Promise2,x)</code> 表示；<br>如果 <code>x</code> 有 <code>then</code> 方法并且看上去像一个Promise,Promise 解决过程程序会尝试promise采用状态 <code>x</code>，否则用 <code>x</code> 的 <code>value</code>执行Promise;<br>对thenables的这种处理使promise的实现进行互操作，只要它们暴露出一个遵循  <code>Promise/A+</code>规范 兼容<code>then</code>方法即可。它还允许<code>Promise/A+</code>规范来“吸收”与合理不符合标准的实现then方法。</li>
+</ul>
+<p>运行 <a href="promise, x">[Resolve]</a> 需遵循以下步骤：</p>
+<ol>
+<li>如果promise和<code>x</code>指向同一个对象，以<code>TypeError</code>为理由拒绝执行<code>promise</code>。</li>
+<li>如果 <code>x</code> 是 promise，则接收其状态：<br>  2.1 如果 <code>x</code> 为 <code>pending</code>， 则 Promise 保持等待直至 <code>x</code>改变状态<br>  2.2 如果 <code>x</code> 为 <code>resolved</code>，则 用相同的 <code>value</code> 执行 promise<br>  2.3 如果 <code>x</code> 为 <code>rejected</code>，则 用相同的 <code>reason</code>执行 promise</li>
+<li>如果 <code>x</code> 是 Object or Function:<br>  3.1 把 <code>x.then</code> 赋值给 <code>then</code><br>  3.2 如果 <code>xthen</code> 抛出异常 结果 <code>e</code>，promise 状态变为 <code>rejected</code>，<code>reason</code> 为 <code>e</code><br>  3.3 如果 <code>then</code>是一个函数，将<code>x</code>作为函数作用域 <code>this</code> 调用，传递两个回调函数作为参数，第一个为 <code>resolvePromise</code>, 第二个参数为 <code>rejectPromise</code><pre><code>3.3.1 如果 `resolvePromise` 以值 `y`为参数被调用，以 `r`为 `reason` ，则运行 `[[Resolve]](promise, y)`
+3.3.2 如果 `rejectPromise` 用`r`为参数调用 ，则以 `r`拒绝 promise
+3.3.3 如果 resolvePromise 和 rejectPromise 均被调用，或者被同一参数调用了多次，则优先采用第一次调用并忽略剩下的调用
+3.3.4 如果调用then抛出异常`e`，resolvePromise或rejectPromise已被调用，请忽略它；否则以 `e` 为`reason`(据因)拒绝 promise
+</code></pre>  3.4 如果then不是一个函数, 则以<code>x</code>为参数执行 promise<ol start="4">
+<li>如果 <code>x</code>不为Object or Function，以 <code>x</code> 为参数执行 promise    </li>
+</ol>
+</li>
+</ol>
+<p>如果一个 promise 被一个循环的 thenable 链中的对象解决，而<code>[[Resolve]](promise, thenable)</code> 的递归性质又使得其被再次调用，根据上述的算法将会陷入无限递归之中。<br>算法虽不强制要求，但也鼓励施者检测这样的递归是否存在，若检测到存在则以一个可识别的 <code>TypeError</code> 为<code>reason</code>(据因)来拒绝 promise  </p>
+<h3 id="手写简版-Promise"><a href="#手写简版-Promise" class="headerlink" title="手写简版 Promise"></a>手写简版 Promise</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 常用变量大写</span></span><br><span class="line"><span class="keyword">const</span> PENDING =<span class="string">'pending'</span></span><br><span class="line"><span class="keyword">const</span> RESOLVEd = <span class="string">'resolved'</span></span><br><span class="line"><span class="keyword">const</span> REJECTEd = <span class="string">'rejected'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myPromise</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(callback) &#123;</span><br><span class="line">    <span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line">    that.state = PENDING;</span><br><span class="line">    that.resolveCallback = [];</span><br><span class="line">    that.rejectCallback = [];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> resolve = <span class="function"><span class="params">value</span> =&gt;</span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (that.state === PENDING)&#123;</span><br><span class="line">          that.state = RESOLVED;</span><br><span class="line">          that.value = value</span><br><span class="line">          that.resolveCallback.map(<span class="function"><span class="params">cb</span> =&gt;</span> cb(that.value))</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="keyword">const</span> reject = <span class="function"><span class="params">value</span> =&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (that.state === PENDING)&#123;</span><br><span class="line">          that.state = REJECTED;</span><br><span class="line">          that.value = value</span><br><span class="line">          that.rejectCallback.map(<span class="function"><span class="params">cb</span> =&gt;</span> cb(that.value))</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      callback(resolve,reject)</span><br><span class="line">    &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">      reject(e)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  then(onResolved,onRejected)&#123;</span><br><span class="line">      <span class="keyword">const</span> that = <span class="keyword">this</span></span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -626,7 +685,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -637,7 +696,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -648,7 +707,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -710,7 +769,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise"><span class="nav-number">1.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单实列"><span class="nav-number">2.</span> <span class="nav-text">简单实列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#then-方法"><span class="nav-number">2.1.</span> <span class="nav-text">then 方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#catch-方法"><span class="nav-number">3.</span> <span class="nav-text">catch 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finally"><span class="nav-number">4.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#all"><span class="nav-number">5.</span> <span class="nav-text">all</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#race"><span class="nav-number">6.</span> <span class="nav-text">race</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resolve"><span class="nav-number">7.</span> <span class="nav-text">resolve</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise实例"><span class="nav-number">7.1.</span> <span class="nav-text">Promise实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传入-thenable对象"><span class="nav-number">7.2.</span> <span class="nav-text">传入 thenable对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不是对象或者没有-thenable方法"><span class="nav-number">7.3.</span> <span class="nav-text">不是对象或者没有 thenable方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reject"><span class="nav-number">7.4.</span> <span class="nav-text">reject</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结合-Generator-使用"><span class="nav-number">8.</span> <span class="nav-text">结合 Generator 使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise"><span class="nav-number">1.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单实列"><span class="nav-number">2.</span> <span class="nav-text">简单实列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#then-方法"><span class="nav-number">2.1.</span> <span class="nav-text">then 方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#catch-方法"><span class="nav-number">3.</span> <span class="nav-text">catch 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finally"><span class="nav-number">4.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#all"><span class="nav-number">5.</span> <span class="nav-text">all</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#race"><span class="nav-number">6.</span> <span class="nav-text">race</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resolve"><span class="nav-number">7.</span> <span class="nav-text">resolve</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise实例"><span class="nav-number">7.1.</span> <span class="nav-text">Promise实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传入-thenable对象"><span class="nav-number">7.2.</span> <span class="nav-text">传入 thenable对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不是对象或者没有-thenable方法"><span class="nav-number">7.3.</span> <span class="nav-text">不是对象或者没有 thenable方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reject"><span class="nav-number">7.4.</span> <span class="nav-text">reject</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结合-Generator-使用"><span class="nav-number">8.</span> <span class="nav-text">结合 Generator 使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-A-规范"><span class="nav-number">9.</span> <span class="nav-text">Promise/A+ 规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#术语（Terminology）"><span class="nav-number">9.1.</span> <span class="nav-text">术语（Terminology）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#要求（Requirements）"><span class="nav-number">9.2.</span> <span class="nav-text">要求（Requirements）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Promise-states"><span class="nav-number">9.2.1.</span> <span class="nav-text">Promise states</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#then-方法（The-then-method）"><span class="nav-number">9.2.2.</span> <span class="nav-text">then 方法（The then method）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Promise-解决过程-The-Promise-Resolution-Procedure"><span class="nav-number">9.2.2.1.</span> <span class="nav-text">Promise 解决过程 (The Promise Resolution Procedure)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手写简版-Promise"><span class="nav-number">10.</span> <span class="nav-text">手写简版 Promise</span></a></li></ol></div>
             
 
           </div>
@@ -746,7 +805,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">30.8k</span>
+    <span title="Site words total count">39.2k</span>
   
   -->
 </div>
@@ -766,7 +825,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -874,13 +933,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
