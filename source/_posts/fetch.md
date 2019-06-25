@@ -8,6 +8,7 @@ tags:
 ---
 # fetch
 - 一个获取资源的接口，类似于[ajax](https://developer.mozilla.org/zh-CN/docs/Web/Guide/AJAX)
+- 是基于 `Promise`之上设计，旧版本IE 完全不支持，须借助 [polyfill](https://github.com/stefanpenner/es6-promise)来兼容
 - 提供了对 Request 和 Response （以及其他与网络请求有关的）对象的通用定义
 - 发送请求或者获取资源，需要使用 window.fetch or WindowOrWorkerGlobalScope.fetch 方法。
 
@@ -51,9 +52,9 @@ fetch('https://api.apiopen.top/musicDetails1')
 
 5. `credentials`: 请求的 `credentials`，如 `omit、same-origin` 或者 `include`。为了在当前域名内自动发送 cookie ， 必须提供这个选项， 从 Chrome 50 开始， 这个属性也可以接受 [FederatedCredential](https://developer.mozilla.org/zh-CN/docs/Web/API/FederatedCredential) 实例或是一个 [PasswordCredential](https://developer.mozilla.org/zh-CN/docs/Web/API/PasswordCredential) 实例。
 
-- 如果需要跨域请求需设置未 "include"
-- 如果只在同域内发送cookie 则设置为 "same-origin"
-- 如果任何情况都不发送cookie 则设置为 "omit"
+    - 如果需要跨域请求需设置为 "include"
+    - 如果只在同域内发送cookie 则设置为 "same-origin"
+    - 如果任何情况都不发送cookie 则设置为 "omit"
 6. `cache`:  请求的 `cache` 模式: `default 、 no-store 、 reload 、 no-cache 、 force-cache` 或者 `only-if-cached` 。
 
 7. `redirect`: 可用的` redirect` 模式:` follow `(自动重定向), `error` (如果产生重定向将自动终止并且抛出一个错误), 或者` manual` (手动处理重定向). 在Chrome中，Chrome 47之前的默认值是 `follow`，从 Chrome 47开始是` manual`。
@@ -65,8 +66,10 @@ fetch('https://api.apiopen.top/musicDetails1')
 10. `integrity`: 包括请求的  [subresource integrity](https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7)值 （ 例如：  sha256-BpfBw7ivV8q2jLiT13fxDYAe2tJllusRSZ273h2nFSE=）。
 
 ```javascript
-const Fetch = (url,data)=>{
-  const {method = 'GET', param = null, mode = "cors", cache = "no-cache",headers = {'user-agent': 'Mozilla/4.0 MDN Example',
+const Fetch = function (url,config){
+    if(typeof(config) !== 'object' || config === null) return throw `Config needs to pass an object type`
+  let data = config || {} ;
+  let {method = 'GET', param = null, mode = "cors", cache = "no-cache",headers = {'Access-Control-Allow-Origin': '*',
     'content-type': 'application/json'}, redirect = "follow", credentials = "include", referrer = "no-referrer"} = data;
   /*  // 传输 JSON 数据 需将 param 转换 
     JSON.stringify(param)
@@ -86,8 +89,14 @@ const Fetch = (url,data)=>{
    headers,
    redirect,
    credentials,
-}).then(res => res.ok?res.json():thow new Error("Network response fail："+res.status)).catch(err=>console.error(err))
+}).then(res =>{
+   if(res.ok) return res.json() 
+    throw new Error("Network response fail："+res.status)
 }
+).catch(err=>console.error(err))
+}
+
+Fetch('https://api.apiopen.top/musicDetails1',{credentials:'omit'}).then(res =>console.log(res)).catch(err=>console.error(err))
 
 ```
 
@@ -160,3 +169,5 @@ if(this.fetch) {
 
 ## 兼容性
 ![fetch](/static/img/fetch.png)
+
+[Fetch规范](https://fetch.spec.whatwg.org/)
