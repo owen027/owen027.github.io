@@ -123,13 +123,12 @@ let a = [1, 2, 4, 1, 15];
 Math.max.apply(null, a) // 15
 
 //将数组的空元素变为undefined
-Array.apply(null [1,,3,,4)//[1,undefined,3,undefined,4];
+Array.apply(null [1,,3,,4])//[1,undefined,3,undefined,4];
 
 ```
 空元素与undefined的差别
 - forEach方法会跳过空元素，但是不会跳过undefined。因此，遍历内部元素的时候，会得到不同的结果。
-- 
-<label>转换类似数组的对象</label>
+- <label>转换类似数组的对象</label>
 
 ```
 let obj={0: 1, length: 2}
