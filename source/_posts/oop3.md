@@ -127,13 +127,13 @@ Array.apply(null [1,,3,,4])//[1,undefined,3,undefined,4];
 
 ```
 空元素与undefined的差别
-- forEach方法会跳过空元素，但是不会跳过undefined。因此，遍历内部元素的时候，会得到不同的结果。
+- forEach方法会跳过空元素，但是不会跳过undefined。因此，遍历内部元素的时候，会得到不同的结果。  
 - <label>转换类似数组的对象</label>
 
 ```
 let obj={0: 1, length: 2}
 Array.protetype.slice.apply(obj);//[1,undefined]
-
+  
 ```
 <label>被处理的对象必须有length属性，以及相对应的数字键。</label>
 
