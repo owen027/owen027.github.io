@@ -1,8 +1,8 @@
 ---
-title: JSquestion
+title: JSQuestion
 date: 2019-04-10 10:39:57
 categroies: Question
-tags: JSquestion
+tags: JSQuestion
 ---
 
 ### 赋值运算符多次出现，优先计算问题(结合性)

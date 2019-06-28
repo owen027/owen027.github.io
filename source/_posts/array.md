@@ -1,6 +1,8 @@
 ---
 title: array method
 date: 2019-05-20 18:25:19
+categories:
+- JavaScript
 tags: es5
 ---
 js 内置 7种类型

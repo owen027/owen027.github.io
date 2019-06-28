@@ -1,8 +1,8 @@
 ---
 title: fetch
 date: 2019-06-24 16:15:59
-categorise:
-- javascrip
+categories:
+- JavaScript
 tags:
 - fetch
 ---
@@ -63,7 +63,7 @@ fetch('https://api.apiopen.top/musicDetails1')
 
 9. `referrerPolicy`:指定引用HTTP头的值。可能是一个 ` no-referrer、 no-referrer-when-downgrade、 origin、 origin-when-cross-origin、 unsafe-url 。`
 
-10. `integrity`: 包括请求的  [subresource integrity](https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7)值 （ 例如：  sha256-BpfBw7ivV8q2jLiT13fxDYAe2tJllusRSZ273h2nFSE=）。
+10. `integrity`: 包括请求的[subresource integrity](https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7)值（例如：  sha256-BpfBw7ivV8q2jLiT13fxDYAe2tJllusRSZ273h2nFSE=）。
 
 ```javascript
 const Fetch = function (url,config){
