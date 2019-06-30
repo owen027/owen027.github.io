@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="js 内置 7种类型  基本类型: string number boolean null undefined symbol    引用类型: object   Array es3/es5:12345678910111213141516171819202122232425262728293031323334353637383940//改变原数组//push :向数组尾部添加数据 可添加多位//自定义">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-05T15:15:29.020Z">
+<meta property="og:updated_time" content="2019-06-30T14:47:25.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="array method">
 <meta name="twitter:description" content="js 内置 7种类型  基本类型: string number boolean null undefined symbol    引用类型: object   Array es3/es5:12345678910111213141516171819202122232425262728293031323334353637383940//改变原数组//push :向数组尾部添加数据 可添加多位//自定义">
@@ -344,6 +344,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -352,6 +374,11 @@
           
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
           
@@ -365,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  544
+                  997
                 </span>
               
 
@@ -381,7 +408,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  5
                 </span>
               
             </div>
@@ -415,6 +442,7 @@
 </blockquote>
 <hr>
 <h4 id="string-methods"><a href="#string-methods" class="headerlink" title="string methods"></a>string methods</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str =<span class="string">'123'</span></span><br><span class="line">str.split(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//camelize: 连字符转驼峰</span></span><br><span class="line"><span class="keyword">const</span> camelizeRE = <span class="regexp">/-(\w)/g</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> camelize = cached((str: string): <span class="function"><span class="params">string</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(camelizeRE, ( _, c) =&gt; c ? c.toUpperCase() : <span class="string">''</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//变量的值转换为 string 类型并返回</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">toString</span> (<span class="params">val: any</span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> val == <span class="literal">null</span></span><br><span class="line">    ? <span class="string">''</span></span><br><span class="line">    : <span class="keyword">typeof</span> val === <span class="string">'object'</span></span><br><span class="line">      ? <span class="built_in">JSON</span>.stringify(val, <span class="literal">null</span>, <span class="number">2</span>)</span><br><span class="line">      : <span class="built_in">String</span>(val)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="interation-method"><a href="#interation-method" class="headerlink" title="interation method"></a>interation method</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    <span class="keyword">const</span> inventors = [</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Albert'</span>, <span class="attr">last</span>: <span class="string">'Einstein'</span>, <span class="attr">year</span>: <span class="number">1879</span>, <span class="attr">passed</span>: <span class="number">1955</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Isaac'</span>, <span class="attr">last</span>: <span class="string">'Newton'</span>, <span class="attr">year</span>: <span class="number">1643</span>, <span class="attr">passed</span>: <span class="number">1727</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Galileo'</span>, <span class="attr">last</span>: <span class="string">'Galilei'</span>, <span class="attr">year</span>: <span class="number">1564</span>, <span class="attr">passed</span>: <span class="number">1642</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Marie'</span>, <span class="attr">last</span>: <span class="string">'Curie'</span>, <span class="attr">year</span>: <span class="number">1867</span>, <span class="attr">passed</span>: <span class="number">1934</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Johannes'</span>, <span class="attr">last</span>: <span class="string">'Kepler'</span>, <span class="attr">year</span>: <span class="number">1571</span>, <span class="attr">passed</span>: <span class="number">1630</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Nicolaus'</span>, <span class="attr">last</span>: <span class="string">'Copernicus'</span>, <span class="attr">year</span>: <span class="number">1473</span>, <span class="attr">passed</span>: <span class="number">1543</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Max'</span>, <span class="attr">last</span>: <span class="string">'Planck'</span>, <span class="attr">year</span>: <span class="number">1858</span>, <span class="attr">passed</span>: <span class="number">1947</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Katherine'</span>, <span class="attr">last</span>: <span class="string">'Blodgett'</span>, <span class="attr">year</span>: <span class="number">1898</span>, <span class="attr">passed</span>: <span class="number">1979</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Ada'</span>, <span class="attr">last</span>: <span class="string">'Lovelace'</span>, <span class="attr">year</span>: <span class="number">1815</span>, <span class="attr">passed</span>: <span class="number">1852</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Sarah E.'</span>, <span class="attr">last</span>: <span class="string">'Goode'</span>, <span class="attr">year</span>: <span class="number">1855</span>, <span class="attr">passed</span>: <span class="number">1905</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Lise'</span>, <span class="attr">last</span>: <span class="string">'Meitner'</span>, <span class="attr">year</span>: <span class="number">1878</span>, <span class="attr">passed</span>: <span class="number">1968</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">first</span>: <span class="string">'Hanna'</span>, <span class="attr">last</span>: <span class="string">'Hammarström'</span>, <span class="attr">year</span>: <span class="number">1829</span>, <span class="attr">passed</span>: <span class="number">1909</span> &#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Array.prototype.filter()</span></span><br><span class="line"><span class="comment">// 1. Filter the list of inventors for those who were born in the 1500's</span></span><br><span class="line"><span class="keyword">let</span> Filters= inventors.filter(<span class="function"><span class="params">el</span> =&gt;</span> el.year&lt;<span class="number">1600</span> )</span><br><span class="line">     <span class="built_in">console</span>.table(Filters)</span><br><span class="line"><span class="comment">// Array.prototype.map()</span></span><br><span class="line"><span class="comment">// 2. Give us an array of the inventors' first and last names</span></span><br><span class="line"><span class="keyword">let</span> maps = inventors.map(<span class="function"><span class="params">el</span> =&gt;</span><span class="string">`<span class="subst">$&#123;el.first&#125;</span> <span class="subst">$&#123;el.last&#125;</span>`</span>)</span><br><span class="line">     <span class="built_in">console</span>.log(maps)</span><br><span class="line"><span class="comment">// Array.prototype.sort()</span></span><br><span class="line"><span class="comment">// 3. Sort the inventors by birthdate, oldest to youngest</span></span><br><span class="line">     inventors.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> a.year-b.year)</span><br><span class="line">     <span class="built_in">console</span>.table(inventors)</span><br><span class="line"><span class="comment">// Array.prototype.reduce()</span></span><br><span class="line"><span class="comment">// 4. How many years did all the inventors live?</span></span><br><span class="line">     <span class="keyword">let</span> lives = inventors.reduce(<span class="function">(<span class="params">first,second</span>)=&gt;</span>(first+(second.passed - second.year)), <span class="number">0</span>)</span><br><span class="line">     <span class="built_in">console</span>.table(lives)</span><br><span class="line"><span class="comment">// 5. Sort the inventors by years lived</span></span><br><span class="line">     inventors.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> -((a.passed-a.year)-(b.passed-b.year)))</span><br><span class="line">     <span class="built_in">console</span>.table(inventors)</span><br><span class="line">      <span class="keyword">const</span> people = [</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'Wes'</span>, <span class="attr">year</span>: <span class="number">1988</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'Kait'</span>, <span class="attr">year</span>: <span class="number">1986</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'Irv'</span>, <span class="attr">year</span>: <span class="number">1970</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'Lux'</span>, <span class="attr">year</span>: <span class="number">2015</span> &#125;</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> coms = [</span><br><span class="line">     &#123; <span class="attr">text</span>: <span class="string">'Love this!'</span>, <span class="attr">id</span>: <span class="number">523423</span> &#125;,</span><br><span class="line">     &#123; <span class="attr">text</span>: <span class="string">'Super good'</span>, <span class="attr">id</span>: <span class="number">823423</span> &#125;,</span><br><span class="line">     &#123; <span class="attr">text</span>: <span class="string">'You are the best'</span>, <span class="attr">id</span>: <span class="number">2039842</span> &#125;,</span><br><span class="line">     &#123; <span class="attr">text</span>: <span class="string">'Ramen is my fav food ever'</span>, <span class="attr">id</span>: <span class="number">123523</span> &#125;,</span><br><span class="line">     &#123; <span class="attr">text</span>: <span class="string">'Nice Nice Nice!'</span>, <span class="attr">id</span>: <span class="number">542328</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Some and Every Checks</span></span><br><span class="line"><span class="comment">// Array.prototype.some() // is at least one person 19 or older?</span></span><br><span class="line"><span class="keyword">let</span> isNineOld = people.some(<span class="function"><span class="params">el</span>=&gt;</span> (<span class="keyword">new</span> <span class="built_in">Date</span>()).getFullYear() - el.year&gt;=<span class="number">19</span>)</span><br><span class="line"><span class="comment">// Array.prototype.every() // is everyone 19 or older?</span></span><br><span class="line"><span class="keyword">let</span> everyone=people.every(<span class="function"><span class="params">el</span>=&gt;</span> (<span class="keyword">new</span> <span class="built_in">Date</span>()).getFullYear() - el.year&gt;=<span class="number">19</span>)</span><br><span class="line"><span class="comment">// Array.prototype.find()</span></span><br><span class="line"><span class="comment">// Find is like filter, but instead returns just the one you are looking for</span></span><br><span class="line"><span class="comment">// find the comment with the ID of 823423</span></span><br><span class="line"><span class="keyword">let</span> comment = coms.find(<span class="function"><span class="params">el</span>=&gt;</span>el.id ===<span class="number">823423</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment">// Array.prototype.findIndex()</span></span><br><span class="line"><span class="comment">// Find the comment with this ID</span></span><br><span class="line"><span class="keyword">let</span> i = coms.findIndex(<span class="function"><span class="params">el</span>=&gt;</span>el.id ===<span class="number">823423</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment">// delete the comment with the ID of 823423</span></span><br><span class="line"><span class="keyword">let</span> newcoms = [...coms.slice(<span class="number">0</span>,i),coms.slice(i+<span class="number">1</span>)]</span><br><span class="line">coms.splice(i,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="Label"><a href="#Label" class="headerlink" title="Label"></a>Label</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 举一个比较典型的例子，看完后即明白 Label 的应用：（未添加 Label）</span></span><br><span class="line">        <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; <span class="number">10</span> ; i++)&#123;</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span> ; j &lt; <span class="number">10</span> ; j++)&#123;</span><br><span class="line">                  <span class="keyword">if</span>( i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span> )&#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                  &#125;</span><br><span class="line">             num++;</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        alert(num); <span class="comment">// 循环在 i 为5，j 为5的时候跳出 j循环，但会继续执行 i 循环，输出 95</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对比使用了 Label 之后的程序：（添加 Label 后）</span></span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">    outPoint:</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; <span class="number">10</span> ; i++)&#123;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span> ; j &lt; <span class="number">10</span> ; j++)&#123;</span><br><span class="line">              <span class="keyword">if</span>( i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span> )&#123;</span><br><span class="line">                    <span class="keyword">break</span> outPoint;</span><br><span class="line">              &#125;</span><br><span class="line">         num++;</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    alert(num); <span class="comment">// 循环在 i 为5，j 为5的时候跳出双循环，返回到outPoint层继续执行，输出 55</span></span><br></pre></td></tr></table></figure>
 
@@ -552,7 +580,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -563,7 +591,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -574,7 +602,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -636,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array"><span class="nav-number">1.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#string-methods"><span class="nav-number">1.1.</span> <span class="nav-text">string methods</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Label"><span class="nav-number">2.</span> <span class="nav-text">Label</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array"><span class="nav-number">1.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#string-methods"><span class="nav-number">1.1.</span> <span class="nav-text">string methods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#interation-method"><span class="nav-number">1.2.</span> <span class="nav-text">interation method</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Label"><span class="nav-number">2.</span> <span class="nav-text">Label</span></a></li></ol></div>
             
 
           </div>
@@ -656,7 +684,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
 <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
@@ -672,14 +700,10 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">39.2k</span>
+    <span title="Site words total count">40.9k</span>
   
   -->
 </div>
- <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-    <span class="post-meta-divider">|</span>
-    <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
-    <span class="post-meta-divider"></span>
 
   <!--
 
@@ -697,9 +721,30 @@
 
 
 
+
 -->
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
 
 
 

@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="对象继承A 对象通过继承 B 对象，就能直接拥有 B 对象的所有属性和方法。这对于代码的复用是非常有用的。 JavaScript 语言的继承不通过 class，而是通过“原型对象”prototype实现 传统原型链式继承 过多的继承属性 比如一个函数用不到某个原型方法或属性，那么方法或属性就过剩了123456789101112function Grand()&amp;#123;&amp;#125;;Grand.p">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-21T15:59:13.600Z">
+<meta property="og:updated_time" content="2019-06-30T14:47:25.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript OOP(三)">
 <meta name="twitter:description" content="对象继承A 对象通过继承 B 对象，就能直接拥有 B 对象的所有属性和方法。这对于代码的复用是非常有用的。 JavaScript 语言的继承不通过 class，而是通过“原型对象”prototype实现 传统原型链式继承 过多的继承属性 比如一个函数用不到某个原型方法或属性，那么方法或属性就过剩了123456789101112function Grand()&amp;#123;&amp;#125;;Grand.p">
@@ -375,6 +375,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
           
             <div class="post-wordcount">
@@ -449,17 +454,17 @@
 <p><code>call and apply</code> 二者区别在于传参：</p>
 <ul>
 <li>call 第二个参数开始单个单个参数传</li>
-<li>apply 第二个参数为数组或类数组<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回数组中最大的数</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">15</span>];</span><br><span class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, a) <span class="comment">// 15</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//将数组的空元素变为undefined</span></span><br><span class="line"><span class="built_in">Array</span>.apply(<span class="literal">null</span> [<span class="number">1</span>,,<span class="number">3</span>,,<span class="number">4</span>)<span class="comment">//[1,undefined,3,undefined,4];</span></span><br></pre></td></tr></table></figure>
+<li>apply 第二个参数为数组或类数组<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回数组中最大的数</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">15</span>];</span><br><span class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, a) <span class="comment">// 15</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//将数组的空元素变为undefined</span></span><br><span class="line"><span class="built_in">Array</span>.apply(<span class="literal">null</span> [<span class="number">1</span>,,<span class="number">3</span>,,<span class="number">4</span>])<span class="comment">//[1,undefined,3,undefined,4];</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>空元素与undefined的差别</p>
 <ul>
-<li>forEach方法会跳过空元素，但是不会跳过undefined。因此，遍历内部元素的时候，会得到不同的结果。</li>
+<li>forEach方法会跳过空元素，但是不会跳过undefined。因此，遍历内部元素的时候，会得到不同的结果。  </li>
 <li><label>转换类似数组的对象</label>
 
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let obj=&#123;0: 1, length: 2&#125;</span><br><span class="line">Array.protetype.slice.apply(obj);//[1,undefined]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj=&#123;<span class="number">0</span>: <span class="number">1</span>, <span class="attr">length</span>: <span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">Array</span>.protetype.slice.apply(obj);<span class="comment">//[1,undefined]</span></span><br></pre></td></tr></table></figure>
 <label>被处理的对象必须有length属性，以及相对应的数字键。</label>
 
 
@@ -659,7 +664,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -670,7 +675,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -681,7 +686,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -763,7 +768,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
 <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
@@ -779,14 +784,10 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">39.2k</span>
+    <span title="Site words total count">40.9k</span>
   
   -->
 </div>
- <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-    <span class="post-meta-divider">|</span>
-    <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
-    <span class="post-meta-divider"></span>
 
   <!--
 
@@ -804,9 +805,30 @@
 
 
 
+
 -->
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
 
 
 

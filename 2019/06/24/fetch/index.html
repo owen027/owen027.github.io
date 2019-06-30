@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="fetch 一个获取资源的接口，类似于ajax 提供了对 Request 和 Response （以及其他与网络请求有关的）对象的通用定义 发送请求或者获取资源，需要使用 window.fetch or WindowOrWorkerGlobalScope.fetch 方法。  参数资源路径（url string） 他必须接收一个需要请求的资源路径，返回一个promise对象，请求成功的数据返回到R">
+<meta name="description" content="fetch 一个获取资源的接口，类似于ajax 是基于 Promise之上设计，旧版本IE 完全不支持，须借助 polyfill来兼容 提供了对 Request 和 Response （以及其他与网络请求有关的）对象的通用定义 发送请求或者获取资源，需要使用 window.fetch or WindowOrWorkerGlobalScope.fetch 方法。  参数资源路径（url string">
 <meta name="keywords" content="fetch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="fetch">
 <meta property="og:url" content="https://owen027.github.io/2019/06/24/fetch/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="fetch 一个获取资源的接口，类似于ajax 提供了对 Request 和 Response （以及其他与网络请求有关的）对象的通用定义 发送请求或者获取资源，需要使用 window.fetch or WindowOrWorkerGlobalScope.fetch 方法。  参数资源路径（url string） 他必须接收一个需要请求的资源路径，返回一个promise对象，请求成功的数据返回到R">
+<meta property="og:description" content="fetch 一个获取资源的接口，类似于ajax 是基于 Promise之上设计，旧版本IE 完全不支持，须借助 polyfill来兼容 提供了对 Request 和 Response （以及其他与网络请求有关的）对象的通用定义 发送请求或者获取资源，需要使用 window.fetch or WindowOrWorkerGlobalScope.fetch 方法。  参数资源路径（url string">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://owen027.github.io/static/img/fetch.png">
-<meta property="og:updated_time" content="2019-06-24T16:14:37.069Z">
+<meta property="og:updated_time" content="2019-06-30T14:47:25.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="fetch">
-<meta name="twitter:description" content="fetch 一个获取资源的接口，类似于ajax 提供了对 Request 和 Response （以及其他与网络请求有关的）对象的通用定义 发送请求或者获取资源，需要使用 window.fetch or WindowOrWorkerGlobalScope.fetch 方法。  参数资源路径（url string） 他必须接收一个需要请求的资源路径，返回一个promise对象，请求成功的数据返回到R">
+<meta name="twitter:description" content="fetch 一个获取资源的接口，类似于ajax 是基于 Promise之上设计，旧版本IE 完全不支持，须借助 polyfill来兼容 提供了对 Request 和 Response （以及其他与网络请求有关的）对象的通用定义 发送请求或者获取资源，需要使用 window.fetch or WindowOrWorkerGlobalScope.fetch 方法。  参数资源路径（url string">
 <meta name="twitter:image" content="https://owen027.github.io/static/img/fetch.png">
 
 
@@ -346,6 +346,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -354,6 +376,11 @@
           
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
           
@@ -367,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  1.3k
                 </span>
               
 
@@ -406,6 +433,7 @@
       
         <h1 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h1><ul>
 <li>一个获取资源的接口，类似于<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/AJAX" target="_blank" rel="noopener">ajax</a></li>
+<li>是基于 <code>Promise</code>之上设计，旧版本IE 完全不支持，须借助 <a href="https://github.com/stefanpenner/es6-promise" target="_blank" rel="noopener">polyfill</a>来兼容</li>
 <li>提供了对 Request 和 Response （以及其他与网络请求有关的）对象的通用定义</li>
 <li>发送请求或者获取资源，需要使用 window.fetch or WindowOrWorkerGlobalScope.fetch 方法。</li>
 </ul>
@@ -431,14 +459,12 @@
 <li><p><code>mode</code>: 请求的模式，如 <code>cors、 no-cors</code> 或者 <code>same-origin</code>。</p>
 </li>
 <li><p><code>credentials</code>: 请求的 <code>credentials</code>，如 <code>omit、same-origin</code> 或者 <code>include</code>。为了在当前域名内自动发送 cookie ， 必须提供这个选项， 从 Chrome 50 开始， 这个属性也可以接受 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FederatedCredential" target="_blank" rel="noopener">FederatedCredential</a> 实例或是一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/PasswordCredential" target="_blank" rel="noopener">PasswordCredential</a> 实例。</p>
-</li>
-</ol>
 <ul>
-<li>如果需要跨域请求需设置未 “include”</li>
+<li>如果需要跨域请求需设置为 “include”</li>
 <li>如果只在同域内发送cookie 则设置为 “same-origin”</li>
 <li>如果任何情况都不发送cookie 则设置为 “omit”</li>
 </ul>
-<ol start="6">
+</li>
 <li><p><code>cache</code>:  请求的 <code>cache</code> 模式: <code>default 、 no-store 、 reload 、 no-cache 、 force-cache</code> 或者 <code>only-if-cached</code> 。</p>
 </li>
 <li><p><code>redirect</code>: 可用的<code>redirect</code> 模式:<code>follow</code>(自动重定向), <code>error</code> (如果产生重定向将自动终止并且抛出一个错误), 或者<code>manual</code> (手动处理重定向). 在Chrome中，Chrome 47之前的默认值是 <code>follow</code>，从 Chrome 47开始是<code>manual</code>。</p>
@@ -447,10 +473,10 @@
 </li>
 <li><p><code>referrerPolicy</code>:指定引用HTTP头的值。可能是一个 <code>no-referrer、 no-referrer-when-downgrade、 origin、 origin-when-cross-origin、 unsafe-url 。</code></p>
 </li>
-<li><p><code>integrity</code>: 包括请求的  <a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7" target="_blank" rel="noopener">subresource integrity</a>值 （ 例如：  sha256-BpfBw7ivV8q2jLiT13fxDYAe2tJllusRSZ273h2nFSE=）。</p>
+<li><p><code>integrity</code>: 包括请求的<a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/%E5%AD%90%E8%B5%84%E6%BA%90%E5%AE%8C%E6%95%B4%E6%80%A7" target="_blank" rel="noopener">subresource integrity</a>值（例如：  sha256-BpfBw7ivV8q2jLiT13fxDYAe2tJllusRSZ273h2nFSE=）。</p>
 </li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Fetch = <span class="function">(<span class="params">url,data</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;method = <span class="string">'GET'</span>, param = <span class="literal">null</span>, mode = <span class="string">"cors"</span>, cache = <span class="string">"no-cache"</span>,headers = &#123;<span class="string">'user-agent'</span>: <span class="string">'Mozilla/4.0 MDN Example'</span>,</span><br><span class="line">    <span class="string">'content-type'</span>: <span class="string">'application/json'</span>&#125;, redirect = <span class="string">"follow"</span>, credentials = <span class="string">"include"</span>, referrer = <span class="string">"no-referrer"</span>&#125; = data;</span><br><span class="line">  <span class="comment">/*  // 传输 JSON 数据 需将 param 转换 </span></span><br><span class="line"><span class="comment">    JSON.stringify(param)</span></span><br><span class="line"><span class="comment">    //上传文件 需传输 formData 格式</span></span><br><span class="line"><span class="comment">    let formData = new FormData()</span></span><br><span class="line"><span class="comment">    let fileField = document.querySelector("#myFile")</span></span><br><span class="line"><span class="comment">    formData.append('title',"My File")</span></span><br><span class="line"><span class="comment">    formData.append('fileField ',fileField .files[0])</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span>  fetch(url,&#123;</span><br><span class="line">   method:method.toUpperCase(),</span><br><span class="line">   body:param,</span><br><span class="line">   mode,</span><br><span class="line">   cache,</span><br><span class="line">   headers,</span><br><span class="line">   redirect,</span><br><span class="line">   credentials,</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> res.ok?res.json():thow <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Network response fail："</span>+res.status)).catch(<span class="function"><span class="params">err</span>=&gt;</span><span class="built_in">console</span>.error(err))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Fetch = <span class="function"><span class="keyword">function</span> (<span class="params">url,config</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span>(config) !== <span class="string">'object'</span> || config === <span class="literal">null</span>) <span class="keyword">return</span> <span class="keyword">throw</span> <span class="string">`Config needs to pass an object type`</span></span><br><span class="line">  <span class="keyword">let</span> data = config || &#123;&#125; ;</span><br><span class="line">  <span class="keyword">let</span> &#123;method = <span class="string">'GET'</span>, param = <span class="literal">null</span>, mode = <span class="string">"cors"</span>, cache = <span class="string">"no-cache"</span>,headers = &#123;<span class="string">'Access-Control-Allow-Origin'</span>: <span class="string">'*'</span>,</span><br><span class="line">    <span class="string">'content-type'</span>: <span class="string">'application/json'</span>&#125;, redirect = <span class="string">"follow"</span>, credentials = <span class="string">"include"</span>, referrer = <span class="string">"no-referrer"</span>&#125; = data;</span><br><span class="line">  <span class="comment">/*  // 传输 JSON 数据 需将 param 转换 </span></span><br><span class="line"><span class="comment">    JSON.stringify(param)</span></span><br><span class="line"><span class="comment">    //上传文件 需传输 formData 格式</span></span><br><span class="line"><span class="comment">    let formData = new FormData()</span></span><br><span class="line"><span class="comment">    let fileField = document.querySelector("#myFile")</span></span><br><span class="line"><span class="comment">    formData.append('title',"My File")</span></span><br><span class="line"><span class="comment">    formData.append('fileField ',fileField .files[0])</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span>  fetch(url,&#123;</span><br><span class="line">   method:method.toUpperCase(),</span><br><span class="line">   body:param,</span><br><span class="line">   mode,</span><br><span class="line">   cache,</span><br><span class="line">   headers,</span><br><span class="line">   redirect,</span><br><span class="line">   credentials,</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(res.ok) <span class="keyword">return</span> res.json() </span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Network response fail："</span>+res.status)</span><br><span class="line">&#125;</span><br><span class="line">).catch(<span class="function"><span class="params">err</span>=&gt;</span><span class="built_in">console</span>.error(err))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Fetch(<span class="string">'https://api.apiopen.top/musicDetails1'</span>,&#123;<span class="attr">credentials</span>:<span class="string">'omit'</span>&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span><span class="built_in">console</span>.log(res)).catch(<span class="function"><span class="params">err</span>=&gt;</span><span class="built_in">console</span>.error(err))</span><br></pre></td></tr></table></figure>
 <h3 id="Headers-constructor"><a href="#Headers-constructor" class="headerlink" title="Headers constructor"></a>Headers constructor</h3><ul>
 <li>创建一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Headers" target="_blank" rel="noopener">headers</a> 对象</li>
 </ul>
@@ -468,6 +494,7 @@
 </ol>
 <h2 id="检查环境支持度"><a href="#检查环境支持度" class="headerlink" title="检查环境支持度"></a>检查环境支持度</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">this</span>.fetch) &#123;</span><br><span class="line">    <span class="comment">// run my fetch request here</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// do something with XMLHttpRequest?</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><p><img src="/static/img/fetch.png" alt="fetch"></p>
+<p><a href="https://fetch.spec.whatwg.org/" target="_blank" rel="noopener">Fetch规范</a></p>
 
       
     </div>
@@ -515,6 +542,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/27/closure/" rel="prev" title="closure">
+                closure <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -599,7 +630,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -610,7 +641,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -621,7 +652,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -703,7 +734,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
 <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
@@ -719,14 +750,10 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">39.2k</span>
+    <span title="Site words total count">40.9k</span>
   
   -->
 </div>
- <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-    <span class="post-meta-divider">|</span>
-    <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
-    <span class="post-meta-divider"></span>
 
   <!--
 
@@ -744,9 +771,30 @@
 
 
 
+
 -->
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
 
 
 
