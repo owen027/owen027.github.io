@@ -218,7 +218,7 @@ const hashWatcher = () =>{
 setTimeout(hashWatcher,1000)
 ```
 **注意：**
-> HTML标准规定 `setTimeout` 最大间隔 4ms 
+> HTML标准规定 `setTimeout` 最小间隔 4ms 
  由于定时器每执行一次,会返回一个整数，连续执行，返回值比上一次大1
  ```javascript
  (function() {
