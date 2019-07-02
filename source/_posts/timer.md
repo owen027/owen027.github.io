@@ -54,3 +54,7 @@ setTimeout(cancelAnimationFrame.bind(null,FrameID),1000)
 ### 参数
 
 - **callback** 更新动画帧所调用的函数
+- 一帧大约 16.7ms
+
+### 兼容性
+![requestAnimationFrame](/static/img/requestAnimationFrame.png)
