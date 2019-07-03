@@ -88,18 +88,20 @@
 
 
 
-<meta name="description" content="什么是定时器 在一段时间间隔后执行一个函数或执行一段代码的方法 JavaScript 原生提供几种定时器 setInterval、setTimeout 、requestAnimationFrame 、setImmediate  setInterval 在一段时间间隔后重复执行一个函数或执行一段代码的方法  1let timerInterID =  window.setInterval(func,d">
+<meta name="description" content="什么是定时器 在一段时间间隔后执行一个函数或执行一段代码的方法 JavaScript 原生提供几种定时器 setInterval、setTimeout 、requestAnimationFrame  执行函数中的作用域未全局作用域this指向全局，可通过 bind 方法给执行函数传递参数或指定作用域 (严格模式下，setTimeout( )的回调函数里面的this仍然默认指向window对象， 并">
 <meta name="keywords" content="timer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="timer">
 <meta property="og:url" content="https://owen027.github.io/2019/06/28/timer/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="什么是定时器 在一段时间间隔后执行一个函数或执行一段代码的方法 JavaScript 原生提供几种定时器 setInterval、setTimeout 、requestAnimationFrame 、setImmediate  setInterval 在一段时间间隔后重复执行一个函数或执行一段代码的方法  1let timerInterID =  window.setInterval(func,d">
+<meta property="og:description" content="什么是定时器 在一段时间间隔后执行一个函数或执行一段代码的方法 JavaScript 原生提供几种定时器 setInterval、setTimeout 、requestAnimationFrame  执行函数中的作用域未全局作用域this指向全局，可通过 bind 方法给执行函数传递参数或指定作用域 (严格模式下，setTimeout( )的回调函数里面的this仍然默认指向window对象， 并">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-30T15:55:00.858Z">
+<meta property="og:image" content="https://owen027.github.io/static/img/requestAnimationFrame.png">
+<meta property="og:updated_time" content="2019-07-03T15:19:29.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="timer">
-<meta name="twitter:description" content="什么是定时器 在一段时间间隔后执行一个函数或执行一段代码的方法 JavaScript 原生提供几种定时器 setInterval、setTimeout 、requestAnimationFrame 、setImmediate  setInterval 在一段时间间隔后重复执行一个函数或执行一段代码的方法  1let timerInterID =  window.setInterval(func,d">
+<meta name="twitter:description" content="什么是定时器 在一段时间间隔后执行一个函数或执行一段代码的方法 JavaScript 原生提供几种定时器 setInterval、setTimeout 、requestAnimationFrame  执行函数中的作用域未全局作用域this指向全局，可通过 bind 方法给执行函数传递参数或指定作用域 (严格模式下，setTimeout( )的回调函数里面的this仍然默认指向window对象， 并">
+<meta name="twitter:image" content="https://owen027.github.io/static/img/requestAnimationFrame.png">
 
 
 
@@ -392,7 +394,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  169
+                  621
                 </span>
               
 
@@ -408,7 +410,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -431,17 +433,42 @@
       
         <h1 id="什么是定时器"><a href="#什么是定时器" class="headerlink" title="什么是定时器"></a>什么是定时器</h1><ul>
 <li>在一段时间间隔后执行一个函数或执行一段代码的方法</li>
-<li>JavaScript 原生提供几种定时器 <code>setInterval</code>、<code>setTimeout</code> 、<code>requestAnimationFrame</code> 、<code>setImmediate</code></li>
+<li>JavaScript 原生提供几种定时器 <code>setInterval</code>、<code>setTimeout</code> 、<code>requestAnimationFrame</code> </li>
+<li>执行函数中的作用域未全局作用域this指向全局，可通过 <code>bind</code> 方法给执行函数传递参数或指定作用域 (严格模式下，setTimeout( )的回调函数里面的this仍然默认指向window对象， 并不是undefined)</li>
 </ul>
 <h2 id="setInterval"><a href="#setInterval" class="headerlink" title="setInterval"></a>setInterval</h2><ul>
-<li>在一段时间间隔后重复执行一个函数或执行一段代码的方法</li>
+<li>每相隔一段时间间隔执行一个函数或执行一段代码的方法</li>
+<li>通过<code>clearInterval</code>方法来取消定时器<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timerInterID =  <span class="built_in">window</span>.setInterval(callback,delay[,param...])</span><br><span class="line"> setTimeout( clearInterval.bind(<span class="literal">null</span>,timerInterID),<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timerInterID =  <span class="built_in">window</span>.setInterval(func,delay[,param...])</span><br></pre></td></tr></table></figure>
-<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><ul>
-<li><strong>func</strong> 重复执行的函数或代码段（不推荐使用一段字符串构成的代码，应为这样做不安全，会被不法分子利用）</li>
-<li><strong>delay</strong> 时间间隔，单位为毫秒（ms）实际间隔可能会稍长</li>
-<li><strong>timerInterID</strong> 方法每次执行返回的唯一 ID，可通过调用 <code>clearInterval</code>方法来清除<code>setInterval</code>方法</li>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><strong>callback</strong> 重复执行的函数或代码段（不推荐使用一段字符串构成的代码，应为这样做不安全，会被不法分子利用）</li>
+<li><strong>delay</strong> 时间间隔，单位为毫秒（ms）实际间隔可能会稍长（最小间隔是4ms）</li>
+<li><strong>timerInterID</strong> 每次调用<code>setInterval</code>方法返回的唯一 ID，可通过调用 <code>clearInterval</code>方法来清除<code>setInterval</code>方法</li>
+<li><strong>param1, …, paramN</strong> 传递给执行函数（callback）的参数 (<label>IE9 及更早的 IE 浏览器不支持向回调函数传递额外参数。如果你想要在IE中达到同样的功能,你必须使用一种兼容代码</label> )</li>
 </ul>
+<h2 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h2><ul>
+<li>在一段时间间隔后执行一个函数或执行一段代码的方法</li>
+<li>通过<code>clearTimeout</code>方法来清除定时器<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timerTimeID = setTimeout(callback,delay[,param1, ..., paramN ])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><strong>callback</strong> 重复执行的函数或代码段（不推荐使用一段字符串构成的代码，应为这样做不安全，会被不法分子利用）</li>
+<li><strong>delay</strong> 时间间隔，单位为毫秒（ms），默认为0实际间隔可能会稍长（最小间隔为 4ms ）</li>
+<li><strong>timerTimeID</strong> 每次调用<code>setTimeout</code>方法返回的唯一 ID，可通过调用 <code>clearTimeout</code>方法来清除<code>setTimeout</code>方法</li>
+<li><strong>param1, …, paramN</strong> 传递给执行函数（callback）的参数 (<label>IE9 及更早的 IE 浏览器不支持向回调函数传递额外参数。如果你想要在IE中达到同样的功能,你必须使用一种兼容代码</label> )</li>
+</ul>
+<h2 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame"></a>requestAnimationFrame</h2><ul>
+<li>类似于<code>setInterval</code>方法，执行动画时推荐使用</li>
+<li>会在浏览器下次重绘前执行函数</li>
+<li>执行间隔通常是每秒60次，当运行在后台标签页或隐藏在 <code>iframe</code>时，会暂停调用<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> frameID = <span class="built_in">window</span>.requestAnimationFrame(callback)</span><br><span class="line">setTimeout(cancelAnimationFrame.bind(<span class="literal">null</span>,FrameID),<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><strong>callback</strong> 更新动画帧所调用的函数</li>
+<li>一帧大约 16.7ms</li>
+</ul>
+<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p><img src="/static/img/requestAnimationFrame.png" alt="requestAnimationFrame"></p>
 
       
     </div>
@@ -489,6 +516,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/03/performance/" rel="prev" title="performance">
+                performance <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -573,7 +604,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -657,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是定时器"><span class="nav-number">1.</span> <span class="nav-text">什么是定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setInterval"><span class="nav-number">1.1.</span> <span class="nav-text">setInterval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数"><span class="nav-number">1.2.</span> <span class="nav-text">参数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是定时器"><span class="nav-number">1.</span> <span class="nav-text">什么是定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setInterval"><span class="nav-number">1.1.</span> <span class="nav-text">setInterval</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.1.1.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setTimeout"><span class="nav-number">1.2.</span> <span class="nav-text">setTimeout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requestAnimationFrame"><span class="nav-number">1.3.</span> <span class="nav-text">requestAnimationFrame</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参数-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容性"><span class="nav-number">1.3.2.</span> <span class="nav-text">兼容性</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -693,7 +724,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">40.9k</span>
+    <span title="Site words total count">41.4k</span>
   
   -->
 </div>
