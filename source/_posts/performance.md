@@ -30,7 +30,7 @@ console.timeEnd('for');
 
 ## for 几种写法
 
-1. **常规写法**
+- **常规写法**
 ```javascript
 let arr1 = []
 console.time('one')
@@ -40,39 +40,39 @@ for (let i = 0; i < arr.length; i++ ){
 console.timeEnd('one')
 
 ```
-数组长度是会动态变化，每次循环会重新计算length长度，可能会出现死循环
+     数组长度是会动态变化，每次循环会重新计算length长度，可能会出现死循环
 
-2. **cache arr.length**
+- **cache arr.length**
 ```javascript
 for (let i = 0, len = arr.length; i < len; i++ ){
      arr1.push(arr[i])
 }
 ```
-缓存length 值，无需重新计算length
+     缓存length 值，无需重新计算length
 
-3. **倒序**
+- **倒序**
 ```javascript
 for (let i = arr.length-1; i >= 0; i--){
      arr1.push(arr[i])
 }
 ```
-比第二种方法更简洁
+     比第二种方法更简洁
 
- 3.1  **倒叙简洁版**
+-  **倒叙简洁版**
 ```javascript
 for (let i = arr.length-1; i--;){
      arr1.push(arr[i])
 }
 ```
-两个分号之间的表达式为 true 会一直执行直到 判断为 false (i = 0)
+     两个分号之间的表达式为 true 会一直执行直到 判断为 false (i = 0)
 
-4. **正序简洁版**
+- **正序简洁版**
 ```javascript
 for (let i = 0, len;len = arr[i++]; ){
      arr1.push(arr[i])
 }
 ```
-当 i 大于等于数组长度或arr[i++]值为false时 将停指循环，同时由于arr.length动态变化时可能会造成死循环
+     当 i 大于等于数组长度或arr[i++]值为false时 将停指循环，同时由于arr.length动态变化时可能会造成死循环
 
 ## for...of
 ```javascript
@@ -113,7 +113,7 @@ arr.map(function(value){
 
 
 | 测试次数 | 常规for | cache for | 倒序 for | 倒叙简版 for | 正序简版 for | for..of | for..in | forEach | map |
-| ------ | ------ | ------ | ------ | ------ | ------ | ------ |------ |------ |------ |------ |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ |------ |------ |------ |
 | 1 | 542.121ms | 573.618ms | 764.181ms | 755.961ms | 571.464ms | 945.199ms | 4077.020ms | 625.859ms |3573.946ms |
 | 2 | 430.008ms | 541.933ms | 524.474ms | 668.276ms | 553.475ms | 897.442ms | 4402.246ms | 605.271ms |2732.859ms |
 | 3 | 409.531ms | 661.765ms | 534.167ms | 655.481ms | 600.939ms | 1141.093ms| 3806.704ms | 584.712ms |2779.192ms |
@@ -126,8 +126,12 @@ arr.map(function(value){
 |10 | 424.806ms | 557.961ms | 535.541ms |  837.561ms| 541.882ms | 772.686ms | 3284.424ms | 602.443ms |3599.642ms |
 |11 | 409.402ms | 521.131ms | 534.265ms | 517.709ms | 551.397ms | 752.101ms | 3228.123ms | 629.625ms |3535.545ms |
 |12 | 425.362ms | 532.882ms | 406.637ms | 522.287ms | 570.259ms | 914.135ms | 3449.256ms | 800.857ms |3429.123ms |
-|平均值 | 439.2738 ms | 578.3565 ms |553.1468 ms |651.7057ms| 507.8718ms | 909.0785 ms | 3,686.9 6ms | 605.6298 ms | 3,221.5056 ms |
+|平均值 | 439.2738ms | 578.3565ms |553.1468ms |651.7057ms| 507.8718ms | 909.0785ms | 3,686.96ms | 605.6298ms | 3,221.5056ms |
 |堆值差 | 357245536 Byte | 357245808 Byte | 357245624 Byte | 357245872 Byte | 357246824 Byte | 199268080 Byte |757187208 Byte|357244456 Byte | 437247640 Byte | 
 
 
+**测试总结**
+1. **运行效率:** `常规for` > `正序简版 for `> `倒序 for` > `cache for` > `倒叙简版 for `> `forEach` > `for..of`	> `map` > `for..in`
+2. 几种普通 for 循环占用内存相差不大, 而 `for..of` 占用运行内存最小 
+3. `for..in` 性能最差，内存占用高，速度很慢
 
