@@ -184,4 +184,9 @@ http {
 
 ```
 
-要监听多个端口和域名 可配置多个 `server`, 
+要监听多个端口和域名 可配置多个 `server`。
+
+**参考文章:**
+[Nginx 中文文档](http://www.nginx.cn/doc/)
+[Nginx 相关介绍](https://www.cnblogs.com/wcwnina/p/8728391.html)
+[深入浅出Nginx](https://www.jianshu.com/p/5eab0f83e3b4)
