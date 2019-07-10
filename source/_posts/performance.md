@@ -1,6 +1,8 @@
 ---
 title: performance
 date: 2019-07-03 22:35:43
+- categories:
+- JavasSript
 tags: 
 - Iteration
 ---

@@ -1,8 +1,8 @@
 ---
 title: Nginx 学习
 date: 2019-07-05 11:12:21
-categorise:
-- nginx
+categories:
+- Nginx
 tags:
 - nginx
 ---
