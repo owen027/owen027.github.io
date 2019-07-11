@@ -123,7 +123,7 @@ let a = [1, 2, 4, 1, 15];
 Math.max.apply(null, a) // 15
 
 //将数组的空元素变为undefined
-Array.apply(null [1,,3,,4])//[1,undefined,3,undefined,4];
+Array.apply(null, [1,,3,,4])//[1,undefined,3,undefined,4];
 
 ```
 空元素与undefined的差别
@@ -225,6 +225,7 @@ let o = { v: 123 };
 let bind = Function.prototype.call.bind(Function.prototype.bind);
 bind(f, o)() // 123
 ```
+
 ###  `Object 系统默认方法`
 
  - `getPrototypeOf` 获取对象原型,只有一个参数

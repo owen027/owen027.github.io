@@ -79,7 +79,7 @@ function _new(constuctor,param) {
   
     // 获得构造函数
     let Con = [].shift.call(arguments);
-    // 链接到原型
+    //    创建一个空对象，继承构造函数的 prototype 属性 链接到原型
   let obj = Object.create(Con.prototype);
     // 绑定 this，执行构造函数
     let result = Con.apply(obj, arguments)
