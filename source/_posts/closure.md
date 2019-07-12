@@ -9,7 +9,7 @@ tags:
 
 
 # 什么是闭包（closure）？
-在理解闭包前，须理解变量作用域。作用域分全局和局部作用域，是指变量能访问的范围。
+在理解闭包前，须理解变量作用域。作用域分全局和局部作用域，是指变量有效访问的范围。
 变量无权访问子作用域，只能访问自己和父级以上的作用域
 
 ## 预编译
@@ -30,12 +30,12 @@ function fun (a){
     var a=123;
     function a (){};
       console.log(a)// 123  函数声明已提升所以不用管
-    var b =function(){}; 
+    var b =function(){};
     console.log(b);//function 因为是函数表达式，只提升了 变量b， 这样的函数体不会提升
 }
 fun(1); //函数 123 123 函数
 /*
-代码执行 
+代码执行
 1. 会创建 一个（全局为GO）AO(Activation  Object)对象（执行期上下文/作用域）一个存储空间库
 
 2. 找形参和变量声明，将形参和变量名作为AO的属性名，值为undefined,重复的只用写一个
@@ -53,7 +53,11 @@ AO{
 
 */
 ```
-- 函数内部声明变量的时候，一定要使用var，let or const命令。如果不用的话，你实际上声明了一个全局变量！
+**函数内部声明变量的时候，一定要使用var，let or const命令。如果不用的话，你实际上声明了一个全局变量！**
+
+### 变量的生命周期
+
+**全局变量可永久访问，除非主动销毁，而局部变量在函数运行结束时就会随之销毁，当局部变量还能被外界访问时，将会保留，不被销毁**
 
 ## 闭包简单理解：
 在Javascript语言中，只有函数内部的子函数才能访问该函数的变量，而定义在一个函数内部的函数并且外部能接收到这个函数，那么这个函数就是闭包。(能够读取其他函数内部变量的函数。)
@@ -69,7 +73,7 @@ AO{
 // 例一
 function A() {
   let a = 1
-  B = function () 
+  B = function ()
   }
 }
 A()
@@ -85,7 +89,55 @@ function A() {
 A()()//1
 
 ```
-## 三种方法解决循环中 var 定义函数的问题
+## 应用
+
+### 封装变量
+将不需要暴露在全局的变量封装成"私有变量"。
+```javascript
+// 乘积
+let mult = (...args) =>{
+        let num = 1;
+        for (let val of args ){
+          num *= val;
+        }
+        return num;
+}
+// 由于每次运行函数都会完全遍历所以形参，效率较低下，我们可以加入缓存机制提供函数性能
+
+let mult1 = (()=>{
+ let cache = {};
+ return (...args) => {
+   if(cache[args.join(',')])  return cache[args.join (',')];
+        let num = 1;
+        for (let val of args ){
+          num *= val;
+        }
+        return cache[args.join(',')]= num; // 缓存数值
+        }
+})()
+
+// 我们看到 cache 变量仅仅在 mult 函数中使用，我们可以将它封装在函数内部，减少全局变量，变量发生不必要的错误
+
+```
+**如果一个大函数中有些代码块能够独立出来，我们常常把这些代码块封装在独立的小函数里并有个良好的命名，将有助于复用，和注释作用；如果小函数不需要在其他程序中使用，最好使用闭包封装起来**
+```javascript
+let mult1 = (()=>{
+ let cache = {};
+ let calculate = (...args)=> {
+          let num = 1;
+          for (let val of args ){
+            num *= val;
+          }
+        return num
+        }
+ return (...args) => {
+        let property = args.join(',')
+        if(cache[property])  return cache[property];
+        return cache[property]= calculate.apply(null,args); // 缓存数值
+        }
+})()
+```
+### 三种方法解决循环中 var 定义函数的问题
 
 ```javascript
 //one 利用闭包
@@ -112,8 +164,6 @@ for (let i = 1; i <= 5; i++) {
 ```
 因为 `setTimeout` 是个异步函数，所以会先把循环全部执行完毕，这时候` i` 就是 固定了，所以会输出一堆 固定值。
 
-### 优缺点
- 
 
 ## 函数中的this对象
 ### 普通函数
