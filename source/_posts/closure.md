@@ -93,6 +93,7 @@ A()()//1
 
 ### 封装变量
 将不需要暴露在全局的变量封装成"私有变量"。
+
 ```javascript
 // 乘积
 let mult = (...args) =>{
@@ -136,6 +137,16 @@ let mult1 = (()=>{
         return cache[property]= calculate.apply(null,args); // 缓存数值
         }
 })()
+```
+### 延续变量
+```javascript
+// 解决数据丢失问题
+let imgSrc = (src) => {
+  let img = new Image();
+  img.src = src;
+}
+imgSrc('http://xxxx.com/img')
+// 在一些低版本浏览器中使用 imgSrc 函数，会丢失一些数据，
 ```
 ### 三种方法解决循环中 var 定义函数的问题
 
