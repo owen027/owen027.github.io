@@ -171,3 +171,4 @@ if(this.fetch) {
 ![fetch](/static/img/fetch.png)
 
 [Fetch规范](https://fetch.spec.whatwg.org/)
+
