@@ -140,13 +140,26 @@ let mult1 = (()=>{
 ```
 ### 延续变量
 ```javascript
-// 解决数据丢失问题
+// img案例
 let imgSrc = (src) => {
   let img = new Image();
   img.src = src;
 }
 imgSrc('http://xxxx.com/img')
-// 在一些低版本浏览器中使用 imgSrc 函数，会丢失一些数据，
+// 在一些低版本浏览器中使用 imgSrc 函数，会丢失一些数据，因为当函数调用结束后 img变量会随之销毁，此时可能未及时发出HTTP请求
+
+// 使用闭包解决数据丢失问题
+let imgSrc = (function (){
+  let imgs = [];
+  return function (src){
+  let img = new Image();
+  imgs.push(img)
+  img.src = src;
+}
+})()
+
+imgSrc('http://xxxx.com/img')
+
 ```
 ### 三种方法解决循环中 var 定义函数的问题
 
