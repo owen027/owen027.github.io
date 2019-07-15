@@ -34,9 +34,9 @@ console.log(clonePlane.__proto__) // Plane {blood: 100, attackLevel: 10, defens
 
 
 **由于 JavaScript 作为一门基于原型的语言，没有类的概念，每一个对象都是基于另一个对象的克隆，因此语言最初只有一个根对象 `Object.prototype`,如果A对象是从B对象克隆而来，那么B就是A的原型，如果C又是B的原型。它们之间就形成了一条原型链**
- 
+
 <label> **原型编程中有一个重要特性：访问对象中某个属性或方法，而对象本身没有对应属性和方法，那么它会从自己的原型链上查找，一直查到根对象为止**
-</label> 
+</label>
 **一级级向上，对性能有影响，寻找的层级越多，性能影响越大**
 
 ```javascript
@@ -75,7 +75,7 @@ console.log(Object.getPrototypeOf(obj1) === Object.prototype) // true
  <label> **JavaScript中没有类的概念，所以 `Object` 是一个构造函数，JavaScript 中的函数即可作为普通函数调用，又可作为构造器调用,当使用 new 运算调用函数时，函数就是构造器。**</label>
 
  ### `new`命令的原理
- 
+
 1. 创建一个空对象，作为返回的对象实例
 2. 将构造函数指向原型`prototype`属性（继承构造函数）
 3. 绑定作用域（ this 指向空对象 ）
@@ -123,7 +123,7 @@ Javascript 编程中 `call，apply 和 bind` 方法被广泛运用，在学习�
 
 > 都是在改变this 指向后调用该函数。
 ```JavaScript
-function test() {} 
+function test() {}
 //test() == test.call()
 
 let obj ={};
@@ -147,13 +147,13 @@ Array.apply(null,[1,,3,,4])//[1,undefined,3,undefined,4];
 
 ```
 空元素与undefined的差别
-- forEach方法会跳过空元素，但是不会跳过undefined。因此，遍历内部元素的时候，会得到不同的结果。  
+- forEach方法会跳过空元素，但是不会跳过undefined。因此，遍历内部元素的时候，会得到不同的结果。
 - <label>转换类似数组的对象</label>
 
 ```javascript
 let obj={0: 1, length: 2}
 Array.protetype.slice.apply(obj);//[1,undefined]
-  
+
 ```
 <label>被处理的对象必须有length属性，以及相对应的数字键。</label>
 
@@ -185,7 +185,7 @@ let obj = {
   n: 2
 };
 
-let newAdd = add.bind(obj, 5); //将x 绑定为 5 
+let newAdd = add.bind(obj, 5); //将x 绑定为 5
 newAdd(5) // 20
 newAdd(1,6)//12 6为起作用 相当于 5*2+1*2
 ```
@@ -194,7 +194,7 @@ newAdd(1,6)//12 6为起作用 相当于 5*2+1*2
 #### bind方法使用注意点
 - bind方法每运行一次，就返回一个新函数 需要一个变量接收
 
-#### 模拟 bind 
+#### 模拟 bind
 ```javascript
 
   Function.prototype.bind = function (...Args) {
@@ -205,7 +205,7 @@ newAdd(1,6)//12 6为起作用 相当于 5*2+1*2
     target = Args.shift(), //提取须绑定的对像
     func =  (...args) =>that.apply(target ? this : target || window, aArgs.concat(args));  //  aArgs.concat(args) 合并参数
     func.prototype = Object.create(this.prototype); // 继承原函数的原型
-    return func; 
+    return func;
   };
 
 ```
@@ -239,7 +239,7 @@ Array.prototype.slice.call([1, 2, 3], 0, 1) // [1]
 //调用时就变成了Array.prototype.slice.call。
 let slice = Function.prototype.call.bind(Array.prototype.slice);
 Function.prototype.slice.call([1, 2, 3], 0, 1) // [1]
-//slice([1, 2, 3], 0, 1) 
+//slice([1, 2, 3], 0, 1)
 
 let push = Function.prototype.call.bind(Array.prototype.push);
 let pop = Function.prototype.call.bind(Array.prototype.pop);
