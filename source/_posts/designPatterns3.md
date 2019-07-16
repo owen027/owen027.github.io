@@ -53,7 +53,40 @@ let Type = (function(){
 }())
 Type.isNumber(2) // true
 ```
-**实现AOP（面向切片编程）
+**实现AOP（面向切片编程）**
 >AOP 通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。
 JAVA 语言中 AOP 将一些跟核心业务逻辑模块无关的功能抽离出来，通常包括日志统计、安全控制、异常处理灯。再通过“动态织入”的方式掺入业务逻辑中。
 **好处：** 可以保持业务逻辑模块的纯净和高内聚，方便复用日志统计等功能模块。
+
+JavaScript中实现AOP是指把一个函数“动态织入”到另一个函数之中
+**具体实现：**
+```javascript
+Function.prototype.before = function(beforeFn){
+    let that = this; // 谁调用指向谁 下面是由 func 函数调用所以是指向 func
+
+    return function( ...args){
+        beforeFn.apply(this,args) // 执行回调函数 beforeFn
+        return that.apply(this,args) // 执行原函数
+    }
+}
+
+Function.prototype.after = function(afterFn){
+    let that = this; // 谁调用指向谁 下面是由befor函数调用所以是指向 befor
+    return function( ...args){
+        let ret = that.apply(this,args) // 执行并接收原对象
+        afterFn.apply(this,args) //  执行回调函数 beforeFn
+        return ret
+    }
+}
+var func = function (){
+    console.log(2)
+}
+func = func.before(function (){
+    console.log(1)
+}).after(function (){
+    console.log(3)
+})
+func()
+// 1 2 3
+```
+**函数柯里化 （function currying）**
