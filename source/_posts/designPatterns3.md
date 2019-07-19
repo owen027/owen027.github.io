@@ -94,7 +94,7 @@ func()
 
 **curring 又称部分求值；一个 curring 函数首先会接收一些参数，该函数并不会立即求值，而是继续返回另外一个函数，而刚传入的参数会被保存在形成的闭包中，待函数真正需要求值的时候，之前的所以参数都会被一次性用于求值**
 
-简单示例：
+**简单示例：**
 ```javascript
 function add(a,b) {
     return a + b
@@ -128,6 +128,47 @@ cost(100);
 cost(100);
 cost(); // 300
 
+cost(100)(100)(100)
 // currying
+/**
+ * 保存原函数参数返回到新函数中使用
+ */
+ function subCurry(){
+
+ }
+ /**
+  *  func(100) //100  func(100,100) //200  func(100,100,100) //300
+  *  func(100)(100) //200  func(100,100)(100) //300  func(100)(100)(100) //300
+  * 参数
+  */
+//  func(100,100,100) //300
+function count (...args){
+    let num = 0;
+     if(args.length>1){
+         for (let v of args){
+             num +=v
+         }
+         return num
+     }else{
+         return args[0]
+     }
+}
+
+// func(100)(100)
+ subCurry = (fun,...args) => (...Args) =>fun.apply(this,args.concat(Args));
+
+var  curry = function(func,length,...args){
+       let len = length || func.length;
+    return function(...Args){
+        console.log(len,length,func.length)
+        if (len){
+            return curry(subCurry.apply(this,[func].concat(Args)),--len)
+        }else{
+            return func.apply(this,Args)
+        }
+    }
+}
+
+
 
 ```
