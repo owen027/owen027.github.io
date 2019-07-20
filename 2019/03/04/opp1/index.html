@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="什么是对象对象是单个实物的抽象，通常需要一个模板，表示某一类实物的共同特征，然后对象根据这个模板生成。   面向对象编程的第一步，就是要生成对象。 对象是一个容器，封装了属性（property）和方法（method），属性是对象的状态，方法是对象的行为（完成某种任务）。比如，我们可以把动物抽象为animal对象，使用“属性”记录具体是那一种动物，使用“方法”表示动物的某种行为（奔跑、捕猎、休息等等">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-21T15:59:13.601Z">
+<meta property="og:updated_time" content="2019-07-11T12:31:01.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript OOP(一)">
 <meta name="twitter:description" content="什么是对象对象是单个实物的抽象，通常需要一个模板，表示某一类实物的共同特征，然后对象根据这个模板生成。   面向对象编程的第一步，就是要生成对象。 对象是一个容器，封装了属性（property）和方法（method），属性是对象的状态，方法是对象的行为（完成某种任务）。比如，我们可以把动物抽象为animal对象，使用“属性”记录具体是那一种动物，使用“方法”表示动物的某种行为（奔跑、捕猎、休息等等">
@@ -447,7 +447,7 @@
 <li>将这个空对象赋值给函数内部的this关键字。</li>
 <li>开始执行构造函数内部的代码。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*新生成一个空对象</span></span><br><span class="line"><span class="comment">*链接到原型</span></span><br><span class="line"><span class="comment">*绑定 this</span></span><br><span class="line"><span class="comment">*返回新对象</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_new</span>(<span class="params">constuctor,param</span>) </span>&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 获得构造函数</span></span><br><span class="line">    <span class="keyword">let</span> Con = [].shift.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="comment">// 链接到原型</span></span><br><span class="line">  <span class="keyword">let</span> obj = <span class="built_in">Object</span>.create(Con.prototype);</span><br><span class="line">    <span class="comment">// 绑定 this，执行构造函数</span></span><br><span class="line">    <span class="keyword">let</span> result = Con.apply(obj, <span class="built_in">arguments</span>)</span><br><span class="line">    <span class="comment">// 确保 new 出来的是个对象</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">typeof</span>(result) === <span class="string">'object'</span> &amp;&amp; result != <span class="literal">null</span>)  ? result : obj</span><br><span class="line">&#125;</span><br><span class="line"> <span class="keyword">var</span> fn = _new(</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.name = name; <span class="keyword">this</span>.age = age</span><br><span class="line">    &#125;, <span class="string">'Owen'</span>, <span class="number">28</span>);</span><br><span class="line">fn.name <span class="comment">// 'Owen'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*新生成一个空对象</span></span><br><span class="line"><span class="comment">*链接到原型</span></span><br><span class="line"><span class="comment">*绑定 this</span></span><br><span class="line"><span class="comment">*返回新对象</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_new</span>(<span class="params">constuctor,param</span>) </span>&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 获得构造函数</span></span><br><span class="line">    <span class="keyword">let</span> Con = [].shift.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="comment">//    创建一个空对象，继承构造函数的 prototype 属性 链接到原型</span></span><br><span class="line">  <span class="keyword">let</span> obj = <span class="built_in">Object</span>.create(Con.prototype);</span><br><span class="line">    <span class="comment">// 绑定 this，执行构造函数</span></span><br><span class="line">    <span class="keyword">let</span> result = Con.apply(obj, <span class="built_in">arguments</span>)</span><br><span class="line">    <span class="comment">// 确保 new 出来的是个对象</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">typeof</span>(result) === <span class="string">'object'</span> &amp;&amp; result != <span class="literal">null</span>)  ? result : obj</span><br><span class="line">&#125;</span><br><span class="line"> <span class="keyword">var</span> fn = _new(</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.name = name; <span class="keyword">this</span>.age = age</span><br><span class="line">    &#125;, <span class="string">'Owen'</span>, <span class="number">28</span>);</span><br><span class="line">fn.name <span class="comment">// 'Owen'</span></span><br></pre></td></tr></table></figure>
 <h3 id="new-target"><a href="#new-target" class="headerlink" title="new.target"></a>new.target</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">new</span>.target === f);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f() <span class="comment">// false</span></span><br><span class="line"><span class="keyword">new</span> f() <span class="comment">// true </span></span><br><span class="line"><span class="comment">//可利用 它来判断是否使用 new 命令</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">new</span>.target) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'请使用 new 命令调用！'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f() <span class="comment">// Uncaught Error: 请使用 new 命令调用！</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="this实质"><a href="#this实质" class="headerlink" title="this实质"></a><code>this</code>实质</h3><blockquote>
@@ -597,7 +597,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -608,7 +608,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -619,7 +619,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -717,7 +717,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.4k</span>
+    <span title="Site words total count">53.1k</span>
   
   -->
 </div>

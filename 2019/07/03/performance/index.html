@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="for,for…of, for…in, array iteration 运行速度 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性  for">
+<meta name="description" content="for,for…of, for…in, array iteration 运行速度 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性12345678910111213141516171819// 准备待测数组const NUM = 1e7;let arr = new Array(NUM).fill(1);// for 测试l">
 <meta name="keywords" content="Iteration">
 <meta property="og:type" content="article">
 <meta property="og:title" content="performance">
 <meta property="og:url" content="https://owen027.github.io/2019/07/03/performance/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="for,for…of, for…in, array iteration 运行速度 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性  for">
+<meta property="og:description" content="for,for…of, for…in, array iteration 运行速度 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性12345678910111213141516171819// 准备待测数组const NUM = 1e7;let arr = new Array(NUM).fill(1);// for 测试l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-03T15:19:29.575Z">
+<meta property="og:updated_time" content="2019-07-11T12:32:00.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="performance">
-<meta name="twitter:description" content="for,for…of, for…in, array iteration 运行速度 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性  for">
+<meta name="twitter:description" content="for,for…of, for…in, array iteration 运行速度 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性12345678910111213141516171819// 准备待测数组const NUM = 1e7;let arr = new Array(NUM).fill(1);// for 测试l">
 
 
 
@@ -344,6 +344,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavasSript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavasSript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -370,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  64
+                  910
                 </span>
               
 
@@ -386,7 +408,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -408,9 +430,232 @@
 
       
         <h1 id="for-for…of-for…in-array-iteration-运行速度"><a href="#for-for…of-for…in-array-iteration-运行速度" class="headerlink" title="for,for…of, for…in, array iteration 运行速度"></a>for,for…of, for…in, array iteration 运行速度</h1><ul>
-<li>由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆<a href="https://www.zhihu.com/question/29352114/answer/44050599" target="_blank" rel="noopener">eval</a>，沙盒化程度高,所以需使用<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node</a>环境测试来提高准确性</li>
+<li>由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆<a href="https://www.zhihu.com/question/29352114/answer/44050599" target="_blank" rel="noopener">eval</a>，沙盒化程度高,所以需使用<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node</a>环境测试来提高准确性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 准备待测数组</span></span><br><span class="line"><span class="keyword">const</span> NUM = <span class="number">1e7</span>;</span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(NUM).fill(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// for 测试</span></span><br><span class="line"><span class="keyword">let</span> arr1 =[];</span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'for'</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  arr1.push(arr[i])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'for'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Chrome/75.0.3770.100 Safari/537.36 环境</span></span><br><span class="line"><span class="comment">//VM1324:10 for: 576.733154296875ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// node v10.11.0 环境 </span></span><br><span class="line"><span class="comment">// for:  412.087ms</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2>
+<h2 id="for-几种写法"><a href="#for-几种写法" class="headerlink" title="for 几种写法"></a>for 几种写法</h2><ul>
+<li><p><strong>常规写法</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = []</span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'one'</span>)</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++ )&#123;</span><br><span class="line">    arr1.push(arr[i])</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'one'</span>)</span><br></pre></td></tr></table></figure>
+<p>   数组长度是会动态变化，每次循环会重新计算length长度，可能会出现死循环</p>
+</li>
+<li><p><strong>cache arr.length</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i++ )&#123;</span><br><span class="line">     arr1.push(arr[i])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   缓存length 值，无需重新计算length</p>
+</li>
+<li><p><strong>倒序</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = arr.length<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">     arr1.push(arr[i])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   比第二种方法更简洁</p>
+</li>
+<li><p><strong>倒叙简洁版</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = arr.length<span class="number">-1</span>; i--;)&#123;</span><br><span class="line">     arr1.push(arr[i])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  两个分号之间的表达式为 true 会一直执行直到 判断为 false (i = 0)</p>
+</li>
+<li><p><strong>正序简洁版</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, len;len = arr[i++]; )&#123;</span><br><span class="line">     arr1.push(arr[i])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   当 i 大于等于数组长度或arr[i++]值为false时 将停指循环，同时由于arr.length动态变化时可能会造成死循环</p>
+</li>
+</ul>
+<h2 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> arr)&#123;</span><br><span class="line">     arr1.push(value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>es6推出的迭代器，最简洁，可以是用 break，continue和return 终止循环</p>
+<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> arr)&#123;</span><br><span class="line">     arr1.push(arr[key])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>for…in 一般用于遍历对象，他会将本身属性和原型链上的属性（除系统内置属性）全部遍历出来即便是不可枚举属性（enumerable:false), 可以通过 <code>items.hasOwnProperty</code>来遍历本身属性,由于查询到自己的原型链上，所以性能方面比较差</p>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">    arr1.push(value)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>数组的迭代方法，没有返回值</p>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span>  arr1.push(value)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>浅拷贝原数组，并且返回一个新数组</p>
+<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><table>
+<thead>
+<tr>
+<th>测试次数</th>
+<th>常规for</th>
+<th>cache for</th>
+<th>倒序 for</th>
+<th>倒叙简版 for</th>
+<th>正序简版 for</th>
+<th>for..of</th>
+<th>for..in</th>
+<th>forEach</th>
+<th>map</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>542.121ms</td>
+<td>573.618ms</td>
+<td>764.181ms</td>
+<td>755.961ms</td>
+<td>571.464ms</td>
+<td>945.199ms</td>
+<td>4077.020ms</td>
+<td>625.859ms</td>
+<td>3573.946ms</td>
+</tr>
+<tr>
+<td>2</td>
+<td>430.008ms</td>
+<td>541.933ms</td>
+<td>524.474ms</td>
+<td>668.276ms</td>
+<td>553.475ms</td>
+<td>897.442ms</td>
+<td>4402.246ms</td>
+<td>605.271ms</td>
+<td>2732.859ms</td>
+</tr>
+<tr>
+<td>3</td>
+<td>409.531ms</td>
+<td>661.765ms</td>
+<td>534.167ms</td>
+<td>655.481ms</td>
+<td>600.939ms</td>
+<td>1141.093ms</td>
+<td>3806.704ms</td>
+<td>584.712ms</td>
+<td>2779.192ms</td>
+</tr>
+<tr>
+<td>4</td>
+<td>412.972ms</td>
+<td>643.868ms</td>
+<td>536.026ms</td>
+<td>674.081ms</td>
+<td>725.149ms</td>
+<td>930.655ms</td>
+<td>3201.387ms</td>
+<td>599.780ms</td>
+<td>3152.499ms</td>
+</tr>
+<tr>
+<td>5</td>
+<td>417.034ms</td>
+<td>624.323ms</td>
+<td>520.674ms</td>
+<td>799.568ms</td>
+<td>574.713ms</td>
+<td>943.449ms</td>
+<td>3261.512ms</td>
+<td>587.182ms</td>
+<td>2954.195ms</td>
+</tr>
+<tr>
+<td>6</td>
+<td>525.771ms</td>
+<td>955.737ms</td>
+<td>526.208ms</td>
+<td>771.443ms</td>
+<td>531.962ms</td>
+<td>954.199ms</td>
+<td>4351.009ms</td>
+<td>608.264ms</td>
+<td>2888.752ms</td>
+</tr>
+<tr>
+<td>7</td>
+<td>498.039ms</td>
+<td>602.703ms</td>
+<td>555.588ms</td>
+<td>531.464ms</td>
+<td>541.599ms</td>
+<td>916.678ms</td>
+<td>3264.334ms</td>
+<td>596.168ms</td>
+<td>2834.663ms</td>
+</tr>
+<tr>
+<td>8</td>
+<td>431.694ms</td>
+<td>523.381ms</td>
+<td>544.974ms</td>
+<td>527.472ms</td>
+<td>517.833ms</td>
+<td>1049.283ms</td>
+<td>3744.972ms</td>
+<td>600.286ms</td>
+<td>3467.499ms</td>
+</tr>
+<tr>
+<td>9</td>
+<td>417.521ms</td>
+<td>518.093ms</td>
+<td>547.404ms</td>
+<td>611.024ms</td>
+<td>594.503ms</td>
+<td>767.059ms</td>
+<td>4979.348ms</td>
+<td>601.420ms</td>
+<td>3638.023ms</td>
+</tr>
+<tr>
+<td>10</td>
+<td>424.806ms</td>
+<td>557.961ms</td>
+<td>535.541ms</td>
+<td>837.561ms</td>
+<td>541.882ms</td>
+<td>772.686ms</td>
+<td>3284.424ms</td>
+<td>602.443ms</td>
+<td>3599.642ms</td>
+</tr>
+<tr>
+<td>11</td>
+<td>409.402ms</td>
+<td>521.131ms</td>
+<td>534.265ms</td>
+<td>517.709ms</td>
+<td>551.397ms</td>
+<td>752.101ms</td>
+<td>3228.123ms</td>
+<td>629.625ms</td>
+<td>3535.545ms</td>
+</tr>
+<tr>
+<td>12</td>
+<td>425.362ms</td>
+<td>532.882ms</td>
+<td>406.637ms</td>
+<td>522.287ms</td>
+<td>570.259ms</td>
+<td>914.135ms</td>
+<td>3449.256ms</td>
+<td>800.857ms</td>
+<td>3429.123ms</td>
+</tr>
+<tr>
+<td>平均值</td>
+<td>439.2738ms</td>
+<td>578.3565ms</td>
+<td>553.1468ms</td>
+<td>651.7057ms</td>
+<td>507.8718ms</td>
+<td>909.0785ms</td>
+<td>3,686.96ms</td>
+<td>605.6298ms</td>
+<td>3,221.5056ms</td>
+</tr>
+<tr>
+<td>堆值差</td>
+<td>357245536 Byte</td>
+<td>357245808 Byte</td>
+<td>357245624 Byte</td>
+<td>357245872 Byte</td>
+<td>357246824 Byte</td>
+<td>199268080 Byte</td>
+<td>757187208 Byte</td>
+<td>357244456 Byte</td>
+<td>437247640 Byte</td>
+</tr>
+</tbody>
+</table>
+<p><strong>测试总结</strong></p>
+<ol>
+<li><strong>运行效率:</strong> <code>常规for</code> &gt; <code>正序简版 for</code>&gt; <code>倒序 for</code> &gt; <code>cache for</code> &gt; <code>倒叙简版 for</code>&gt; <code>forEach</code> &gt; <code>for..of</code>    &gt; <code>map</code> &gt; <code>for..in</code></li>
+<li>几种普通 for 循环占用内存相差不大, 而 <code>for..of</code> 占用运行内存最小 </li>
+<li><code>for..in</code> 性能最差，内存占用高，速度很慢</li>
+</ol>
+
       
     </div>
     
@@ -457,6 +702,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/05/nginx/" rel="prev" title="Nginx 学习">
+                Nginx 学习 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -541,7 +790,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -552,7 +801,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -563,7 +812,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -625,7 +874,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#for-for…of-for…in-array-iteration-运行速度"><span class="nav-number">1.</span> <span class="nav-text">for,for…of, for…in, array iteration 运行速度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for"><span class="nav-number">1.1.</span> <span class="nav-text">for</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#for-for…of-for…in-array-iteration-运行速度"><span class="nav-number">1.</span> <span class="nav-text">for,for…of, for…in, array iteration 运行速度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for-几种写法"><span class="nav-number">1.1.</span> <span class="nav-text">for 几种写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for…of"><span class="nav-number">1.2.</span> <span class="nav-text">for…of</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for…in"><span class="nav-number">1.3.</span> <span class="nav-text">for…in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forEach"><span class="nav-number">1.4.</span> <span class="nav-text">forEach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map"><span class="nav-number">1.5.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试"><span class="nav-number">1.6.</span> <span class="nav-text">性能测试</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -661,7 +910,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.4k</span>
+    <span title="Site words total count">53.1k</span>
   
   -->
 </div>
