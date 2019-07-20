@@ -1,6 +1,8 @@
 ---
 title: 高阶函数
 date: 2019-07-12 12:32:40
+caterogies:
+- design patterns
 tags:
 ---
 # 什么是高阶函数
@@ -129,18 +131,12 @@ cost(100);
 cost(); // 300
 
 cost(100)(100)(100)
+
 // currying
 /**
  * 保存原函数参数返回到新函数中使用
  */
- function subCurry(){
 
- }
- /**
-  *  func(100) //100  func(100,100) //200  func(100,100,100) //300
-  *  func(100)(100) //200  func(100,100)(100) //300  func(100)(100)(100) //300
-  * 参数
-  */
 //  func(100,100,100) //300
 function count (...args){
     let num = 0;
@@ -154,21 +150,23 @@ function count (...args){
      }
 }
 
-// func(100)(100)
- subCurry = (fun,...args) => (...Args) =>fun.apply(this,args.concat(Args));
-
-var  curry = function(func,length,...args){
-       let len = length || func.length;
-    return function(...Args){
-        console.log(len,length,func.length)
-        if (len){
-            return curry(subCurry.apply(this,[func].concat(Args)),--len)
+var  curry = function(func){
+        let args = []
+    return function fn(...Args){
+        if (Args.length){
+            [].push.apply(args,Args)
+            return fn
         }else{
-            return func.apply(this,Args)
+            return func.apply(this,args)
         }
     }
 }
+cost = curry(count);
 
+cost(100);
+cost(100);
+cost(100);
+cost(); // 300
 
 
 ```
