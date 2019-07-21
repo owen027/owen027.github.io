@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="什么是高阶函数 函数可以作为参数被传递，也可以作为返回值输出  函数作为参数传递 将函数作为参数传递，我们就可以抽离以部分容易变化的业务逻辑，这样可以分离业务代码中变与不变的部分  回调函数：  将函数传进一个方法中，函数不会立即执行，等待出来结果之后在执行。123456789let func = function (callback)&amp;#123;    if(n === &apos;owen&apos;)&amp;#123">
+<meta name="description" content="什么是高阶函数 《javascript设计模式和开发实践》中定义 函数既可作为参数被传递，也可以作为返回值输出  满足以下条件:  接受一个或多个函数作为输入 输出一个函数  高阶函数一般是那些函数型包含多于函数。在函数式编程中，返回另一个函数的高阶函数被称为Curry化的函数。 函数作为参数传递 将函数作为参数传递，我们就可以抽离以部分容易变化的业务逻辑，这样可以分离业务代码中变与不变的部分">
 <meta name="keywords" content="Javascript, ES5&#x2F;6&#x2F;7, Axios, Promise, Vue, NodeJs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高阶函数">
+<meta property="og:title" content="高阶函数（Heigher-order function）">
 <meta property="og:url" content="https://owen027.github.io/2019/07/12/designPatterns3/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="什么是高阶函数 函数可以作为参数被传递，也可以作为返回值输出  函数作为参数传递 将函数作为参数传递，我们就可以抽离以部分容易变化的业务逻辑，这样可以分离业务代码中变与不变的部分  回调函数：  将函数传进一个方法中，函数不会立即执行，等待出来结果之后在执行。123456789let func = function (callback)&amp;#123;    if(n === &apos;owen&apos;)&amp;#123">
+<meta property="og:description" content="什么是高阶函数 《javascript设计模式和开发实践》中定义 函数既可作为参数被传递，也可以作为返回值输出  满足以下条件:  接受一个或多个函数作为输入 输出一个函数  高阶函数一般是那些函数型包含多于函数。在函数式编程中，返回另一个函数的高阶函数被称为Curry化的函数。 函数作为参数传递 将函数作为参数传递，我们就可以抽离以部分容易变化的业务逻辑，这样可以分离业务代码中变与不变的部分">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-21T15:20:07.955Z">
+<meta property="og:updated_time" content="2019-07-21T15:53:32.519Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高阶函数">
-<meta name="twitter:description" content="什么是高阶函数 函数可以作为参数被传递，也可以作为返回值输出  函数作为参数传递 将函数作为参数传递，我们就可以抽离以部分容易变化的业务逻辑，这样可以分离业务代码中变与不变的部分  回调函数：  将函数传进一个方法中，函数不会立即执行，等待出来结果之后在执行。123456789let func = function (callback)&amp;#123;    if(n === &apos;owen&apos;)&amp;#123">
+<meta name="twitter:title" content="高阶函数（Heigher-order function）">
+<meta name="twitter:description" content="什么是高阶函数 《javascript设计模式和开发实践》中定义 函数既可作为参数被传递，也可以作为返回值输出  满足以下条件:  接受一个或多个函数作为输入 输出一个函数  高阶函数一般是那些函数型包含多于函数。在函数式编程中，返回另一个函数的高阶函数被称为Curry化的函数。 函数作为参数传递 将函数作为参数传递，我们就可以抽离以部分容易变化的业务逻辑，这样可以分离业务代码中变与不变的部分">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <title>高阶函数 | Owen</title>
+  <title>高阶函数（Heigher-order function） | Owen</title>
   
 
 
@@ -321,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">高阶函数</h1>
+          <h1 class="post-title" itemprop="name headline">高阶函数（Heigher-order function）</h1>
         
 
         <div class="post-meta">
@@ -370,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k
+                  1.5k
                 </span>
               
 
@@ -408,8 +408,14 @@
 
       
         <h1 id="什么是高阶函数"><a href="#什么是高阶函数" class="headerlink" title="什么是高阶函数"></a>什么是高阶函数</h1><blockquote>
-<p>函数可以作为参数被传递，也可以作为返回值输出</p>
+<p>《javascript设计模式和开发实践》中定义 函数既可作为参数被传递，也可以作为返回值输出</p>
 </blockquote>
+<p><strong>满足以下条件:</strong></p>
+<ul>
+<li>接受一个或多个函数作为输入</li>
+<li>输出一个函数</li>
+</ul>
+<p>高阶函数一般是那些函数型包含多于函数。在函数式编程中，返回另一个函数的高阶函数被称为Curry化的函数。</p>
 <h2 id="函数作为参数传递"><a href="#函数作为参数传递" class="headerlink" title="函数作为参数传递"></a>函数作为参数传递</h2><blockquote>
 <p>将函数作为参数传递，我们就可以抽离以部分容易变化的业务逻辑，这样可以分离业务代码中变与不变的部分</p>
 </blockquote>
@@ -485,6 +491,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/21/singletonPattern/" rel="prev" title="单例模式 （Singleton Pattern）">
+                单例模式 （Singleton Pattern） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -569,7 +579,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -689,7 +699,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">53.6k</span>
+    <span title="Site words total count">53.7k</span>
   
   -->
 </div>
