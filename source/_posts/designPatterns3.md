@@ -170,3 +170,76 @@ cost(); // 300
 
 
 ```
+
+
+### 函数节流
+
+JavaScript 中大多数情况都是用户主动出发函数，除非函数本身的实现不合理，否则一般不会遇到跟性能相关的问题，少数情况下，函数不是由用户直接触发控制，可能被频繁调用造成严重的性能问题。
+比如：
+```javascript
+window.addEventListener('resize', function(e) {
+   // do something...
+});
+window.addEventListener('scroll', function(e) {
+   // do something...
+});
+Dom.addEventListener('mousemove', function(e) {
+   // do something...
+});
+
+// progress
+xhr.upload.addEventListener("progress", function(result) {
+    // do something...
+}, false);
+
+// ...
+```
+**上述事件1秒种触发很多次，并且常常操作DOM节点，非常损耗性能，浏览器会因此吃不消而卡顿；实际我们不需要触发如此高的频率因此我们可以在一段时间内忽略掉一些执行次数**
+
+#### 节流原理：
+> 如果持续触发事件，可每隔一段时间只执行一次。
+ 
+##### 使用定时器实现节流
+
+> 将即将被执行的函数用 `setTimeout` 函数延迟一段时间执行，如果该定时器未执行完成则忽略接下下来的需被执行的函数。
+```javascript
+ function throttle(func,wait) {
+      let timer, firstFlag = true; //第一次立即执行
+      return function(...args) {
+          if(timer)  return false; // 如果存在定时器这不执行
+
+          let that = this;
+          if(firstFlag){
+              firstFlag = false;
+             return func.apply(that,args);
+          }
+          timer = setTimeout(function(){
+               clearTimeout(timer);
+               timer = null;
+               func.apply(that,args);
+            },wait)
+      }
+ }
+ window.addEventListener('scroll', throttle(function(e) {
+  console.log(e) 
+},1000));
+```
+
+### 函数防抖
+
+> 和节流一定时间段内只调用一次事件处理函数不同，防抖是一定时间段内没有再触发事件，事件处理函数才会执行一次，如果设定的时间到来之前，又一次触发了事件，就重新开始延时。（用户不再触发对应事件才执行一次事件）
+```javascript
+function debounce(func,wait) {
+    let timer;
+    return function(...args) {
+        let that = this;
+        clearTimeout(timer);
+        timer = setTimeout(function(){
+            func.apply(that,args)
+        },wait)
+    }
+}
+ window.addEventListener('scroll', debounce(function(e) {
+  console.log(e) 
+},1000));
+```
