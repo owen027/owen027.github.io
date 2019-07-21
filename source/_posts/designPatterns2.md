@@ -1,5 +1,5 @@
 ---
-title: 设计模式基础（二）
+title: JavaScript  设计模式基础（二）
 date: 2019-07-09 13:13:34
 categories:
 - design patterns

@@ -1,5 +1,5 @@
 ---
-title: 高阶函数（Heigher-order function）
+title: JavaScript 高阶函数（Heigher-order function）
 date: 2019-07-12 12:32:40
 caterogies:
 - design patterns
