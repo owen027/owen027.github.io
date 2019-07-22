@@ -1,9 +1,10 @@
 ---
 title: JavaScript 高阶函数（Heigher-order function）
 date: 2019-07-12 12:32:40
-caterogies:
+categories:
 - design patterns
 tags:
+- Heigher-order
 ---
 # 什么是高阶函数
 >《javascript设计模式和开发实践》中定义 函数既可作为参数被传递，也可以作为返回值输出
@@ -204,7 +205,7 @@ xhr.upload.addEventListener("progress", function(result) {
 
 #### 节流原理：
 > 如果持续触发事件，可每隔一段时间只执行一次。
- 
+
 ##### 使用定时器实现节流
 
 > 将即将被执行的函数用 `setTimeout` 函数延迟一段时间执行，如果该定时器未执行完成则忽略接下下来的需被执行的函数。
@@ -227,7 +228,7 @@ xhr.upload.addEventListener("progress", function(result) {
       }
  }
  window.addEventListener('scroll', throttle(function(e) {
-  console.log(e) 
+  console.log(e)
 },1000));
 ```
 
@@ -246,6 +247,16 @@ function debounce(func,wait) {
     }
 }
  window.addEventListener('scroll', debounce(function(e) {
-  console.log(e) 
+  console.log(e)
 },1000));
 ```
+
+**参考资料**
+
+《JavaScript设计模式与开发实践》
+
+[基维 AOP](https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1)
+
+[基维 高阶函数](https://zh.wikipedia.org/wiki/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0)
+
+[JavaScript专题之跟着 underscore 学节流](https://github.com/mqyqingfeng/Blog/issues/26)
