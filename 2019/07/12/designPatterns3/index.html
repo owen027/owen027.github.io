@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="javascript">
+  <meta name="keywords" content="Heigher-order,">
 
 
 
@@ -89,16 +89,16 @@
 
 
 <meta name="description" content="什么是高阶函数 《javascript设计模式和开发实践》中定义 函数既可作为参数被传递，也可以作为返回值输出  满足以下条件:  接受一个或多个函数作为输入 输出一个函数  高阶函数一般是那些函数型包含多于函数。在函数式编程中，返回另一个函数的高阶函数被称为Curry化的函数。 函数作为参数传递 将函数作为参数传递，我们就可以抽离以部分容易变化的业务逻辑，这样可以分离业务代码中变与不变的部分">
-<meta name="keywords" content="Javascript, ES5&#x2F;6&#x2F;7, Axios, Promise, Vue, NodeJs">
+<meta name="keywords" content="Heigher-order">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高阶函数（Heigher-order function）">
+<meta property="og:title" content="JavaScript 高阶函数（Heigher-order function）">
 <meta property="og:url" content="https://owen027.github.io/2019/07/12/designPatterns3/index.html">
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="什么是高阶函数 《javascript设计模式和开发实践》中定义 函数既可作为参数被传递，也可以作为返回值输出  满足以下条件:  接受一个或多个函数作为输入 输出一个函数  高阶函数一般是那些函数型包含多于函数。在函数式编程中，返回另一个函数的高阶函数被称为Curry化的函数。 函数作为参数传递 将函数作为参数传递，我们就可以抽离以部分容易变化的业务逻辑，这样可以分离业务代码中变与不变的部分">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-21T15:53:32.519Z">
+<meta property="og:updated_time" content="2019-07-23T14:38:34.242Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高阶函数（Heigher-order function）">
+<meta name="twitter:title" content="JavaScript 高阶函数（Heigher-order function）">
 <meta name="twitter:description" content="什么是高阶函数 《javascript设计模式和开发实践》中定义 函数既可作为参数被传递，也可以作为返回值输出  满足以下条件:  接受一个或多个函数作为输入 输出一个函数  高阶函数一般是那些函数型包含多于函数。在函数式编程中，返回另一个函数的高阶函数被称为Curry化的函数。 函数作为参数传递 将函数作为参数传递，我们就可以抽离以部分容易变化的业务逻辑，这样可以分离业务代码中变与不变的部分">
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <title>高阶函数（Heigher-order function） | Owen</title>
+  <title>JavaScript 高阶函数（Heigher-order function） | Owen</title>
   
 
 
@@ -321,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">高阶函数（Heigher-order function）</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript 高阶函数（Heigher-order function）</h1>
         
 
         <div class="post-meta">
@@ -343,6 +343,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/design-patterns/" itemprop="url" rel="index">
+                    <span itemprop="name">design patterns</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -445,11 +467,16 @@
 <p>如果持续触发事件，可每隔一段时间只执行一次。</p>
 </blockquote>
 <h5 id="使用定时器实现节流"><a href="#使用定时器实现节流" class="headerlink" title="使用定时器实现节流"></a>使用定时器实现节流</h5><blockquote>
-<p>将即将被执行的函数用 <code>setTimeout</code> 函数延迟一段时间执行，如果该定时器未执行完成则忽略接下下来的需被执行的函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">func,wait</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> timer, firstFlag = <span class="literal">true</span>; <span class="comment">//第一次立即执行</span></span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">if</span>(timer)  <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果存在定时器这不执行</span></span><br><span class="line"></span><br><span class="line">          <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">          <span class="keyword">if</span>(firstFlag)&#123;</span><br><span class="line">              firstFlag = <span class="literal">false</span>;</span><br><span class="line">             <span class="keyword">return</span> func.apply(that,args);</span><br><span class="line">          &#125;</span><br><span class="line">          timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">               clearTimeout(timer);</span><br><span class="line">               timer = <span class="literal">null</span>;</span><br><span class="line">               func.apply(that,args);</span><br><span class="line">            &#125;,wait)</span><br><span class="line">      &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, throttle(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e) </span><br><span class="line">&#125;,<span class="number">1000</span>));</span><br></pre></td></tr></table></figure></p>
+<p>将即将被执行的函数用 <code>setTimeout</code> 函数延迟一段时间执行，如果该定时器未执行完成则忽略接下下来的需被执行的函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">func,wait</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> timer, firstFlag = <span class="literal">true</span>; <span class="comment">//第一次立即执行</span></span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">if</span>(timer)  <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 如果存在定时器这不执行</span></span><br><span class="line"></span><br><span class="line">          <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">          <span class="keyword">if</span>(firstFlag)&#123;</span><br><span class="line">              firstFlag = <span class="literal">false</span>;</span><br><span class="line">             <span class="keyword">return</span> func.apply(that,args);</span><br><span class="line">          &#125;</span><br><span class="line">          timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">               clearTimeout(timer);</span><br><span class="line">               timer = <span class="literal">null</span>;</span><br><span class="line">               func.apply(that,args);</span><br><span class="line">            &#125;,wait)</span><br><span class="line">      &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, throttle(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e)</span><br><span class="line">&#125;,<span class="number">1000</span>));</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h3 id="函数防抖"><a href="#函数防抖" class="headerlink" title="函数防抖"></a>函数防抖</h3><blockquote>
-<p>和节流一定时间段内只调用一次事件处理函数不同，防抖是一定时间段内没有再触发事件，事件处理函数才会执行一次，如果设定的时间到来之前，又一次触发了事件，就重新开始延时。（用户不再触发对应事件才执行一次事件）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">func,wait</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            func.apply(that,args)</span><br><span class="line">        &#125;,wait)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, debounce(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e) </span><br><span class="line">&#125;,<span class="number">1000</span>));</span><br></pre></td></tr></table></figure></p>
+<p>和节流一定时间段内只调用一次事件处理函数不同，防抖是一定时间段内没有再触发事件，事件处理函数才会执行一次，如果设定的时间到来之前，又一次触发了事件，就重新开始延时。（用户不再触发对应事件才执行一次事件）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">func,wait</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            func.apply(that,args)</span><br><span class="line">        &#125;,wait)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, debounce(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e)</span><br><span class="line">&#125;,<span class="number">1000</span>));</span><br></pre></td></tr></table></figure></p>
 </blockquote>
+<p><strong>参考资料</strong></p>
+<p>《JavaScript设计模式与开发实践》</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">基维 AOP</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">基维 高阶函数</a></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/26" target="_blank" rel="noopener">JavaScript专题之跟着 underscore 学节流</a></p>
 
       
     </div>
@@ -473,6 +500,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Heigher-order/" rel="tag"><i class="fa fa-tag"></i> Heigher-order</a>
+          
+        </div>
+      
 
       
       
@@ -482,8 +515,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/09/designPatterns2/" rel="next" title="设计模式基础（二）">
-                <i class="fa fa-chevron-left"></i> 设计模式基础（二）
+              <a href="/2019/07/09/designPatterns2/" rel="next" title="JavaScript  设计模式基础（二）">
+                <i class="fa fa-chevron-left"></i> JavaScript  设计模式基础（二）
               </a>
             
           </div>
@@ -492,8 +525,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/21/singletonPattern/" rel="prev" title="单例模式 （Singleton Pattern）">
-                单例模式 （Singleton Pattern） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/21/singletonPattern/" rel="prev" title="JavaScript 单例模式 （Singleton Pattern）">
+                JavaScript 单例模式 （Singleton Pattern） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -579,7 +612,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -590,7 +623,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -601,7 +634,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -699,7 +732,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">53.7k</span>
+    <span title="Site words total count">56.3k</span>
   
   -->
 </div>

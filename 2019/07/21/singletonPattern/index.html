@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="javascript">
+  <meta name="keywords" content="Singleton,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="概念待续。。。">
-<meta name="keywords" content="Javascript, ES5&#x2F;6&#x2F;7, Axios, Promise, Vue, NodeJs">
+<meta name="description" content="概念 确保只有一个实例，并提供全局访问。  实现思路一个类能返回对象一个引用（永远是同一个）和一个获得该实例的方法（必须是静态方法，通常命名为getIntance）；当我们调用这个方法时，类持有的引用不为空则返回这个引用，如果为空须创建该类实例并将实例的引用赋予该类保持的引用；同时将该类的构造函数定义为私有方法，那么其他环境就无法通过调用该类的构造函数来实例化该类的对象，只能通过该类提供的静态方法">
+<meta name="keywords" content="Singleton">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例模式 （Singleton Pattern）">
+<meta property="og:title" content="JavaScript 单例模式 （Singleton Pattern）">
 <meta property="og:url" content="https://owen027.github.io/2019/07/21/singletonPattern/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="概念待续。。。">
+<meta property="og:description" content="概念 确保只有一个实例，并提供全局访问。  实现思路一个类能返回对象一个引用（永远是同一个）和一个获得该实例的方法（必须是静态方法，通常命名为getIntance）；当我们调用这个方法时，类持有的引用不为空则返回这个引用，如果为空须创建该类实例并将实例的引用赋予该类保持的引用；同时将该类的构造函数定义为私有方法，那么其他环境就无法通过调用该类的构造函数来实例化该类的对象，只能通过该类提供的静态方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-21T15:53:32.524Z">
+<meta property="og:updated_time" content="2019-07-23T14:38:34.243Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单例模式 （Singleton Pattern）">
-<meta name="twitter:description" content="概念待续。。。">
+<meta name="twitter:title" content="JavaScript 单例模式 （Singleton Pattern）">
+<meta name="twitter:description" content="概念 确保只有一个实例，并提供全局访问。  实现思路一个类能返回对象一个引用（永远是同一个）和一个获得该实例的方法（必须是静态方法，通常命名为getIntance）；当我们调用这个方法时，类持有的引用不为空则返回这个引用，如果为空须创建该类实例并将实例的引用赋予该类保持的引用；同时将该类的构造函数定义为私有方法，那么其他环境就无法通过调用该类的构造函数来实例化该类的对象，只能通过该类提供的静态方法">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <title>单例模式 （Singleton Pattern） | Owen</title>
+  <title>JavaScript 单例模式 （Singleton Pattern） | Owen</title>
   
 
 
@@ -321,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">单例模式 （Singleton Pattern）</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript 单例模式 （Singleton Pattern）</h1>
         
 
         <div class="post-meta">
@@ -343,6 +343,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/design-patterns/" itemprop="url" rel="index">
+                    <span itemprop="name">design patterns</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -370,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4
+                  1.2k
                 </span>
               
 
@@ -386,7 +408,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -407,7 +429,28 @@
       
 
       
-        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>待续。。。</p>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote>
+<p>确保只有一个实例，并提供全局访问。</p>
+</blockquote>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>一个类能返回对象一个引用（永远是同一个）和一个获得该实例的方法（必须是静态方法，通常命名为<code>getIntance</code>）；当我们调用这个方法时，类持有的引用不为空则返回这个引用，如果为空须创建该类实例并将实例的引用赋予该类保持的引用；同时将该类的构造函数定义为私有方法，那么其他环境就无法通过调用该类的构造函数来实例化该类的对象，只能通过该类提供的静态方法得到该类唯一的实例。</p>
+<h3 id="实现-Java-语言中的单例模式"><a href="#实现-Java-语言中的单例模式" class="headerlink" title="实现 Java 语言中的单例模式"></a>实现 Java 语言中的单例模式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton &#123;</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123; &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> Singleton getInstance &#123;</span><br><span class="line">            <span class="keyword">if</span> (INSTANCE == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(INSTANCE = <span class="keyword">null</span>) &#123;</span><br><span class="line">                       INSTANCE = <span class="keyword">new</span> Singleton()</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> INSTANCE;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="实现-JavaScript-语言中的单例模式"><a href="#实现-JavaScript-语言中的单例模式" class="headerlink" title="实现 JavaScript 语言中的单例模式"></a>实现 JavaScript 语言中的单例模式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> Singleton = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Singleton.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line">Singleton.getInstance = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">let</span> instance;</span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(instance) <span class="keyword">return</span> instance;</span><br><span class="line">       <span class="keyword">return</span> instance = <span class="keyword">new</span> Singleton(name)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="keyword">let</span> s1 = Singleton.getInstance(<span class="string">'owen'</span>); <span class="comment">// Singleton &#123;name: "owen"&#125;</span></span><br><span class="line"><span class="keyword">let</span> s2 = Singleton.getInstance(<span class="string">'guowen'</span>); <span class="comment">// Singleton.getInstance('guowen');</span></span><br><span class="line">s1 === s2 <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>JavaScript中单例作为一个命名空间提供者，从全局命名空间里提供一个唯一的访问点来访问该对象。</p>
+</blockquote>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>使用命名空间可以降低全局变量带来的命名污染；<br>最简单的方法是对象字面量<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> globalWeb = &#123;</span><br><span class="line">    a() &#123;&#125;,</span><br><span class="line">    b() &#123;&#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或者使用闭包<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> Singleton = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> instance;</span><br><span class="line">    <span class="keyword">let</span> init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> name = <span class="string">'owen'</span>;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            name,</span><br><span class="line">            data()&#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            method:&#123; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getInstance() &#123;</span><br><span class="line">            <span class="keyword">if</span>(instance) <span class="keyword">return</span> instance;</span><br><span class="line">            <span class="keyword">return</span> instance = init()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;())</span><br><span class="line"><span class="keyword">let</span> app = Singleton.getInstance() <span class="comment">// &#123;name: "owen", data: ƒ, method: &#123;…&#125;&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="惰性单例"><a href="#惰性单例" class="headerlink" title="惰性单例"></a>惰性单例</h3><blockquote>
+<p>惰性单例指在需要的时候才创建对象实例，在实现开发中非常有用，即目标对象只有在使用的时候才被创建，而不是页面加载好时创建。</p>
+</blockquote>
+<h4 id="模态框示例"><a href="#模态框示例" class="headerlink" title="模态框示例"></a>模态框示例</h4><p> 点击一个按钮弹窗一个模态框，很明显页面是唯一的，一次不会弹窗多个模态框的情况</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>modal box<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    * &#123;</span></span><br><span class="line"><span class="undefined">        margin: 0;</span></span><br><span class="line"><span class="undefined">        padding:0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">   html&#123;</span></span><br><span class="line"><span class="undefined">   width:100%;</span></span><br><span class="line"><span class="undefined">   height:100%;</span></span><br><span class="line"><span class="undefined">   &#125;</span></span><br><span class="line"><span class="undefined">    .Owen &#123;</span></span><br><span class="line"><span class="undefined">        width:30%;</span></span><br><span class="line"><span class="undefined">        height:30%;</span></span><br><span class="line"><span class="undefined">        margin:10% auto;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    #modal &#123;</span></span><br><span class="line"><span class="undefined">        width:100%;</span></span><br><span class="line"><span class="undefined">        height:100%;</span></span><br><span class="line"><span class="undefined">        position:fixed;</span></span><br><span class="line"><span class="undefined">        left:0;</span></span><br><span class="line"><span class="undefined">        top:0;</span></span><br><span class="line"><span class="undefined">        background: rgba(0, 0, 0, 0.52);</span></span><br><span class="line"><span class="undefined">        display:none;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .main&#123;</span></span><br><span class="line"><span class="undefined">        width:30%;</span></span><br><span class="line"><span class="undefined">        height:30%;</span></span><br><span class="line"><span class="undefined">        margin:10% auto;</span></span><br><span class="line"><span class="undefined">        text-align: center;</span></span><br><span class="line"><span class="undefined">        background-color: #b0e8ff;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Owen"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span>&gt;</span>Owen<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"modal"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                我是弹框</span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> openModal = <span class="built_in">document</span>.querySelector(<span class="string">"button"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> modal = <span class="built_in">document</span>.querySelector(<span class="string">"#modal"</span>)</span></span><br><span class="line"><span class="javascript">    openModal.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">       modal.style.display = <span class="string">'block'</span></span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 第一种方法是在页面加载完成时创建好这个弹框，一开始就是隐藏的，只有点击按钮的时候才显示，这种方式有一个问题，就是我们进入页面，只是看看其他内容，不做任何操作；这样就造成资源浪费</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>modal box<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    * &#123;</span></span><br><span class="line"><span class="undefined">        margin: 0;</span></span><br><span class="line"><span class="undefined">        padding:0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">   html&#123;</span></span><br><span class="line"><span class="undefined">   width:100%;</span></span><br><span class="line"><span class="undefined">   height:100%;</span></span><br><span class="line"><span class="undefined">   &#125;</span></span><br><span class="line"><span class="undefined">    .Owen &#123;</span></span><br><span class="line"><span class="undefined">        width:30%;</span></span><br><span class="line"><span class="undefined">        height:30%;</span></span><br><span class="line"><span class="undefined">        margin:10% auto;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    #modal &#123;</span></span><br><span class="line"><span class="undefined">        width:100%;</span></span><br><span class="line"><span class="undefined">        height:100%;</span></span><br><span class="line"><span class="undefined">        position:fixed;</span></span><br><span class="line"><span class="undefined">        left:0;</span></span><br><span class="line"><span class="undefined">        top:0;</span></span><br><span class="line"><span class="undefined">        background: rgba(0, 0, 0, 0.52);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .main&#123;</span></span><br><span class="line"><span class="undefined">        width:30%;</span></span><br><span class="line"><span class="undefined">        height:30%;</span></span><br><span class="line"><span class="undefined">        margin:10% auto;</span></span><br><span class="line"><span class="undefined">        padding:20px;</span></span><br><span class="line"><span class="undefined">        text-align: right;</span></span><br><span class="line"><span class="undefined">        background-color: #b0e8ff;</span></span><br><span class="line"><span class="undefined">        position:relative;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .main div &#123;</span></span><br><span class="line"><span class="undefined">        text-align: center;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .main span &#123;</span></span><br><span class="line"><span class="undefined">        display: inline-block;</span></span><br><span class="line"><span class="undefined">        padding:5px;</span></span><br><span class="line"><span class="undefined">        cursor:pointer;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Owen"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span>&gt;</span>点我<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="undefined">    init()</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> openModal = <span class="built_in">document</span>.querySelector(<span class="string">"button"</span>)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> createModal =( <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> flag;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 生成 Modal 容器</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span></span><br><span class="line"><span class="javascript">        div.id = <span class="string">"modal"</span></span></span><br><span class="line"><span class="javascript">        div.style.display = <span class="string">"none"</span>;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span>(flag) <span class="keyword">return</span> div;</span></span><br><span class="line"><span class="javascript">            flag = <span class="literal">true</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> fra = <span class="built_in">document</span>.createDocumentFragment();</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 添加 Modal 内容</span></span></span><br><span class="line"><span class="xml">            els = `<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span></span><br><span class="line"><span class="javascript">                    &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"close"</span>&gt;×&lt;<span class="regexp">/span&gt;</span></span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="undefined">                            我是弹框</span></span><br><span class="line"><span class="xml">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="undefined">                    `</span></span><br><span class="line"><span class="undefined">            div.innerHTML = els;</span></span><br><span class="line"><span class="undefined">            fra.appendChild(div)</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.body.appendChild(fra)</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 关闭 Modal</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> close = <span class="built_in">document</span>.querySelector(<span class="string">'.close'</span>)</span></span><br><span class="line"><span class="javascript">            close.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                flag = <span class="literal">false</span>;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">document</span>.body.removeChild(div)</span></span><br><span class="line"><span class="undefined">            &#125;)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> div</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;())</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 显示 Modal</span></span></span><br><span class="line"><span class="javascript">    openModal.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">       createModal().style.display = <span class="string">"block"</span>;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>第二种方法，只执行一次DOM的创建修改操作，不用频繁的创建和删除节点，提高资源利用率；</p>
+<p><strong>参考资料</strong></p>
+<p>《JavaScript设计模式与开发实践》<br><a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">基维</a></p>
+<p><a href="https://www.cnblogs.com/TomXu/archive/2012/02/20/2352817.html" target="_blank" rel="noopener">大叔</a></p>
 
       
     </div>
@@ -431,6 +474,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Singleton/" rel="tag"><i class="fa fa-tag"></i> Singleton</a>
+          
+        </div>
+      
 
       
       
@@ -440,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/12/designPatterns3/" rel="next" title="高阶函数（Heigher-order function）">
-                <i class="fa fa-chevron-left"></i> 高阶函数（Heigher-order function）
+              <a href="/2019/07/12/designPatterns3/" rel="next" title="JavaScript 高阶函数（Heigher-order function）">
+                <i class="fa fa-chevron-left"></i> JavaScript 高阶函数（Heigher-order function）
               </a>
             
           </div>
@@ -449,6 +498,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/23/react/" rel="prev" title="React 基础学习">
+                React 基础学习 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -533,7 +586,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -544,7 +597,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -555,7 +608,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -617,7 +670,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现思路"><span class="nav-number">2.</span> <span class="nav-text">实现思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-Java-语言中的单例模式"><span class="nav-number">2.1.</span> <span class="nav-text">实现 Java 语言中的单例模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-JavaScript-语言中的单例模式"><span class="nav-number">2.2.</span> <span class="nav-text">实现 JavaScript 语言中的单例模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命名空间"><span class="nav-number">3.1.</span> <span class="nav-text">命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#惰性单例"><span class="nav-number">3.2.</span> <span class="nav-text">惰性单例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模态框示例"><span class="nav-number">3.2.1.</span> <span class="nav-text">模态框示例</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -653,7 +706,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">53.7k</span>
+    <span title="Site words total count">56.3k</span>
   
   -->
 </div>
