@@ -1,7 +1,7 @@
 ---
-title: react
+title: React 基础学习
 date: 2019-07-23 20:35:20
-categorise:
+categories:
 - React
 tags:
 - basic
@@ -76,6 +76,97 @@ class Square extends React.Component {
 ```
 render方法中的`onClick` 事件监听函数中调用`this.setState`方法，可以设置`this.state` 中的属性
 推荐使用箭头函数，避免[this 造成困扰](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)
+
+**当组件的数据完全受到父组件的控制（不再持有 state) 时，将此类组件称之为“受控组件”，并且可简化为==函数组件==**
+```javascript
+/**
+ *因为此组件的数据受到父组件的控制（不再持有 state) 
+ *所以将此类组件称之为“受控组件”
+ *父组件完全控制了子组件的数据
+ * 并且可简化为函数组件
+ * @param {*} props
+ * @returns
+ * 
+ */
+ function Square(props) {
+  return (
+    < button className = "square"
+             onClick = { props.onClick } >
+      { props.value }
+    </button>
+  );
+}
+
+class Board extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      squares: Array(9).fill(null),
+      xIsNext:true, // 先落子，并确认该哪位玩家落子
+    }
+  }
+  /**
+   * 只接受一个squares副本，而不直接修改本身数据
+   * 1. 这样可以简化复杂的功能，不可变性使得复杂的特性更容易实现。
+   * 2. 可以跟踪数据的改变，如果直接修改源数据就很难跟踪变化的数据。
+   * 3. 可以帮助我们在 React 中创建 purecomponents。可以轻松的确定不可变数据是否发生了改变，
+   *    从而确定何时对组件进行重新渲染。
+   * @param {*} i
+   * @memberof Board
+   */
+  handleClick(i) {
+    const squares = this.state.squares.slice(); 
+    squares[i] = this.state.xIsNext? "X":"O";
+    this.setState({ squares,xIsNext:!this.state.xIsNext })
+  }
+
+  renderSquare(i) { // 返回一个 Square 组件
+    return ( < Square
+              value = { this.state.squares[i] }// 给子组件传递 value数据
+              onClick = {()=> this.handleClick(i)} // 给子组件传递 onClick事件
+        />);
+  }
+
+ 
+  render() {
+    let {state} = this;
+    const status = `Next player: ${state.xIsNext?'X':'O'}`;
+
+    return (
+      <div>
+        <div className="status">{status}</div>
+        <div className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
+      </div>
+    );
+  }
+}
+
+```
+### React 命名规范
+   1. 代表事件监听的 `prop` 命名为 `on[Event]`
+   2. 将监听方法命名为 `handle[Event]` 
+    
+### 为什么创建一个`squares`副本，而不直接修改本身数据
+
+1. 这样可以简化复杂的功能，不可变性使得复杂的特性更容易实现。
+2. 可以跟踪数据的改变，如果直接修改源数据就很难跟踪变化的数据。
+3. 可以帮助我们在 `React` 中创建 `purecomponents`。可以轻松的确定不可变数据是否发生了改变，从而确定何时对组件进行重新渲染。
+
+
 ## JSX
 > React 提出的一种叫 JSX 的语法，这应该是最开始接触 React 最不能接受的设定之一,因为前端被“表现和逻辑层分离”这种思想“洗脑”太久了。实际上组件的 HTML 是组成一个组件不可分割的一部分，能够将 HTML 封装起来才是组件的完全体
 大多数的`React`开发者使用 `JSX` 特殊语法，`JSX` 可以更轻松地书写这些结构。
