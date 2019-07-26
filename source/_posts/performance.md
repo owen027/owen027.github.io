@@ -1,12 +1,12 @@
 ---
-title: performance
+title:  for,for...of, for...in, array iteration 运行速度测试
 date: 2019-07-03 22:35:43
 categories:
-- JavasSript
-tags: 
+- JavaScript
+tags:
 - Iteration
 ---
-# for,for...of, for...in, array iteration 运行速度
+# for,for...of, for...in, array iteration 运行速度测试
 - 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆[eval](https://www.zhihu.com/question/29352114/answer/44050599)，沙盒化程度高,所以需使用[node](https://nodejs.org/en/)环境测试来提高准确性
 ```javascript
 
@@ -26,7 +26,7 @@ console.timeEnd('for');
 // Chrome/75.0.3770.100 Safari/537.36 环境
 //VM1324:10 for: 576.733154296875ms
 
-// node v10.11.0 环境 
+// node v10.11.0 环境
 // for:  412.087ms
 ```
 
@@ -97,16 +97,16 @@ for...in 一般用于遍历对象，他会将本身属性和原型链上的属�
 arr.forEach(function(value){
     arr1.push(value)
 })
-     
+
 ```
 数组的迭代方法，没有返回值
 
-## map 
+## map
 ```javascript
 arr.map(function(value){
    return  arr1.push(value)
 })
-     
+
 ```
 浅拷贝原数组，并且返回一个新数组
 
@@ -129,11 +129,11 @@ arr.map(function(value){
 |11 | 409.402ms | 521.131ms | 534.265ms | 517.709ms | 551.397ms | 752.101ms | 3228.123ms | 629.625ms |3535.545ms |
 |12 | 425.362ms | 532.882ms | 406.637ms | 522.287ms | 570.259ms | 914.135ms | 3449.256ms | 800.857ms |3429.123ms |
 |平均值 | 439.2738ms | 578.3565ms |553.1468ms |651.7057ms| 507.8718ms | 909.0785ms | 3,686.96ms | 605.6298ms | 3,221.5056ms |
-|堆值差 | 357245536 Byte | 357245808 Byte | 357245624 Byte | 357245872 Byte | 357246824 Byte | 199268080 Byte |757187208 Byte|357244456 Byte | 437247640 Byte | 
+|堆值差 | 357245536 Byte | 357245808 Byte | 357245624 Byte | 357245872 Byte | 357246824 Byte | 199268080 Byte |757187208 Byte|357244456 Byte | 437247640 Byte |
 
 
 **测试总结**
 1. **运行效率:** `常规for` > `正序简版 for `> `倒序 for` > `cache for` > `倒叙简版 for `> `forEach` > `for..of`	> `map` > `for..in`
-2. 几种普通 for 循环占用内存相差不大, 而 `for..of` 占用运行内存最小 
+2. 几种普通 for 循环占用内存相差不大, 而 `for..of` 占用运行内存最小
 3. `for..in` 性能最差，内存占用高，速度很慢
 

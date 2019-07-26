@@ -1,14 +1,14 @@
 ---
-title: timer
+title: JavaScript定时器
 date: 2019-06-28 16:31:41
 categories:
-- JavasScript
+- JavaScript
 tags:
 - timer
 ---
 # 什么是定时器
 - 在一段时间间隔后执行一个函数或执行一段代码的方法
-- JavaScript 原生提供几种定时器 `setInterval`、`setTimeout` 、`requestAnimationFrame` 
+- JavaScript 原生提供几种定时器 `setInterval`、`setTimeout` 、`requestAnimationFrame`
 - 执行函数中的作用域未全局作用域this指向全局，可通过 `bind` 方法给执行函数传递参数或指定作用域 (严格模式下，setTimeout( )的回调函数里面的this仍然默认指向window对象， 并不是undefined)
 
 ## setInterval
@@ -18,7 +18,7 @@ tags:
   let timerInterID =  window.setInterval(callback,delay[,param...])
    setTimeout( clearInterval.bind(null,timerInterID),1000)
 ```
-### 参数 
+### 参数
 
 - **callback** 重复执行的函数或代码段（不推荐使用一段字符串构成的代码，应为这样做不安全，会被不法分子利用）
 - **delay** 时间间隔，单位为毫秒（ms）实际间隔可能会稍长（最小间隔是4ms）
