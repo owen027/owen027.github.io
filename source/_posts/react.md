@@ -20,8 +20,7 @@ tags:
 ## 组件
 组件，从概念上类似于 `JavaScript` 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的`React 元素`。
 **自定义组件命名：必须以大写字母开头，React 会将以小写字母开头的组件视为原生DOM标签。**
-###  类组件
-通过 `class` 语法来定义组件,并且继承于 `React.Component`,空的 `render()` 方法。
+
 ```javascript
 import React from 'react'; // React 的核心库
 import ReactDOM from 'react-dom'; // 提供与 DOM 相关的功能
@@ -64,7 +63,7 @@ this.setState(  (state,props)=> ({count:state.count + props.count}) );
 
 
 ### 类组件
-
+> 通过 `class` 语法来定义组件，必须包含`render()` 方法,并且继承于 `React.Component`。
 **类组件必须包含`render()`，并且return 只能返回一个父元素（类似vue中的template中只能有一个父元素）。**
 ```javascript
 class Square extends React.Component {
@@ -118,7 +117,7 @@ ReactDOM.render(
 );
 ```
 
-### 组件生命周期
+### 组件生命周期函数
 ```javascript
 class Square extends React.Component {
 
@@ -145,9 +144,12 @@ class Square extends React.Component {
   }
 }
 ```
-## JSX 和事件处理
+## JSX
 
 React 提出的一种叫 JSX 的语法，这应该是最开始接触 React 最不能接受的设定之一,因为前端被“表现和逻辑层分离”这种思想“洗脑”太久了。实际上组件的 HTML 是组成一个组件不可分割的一部分，能够将 HTML 封装起来才是组件的完全体.
+
+> JSX是一个JavaScript语法扩展。它类似于模板语言，但它具有JavaScript 的全部能力。它最终会被编译为`React.createElement()`函数调用，返回称为 `React元素`的普通JavaScript`对象。
+
 推荐使用箭头函数，避免[this 造成困扰](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)
 
 ```javascript
@@ -220,61 +222,9 @@ class Board extends React.Component {
 }
 
 ```
-### React 命名规范
-   1. 代表事件监听的 `prop` 命名为 `on[Event]`
-   2. 将监听方法命名为 `handle[Event]`
 
-### 为什么创建一个`squares`副本，而不直接修改本身数据
-
-1. 这样可以简化复杂的功能，不可变性使得复杂的特性更容易实现。
-2. 可以跟踪数据的改变，如果直接修改源数据就很难跟踪变化的数据。
-3. 可以帮助我们在 `React` 中创建 `purecomponents`。可以轻松的确定不可变数据是否发生了改变，从而确定何时对组件进行重新渲染。
-
-
-## JSX
-> React 提出的一种叫 JSX 的语法，这应该是最开始接触 React 最不能接受的设定之一,因为前端被“表现和逻辑层分离”这种思想“洗脑”太久了。实际上组件的 HTML 是组成一个组件不可分割的一部分，能够将 HTML 封装起来才是组件的完全体
-大多数的`React`开发者使用 `JSX` 特殊语法，`JSX` 可以更轻松地书写这些结构。
-
-> JSX是一个JavaScript语法扩展。它类似于模板语言，但它具有JavaScript 的全部能力。它最终会被编译为`React.createElement()`函数调用，返回称为 `React元素`的普通JavaScript`对象。
-
-```JavaScript
-import React from 'react'; // React 的核心库
-import ReactDOM from 'react-dom'; // 提供与 DOM 相关的功能
-class ShoppingList extends React.Component {
-  render() {
-    return (
-      <div className="shopping-list">
-        <h1>Shopping List for {this.props.name}</h1>
-        <ul>
-          <li>Instagram</li>
-          <li>WhatsApp</li>
-          <li>Oculus</li>
-        </ul>
-      </div>
-    );
-  }
-}
-
-
-// 上述代码等同于：
-/*
-return React.createElement("div", {className: "shopping-list"},
-React.createElement("h1", null, "Shopping List for ", props.name), React.createElement("ul", null,
-                        React.createElement("li", null, "Instagram"),
-                        React.createElement("li", null, "WhatsApp"),
-                        React.createElement("li", null, "Oculus")
-                    )
-);
-
- */
-
-ReactDOM.render(
-  <ShoppingList name="Mark" />,
-  document.getElementById('root')
-);
-```
-### JSX规范和事件处理
-在 JSX 中你可以任意使用JavaScript表达式，只需要用一个**大括号({})**括起来；事实上每个 React 元素都是一个`JavaScript` 对象，可以把它保存在变量中或者作为参数传递。
+在 JSX 中你可以任意使用JavaScript表达式，只需要用一个**大括号({})**括起来；
+事实上每个 React 元素都是一个`JavaScript` 对象，可以把它保存在变量中或者作为参数传递。
 
 为避免遇到自动插入分号陷阱，**最好将内容包裹在小括号中，如果只有一行代码则不需要括号**。
 
@@ -328,7 +278,8 @@ class App extends React.Component {
   }
 }
 ```
-**事件处理程序回调函数中的 this**
+
+### **事件处理程序回调函数中的 this**
 - 在 `JavaScript` 中，`class` 的方法默认不会绑定 `this`。如果你忘记绑定 `this.handleClick` 并把它传入了 `onClick`，当你调用这个函数的时候 `this`的值为 `undefined`。
 ``` JSX
 class App extends React.Component {
@@ -357,5 +308,3 @@ class App extends React.Component {
 `React`实现了一个`Virtual DOM`，组件 DOM 结构就是映射到这个`Virtual DOM` 上，`React` 在这个`Virtual DOM` 上实现了一个`diff`算法，**当要重新渲染组件的时候，会通过`diff` 寻找到要变更的DOM 节点，再把这个修改更新到浏览器实际的DOM 节点上**，所以实际上不是真的渲染整个`DOM`树(`React DOM` 只会更新实际改变了的内容)。这个 `Virtual DOM` 是一个纯粹的 JS 数据结构，所以性能会比原生 DOM 快很多。
 
 
-
-待续。。。
