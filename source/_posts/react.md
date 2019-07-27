@@ -116,6 +116,43 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+### 受控组件
+`input`、`<select>`、`<textarea>` 等表单的状态发生改变，都得同时通过`onChange`事件改变组件中的`state`值，否则表单不会发生变化。通过这种方式控制取值的表单叫做`受控组件`。
+```jsx
+class Input extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      value:'3s'
+    }
+  } 
+  render (){
+    return <input type="text" value = {this.state.value} />   // 用户在表单中输入任何信息都是无效的
+  }
+}
+
+// 使用事件来改变
+ render (){
+    return (
+      <input 
+          type="text" 
+          value = {this.state.value} 
+          onChange = {({target}) =>{
+            this.setState({
+              value:target.value
+            })
+          }}
+    />
+    )   
+  }
+
+```
+**React受控组件更新state的流程:**
+- 通过在初始化state中设置表单默认值；
+- 每当表单值发生变化时，调用`onChange`事件
+- 事件通过合成的事件对象来改变状态更新 `state`
+- setState触发视图渲染更新，完成表单组件值的更新
+
 
 ### 组件生命周期函数
 ```javascript
