@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="for,for…of, for…in, array iteration 运行速度 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性12345678910111213141516171819// 准备待测数组const NUM = 1e7;let arr = new Array(NUM).fill(1);// for 测试l">
+<meta name="description" content="for,for…of, for…in, array iteration 运行速度测试 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性12345678910111213141516171819// 准备待测数组const NUM = 1e7;let arr = new Array(NUM).fill(1);// for 测">
 <meta name="keywords" content="Iteration">
 <meta property="og:type" content="article">
-<meta property="og:title" content="performance">
+<meta property="og:title" content="for,for...of, for...in, array iteration 运行速度测试">
 <meta property="og:url" content="https://owen027.github.io/2019/07/03/performance/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="for,for…of, for…in, array iteration 运行速度 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性12345678910111213141516171819// 准备待测数组const NUM = 1e7;let arr = new Array(NUM).fill(1);// for 测试l">
+<meta property="og:description" content="for,for…of, for…in, array iteration 运行速度测试 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性12345678910111213141516171819// 准备待测数组const NUM = 1e7;let arr = new Array(NUM).fill(1);// for 测">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-21T15:53:32.523Z">
+<meta property="og:updated_time" content="2019-07-27T14:28:23.445Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="performance">
-<meta name="twitter:description" content="for,for…of, for…in, array iteration 运行速度 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性12345678910111213141516171819// 准备待测数组const NUM = 1e7;let arr = new Array(NUM).fill(1);// for 测试l">
+<meta name="twitter:title" content="for,for...of, for...in, array iteration 运行速度测试">
+<meta name="twitter:description" content="for,for…of, for…in, array iteration 运行速度测试 由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆eval，沙盒化程度高,所以需使用node环境测试来提高准确性12345678910111213141516171819// 准备待测数组const NUM = 1e7;let arr = new Array(NUM).fill(1);// for 测">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <title>performance | Owen</title>
+  <title>for,for...of, for...in, array iteration 运行速度测试 | Owen</title>
   
 
 
@@ -321,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">performance</h1>
+          <h1 class="post-title" itemprop="name headline">for,for...of, for...in, array iteration 运行速度测试</h1>
         
 
         <div class="post-meta">
@@ -356,8 +356,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavasSript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavasSript</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -392,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  910
+                  912
                 </span>
               
 
@@ -429,8 +429,8 @@
       
 
       
-        <h1 id="for-for…of-for…in-array-iteration-运行速度"><a href="#for-for…of-for…in-array-iteration-运行速度" class="headerlink" title="for,for…of, for…in, array iteration 运行速度"></a>for,for…of, for…in, array iteration 运行速度</h1><ul>
-<li>由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆<a href="https://www.zhihu.com/question/29352114/answer/44050599" target="_blank" rel="noopener">eval</a>，沙盒化程度高,所以需使用<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node</a>环境测试来提高准确性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 准备待测数组</span></span><br><span class="line"><span class="keyword">const</span> NUM = <span class="number">1e7</span>;</span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(NUM).fill(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// for 测试</span></span><br><span class="line"><span class="keyword">let</span> arr1 =[];</span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'for'</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  arr1.push(arr[i])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'for'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Chrome/75.0.3770.100 Safari/537.36 环境</span></span><br><span class="line"><span class="comment">//VM1324:10 for: 576.733154296875ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// node v10.11.0 环境 </span></span><br><span class="line"><span class="comment">// for:  412.087ms</span></span><br></pre></td></tr></table></figure>
+        <h1 id="for-for…of-for…in-array-iteration-运行速度测试"><a href="#for-for…of-for…in-array-iteration-运行速度测试" class="headerlink" title="for,for…of, for…in, array iteration 运行速度测试"></a>for,for…of, for…in, array iteration 运行速度测试</h1><ul>
+<li>由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆<a href="https://www.zhihu.com/question/29352114/answer/44050599" target="_blank" rel="noopener">eval</a>，沙盒化程度高,所以需使用<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node</a>环境测试来提高准确性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 准备待测数组</span></span><br><span class="line"><span class="keyword">const</span> NUM = <span class="number">1e7</span>;</span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(NUM).fill(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// for 测试</span></span><br><span class="line"><span class="keyword">let</span> arr1 =[];</span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'for'</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  arr1.push(arr[i])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'for'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Chrome/75.0.3770.100 Safari/537.36 环境</span></span><br><span class="line"><span class="comment">//VM1324:10 for: 576.733154296875ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// node v10.11.0 环境</span></span><br><span class="line"><span class="comment">// for:  412.087ms</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="for-几种写法"><a href="#for-几种写法" class="headerlink" title="for 几种写法"></a>for 几种写法</h2><ul>
@@ -652,7 +652,7 @@
 <p><strong>测试总结</strong></p>
 <ol>
 <li><strong>运行效率:</strong> <code>常规for</code> &gt; <code>正序简版 for</code>&gt; <code>倒序 for</code> &gt; <code>cache for</code> &gt; <code>倒叙简版 for</code>&gt; <code>forEach</code> &gt; <code>for..of</code>    &gt; <code>map</code> &gt; <code>for..in</code></li>
-<li>几种普通 for 循环占用内存相差不大, 而 <code>for..of</code> 占用运行内存最小 </li>
+<li>几种普通 for 循环占用内存相差不大, 而 <code>for..of</code> 占用运行内存最小</li>
 <li><code>for..in</code> 性能最差，内存占用高，速度很慢</li>
 </ol>
 
@@ -693,8 +693,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/28/timer/" rel="next" title="timer">
-                <i class="fa fa-chevron-left"></i> timer
+              <a href="/2019/06/28/timer/" rel="next" title="JavaScript定时器">
+                <i class="fa fa-chevron-left"></i> JavaScript定时器
               </a>
             
           </div>
@@ -874,7 +874,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#for-for…of-for…in-array-iteration-运行速度"><span class="nav-number">1.</span> <span class="nav-text">for,for…of, for…in, array iteration 运行速度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for-几种写法"><span class="nav-number">1.1.</span> <span class="nav-text">for 几种写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for…of"><span class="nav-number">1.2.</span> <span class="nav-text">for…of</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for…in"><span class="nav-number">1.3.</span> <span class="nav-text">for…in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forEach"><span class="nav-number">1.4.</span> <span class="nav-text">forEach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map"><span class="nav-number">1.5.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试"><span class="nav-number">1.6.</span> <span class="nav-text">性能测试</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#for-for…of-for…in-array-iteration-运行速度测试"><span class="nav-number">1.</span> <span class="nav-text">for,for…of, for…in, array iteration 运行速度测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#for-几种写法"><span class="nav-number">1.1.</span> <span class="nav-text">for 几种写法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for…of"><span class="nav-number">1.2.</span> <span class="nav-text">for…of</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for…in"><span class="nav-number">1.3.</span> <span class="nav-text">for…in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forEach"><span class="nav-number">1.4.</span> <span class="nav-text">forEach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map"><span class="nav-number">1.5.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试"><span class="nav-number">1.6.</span> <span class="nav-text">性能测试</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -910,7 +910,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">56.3k</span>
+    <span title="Site words total count">57.3k</span>
   
   -->
 </div>
