@@ -153,7 +153,8 @@ class Input extends Component {
 - 事件通过合成的事件对象来改变状态更新 `state`
 - setState触发视图渲染更新，完成表单组件值的更新
 
-
+### 状态提升
+当多个组件数据联动时，建议将共享状态提升到最近的共同父组件中去。
 ### 组件生命周期函数
 ```javascript
 class Square extends React.Component {
