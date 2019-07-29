@@ -18,6 +18,7 @@ tags:
 - Data Flow
 
 ## 组件
+>  可以将UI 拆分为独立且复用的代码片段，每部分都可独立维护。
 组件，从概念上类似于 `JavaScript` 函数。它接受任意的参数（即 “props”），并返回用于描述页面展示内容的`React 元素`。
 **自定义组件命名：必须以大写字母开头，React 会将以小写字母开头的组件视为原生DOM标签。**
 ```javascript
@@ -304,36 +305,8 @@ function App() {
 
 ```
 
-
-### 组件生命周期函数
-```javascript
-class Square extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      value:null
-    };
-  }
-   componentDidMount() { // 组件被渲染到 DOM 中后运行
-    console.log('DidMount: 1')
-  }
-  compoentwillUnmount(){ // 组件被删除的时候
-    console.log('UnMount: end')
-
-  }
-  render() {
-    return (
-      <button className="square" onClick = {()=>{this.setState({value:'X'})}
-      }>
-        {this.state.value}
-      </button>
-    );
-  }
-}
-```
 ## JSX
-
+> 每个 JSX 元素都是调用 React.createElement() 的语法糖。一般来说，如果你使用了 JSX，就不再需要调用`createElement()`或`createFactory()`方法。
 React 提出的一种叫 JSX 的语法，这应该是最开始接触 React 最不能接受的设定之一,因为前端被“表现和逻辑层分离”这种思想“洗脑”太久了。实际上组件的 HTML 是组成一个组件不可分割的一部分，能够将 HTML 封装起来才是组件的完全体.
 
 > JSX是一个JavaScript语法扩展。它类似于模板语言，但它具有JavaScript 的全部能力。它最终会被编译为`React.createElement()`函数调用，返回称为 `React元素`的普通JavaScript`对象。
