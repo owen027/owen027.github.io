@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="初始渲染的钩子函数 created  mounted 等 可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化  如果想要组件或者原生HTML节点重新渲染可以使用 v-if  使用 prototype 挂载自定义方法或插件 123Vue.prototype.$bus = Bus; // orVue.use(bus);  获取本机 I">
+<meta name="description" content="vue 框架中遇到的问题 可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化  如果想要组件或者原生HTML节点重新渲染可以使用 v-if  使用 prototype 挂载自定义方法或插件 123Vue.prototype.$bus = Bus; // orVue.use(bus);   axios 问题 接受二进制流文件乱码">
 <meta name="keywords" content="vue question">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vueNotes">
 <meta property="og:url" content="https://owen027.github.io/2019/06/13/vueNotes/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="初始渲染的钩子函数 created  mounted 等 可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化  如果想要组件或者原生HTML节点重新渲染可以使用 v-if  使用 prototype 挂载自定义方法或插件 123Vue.prototype.$bus = Bus; // orVue.use(bus);  获取本机 I">
+<meta property="og:description" content="vue 框架中遇到的问题 可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化  如果想要组件或者原生HTML节点重新渲染可以使用 v-if  使用 prototype 挂载自定义方法或插件 123Vue.prototype.$bus = Bus; // orVue.use(bus);   axios 问题 接受二进制流文件乱码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T16:14:37.070Z">
+<meta property="og:updated_time" content="2019-07-29T15:43:17.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vueNotes">
-<meta name="twitter:description" content="初始渲染的钩子函数 created  mounted 等 可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化  如果想要组件或者原生HTML节点重新渲染可以使用 v-if  使用 prototype 挂载自定义方法或插件 123Vue.prototype.$bus = Bus; // orVue.use(bus);  获取本机 I">
+<meta name="twitter:description" content="vue 框架中遇到的问题 可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化  如果想要组件或者原生HTML节点重新渲染可以使用 v-if  使用 prototype 挂载自定义方法或插件 123Vue.prototype.$bus = Bus; // orVue.use(bus);   axios 问题 接受二进制流文件乱码">
 
 
 
@@ -392,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  191
+                  411
                 </span>
               
 
@@ -429,7 +429,7 @@
       
 
       
-        <h3 id="初始渲染的钩子函数-created-mounted-等"><a href="#初始渲染的钩子函数-created-mounted-等" class="headerlink" title="初始渲染的钩子函数 created  mounted 等"></a>初始渲染的钩子函数 created  mounted 等</h3><ol>
+        <h2 id="vue-框架中遇到的问题"><a href="#vue-框架中遇到的问题" class="headerlink" title="vue 框架中遇到的问题"></a>vue 框架中遇到的问题</h2><ol>
 <li><p>可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化</p>
 </li>
 <li><p>如果想要组件或者原生HTML节点重新渲染可以使用 v-if</p>
@@ -437,8 +437,21 @@
 <li><p>使用 prototype 挂载自定义方法或插件</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$bus = Bus; </span><br><span class="line"><span class="comment">// or</span></span><br><span class="line">Vue.use(bus);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>获取本机 IP 地址</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> os = <span class="built_in">require</span>(<span class="string">'os'</span>);</span><br><span class="line"><span class="keyword">const</span> ip = showObj(os.networkInterfaces());</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showObj</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line"><span class="comment">/*     for (let devName in obj)&#123;</span></span><br><span class="line"><span class="comment">        let iface = obj[devName];</span></span><br><span class="line"><span class="comment">        for (let i = 0;i &lt; iface.length;i++)&#123;</span></span><br><span class="line"><span class="comment">            let alias = iface[i];</span></span><br><span class="line"><span class="comment">            if (alias.family === 'IPv4' </span></span><br><span class="line"><span class="comment">                &amp;&amp; alias.address !== '127.0.0.1' </span></span><br><span class="line"><span class="comment">                &amp;&amp; !alias.internal)&#123;</span></span><br><span class="line"><span class="comment">                return alias.address;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125; */</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> devName <span class="keyword">in</span> obj)&#123;</span><br><span class="line">             <span class="keyword">let</span> iface = obj[devName];</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">let</span> alias <span class="keyword">of</span> iface )&#123;</span><br><span class="line">                <span class="keyword">if</span> ( alias.family === <span class="string">'IPv4'</span>  &amp;&amp; alias.address !== <span class="string">'127.0.0.1'</span>  &amp;&amp; !alias.internal) <span class="keyword">return</span> alias.address;</span><br><span class="line">             &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="axios-问题"><a href="#axios-问题" class="headerlink" title="axios 问题"></a>axios 问题</h2><ol>
+<li>接受二进制流文件乱码</li>
+</ol>
+<h2 id="Node-中的问题"><a href="#Node-中的问题" class="headerlink" title="Node 中的问题"></a>Node 中的问题</h2><ol>
+<li>获取本机 IP 地址<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> os = <span class="built_in">require</span>(<span class="string">'os'</span>);</span><br><span class="line"><span class="keyword">const</span> ip = showObj(os.networkInterfaces());</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showObj</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line"><span class="comment">/*     for (let devName in obj)&#123;</span></span><br><span class="line"><span class="comment">        let iface = obj[devName];</span></span><br><span class="line"><span class="comment">        for (let i = 0;i &lt; iface.length;i++)&#123;</span></span><br><span class="line"><span class="comment">            let alias = iface[i];</span></span><br><span class="line"><span class="comment">            if (alias.family === 'IPv4' </span></span><br><span class="line"><span class="comment">                &amp;&amp; alias.address !== '127.0.0.1' </span></span><br><span class="line"><span class="comment">                &amp;&amp; !alias.internal)&#123;</span></span><br><span class="line"><span class="comment">                return alias.address;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125; */</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> devName <span class="keyword">in</span> obj)&#123;</span><br><span class="line">             <span class="keyword">let</span> iface = obj[devName];</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">let</span> alias <span class="keyword">of</span> iface )&#123;</span><br><span class="line">                <span class="keyword">if</span> ( alias.family === <span class="string">'IPv4'</span>  &amp;&amp; alias.address !== <span class="string">'127.0.0.1'</span>  &amp;&amp; !alias.internal) <span class="keyword">return</span> alias.address;</span><br><span class="line">             &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="开发方式"><a href="#开发方式" class="headerlink" title="开发方式"></a>开发方式</h2><p><strong>当我们确定组件层级时，最容易的方式就是先用已有的数据模型渲染一个不包含交互功能的UI。最好将渲染UI 和添加交互两个过程分开</strong></p>
+<p>因为，编写一个应用的静态版本时，往往需要编写大量代码，不需要考虑太多交互细节；<br>添加交互细节功能时则需考虑大量细节，而不需要编写太多代码。<br>所以将两个过程分开进行更为合适。</p>
+<ol>
+<li><p>自上而下<br>首先编写较高的组件，对于简单应用使用这种方式更加方便</p>
+</li>
+<li><p>自下而上<br>对于复杂应用先编写较为底层的组件，同时为底层组件编写测试的方式更加简单</p>
+</li>
 </ol>
 
       
@@ -575,7 +588,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -586,7 +599,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -597,7 +610,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -659,7 +672,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始渲染的钩子函数-created-mounted-等"><span class="nav-number">1.</span> <span class="nav-text">初始渲染的钩子函数 created  mounted 等</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-框架中遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">vue 框架中遇到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios-问题"><span class="nav-number">2.</span> <span class="nav-text">axios 问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-中的问题"><span class="nav-number">3.</span> <span class="nav-text">Node 中的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发方式"><span class="nav-number">4.</span> <span class="nav-text">开发方式</span></a></li></ol></div>
             
 
           </div>
@@ -695,7 +708,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">57.5k</span>
+    <span title="Site words total count">58.7k</span>
   
   -->
 </div>
