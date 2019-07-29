@@ -18,10 +18,10 @@ tags:
 - Data Flow
 
 ## 组件
-组件，从概念上类似于 `JavaScript` 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的`React 元素`。
+组件，从概念上类似于 `JavaScript` 函数。它接受任意的参数（即 “props”），并返回用于描述页面展示内容的`React 元素`。
 **自定义组件命名：必须以大写字母开头，React 会将以小写字母开头的组件视为原生DOM标签。**
 ###  类组件
-通过 `class` 语法来定义组件,并且继承于 `React.Component`,空的 `render()` 方法。
+通过 `class` 语法来定义组件,并且继承于 `React.Component`,而且包含 `render()` 方法。
 ```javascript
 import React from 'react'; // React 的核心库
 import ReactDOM from 'react-dom'; // 提供与 DOM 相关的功能
@@ -65,7 +65,7 @@ this.setState(  (state,props)=> ({count:state.count + props.count}) );
 
 ### 类组件
 
-**类组件必须包含`render()`，并且return 只能返回一个父元素（类似vue中的template中只能有一个父元素）。**
+****
 ```javascript
 class Square extends React.Component {
   /**
