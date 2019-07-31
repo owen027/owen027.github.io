@@ -4,14 +4,18 @@ date: 2019-07-29 23:39:45
 categories:
 - React
 tags:
-- life cycle
+- React life cycle
 ---
 
 ## 组件生命周期函数
+> React 主动调用的方法，也可重写这些方法
 
+[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 ### 当组件实例被创建并插入 `DOM` 中时，其生命周期调用顺序如下：
+
 ####  constructor(props)
 > 如果不需要初始化 state 或 不进行方法绑定，则不需要使用该方法
+
 在组件挂载之前会先调用该方法，在实现构造函数时必须先调用`super(props)`方法，否则会出现BUG
 **通常，构造函数仅用于两种情况：1. 初始化 `state` 2. 为事件处理函数绑定实例**
 **在该方法中不要使用 `setState()` 方法,在其他方法中使用`setState()`改变 state**
@@ -36,14 +40,18 @@ constructor(props) {
 
 #### render()
 > render 是 class 组件必须实现的方法
+
 当该方法被调用时，它会监测 props 和 state 的变化，并且返回以下类型之一：
 - `React 元素`：通过JSX创建，渲染成对应的DOM节点或自定义组件
 - **数组或fragments：** 使render方法可以返回多个元素 [frgments](https://zh-hans.reactjs.org/docs/fragments.html)
 - `Portals`：可以渲染子节点到不同的DOM子树汇中[portals](https://zh-hans.reactjs.org/docs/portals.html)
 - **字符串或数值类型：** 在DOM中会被渲染为文本节点、
 - `Boolean 或 null`：什么都不渲染
-**render函数最好为纯函数，即在不修改组件 `state`情况下，每次调用时都返回相同的结果，并且不会直接与浏览器交互**
+
+**render方法最好为纯函数，即在不修改组件 `state`情况下，每次调用时都返回相同的结果，并且不会直接与浏览器交互**
+
 > 如果要和浏览器交互，可以在其他生命周期函数中执行，**注意：`shoouldComponentUpdate`方法中返回false,将不会调用render方法**
+
 ```javascript
 class Example extemds React.Component{
 shouldComponentUpdate(nextProps, nextState){
@@ -63,12 +71,13 @@ render(){ // 不会执行
 
 
 
-### 当组件的 `props` 或 `state` 发生变化时会触发更新。组件更新的生命周期调用顺序如下：
+### 组件的 `props` 或 `state` 发生变化会触发更新。组件更新的生命周期调用顺序如下：
 
 #### static getDerivedStateFromProps() （此方法不常用）(已解释)
 
-#### shouldComponentUpdate() （此方法不常用）
+#### shouldComponentUpdate(nextProps, nextState) （此方法不常用）
 > 当state 或 props 变化时该方法会在渲染执行前调用默认返回值为true,首次加载不会被调用
+
 **根据该方法的返回值判断组件输出是否受当前 state 或 props 更改的影响。默认为 state 每次更新重新渲染**
 
 此方法进仅做为性能优化的方式存在，不要企图依靠此方法来“阻止”渲染，因为这可能会产生 bug。你应该考虑使用内置的 PureComponent 组件，而不是手动编写 shouldComponentUpdate()。PureComponent 会对 props 和 state 进行浅层比较，并减少了跳过必要更新的可能性。
@@ -118,6 +127,7 @@ class ScrollingList extends React.Component {
 
 #### componentDidUpdate(prevProps, prevState, snapshot)
 > 此方法会在数据更新后立即调用，首次加载不会被调用,在此方法中使用 **`setState`必须将它放到条件语句中**，否则会导致死循环。还会导致额外的重新渲染，影响性能
+
 ```javascript
 componentDidUpdate(prevProps) {
   // 典型用法（不要忘记比较 props）：
@@ -139,12 +149,43 @@ componentDidUpdate(prevProps) {
 
 
 ### 当渲染过程，生命周期，或子组件的构造函数中抛出错误时，会调用如下方法：
+**Error boundaries**：捕获渲染期间及整个树的函数发送的错误，渲染降级 UI，但自身的错误无法捕获 [React 16中的错误处理](https://zh-hans.reactjs.org/blog/2017/07/26/error-handling-in-react-16.html)
+#### static getDerivedStateFromError(error) （此方法不常用）
+> 次生命周期会在后代组件抛出错误后调用，将错误作为参数，返回一个值更新state，在渲染期间不允许出现副作用，建议使用 componentDidCatch()
 
-#### static getDerivedStateFromError() （此方法不常用）
+#### componentDidCatch(error, info) （此方法不常用）
+> 此方法在后代组件抛出错误后被调用
 
-#### componentDidCatch() （此方法不常用）
+如果发生错误，可以通过调用 `setState` 使用 `componentDidCatch()` 渲染降级 UI，但在未来的版本中将不推荐这样做。 可以使用静态 `getDerivedStateFromError()` 来处理降级渲染。
+```javascript
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
 
+  static getDerivedStateFromError(error) {
+    // 更新 state 使下一次渲染可以显降级 UI
+    return { hasError: true };
+  }
+  componentDidCatch(error, info) {
+    // "组件堆栈" 例子:
+    //   in ComponentThatThrows (created by App)
+    //   in ErrorBoundary (created by App)
+    //   in div (created by App)
+    //   in App
+    logComponentStackToMyService(info.componentStack);
+  }
+  render() {
+    if (this.state.hasError) {
+      // 你可以渲染任何自定义的降级  UI
+      return <h1>Something went wrong.</h1>;
+    }
 
+    return this.props.children;
+  }
+}
+```
 
 ## Example
 ```javascript
@@ -194,3 +235,5 @@ class Square extends React.Component {
   }
 }
 ```
+
+## [参考资料](https://zh-hans.reactjs.org/docs/react-component.html)
