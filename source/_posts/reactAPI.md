@@ -144,4 +144,34 @@ const ref = React.createRef();
 ## React.lazy
 > React.lazy()允许你定义一个动态加载组件。有助于减少 bundle的体积，并提高首屏加载效率
 
-待续。。。
+**此特性需要支持 `promise`**
+```javascript
+const component = React.lazy(()=> import('./component')) // 动态加载
+```
+[参考文章](https://zh-hans.reactjs.org/docs/code-splitting.html#reactlazy)
+
+## React.Suspense
+> React.Suspense 可以指定加载指示器（loading indicator），以防其组件树中的某些子组件尚未具备渲染条件。目前，懒加载组件是 <React.Suspense> 支持的唯一用例：
+
+```javascript
+// 该组件是动态加载的
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+function MyComponent() {
+  return (
+    // 显示 <Spinner> 组件直至 OtherComponent 加载完成
+    <React.Suspense fallback={<Spinner />}>
+      <div>
+        <OtherComponent />
+      </div>
+    </React.Suspense>
+  );
+}
+```
+请注意，`lazy` 组件可以位于 `Suspense` 组件树的深处——它不必包装树中的每一个延迟加载组件。最佳实践是将 `<Suspense>` 置于你想展示加载指示器（loading indicator）的位置，而 `lazy()` 则可被放置于任何你想要做代码分割的地方。
+
+虽然目前尚未支持其它特性，但未来我们计划让 Suspense 支持包括数据获取在内的更多场景。可以在[roadmap](https://zh-hans.reactjs.org/blog/2018/11/27/react-16-roadmap.html) 中了解相关信息。
+
+
+**`React.lazy()` 和 `<React.Suspense>` 尚未在 `ReactDOMServer` 中支持。这是已知问题，将会在未来解决。**
+
