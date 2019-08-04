@@ -65,4 +65,113 @@ React.Children.count(children)
 React.Children.only(children)
 
 ```
-**此方法不接受`React.Children.map`的返回值
+**此方法不接受`React.Children.map`的返回值，因为它是一个数组
+
+### React.Children.toArray
+> 将children 这个复杂的数据结构以数组的形式扁平展开并返回，且为每个子节点分配一个key.想要在渲染函数中操作子节点的集合时，非常实用
+```javascript
+
+React.Children.toArray(children)
+
+```
+**注意：此方法在拉平展开节点列表时，更改key值以保留嵌套数组的语言。即 toArray 会为返回数组中的每个key添加前缀，使每个元素key的范围都限定在此函数入参数组的对象内**
+
+## React.Fragment
+> `React.Fragment` 能在不额外创建DOM元素情况下，让 render方法返回多个元素
+
+```javascript
+
+render(){
+    return (
+        <React.Fragment>
+          <ChildA />
+          <ChildB />
+          <ChildC />
+        </React.Fragment>
+    )
+}
+// 简写
+render(){
+    return (
+        <>
+          <ChildA />
+          <ChildB />
+          <ChildC />
+        </>
+    )
+}
+
+```
+[更多信息](https://zh-hans.reactjs.org/blog/2017/11/28/react-v16.2.0-fragment-support.html)
+
+
+## React.createRef
+>创建一个能通过 ref 属性附加到 React元素的 [ref](https://zh-hans.reactjs.org/docs/refs-and-the-dom.html)
+
+```javascript
+class Example extends React.Componet {
+    constructor(props){
+        this.inputRef = React.createRef();
+    }
+    reder(){
+        return <input type="text" ref= {this.inputRef} />；
+    }
+
+    componentDidMount(){
+        this.inputRef.current.focus()
+    }
+}
+```
+
+## React.forwardRef
+> `React.forwardRef` 会创建一个React组件，能将其接受的`ref` 属性转发到其组件树下的另一个组件中。
+- [转发refs到DOM组件](https://zh-hans.reactjs.org/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
+- [在高阶组件中转发 refs](https://zh-hans.reactjs.org/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
+
+**`React.forwardRef`接受渲染函数作为参数。使用props和ref z作为参数调用此函数，返回 React节点**
+
+```javascript
+const Example = React.forwardRef((props,ref)=> ( <button ref={ref} className="FancyButton">
+    {props.children}
+  </button>));
+
+// You can now get a ref directly to the DOM button:
+const ref = React.createRef();
+<FancyButton ref={ref}>Click me!</FancyButton>;
+```
+
+
+## React.lazy
+> React.lazy()允许你定义一个动态加载组件。有助于减少 bundle的体积，并提高首屏加载效率
+
+**此特性需要支持 `promise`**
+```javascript
+const component = React.lazy(()=> import('./component')) // 动态加载
+```
+[参考文章](https://zh-hans.reactjs.org/docs/code-splitting.html#reactlazy)
+
+## React.Suspense
+> React.Suspense 可以指定加载指示器（loading indicator），以防其组件树中的某些子组件尚未具备渲染条件。目前，懒加载组件是 <React.Suspense> 支持的唯一用例：
+
+```javascript
+// 该组件是动态加载的
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+function MyComponent() {
+  return (
+    // 显示 <Spinner> 组件直至 OtherComponent 加载完成
+    <React.Suspense fallback={<Spinner />}>
+      <div>
+        <OtherComponent />
+      </div>
+    </React.Suspense>
+  );
+}
+```
+请注意，`lazy` 组件可以位于 `Suspense` 组件树的深处——它不必包装树中的每一个延迟加载组件。最佳实践是将 `<Suspense>` 置于你想展示加载指示器（loading indicator）的位置，而 `lazy()` 则可被放置于任何你想要做代码分割的地方。
+
+虽然目前尚未支持其它特性，但未来我们计划让 Suspense 支持包括数据获取在内的更多场景。可以在[roadmap](https://zh-hans.reactjs.org/blog/2018/11/27/react-16-roadmap.html) 中了解相关信息。
+
+
+**`React.lazy()` 和 `<React.Suspense>` 尚未在 `ReactDOMServer` 中支持。这是已知问题，将会在未来解决。**
+
