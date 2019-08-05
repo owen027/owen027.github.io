@@ -165,3 +165,38 @@ import { ADD_TODO, REMOVE_TODO } from '../actionTypes'
 > 注意：使用单独的模块或文件定义 常量`type`不是必须的，对于小应用来说，使用字符串`type`方便。而在大型项目种定义常量利大于弊。
 
 出了`type`属性外其他属性可自行定义，对于规范参考[Flux Standard Action](https://github.com/redux-utilities/flux-standard-action)
+
+#### 创建 Action 的生产函数
+> 即生成action 的方法，函数返回一个 action 对象这样更容易被移植和测试
+```javascript
+function addTodo(text){
+    return {
+        type:ADD_TODO,
+        text
+    }
+}
+```
+在[传统的Flux](http://facebook.github.io/flux/)实现中调用 action 实现方法时，一般会触发一个`dispatch`
+```javascript
+function addTodo(text){
+   const action= {
+        type:ADD_TODO,
+        text
+    }
+    dispatch(action)
+}
+```
+Redux 中只需把action 函数传递给`dispatch()`
+```javascript
+function addTodo(text){
+    return {
+        type:ADD_TODO,
+        text
+    }
+}
+store.dispatch(addTodo(text))
+```
+
+#### 异步 Action
+
+待续。。。
