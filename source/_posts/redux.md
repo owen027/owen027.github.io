@@ -198,5 +198,18 @@ store.dispatch(addTodo(text))
 ```
 
 #### 异步 Action
+> 当调用异步 API时，发送请求和响应（可能超时），都可能会更改 state；因此需要 同步地 `dispatch` 由`reduce` 处理的操作
+通常需要对应三种 action:
+- 通知 reducer 请求开始的action：reducer 可能会切换state中的 `flag`,来更改UI状态。
+- 通知 reducer 请求成功的action：reducer 可能会将接收到的数据合并到 state 中，并更改 `flag`,控制 UI。
+- 通知 reducer 请求失败的action：reducer 可能会重置 `flag`,并将一些失败在UI中信息显示出来
 
+至于`flag`如何定义完全取决于开发者，使用多个type会降低出错几率。
+```javascript
+{ type: 'FETCH_POSTS_REQUEST' }
+{ type: 'FETCH_POSTS_FAILURE', error: 'Oops' }
+{ type: 'FETCH_POSTS_SUCCESS', response: { ... } }
+```
+**注意：在实际应用中，网络请求失败时也需要 dispatch action。**
 待续。。。
+
