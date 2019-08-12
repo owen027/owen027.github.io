@@ -44,7 +44,7 @@ const counter = (state = 6,action)=>{
             return ++state
         case SUB_NUM:
             return --state
-        default
+        default:
         return state
     }
 
@@ -112,7 +112,7 @@ store.dispatch({
 ```
 
 ### 使用纯函数进行更改
-> 要如何通过 action改变指定的state tree ,需要编写reducres 函数
+> 要如何通过 action改变指定的state tree ,需要编写 Reducers 函数
 
 Reducer 只是一些纯函数，他接收 state 和 action 两个参数，并且返回新的state ,
 ```javascript
@@ -124,7 +124,7 @@ const counter = (state = 6,action)=>{
             return ++state
         case SUB_NUM:
             return --state
-        default
+        default:
         return state
     }
 
@@ -135,7 +135,7 @@ const counter1 = (state = 6,action)=>{
             return ++state
         case SUB_NUM:
             return --state
-        default
+        default:
         return state
     }
 
@@ -211,5 +211,7 @@ store.dispatch(addTodo(text))
 { type: 'FETCH_POSTS_SUCCESS', response: { ... } }
 ```
 **注意：在实际应用中，网络请求失败时也需要 dispatch action。**
+
+
 待续。。。
 
