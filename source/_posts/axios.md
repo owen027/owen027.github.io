@@ -1,16 +1,104 @@
 ---
-title: Axios 
+title: 原生Ajax的封装 和 Axios的 二次封装
 date: 2019-04-17 20:40:28
 categories:
 - XMLHttpRequest
-tags: 
+tags:
 - axios
 ---
-### 原生Ajax
-- 异步的JavaScript与XML技术（ Asynchronous JavaScript and XML ）
-- Ajax 不需要任何浏览器插件，能在不更新整个页面的前提下维护数据，但需要用户允许JavaScript在浏览器上执行。
-#### `XMLHttpRequest` 对象
 
+### AJAX
+异步的JavaScript与XML技术（ Asynchronous JavaScript and XML ）
+Ajax 核心使用 `XMLHttpRequest` （XHR）对象,首先由微软引入的一个特性；Ajax 不需要任何浏览器插件，能在不更新整个页面的前提下维护数据（可以向服务器请求额外的数据无需重载页面），但需要用户允许JavaScript在浏览器上执行。
+
+#### XHR 对象用法
+```javascript
+var xhr = new XMLRequestHttp() // 通过XMLHttpRequest 构造函数来创建
+```
+#### open 方法
+```javascript
+xhr.open(method, url, async, user, password);
+```
+-` method`：要发送的请求类型 `GET、POST、PUT、DELETE` 。（必选）
+`url`：请求的URL （必选）
+- axync ：布尔值，是否异步发送请求，默认true（true 时，已完成事务的通知可供事件监听使用，如果 `xhr.multipart`为true,则此参数必须为true；false 时，send()方法直到收到答复前不会返回）
+- `user`：用户名用于认证用途 默认 null
+- `password`：用户名用于认证用途 默认 null
+
+
+<label>调用`open`方法不会真正发送请求，只是准备发送请求，并且URL有同源策略的限制（须和页面的主域、端口、协议一致，只要一处不符合要求将报错，数据将被拦截，可通过前后端配置，或使用代理来解决）。</label>
+
+#### setRequestHeader()
+如需设置 [Accpet](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Accept) 头部信息，可通过`setRequestHeader()` 方法来设置
+
+ - `Accpet` 头部信息：告知客户端可以处理的内容类型，用 [MIME类型](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types) 表示；服务端使用 [Content-Type](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type) 通知客户端它的选择
+  媒体类型（ [MIME类型](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types) ） ：一种标准，用来表示文档、文件或字 节流的性质和格式。 [完整类型列表](https://www.iana.org/assignments/media-types/media-types.xhtml)
+- [Content-Type](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type) ：实体头部用于指示资源的 MIME 类型，告诉客户端实际返回的内容类型；浏览器会在某些情况下进行MIME查找，并不一定遵循此标题的值; 为了防止这种行为，可以将标题 [X-Content-Type-Options](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-Content-Type-Options) 设置为 `nosniff`。
+```javascript
+  xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+  ```
+#### send 方法
+
+ **data：作为请求主体发送的数据，如果不需要通过请求主体发送数据，则必须传 null**
+调用 send()发送请求，在收到响应后，响应的数据会自动填充XHR对象的属性
+
+```javascript
+ xhr.send(data);
+```
+
+#### responseText ：从服务端返回的文本
+```javascript
+ xhr.onload = function () {
+     if (xhr.readyState === xhr.DONE) {
+         if (xhr.status === 200) {5             console.log(xhr.responseText);
+         }
+     }
+ };
+```
+#### responseXML
+如果响应的 `Content-Type` 为` text/html` 或 `application/xml`，将保存包含响应数据的 `XML DOM` 文档，对于其它类型的数据则为 `null`, 也可通过[overrideMimeType()](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/overrideMimeType)  强制 XHR 对象解析为 XML
+```javascript
+ // overrideMimeType() 用来强制解析 response 为 XML
+ xhr.overrideMimeType('text/xml');
+
+ xhr.onload = function () {
+   if (xhr.readyState === xhr.DONE) {
+     if (xhr.status === 200) { 8       console.log(xhr.responseXML);
+     }
+   }
+ };
+```
+#### status
+返回响应的HTTP状态码，请求完成前值为0，如果XHR 对象出错 值也是0， 200 表示请求成功，304表示请求的资源并没有修改，可直接使用浏览器种缓存的数据。 [其它状态信息](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)
+
+#### statusText
+ 返回响应的HTTP状态说明，`status` 值为 200 时  `statusText`为 "OK"
+
+#### readyState
+返回一个当前XHR对象所处的活动状态
+
+| 值 | 状态 |	描述 |
+| ------ | ------ | ------ |
+| 0 |	UNSENT |	代理被创建，但尚未调用 `open()` 方法。|
+| 1 |	OPENED |	`open()` 方法已经被调用。|
+| 2 |	HEADERS_RECEIVED |`	send()` 方法已经被调用，并且头部和状态已经可获得。|
+| 3 |	LOADING |	下载中；响应体部分正在被接收 `responseText` 属性已经包含部分数据。|
+| 4 |	DONE |	下载操作已完成。|
+
+#### onreadystatechange
+当 readyState变化时会触发次事件函数，如果使用 [abort()](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/abort) 取消请求则次事件函数不会被触发
+```javascript
+ xhr.onreadystatechange = function () {
+   if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+     console.log(xhr.responseText)
+   }
+ }
+```
+
+##### [参考资料](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)
+
+
+#### 封装示例
 
 ```javascript
 // 创建 构造函数
@@ -24,7 +112,7 @@ function Ajax(obj) {
 // 再原型上创建方法
 Ajax.prototype.send = function(){
     var self = this;
-    var  toStr = Object.prototype.toString; 
+    var  toStr = Object.prototype.toString;
     if (self.data === null && typeof self.data !== 'object' && Array.isArray(obj)) return;
     return (function(){
             // 实例化 XML对象
@@ -35,7 +123,7 @@ Ajax.prototype.send = function(){
                     data += k + '=' + self.data[k] + '&';
             }
             data = data.substr(0,data.length - 1);
-            // 接收回调函数             
+            // 接收回调函数
             xhr.onreadystatechange = function(){
                 if (xhr.readyState === 4){
                     if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
@@ -66,13 +154,13 @@ function isFunction(obj){
 var ajax = new Ajax({
      type:'post',
      url:"/login",
-     data:{ 
+     data:{
          loginname:"admin",
-         password:"admin" 
+         password:"admin"
         },
       success:function(e){
             console.log(e)
-            }, 
+            },
        error:function(err){
               console.log(err)
               },
@@ -108,12 +196,12 @@ var ajax = new Ajax({
  - 在浏览器中，一般是通过文件上传输入框来获取 file 对象，比如：
   ```html
   <input type="file" name='uploadFile' id="upload-file" />
-    
+
   ```
   ```javascript
   document.getElementById('upload-file')
           .addEventListener('change', function () {
-              
+
               var formData = new FormData();
               // 获取数据
                 formData.append('uploadFile', this.files[0])
@@ -131,7 +219,7 @@ var ajax = new Ajax({
   1. 使用 `overrideMimeType` 方法覆写服务器指定的 [`MIME`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) 类型，从而改变浏览器解析数据的方式
   ```javascript
   // 参数 MIME 类型
-  // 告诉浏览器，服务器响应的内容是用户自定义的字符集 
+  // 告诉浏览器，服务器响应的内容是用户自定义的字符集
   xhr.overrideMimeType('text/plain; charset=x-user-defined');
   // 浏览器就会将服务器返回的二进制数据当成文本处理，我们需要做进一步的转换才能拿到真实的数据
     // 获取二进制数据的第 i 位的值
@@ -159,7 +247,7 @@ var ajax = new Ajax({
     xhr.upload.addEventListener('error', onErrorHandler, false);
 
     ```
-#### 兼容性 
+#### 兼容性
 ![XMLHttpRequest](/static/img/xml.png)
 
 更多资料参考:
@@ -169,9 +257,9 @@ var ajax = new Ajax({
 
 ---
 
- 
-### Axios 
-- 基于 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 的 Http 库 
+
+### Axios
+- 基于 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 的 Http 库
 - 可以在客户端 和 nodeJs中使用
 - 在客户端创基 XMLHttpRequests
 - 在nodeJs 创建 [HTTP](https://nodejs.org/api/http.html) 请求
@@ -191,7 +279,7 @@ npm install axios
 
 #### methods
 
-##### Get 
+##### Get
 ```javascript
 const axios = require('axios')
 
@@ -216,7 +304,7 @@ axios.get('url',{
      })
 ```
 - 同样的传参方法有 delete
-##### post 
+##### post
 ```javascript
 axios.post('url',{name:'Owen'})
      .then(res =>{
@@ -227,7 +315,7 @@ axios.post('url',{name:'Owen'})
      })
 ```
 - 同样的传参方法有  put patch
-##### concurrent requests 
+##### concurrent requests
 ```javascript
 axios.all([axios.get('url1'),axios.get('url2')])
 ```
@@ -237,7 +325,7 @@ axios.all([axios.get('url1'),axios.get('url2')])
 ```javascript
 
 axios({
-  method:'get', // default is get 
+  method:'get', // default is get
   url:'url', // request  url
   data:{ // 仅支持post，put和patch方法，数据作为请求主体发送 ( Only the post,put and patch methods are supported, and the data is sent as the request body )
   /* 浏览器仅支持传递 FormData, File, Blob （The browser only supports passing FormData, File and Blob)
@@ -250,7 +338,7 @@ axios({
     // 可以修改发送的请求数据和请求头，只支持put，post和patch，回调函数必须返回Buffer，ArrayBuffer，FormData或Stream数据
     // Can modify the sent request data and request header,only support put, post and patch.
     // Callback must return Buffer, ArrayBuffer, FormData or Stream data
-    
+
     // Do whatever you want to transform the data
 
     return data;
@@ -276,11 +364,11 @@ axios({
     //  - config has been merged with defaults
     //  - request transformers have already run
     //  - request interceptors have already run
-    
+
     // Make the request using config provided
     // Upon response settle the Promise
       return new Promise(function(resolve, reject) {
-  
+
     var response = {
       data: responseData,
       status: request.status,
@@ -378,8 +466,8 @@ axios({
     user:'xxx',
     password:'***'
   },
-  responseType: 'json',/* 服务器响应的数据类型（ The server response data type ） 
-                         支持 arraybuffer, blob, document, json, text, stream 
+  responseType: 'json',/* 服务器响应的数据类型（ The server response data type ）
+                         支持 arraybuffer, blob, document, json, text, stream
                         */
   responseEncoding:'utf8', // 用于解码响应的编码 (Encoding for decoding the response )
   xsrfCookieName: 'XSRF-TOKEN', // default is XSRF-TOKEN , csrf令牌Cookie 名称
@@ -391,7 +479,7 @@ onDownloadProgress: function (progressEvent) { // 下载进度事件 （ handlin
    console.log(progressEvent)
   },
 maxContentLength: 2000, // 允许响应内容的最大字节 （defines the max size of the http response content in bytes allowed）
-validateStatus: function (status) { // 返回给定HTTP状态范围, 如果状态在给定范围内，响应数据传给`then` ，否则传给 `catch` ( Returns the given HTTP status range, if the status is within the give range, the respones data is passed to `then`, otherwise passed to `catch` ) 
+validateStatus: function (status) { // 返回给定HTTP状态范围, 如果状态在给定范围内，响应数据传给`then` ，否则传给 `catch` ( Returns the given HTTP status range, if the status is within the give range, the respones data is passed to `then`, otherwise passed to `catch` )
     return status >= 200 && status < 300; // default
   },
   maxRedirects: 5, // default is 5  // 定义Node 中最大重定向数  ( defines the maximunn number of redirects in Node )
@@ -408,7 +496,7 @@ validateStatus: function (status) { // 返回给定HTTP状态范围, 如果状�
    },
     cancelToken: new CancelToken(function (cancel) { // 取消请求的 token
   })
-  })  
+  })
   .then(res =>{
        console.log(res)
      })
@@ -458,10 +546,10 @@ axios.interceptors.request.eject(myInterceptor);
 ```javascript
  /**
   * @desc: axios封装
-  * @author: ggw 
+  * @author: ggw
   * @module: axios
   * @description: 配合使用 饿了么的 Message和Loading
-  * @Date: 2018 
+  * @Date: 2018
   */
  import axios from 'axios';
  import qs from 'qs';
@@ -469,8 +557,8 @@ axios.interceptors.request.eject(myInterceptor);
      Message,
      Loading
  } from 'element-ui';
- 
- import router from '../router'; 
+
+ import router from '../router';
  let loading;
  let headerNone = {
      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -481,9 +569,9 @@ axios.interceptors.request.eject(myInterceptor);
  let baseURL = window.location.origin ;
 
 
- /** 
+ /**
   * @description: 定义初始化Loading
-  * @method: startLoading 
+  * @method: startLoading
   */
   const startLoading = () => {
      loading = Loading.service({
@@ -491,10 +579,10 @@ axios.interceptors.request.eject(myInterceptor);
          background: 'rgba(220, 220, 220, 0.51)'
      });
  };
- 
+
 
  let count = 0;
- /** 
+ /**
   * @description: 显示Loading 同时多个发送请求 只开启一次Loading
   * @method: showLoading  && hideLoading
   */
@@ -520,14 +608,14 @@ axios.interceptors.request.eject(myInterceptor);
          }
      }
  };
- /** 
+ /**
   * @description: 出口
   * @exports api
   * @param:options 必须是对象
   * options 对象为 axios对应参数
   */
  export default (options) => {
-     /** 
+     /**
       * @description: 用来初始化承诺的回调。
       * 这个回调被传递了两个参数：
       * 一个解析回调用一个值或另一个承诺的结果来解析承诺，
