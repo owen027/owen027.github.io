@@ -210,11 +210,55 @@ var ajax = new Ajax({
   ```
 ##### 支持跨域请求
  - 浏览器默认是不允许跨域请求的，有时候又是必要的，在以前通常使用[`JSONP`](https://baike.baidu.com/item/JSONP)来解决（IE10 以下不支持）
- - 为了标准化跨域请求， W3C提出 [跨域资源共享](http://www.ruanyifeng.com/blog/2016/04/cors.html)（CORS）前端无须修改代码，只需 服务器返回 `Access-Control-Allow-Origin` 响应头，指定允许对应的域
- - `CORS` 默认不发送 `cookie` 如果需要发送，前端需要设置 `withCredentials `属性，同时服务器需要 返回 `Access-Control-Allow-Credentials: true`,
+ - 为了标准化跨域请求， W3C提出 [跨域资源共享](http://www.ruanyifeng.com/blog/2016/04/cors.html)（CORS）前端无须修改代码，只需 服务器返回 `Access-Control-Allow-Origin` 响应头，指定允许对应的域，如果是公共资源可指定“*”
+ - `CORS` 默认不发送 `cookie` 如果需要发送，前端需要设置 `withCredentials `属性，同时服务器需要 返回 `Access-Control-Allow-Credentials: true`
  ```javascript
   xhr.withCredentials = true;
  ```
+ 检测XHR是否支持CORS最简单的方式，就是检查是否存在 `withCredentials`，再检测`XDomainRequest` 对象是否存在，即可兼顾所有浏览器
+ ```javascript
+let createCORSRequest = (method,url)=>{
+    let var xhr = mew XMLHttpRequest();
+    if ('withCredentials' in xhr){
+      xhr.open(method,url,true);
+    }else if(typeof XDomainRequest != 'undefined'){
+      xhr = new XDomainRequest();
+      xhr.open(method,url);
+    }else{
+      xhr = null
+    }
+    return xhr
+}
+    let request = createCORSRequest('get','baidu.com')
+    if(request){
+      request.onload = function(){
+        // request.responseText
+      }
+      request.send()
+    }
+ ```
+ **Preflighted Requests：**
+ - 一个透明服务器验证机制，用于检查服务器是否支持[CORS](http://www.ruanyifeng.com/blog/2016/04/cors.html)
+ 这是一个 OPTIONS 请求，使用了三个请求头
+ - Access-Control-Request-Method：请求自身使用的方法
+ - Access-Control-Request-Headers：自定义头部信息，多个头部以逗号分隔
+ - Origin报头：和简单请求相同，将请求的域发送给服务端，服务端再Access-Control-Allow-Origin 响应头中返回同样的域即可解决跨域问题。
+
+**img src特性：**
+- 一个网页可以从任何网页中加载图像，不用担心跨域问题，通过onload 和 onerror 事件处理确定是否接收到响应
+- 请求的数据通过查询字符串形式发送，响应可以是任意内容，通常是像素图或204响应。
+- 只能发送 get 请求，无法访问服务器的响应文本
+```javascript
+let img = new Image();
+img.onload = function (){
+  console.log('done')
+}
+img.src = 'http://www.baidu.com?test=test1'
+
+```
+
+
+**请求数据**
 ##### 可以获取服务端二进制数据
   1. 使用 `overrideMimeType` 方法覆写服务器指定的 [`MIME`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) 类型，从而改变浏览器解析数据的方式
   ```javascript
@@ -236,23 +280,24 @@ var ajax = new Ajax({
   ```
 ##### 可以获取数据传输进度信息 [参考资料](https://dev.opera.com/articles/xhr2/)
 
-  - 使用  onload 监听了一个数据传输完成的事件。
-    ```javascript
-    // 上传进度监听
-    xhr.upload.addEventListener('progress', onProgressHandler, false);
+  - 使用 onload 监听了一个数据传输完成的事件。
+```javascript
+// 上传进度监听
+xhr.upload.addEventListener('progress', onProgressHandler, false);
 
-    // 传输成功完成
-    xhr.upload.addEventListener('load', onLoadHandler, false);
-    // 传输失败信息
-    xhr.upload.addEventListener('error', onErrorHandler, false);
+// 传输成功完成
+xhr.upload.addEventListener('load', onLoadHandler, false);
+// 传输失败信息
+xhr.upload.addEventListener('error', onErrorHandler, false);
 
-    ```
+```
 #### 兼容性
 ![XMLHttpRequest](/static/img/xml.png)
 
 更多资料参考:
 [阮一峰的文章](http://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html)
 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)
+
 
 
 ---
