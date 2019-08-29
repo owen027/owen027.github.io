@@ -1,5 +1,5 @@
 ---
-title: JSQuestion
+title: JS问题整理
 date: 2019-04-10 10:39:57
 categroies: Question
 tags: JSQuestion
@@ -35,18 +35,18 @@ var bar = foo;
 foo.x = foo = {n:2};
 
 
-/* 
+/*
 变量名 存储在栈中， 引用对象存储在堆中
-根据规则 先解析 =号左侧的引用 
+根据规则 先解析 =号左侧的引用
  refx = (refo = {n:2})
 再赋值
-refo = {n:2} //refo  开辟新指针 foo  指向 {n:2} 
+refo = {n:2} //refo  开辟新指针 foo  指向 {n:2}
 refx =  {n:2} // 在原refo指针对象中开辟新指针 指向 {n:2}
 
 结果  refo.x == undefined
 
 */
-/* 
+/*
 或者
  foo.x赋值前是{n:1,x:unfiend};
 赋值后{n:1,x:{n:2}};
@@ -58,7 +58,7 @@ bar.x // {n: 1, x: {n:2}};
 ### split
 
 ```javascript
-'81 newO'.split('') //["8", "1", " ", "n", "e", "w", "O"] 
+'81 newO'.split('') //["8", "1", " ", "n", "e", "w", "O"]
 
 '81 newO'.split(' ')// ["81", "newO"]
 
