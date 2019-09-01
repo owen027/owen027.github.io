@@ -91,14 +91,14 @@
 <meta name="description" content="赋值运算符多次出现，优先计算问题(结合性) 赋值表达式为右结合先从左到右解析各个引用，然后计算最右侧的表达式的值，最后把值从右到左赋给各个引用。1234567891011121314151617181920212223242526272829303132333435363738394041424344a = b = c = v/*先解析 左侧的操作数1. refa2. refb3. refc4.">
 <meta name="keywords" content="JSQuestion">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JSQuestion">
+<meta property="og:title" content="JS问题整理">
 <meta property="og:url" content="https://owen027.github.io/2019/04/10/JSquestion/index.html">
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="赋值运算符多次出现，优先计算问题(结合性) 赋值表达式为右结合先从左到右解析各个引用，然后计算最右侧的表达式的值，最后把值从右到左赋给各个引用。1234567891011121314151617181920212223242526272829303132333435363738394041424344a = b = c = v/*先解析 左侧的操作数1. refa2. refb3. refc4.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-30T16:03:54.946Z">
+<meta property="og:updated_time" content="2019-08-29T15:09:43.322Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JSQuestion">
+<meta name="twitter:title" content="JS问题整理">
 <meta name="twitter:description" content="赋值运算符多次出现，优先计算问题(结合性) 赋值表达式为右结合先从左到右解析各个引用，然后计算最右侧的表达式的值，最后把值从右到左赋给各个引用。1234567891011121314151617181920212223242526272829303132333435363738394041424344a = b = c = v/*先解析 左侧的操作数1. refa2. refb3. refc4.">
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <title>JSQuestion | Owen</title>
+  <title>JS问题整理 | Owen</title>
   
 
 
@@ -321,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JSQuestion</h1>
+          <h1 class="post-title" itemprop="name headline">JS问题整理</h1>
         
 
         <div class="post-meta">
@@ -408,9 +408,9 @@
 
       
         <h3 id="赋值运算符多次出现，优先计算问题-结合性"><a href="#赋值运算符多次出现，优先计算问题-结合性" class="headerlink" title="赋值运算符多次出现，优先计算问题(结合性)"></a>赋值运算符多次出现，优先计算问题(结合性)</h3><blockquote>
-<p>赋值表达式为右结合<br>先从左到右解析各个引用，然后计算最右侧的表达式的值，最后把值从右到左赋给各个引用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">a = b = c = v</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">先解析 左侧的操作数</span></span><br><span class="line"><span class="comment">1. refa</span></span><br><span class="line"><span class="comment">2. refb</span></span><br><span class="line"><span class="comment">3. refc</span></span><br><span class="line"><span class="comment">4. value v</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">refa = (refb = (refc = value v))</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 再计算右侧表达式的值 然后和从右到左赋值</span></span><br><span class="line"><span class="comment">1. value v 赋值 refc</span></span><br><span class="line"><span class="comment">2. value v 赋值 refb</span></span><br><span class="line"><span class="comment">3. calue v 赋值 refa</span></span><br><span class="line"><span class="comment">4. 返回 value v</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">//example</span></span><br><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">n</span>:<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> bar = foo;</span><br><span class="line"></span><br><span class="line">foo.x = foo = &#123;<span class="attr">n</span>:<span class="number">2</span>&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">变量名 存储在栈中， 引用对象存储在堆中</span></span><br><span class="line"><span class="comment">根据规则 先解析 =号左侧的引用 </span></span><br><span class="line"><span class="comment"> refx = (refo = &#123;n:2&#125;)</span></span><br><span class="line"><span class="comment">再赋值</span></span><br><span class="line"><span class="comment">refo = &#123;n:2&#125; //refo  开辟新指针 foo  指向 &#123;n:2&#125; </span></span><br><span class="line"><span class="comment">refx =  &#123;n:2&#125; // 在原refo指针对象中开辟新指针 指向 &#123;n:2&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">结果  refo.x == undefined</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">或者</span></span><br><span class="line"><span class="comment"> foo.x赋值前是&#123;n:1,x:unfiend&#125;;</span></span><br><span class="line"><span class="comment">赋值后&#123;n:1,x:&#123;n:2&#125;&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">foo.x <span class="comment">//undefined</span></span><br><span class="line">bar.x <span class="comment">// &#123;n: 1, x: &#123;n:2&#125;&#125;;</span></span><br></pre></td></tr></table></figure></p>
+<p>赋值表达式为右结合<br>先从左到右解析各个引用，然后计算最右侧的表达式的值，最后把值从右到左赋给各个引用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">a = b = c = v</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">先解析 左侧的操作数</span></span><br><span class="line"><span class="comment">1. refa</span></span><br><span class="line"><span class="comment">2. refb</span></span><br><span class="line"><span class="comment">3. refc</span></span><br><span class="line"><span class="comment">4. value v</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">refa = (refb = (refc = value v))</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 再计算右侧表达式的值 然后和从右到左赋值</span></span><br><span class="line"><span class="comment">1. value v 赋值 refc</span></span><br><span class="line"><span class="comment">2. value v 赋值 refb</span></span><br><span class="line"><span class="comment">3. calue v 赋值 refa</span></span><br><span class="line"><span class="comment">4. 返回 value v</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">//example</span></span><br><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">n</span>:<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> bar = foo;</span><br><span class="line"></span><br><span class="line">foo.x = foo = &#123;<span class="attr">n</span>:<span class="number">2</span>&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">变量名 存储在栈中， 引用对象存储在堆中</span></span><br><span class="line"><span class="comment">根据规则 先解析 =号左侧的引用</span></span><br><span class="line"><span class="comment"> refx = (refo = &#123;n:2&#125;)</span></span><br><span class="line"><span class="comment">再赋值</span></span><br><span class="line"><span class="comment">refo = &#123;n:2&#125; //refo  开辟新指针 foo  指向 &#123;n:2&#125;</span></span><br><span class="line"><span class="comment">refx =  &#123;n:2&#125; // 在原refo指针对象中开辟新指针 指向 &#123;n:2&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">结果  refo.x == undefined</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">或者</span></span><br><span class="line"><span class="comment"> foo.x赋值前是&#123;n:1,x:unfiend&#125;;</span></span><br><span class="line"><span class="comment">赋值后&#123;n:1,x:&#123;n:2&#125;&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">foo.x <span class="comment">//undefined</span></span><br><span class="line">bar.x <span class="comment">// &#123;n: 1, x: &#123;n:2&#125;&#125;;</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="split"><a href="#split" class="headerlink" title="split"></a>split</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'81 newO'</span>.split(<span class="string">''</span>) <span class="comment">//["8", "1", " ", "n", "e", "w", "O"] </span></span><br><span class="line"></span><br><span class="line"><span class="string">'81 newO'</span>.split(<span class="string">' '</span>)<span class="comment">// ["81", "newO"]</span></span><br><span class="line"></span><br><span class="line"><span class="string">'81 newO'</span>.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line"><span class="comment">//"Owen 18"</span></span><br></pre></td></tr></table></figure>
+<h3 id="split"><a href="#split" class="headerlink" title="split"></a>split</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'81 newO'</span>.split(<span class="string">''</span>) <span class="comment">//["8", "1", " ", "n", "e", "w", "O"]</span></span><br><span class="line"></span><br><span class="line"><span class="string">'81 newO'</span>.split(<span class="string">' '</span>)<span class="comment">// ["81", "newO"]</span></span><br><span class="line"></span><br><span class="line"><span class="string">'81 newO'</span>.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line"><span class="comment">//"Owen 18"</span></span><br></pre></td></tr></table></figure>
 <p>###</p>
 
       
@@ -547,7 +547,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -569,7 +569,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -667,7 +667,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">58.7k</span>
+    <span title="Site words total count">67.4k</span>
   
   -->
 </div>
