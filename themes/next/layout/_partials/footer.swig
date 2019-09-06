@@ -9,7 +9,7 @@
   <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright || config.author }}</span>
 <!--
   {% if theme.post_wordcount.totalcount %}
-    
+
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
@@ -54,3 +54,11 @@
 
 {% endif %}
 -->
+{% if theme.mermaid.enable %}
+  <script src='https://unpkg.com/mermaid@{{ theme.mermaid.version }}/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+{% endif %}
