@@ -92,11 +92,11 @@
 <meta name="keywords" content="Database_basis_2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库基础（Database Basis) (二)">
-<meta property="og:url" content="https://owen027.github.io/2019/09/05/database-basis-2/index.html">
+<meta property="og:url" content="https://owen027.github.io/2019/09/05/database_basis_2/index.html">
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="数据库系统的结构在一个DBS中有着不同类型的用户，每个用户都从不同的角度以各自的观点看待数据库，从而形成了DBS不同的视图结构。因此DBS的结构可以有多种不同的层次或不同的视角。 从数据库管理员（DBA）视角来看，DBS分为内部系统结构和外部体系结构，其中内部系统结构通常采用三级模式结构，外部体系结构通常表现为 集中式结构、分布式结构和并行结构等；  从数据库用户角度分为客户/服务器结构和浏览器/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-06T14:25:05.021Z">
+<meta property="og:updated_time" content="2019-09-07T11:15:32.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库基础（Database Basis) (二)">
 <meta name="twitter:description" content="数据库系统的结构在一个DBS中有着不同类型的用户，每个用户都从不同的角度以各自的观点看待数据库，从而形成了DBS不同的视图结构。因此DBS的结构可以有多种不同的层次或不同的视角。 从数据库管理员（DBA）视角来看，DBS分为内部系统结构和外部体系结构，其中内部系统结构通常采用三级模式结构，外部体系结构通常表现为 集中式结构、分布式结构和并行结构等；  从数据库用户角度分为客户/服务器结构和浏览器/">
@@ -129,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="https://owen027.github.io/2019/09/05/database-basis-2/">
+  <link rel="canonical" href="https://owen027.github.io/2019/09/05/database_basis_2/">
 
 
 
@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://owen027.github.io/2019/09/05/database-basis-2/">
+    <link itemprop="mainEntityOfPage" href="https://owen027.github.io/2019/09/05/database_basis_2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Owen Gao">
@@ -370,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  1.3k
                 </span>
               
 
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -440,10 +440,16 @@ C3 --> D6(应用6)</pre>
 <h4 id="内模式"><a href="#内模式" class="headerlink" title="内模式"></a>内模式</h4><p>内模式也称存储模式（Storage Schema）, 是对数据库中的物理结构和存储方式的描述，是数据在数据库内部的表现形式。是整个数据库的最底层表示，它不同于物理层，是DBA所见到的，特定的DBMS所处理的数据库的内部结构（内部视图或存储视图）。</p>
 <label>和模式一样，内模式在一个数据库中只有一个，它不存储设备上的物理记录或物理快，也不涉及任何具体设备限制。</label>
 
-<h4 id="两层映像与数据独立性"><a href="#两层映像与数据独立性" class="headerlink" title="两层映像与数据独立性"></a>两层映像与数据独立性</h4><p>总体而言，三个模式的对数据的三级抽象，其特点如下：</p>
+<h4 id="两层映像与数据独立性-重点"><a href="#两层映像与数据独立性-重点" class="headerlink" title="两层映像与数据独立性 重点"></a>两层映像与数据独立性 <label style="color:red; ">重点</label></h4><p>总体而言，三个模式的对数据的三级抽象，其特点如下：</p>
 <ul>
 <li>一个数据库的整理逻辑结构和特征的描述（概念模式）是独立于数据库其他层次结构（内/外模式）的描述，其是数据库的核心，也是数据库设计的关键。</li>
+<li>一个数据库的内部存储模式依赖于概念模式，并且独立于外部模式和具体的存储设备。</li>
+<li>用户逻辑结构（外模式）是在全局逻辑结构描述的基础上定义的，它面向具体的应用程序，独立于内部模式和存储设备。</li>
+<li>应用程序是在外模式的逻辑结构上编写，依赖于特定的外模式，与数据库的模式和存储结构独立。</li>
 </ul>
+<label>用户不必考虑数据的物理存储细节，将其交给DBMS负责管理，同时为有效支撑数据库的三级抽象及它们之前的联系和相互转换，DBMS通过提供两层映像来实现（外模式/模式 和 模式/内模式）</label>
+
+
 
       
     </div>
@@ -659,7 +665,7 @@ C3 --> D6(应用6)</pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库系统的结构"><span class="nav-number">1.</span> <span class="nav-text">数据库系统的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三级模式结构"><span class="nav-number">1.1.</span> <span class="nav-text">三级模式结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外模式"><span class="nav-number">1.1.2.</span> <span class="nav-text">外模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内模式"><span class="nav-number">1.1.3.</span> <span class="nav-text">内模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两层映像与数据独立性"><span class="nav-number">1.1.4.</span> <span class="nav-text">两层映像与数据独立性</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库系统的结构"><span class="nav-number">1.</span> <span class="nav-text">数据库系统的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三级模式结构"><span class="nav-number">1.1.</span> <span class="nav-text">三级模式结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外模式"><span class="nav-number">1.1.2.</span> <span class="nav-text">外模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内模式"><span class="nav-number">1.1.3.</span> <span class="nav-text">内模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两层映像与数据独立性-重点"><span class="nav-number">1.1.4.</span> <span class="nav-text">两层映像与数据独立性 重点</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -695,7 +701,7 @@ C3 --> D6(应用6)</pre>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">71.9k</span>
+    <span title="Site words total count">72.1k</span>
   
   -->
 </div>
