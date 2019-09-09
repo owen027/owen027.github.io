@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://owen027.github.io/"/>
-  <updated>2019-09-09T15:50:45.842Z</updated>
+  <updated>2019-09-09T15:55:41.680Z</updated>
   <id>https://owen027.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>关系数据模型</title>
-    <link href="https://owen027.github.io/2019/09/09/relation_model_of_data/"/>
-    <id>https://owen027.github.io/2019/09/09/relation_model_of_data/</id>
+    <link href="https://owen027.github.io/2019/09/09/relation_data_model/"/>
+    <id>https://owen027.github.io/2019/09/09/relation_data_model/</id>
     <published>2019-09-09T13:37:35.000Z</published>
-    <updated>2019-09-09T15:50:45.842Z</updated>
+    <updated>2019-09-09T15:55:41.680Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概叙"><a href="#概叙" class="headerlink" title="概叙"></a>概叙</h2><p>关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。</p><h2 id="关系数据模型"><a href="#关系数据模型" class="headerlink" title="关系数据模型"></a>关系数据模型</h2><p>作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。</p><h3 id="关系数据结构-重点"><a href="#关系数据结构-重点" class="headerlink" title="关系数据结构  重点"></a>关系数据结构  <label style="color:red; ">重点</label></h3><p> 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是吧数据库比赛为关系的集合，并以二维表格的形式组织数据。</p><p> 录入一张二维表格如：</p><table><thead><tr><th>学号</th><th>姓名</th><th>性别</th><th>籍贯</th><th>民族</th><th>…</th></tr></thead><tbody><tr><td>001</td><td>张三</td><td>男</td><td>陕西</td><td>汉</td><td>…</td></tr><tr><td>002</td><td>李四</td><td>男</td><td>湘西</td><td>苗</td><td>…</td></tr><tr><td>003</td><td>王五</td><td>男</td><td>河北</td><td>汉</td><td>…</td></tr><tr><td>004</td><td>赵六</td><td>男</td><td>东北</td><td>汉</td><td>…</td></tr><tr><td>…</td></tr></tbody></table><h4 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h4><ol><li>表(Table)：也称为关系，是二维数据结构，由表名、构成表的各列及若干行数据组成，每个表由唯一的表名，每一行数据描述一条具体的记录值。</li><li>关系（Relation）：一个关系逻辑上对应一张二维表，可以为每个关系取一个名称来标识。关系有三种类型：基本关系、查询表和视图表。</li></ol>]]></content>
     
