@@ -496,7 +496,7 @@
 </li>
 </ul>
 <h3 id="结合-Generator-使用"><a href="#结合-Generator-使用" class="headerlink" title="结合 Generator 使用"></a>结合 Generator 使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> g = <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> foo = <span class="keyword">yield</span> getFoo();</span><br><span class="line">    <span class="built_in">console</span>.log(foo);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFoo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    resolve(<span class="string">'foo'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span> (<span class="params">generator</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> it = generator();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">go</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (result.done) <span class="keyword">return</span> result.value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result.value.then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> go(it.next(value));</span><br><span class="line">    &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> go(it.throw(error));</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  go(it.next());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">run(g);</span><br></pre></td></tr></table></figure>
-<h3 id="Promise-A-规范"><a href="#Promise-A-规范" class="headerlink" title="Promise/A+ 规范"></a><a href="https://promisesaplus.com/" target="_blank" rel="noopener">Promise/A+ 规范</a></h3><ul>
+<h3 id="Promise-A-规范"><a href="#Promise-A-规范" class="headerlink" title="Promise/A+ 规范"></a><a href="https://promisesaplus.com/">Promise/A+ 规范</a></h3><ul>
 <li>实现者为开发者提供开放的 Promise标准，实现可靠，可互操作的JavaScript承诺。</li>
 </ul>
 <h4 id="术语（Terminology）"><a href="#术语（Terminology）" class="headerlink" title="术语（Terminology）"></a>术语（Terminology）</h4><ol>
@@ -524,7 +524,7 @@
 <li><code>onRejected</code>： 必须在 <code>promise</code> 拒绝状态（<code>rejected</code> ）结束后调用, 其第一个参数为 <code>reason</code>，只能调用一次</li>
 </ol>
 </li>
-<li><p>onFulfilled or onRejected 在<a href="https://es5.github.io/#x10.3" target="_blank" rel="noopener">执行上下文</a> (作用域)堆栈仅包含平台代码之前不得调用<br>意味着调用 <code>onFulfilled</code>,<code>onRejected</code> 须在新一轮 <code>event loop</code> 中执行， 可用 <code>macro-task</code>（setTimout,setInterval,I/O,UI rendering, <code>script</code>主线程) 或 <code>micro-task</code>（Promise, Object.observe,process.nextTick,MutationObserver） 机制来实现</p>
+<li><p>onFulfilled or onRejected 在<a href="https://es5.github.io/#x10.3">执行上下文</a> (作用域)堆栈仅包含平台代码之前不得调用<br>意味着调用 <code>onFulfilled</code>,<code>onRejected</code> 须在新一轮 <code>event loop</code> 中执行， 可用 <code>macro-task</code>（setTimout,setInterval,I/O,UI rendering, <code>script</code>主线程) 或 <code>micro-task</code>（Promise, Object.observe,process.nextTick,MutationObserver） 机制来实现</p>
 </li>
 <li>onFulfilled or onRejected 必须作为函数调用，在 <code>use strict</code> 下 <code>this 为 undefined</code></li>
 <li><code>then</code>在同一个 promise 中可以链式调用，按照对应注册顺序一次回调</li>
@@ -593,8 +593,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/14/asyncEs8/" rel="next" title="Async/await">
-                <i class="fa fa-chevron-left"></i> Async/await
+              <a href="/2019/03/13/eventLoop/" rel="next" title="异步操作原理（二）">
+                <i class="fa fa-chevron-left"></i> 异步操作原理（二）
               </a>
             
           </div>
@@ -603,8 +603,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/15/symbol/" rel="prev" title="symbol">
-                symbol <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/14/asyncEs8/" rel="prev" title="Async/await">
+                Async/await <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -690,7 +690,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -701,7 +701,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -712,7 +712,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -810,7 +810,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74k</span>
+    <span title="Site words total count">75.1k</span>
   
   -->
 </div>

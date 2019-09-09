@@ -430,7 +430,7 @@
 
       
         <h1 id="for-for…of-for…in-array-iteration-运行速度测试"><a href="#for-for…of-for…in-array-iteration-运行速度测试" class="headerlink" title="for,for…of, for…in, array iteration 运行速度测试"></a>for,for…of, for…in, array iteration 运行速度测试</h1><ul>
-<li>由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆<a href="https://www.zhihu.com/question/29352114/answer/44050599" target="_blank" rel="noopener">eval</a>，沙盒化程度高,所以需使用<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node</a>环境测试来提高准确性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 准备待测数组</span></span><br><span class="line"><span class="keyword">const</span> NUM = <span class="number">1e7</span>;</span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(NUM).fill(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// for 测试</span></span><br><span class="line"><span class="keyword">let</span> arr1 =[];</span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'for'</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  arr1.push(arr[i])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'for'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Chrome/75.0.3770.100 Safari/537.36 环境</span></span><br><span class="line"><span class="comment">//VM1324:10 for: 576.733154296875ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// node v10.11.0 环境</span></span><br><span class="line"><span class="comment">// for:  412.087ms</span></span><br></pre></td></tr></table></figure>
+<li>由于不同浏览器，不同版本性能不一，且控制台本质是是套用了一大堆<a href="https://www.zhihu.com/question/29352114/answer/44050599">eval</a>，沙盒化程度高,所以需使用<a href="https://nodejs.org/en/">node</a>环境测试来提高准确性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 准备待测数组</span></span><br><span class="line"><span class="keyword">const</span> NUM = <span class="number">1e7</span>;</span><br><span class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(NUM).fill(<span class="number">1</span>);</span><br><span class="line"><span class="comment">// for 测试</span></span><br><span class="line"><span class="keyword">let</span> arr1 =[];</span><br><span class="line"><span class="built_in">console</span>.time(<span class="string">'for'</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">  arr1.push(arr[i])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">'for'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Chrome/75.0.3770.100 Safari/537.36 环境</span></span><br><span class="line"><span class="comment">//VM1324:10 for: 576.733154296875ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// node v10.11.0 环境</span></span><br><span class="line"><span class="comment">// for:  412.087ms</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="for-几种写法"><a href="#for-几种写法" class="headerlink" title="for 几种写法"></a>for 几种写法</h2><ul>
@@ -790,7 +790,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -801,7 +801,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -812,7 +812,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -910,7 +910,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74k</span>
+    <span title="Site words total count">75.1k</span>
   
   -->
 </div>

@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="createElement() 创基并返回指定类型的 React元素。其中类型参数既可以是DOM标签字符串，也可以是React组件类型,或是React fragment类型  1React.createElement(type,[props],[...children])  JSX 编写的代码将会被转换成使用 React.createElement() 的形式。 cloneElement() 以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-29T14:37:38.329Z">
+<meta property="og:updated_time" content="2019-09-06T14:33:47.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React API">
 <meta name="twitter:description" content="createElement() 创基并返回指定类型的 React元素。其中类型参数既可以是DOM标签字符串，也可以是React组件类型,或是React fragment类型  1React.createElement(type,[props],[...children])  JSX 编写的代码将会被转换成使用 React.createElement() 的形式。 cloneElement() 以">
@@ -430,7 +430,7 @@
 
       
         <h2 id="createElement"><a href="#createElement" class="headerlink" title="createElement()"></a>createElement()</h2><blockquote>
-<p>创基并返回指定类型的 <a href="https://zh-hans.reactjs.org/docs/rendering-elements.html" target="_blank" rel="noopener">React元素</a>。其中类型参数既可以是DOM标签字符串，也可以是<a href="https://zh-hans.reactjs.org/docs/components-and-props.html" target="_blank" rel="noopener">React组件类型</a>,或是<a href="https://zh-hans.reactjs.org/docs/react-api.html#reactfragment" target="_blank" rel="noopener">React fragment</a>类型</p>
+<p>创基并返回指定类型的 <a href="https://zh-hans.reactjs.org/docs/rendering-elements.html">React元素</a>。其中类型参数既可以是DOM标签字符串，也可以是<a href="https://zh-hans.reactjs.org/docs/components-and-props.html">React组件类型</a>,或是<a href="https://zh-hans.reactjs.org/docs/react-api.html#reactfragment">React fragment</a>类型</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(type,[props],[...children])</span><br></pre></td></tr></table></figure>
 <p> JSX 编写的代码将会被转换成使用 React.createElement() 的形式。</p>
@@ -470,16 +470,16 @@
 <p><code>React.Fragment</code> 能在不额外创建DOM元素情况下，让 render方法返回多个元素</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">render()&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;React.Fragment&gt;</span><br><span class="line">          &lt;ChildA /&gt;</span><br><span class="line">          &lt;ChildB /&gt;</span><br><span class="line">          &lt;ChildC /&gt;</span><br><span class="line">        &lt;<span class="regexp">/React.Fragment&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 简写</span></span><br><span class="line"><span class="regexp">render()&#123;</span></span><br><span class="line"><span class="regexp">    return (</span></span><br><span class="line"><span class="regexp">        &lt;&gt;</span></span><br><span class="line"><span class="regexp">          &lt;ChildA /</span>&gt;</span><br><span class="line">          &lt;ChildB /&gt;</span><br><span class="line">          &lt;ChildC /&gt;</span><br><span class="line">        &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://zh-hans.reactjs.org/blog/2017/11/28/react-v16.2.0-fragment-support.html" target="_blank" rel="noopener">更多信息</a></p>
+<p><a href="https://zh-hans.reactjs.org/blog/2017/11/28/react-v16.2.0-fragment-support.html">更多信息</a></p>
 <h2 id="React-createRef"><a href="#React-createRef" class="headerlink" title="React.createRef"></a>React.createRef</h2><blockquote>
-<p>创建一个能通过 ref 属性附加到 React元素的 <a href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html" target="_blank" rel="noopener">ref</a></p>
+<p>创建一个能通过 ref 属性附加到 React元素的 <a href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html">ref</a></p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Componet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">        <span class="keyword">this</span>.inputRef = React.createRef();</span><br><span class="line">    &#125;</span><br><span class="line">    reder()&#123;</span><br><span class="line">        <span class="keyword">return</span> &lt;input type="text" ref= &#123;this.inputRef&#125; /&gt;；</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount()&#123;</span><br><span class="line">        this.inputRef.current.focus()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="React-forwardRef"><a href="#React-forwardRef" class="headerlink" title="React.forwardRef"></a>React.forwardRef</h2><blockquote>
 <p><code>React.forwardRef</code> 会创建一个React组件，能将其接受的<code>ref</code> 属性转发到其组件树下的另一个组件中。</p>
 <ul>
-<li><a href="https://zh-hans.reactjs.org/docs/forwarding-refs.html#forwarding-refs-to-dom-components" target="_blank" rel="noopener">转发refs到DOM组件</a></li>
-<li><a href="https://zh-hans.reactjs.org/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components" target="_blank" rel="noopener">在高阶组件中转发 refs</a></li>
+<li><a href="https://zh-hans.reactjs.org/docs/forwarding-refs.html#forwarding-refs-to-dom-components">转发refs到DOM组件</a></li>
+<li><a href="https://zh-hans.reactjs.org/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components">在高阶组件中转发 refs</a></li>
 </ul>
 </blockquote>
 <p><strong><code>React.forwardRef</code>接受渲染函数作为参数。使用props和ref z作为参数调用此函数，返回 React节点</strong></p>
@@ -488,13 +488,13 @@
 <p>React.lazy()允许你定义一个动态加载组件。有助于减少 bundle的体积，并提高首屏加载效率</p>
 </blockquote>
 <p><strong>此特性需要支持 <code>promise</code></strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> component = React.lazy(<span class="function"><span class="params">()</span>=&gt;</span> <span class="keyword">import</span>(<span class="string">'./component'</span>)) <span class="comment">// 动态加载</span></span><br></pre></td></tr></table></figure></p>
-<p><a href="https://zh-hans.reactjs.org/docs/code-splitting.html#reactlazy" target="_blank" rel="noopener">参考文章</a></p>
+<p><a href="https://zh-hans.reactjs.org/docs/code-splitting.html#reactlazy">参考文章</a></p>
 <h2 id="React-Suspense"><a href="#React-Suspense" class="headerlink" title="React.Suspense"></a>React.Suspense</h2><blockquote>
 <p>React.Suspense 可以指定加载指示器（loading indicator），以防其组件树中的某些子组件尚未具备渲染条件。目前，懒加载组件是 &lt;React.Suspense&gt; 支持的唯一用例：</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 该组件是动态加载的</span></span><br><span class="line"><span class="keyword">const</span> OtherComponent = React.lazy(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./OtherComponent'</span>));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyComponent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="comment">// 显示 &lt;Spinner&gt; 组件直至 OtherComponent 加载完成</span></span><br><span class="line">    &lt;React.Suspense fallback=&#123;&lt;Spinner /&gt;&#125;&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;OtherComponent /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>React.Suspense&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>请注意，<code>lazy</code> 组件可以位于 <code>Suspense</code> 组件树的深处——它不必包装树中的每一个延迟加载组件。最佳实践是将 <code>&lt;Suspense&gt;</code> 置于你想展示加载指示器（loading indicator）的位置，而 <code>lazy()</code> 则可被放置于任何你想要做代码分割的地方。</p>
-<p>虽然目前尚未支持其它特性，但未来我们计划让 Suspense 支持包括数据获取在内的更多场景。可以在<a href="https://zh-hans.reactjs.org/blog/2018/11/27/react-16-roadmap.html" target="_blank" rel="noopener">roadmap</a> 中了解相关信息。</p>
+<p>虽然目前尚未支持其它特性，但未来我们计划让 Suspense 支持包括数据获取在内的更多场景。可以在<a href="https://zh-hans.reactjs.org/blog/2018/11/27/react-16-roadmap.html">roadmap</a> 中了解相关信息。</p>
 <p><strong><code>React.lazy()</code> 和 <code>&lt;React.Suspense&gt;</code> 尚未在 <code>ReactDOMServer</code> 中支持。这是已知问题，将会在未来解决。</strong></p>
 
       
@@ -631,7 +631,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -642,7 +642,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -653,7 +653,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -751,7 +751,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74k</span>
+    <span title="Site words total count">75.1k</span>
   
   -->
 </div>

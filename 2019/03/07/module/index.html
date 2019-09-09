@@ -485,7 +485,7 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   define([], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    hello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    goodbye: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'goodbye'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h4 id="CMD-Common-Module-Definition"><a href="#CMD-Common-Module-Definition" class="headerlink" title="CMD(Common Module Definition)"></a>CMD(Common Module Definition)</h4><ul>
-<li><code>CMD</code>由玉伯大佬提出并用于<a href="https://github.com/seajs/seajs/issues/242" target="_blank" rel="noopener">SeaJS</a> </li>
+<li><code>CMD</code>由玉伯大佬提出并用于<a href="https://github.com/seajs/seajs/issues/242">SeaJS</a> </li>
 <li><p>CMD 和 AMD 很相似，都有 define 函数， 通过 require 加载 </p>
 <p>CMD和AMD 不同点：</p>
 <ul>
@@ -512,7 +512,7 @@
 <h3 id="通用模块定义-UMD"><a href="#通用模块定义-UMD" class="headerlink" title="通用模块定义 UMD"></a>通用模块定义 <code>UMD</code></h3><blockquote>
 <p>同时支持 <code>AMD</code>和 <code>CommonJS</code><br>本质 创建了一种方法来使用两者的任何一种，同时支持全局变量定义，(JS兼容性的常用思想)所以 <code>UMD</code> 可以在客户端和服务器上工作<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">root, factory</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd) &#123;</span><br><span class="line">      <span class="comment">// AMD</span></span><br><span class="line">    define([<span class="string">'myModule'</span>, <span class="string">'myOtherModule'</span>], factory);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> exports === <span class="string">'object'</span>) &#123;</span><br><span class="line">      <span class="comment">// CommonJS</span></span><br><span class="line">    <span class="built_in">module</span>.exports = factory(<span class="built_in">require</span>(<span class="string">'myModule'</span>),</span><br><span class="line">     <span class="built_in">require</span>(<span class="string">'myOtherModule'</span>));</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    root.returnExports = factory(root.myModule, root.myOtherModule);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;(<span class="keyword">this</span>, <span class="function"><span class="keyword">function</span> (<span class="params">myModule, myOtherModule</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">notHelloOrGoodbye</span>(<span class="params"></span>)</span>&#123;&#125;; </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>)</span>&#123;&#125;; </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">goodbye</span>(<span class="params"></span>)</span>&#123;&#125;; </span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">      hello: hello,</span><br><span class="line">      goodbye: goodbye</span><br><span class="line">  &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="ES6模块（即-ES2015-ECMAScript-6、ES6）"><a href="#ES6模块（即-ES2015-ECMAScript-6、ES6）" class="headerlink" title="ES6模块（即 ES2015/ECMAScript 6、ES6）"></a>ES6模块（即 <a href="http://es6.ruanyifeng.com/#docs/module#%E6%A6%82%E8%BF%B0" target="_blank" rel="noopener">ES2015/ECMAScript 6、ES6</a>）</h3><ul>
+<h3 id="ES6模块（即-ES2015-ECMAScript-6、ES6）"><a href="#ES6模块（即-ES2015-ECMAScript-6、ES6）" class="headerlink" title="ES6模块（即 ES2015/ECMAScript 6、ES6）"></a>ES6模块（即 <a href="http://es6.ruanyifeng.com/#docs/module#%E6%A6%82%E8%BF%B0">ES2015/ECMAScript 6、ES6</a>）</h3><ul>
 <li>使用 <code>import</code> 关键字引入模块，通过 <code>export</code> 关键字导出模块</li>
 <li><p>ES6目前无法在浏览器中执行,只能通过babel将不被支持的import编译为当前受到广泛支持的 require。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> cun =<span class="number">1</span>; </span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  cun++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//----------------</span></span><br><span class="line"><span class="keyword">import</span> &#123; cun, add &#125; <span class="keyword">from</span> <span class="string">'./a.js'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(cun); <span class="comment">// 1</span></span><br><span class="line">incCounter();</span><br><span class="line"><span class="built_in">console</span>.log(cun); <span class="comment">// 2</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> fo =<span class="string">'a'</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> fo =<span class="string">'b'</span>,<span class="number">500</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;fo&#125; <span class="keyword">from</span> <span class="string">'./a.js'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(fo);<span class="comment">//'a'</span></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span> <span class="built_in">console</span>.log(fo),<span class="number">500</span>)<span class="comment">//'b'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ES6 输入的模块变量，只是一个“符号连接”，所以这个变量是只读的，对它进行重新赋值会报错。</span></span><br><span class="line">fo = <span class="string">'s'</span> <span class="comment">//error</span></span><br></pre></td></tr></table></figure>
@@ -661,7 +661,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -672,7 +672,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -683,7 +683,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -781,7 +781,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74k</span>
+    <span title="Site words total count">75.1k</span>
   
   -->
 </div>

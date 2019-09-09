@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="概念 Redux 是一个可以预测的JavaScript 状态控制器，专注于状态管理，有store,state, action,reducer 等API（类似 vue 中的 vux）  Redux 可编写构建行为状态一致的应用，可运行在客户端、服务的 和 原生应用 环境中，并且容易测试。 最重要的是，它提供很好的开发体验，编译后的代码可通过devtools实时预览调试。 Redux 可以和 Reac">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-13T14:50:36.324Z">
+<meta property="og:updated_time" content="2019-09-06T14:33:47.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redux 学习">
 <meta name="twitter:description" content="概念 Redux 是一个可以预测的JavaScript 状态控制器，专注于状态管理，有store,state, action,reducer 等API（类似 vue 中的 vux）  Redux 可编写构建行为状态一致的应用，可运行在客户端、服务的 和 原生应用 环境中，并且容易测试。 最重要的是，它提供很好的开发体验，编译后的代码可通过devtools实时预览调试。 Redux 可以和 Reac">
@@ -433,7 +433,7 @@
 <p>Redux 是一个可以预测的JavaScript 状态控制器，专注于状态管理，有store,state, action,reducer 等API（类似 vue 中的 vux）</p>
 </blockquote>
 <p>Redux 可编写构建行为状态一致的应用，可运行在客户端、服务的 和 原生应用 环境中，并且容易测试。 最重要的是，它提供很好的开发体验，编译后的代码可通过devtools实时预览调试。</p>
-<p>Redux 可以和 React 一起使用，也可以和其他视图库（如 <a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener">Vue</a>）使用。它很小（2K大小 包含依赖 ），并且有一个庞大的插件生态系统。</p>
+<p>Redux 可以和 React 一起使用，也可以和其他视图库（如 <a href="https://cn.vuejs.org/v2/guide/installation.html">Vue</a>）使用。它很小（2K大小 包含依赖 ），并且有一个庞大的插件生态系统。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用 npm<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install redux -S</span><br></pre></td></tr></table></figure></p>
 <p>使用 yarn</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add redux -P</span><br></pre></td></tr></table></figure>
@@ -464,11 +464,11 @@
 <blockquote>
 <p>注意：使用单独的模块或文件定义 常量<code>type</code>不是必须的，对于小应用来说，使用字符串<code>type</code>方便。而在大型项目种定义常量利大于弊。</p>
 </blockquote>
-<p>出了<code>type</code>属性外其他属性可自行定义，对于规范参考<a href="https://github.com/redux-utilities/flux-standard-action" target="_blank" rel="noopener">Flux Standard Action</a></p>
+<p>出了<code>type</code>属性外其他属性可自行定义，对于规范参考<a href="https://github.com/redux-utilities/flux-standard-action">Flux Standard Action</a></p>
 <h4 id="创建-Action-的生产函数"><a href="#创建-Action-的生产函数" class="headerlink" title="创建 Action 的生产函数"></a>创建 Action 的生产函数</h4><blockquote>
 <p>即生成action 的方法，函数返回一个 action 对象这样更容易被移植和测试<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTodo</span>(<span class="params">text</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        type:ADD_TODO,</span><br><span class="line">        text</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>在<a href="http://facebook.github.io/flux/" target="_blank" rel="noopener">传统的Flux</a>实现中调用 action 实现方法时，一般会触发一个<code>dispatch</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTodo</span>(<span class="params">text</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">const</span> action= &#123;</span><br><span class="line">        type:ADD_TODO,</span><br><span class="line">        text</span><br><span class="line">    &#125;</span><br><span class="line">    dispatch(action)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在<a href="http://facebook.github.io/flux/">传统的Flux</a>实现中调用 action 实现方法时，一般会触发一个<code>dispatch</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTodo</span>(<span class="params">text</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">const</span> action= &#123;</span><br><span class="line">        type:ADD_TODO,</span><br><span class="line">        text</span><br><span class="line">    &#125;</span><br><span class="line">    dispatch(action)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Redux 中只需把action 函数传递给<code>dispatch()</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addTodo</span>(<span class="params">text</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        type:ADD_TODO,</span><br><span class="line">        text</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">store.dispatch(addTodo(text))</span><br></pre></td></tr></table></figure></p>
 <h4 id="异步-Action"><a href="#异步-Action" class="headerlink" title="异步 Action"></a>异步 Action</h4><blockquote>
 <p>当调用异步 API时，发送请求和响应（可能超时），都可能会更改 state；因此需要 同步地 <code>dispatch</code> 由<code>reduce</code> 处理的操作<br>通常需要对应三种 action:</p>
@@ -616,7 +616,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -627,7 +627,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -638,7 +638,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -736,7 +736,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74k</span>
+    <span title="Site words total count">75.1k</span>
   
   -->
 </div>

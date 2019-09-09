@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="react-dom react-dom 的 package 提供了可在应用顶层使用的DOM方法，所有的顶层 API 都可调用  React 支持所有的现代浏览器，IE9及以上版本，但是需要引用相关 polyfills,那些在不兼容ES5语法的浏览器中奋斗的同志需要孤军奋战了。 APIrender()12import ReactDOM from &apos;react-dom&apos;ReactDOM.render(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-29T15:05:12.585Z">
+<meta property="og:updated_time" content="2019-09-06T14:33:47.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactDOM API">
 <meta name="twitter:description" content="react-dom react-dom 的 package 提供了可在应用顶层使用的DOM方法，所有的顶层 API 都可调用  React 支持所有的现代浏览器，IE9及以上版本，但是需要引用相关 polyfills,那些在不兼容ES5语法的浏览器中奋斗的同志需要孤军奋战了。 APIrender()12import ReactDOM from &apos;react-dom&apos;ReactDOM.render(">
@@ -432,21 +432,21 @@
         <h2 id="react-dom"><a href="#react-dom" class="headerlink" title="react-dom"></a>react-dom</h2><ul>
 <li><code>react-dom</code> 的 <code>package</code> 提供了可在应用顶层使用的DOM方法，所有的顶层 API 都可调用</li>
 </ul>
-<p><code>React</code> 支持所有的现代浏览器，IE9及以上版本，但是需要引用相关 <a href="https://zh-hans.reactjs.org/docs/javascript-environment-requirements.html" target="_blank" rel="noopener">polyfills</a>,那些在不兼容ES5语法的浏览器中奋斗的同志需要孤军奋战了。</p>
+<p><code>React</code> 支持所有的现代浏览器，IE9及以上版本，但是需要引用相关 <a href="https://zh-hans.reactjs.org/docs/javascript-environment-requirements.html">polyfills</a>,那些在不兼容ES5语法的浏览器中奋斗的同志需要孤军奋战了。</p>
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="render"><a href="#render" class="headerlink" title="render()"></a>render()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></span><br><span class="line">ReactDOM.render(element,container[, callback])</span><br></pre></td></tr></table></figure>
-<p>在提供的<code>container</code>里渲染一个 <code>React 元素</code>，并返回该组件的<a href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html" target="_blank" rel="noopener">引用</a>, 对于 <a href="https://zh-hans.reactjs.org/docs/components-and-props.html#functional-and-class-components" target="_blank" rel="noopener">无状态组件</a>返回 null。<br>如果 <code>React 元素</code> 已经在 <code>container</code>中渲染过，那么将会更新里面的元素，并仅会在必要的时候改变DOM 映射新的 React 元素。<br>callback将在组件被渲染或更新后执行</p>
+<p>在提供的<code>container</code>里渲染一个 <code>React 元素</code>，并返回该组件的<a href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html">引用</a>, 对于 <a href="https://zh-hans.reactjs.org/docs/components-and-props.html#functional-and-class-components">无状态组件</a>返回 null。<br>如果 <code>React 元素</code> 已经在 <code>container</code>中渲染过，那么将会更新里面的元素，并仅会在必要的时候改变DOM 映射新的 React 元素。<br>callback将在组件被渲染或更新后执行</p>
 <blockquote>
-<p>当首次调用时，container节点中所有DOM元素都会被替换，后续的调用则使用 React 的 DOM diff 算法 进行高效更新。<br><code>rend()</code>不会修改container节点，之后修改子节点，可以在不覆盖现有子节点的情况下，将组件插入已有的DOM节点中。对服务端渲染容器进行 <code>hydrate</code>操作的方式已被废弃，且会在 1<br><code>rend()</code>目前会返回对根组件 <code>ReactComponent</code> 实例的引用。但应该避免使用它，因为历史遗留下来的内容，在未来版本中，组件渲染某些情况下可能会是异步的。对服务端渲染容器进行 <code>hydrate</code>操作的方式已被废弃，且会在 1<br>如果需要根组件 <code>ReactComponent</code> 实例的引用，推荐使用<a href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html" target="_blank" rel="noopener">callback ref</a>。<br>使用<code>rend()</code>对服务端渲染容器进行 <code>hydrate</code>操作的方式已被废弃，且会在 17版中被 <a href="https://zh-hans.reactjs.org/docs/react-dom.html#hydrate" target="_blank" rel="noopener">hydrate()</a></p>
+<p>当首次调用时，container节点中所有DOM元素都会被替换，后续的调用则使用 React 的 DOM diff 算法 进行高效更新。<br><code>rend()</code>不会修改container节点，之后修改子节点，可以在不覆盖现有子节点的情况下，将组件插入已有的DOM节点中。对服务端渲染容器进行 <code>hydrate</code>操作的方式已被废弃，且会在 1<br><code>rend()</code>目前会返回对根组件 <code>ReactComponent</code> 实例的引用。但应该避免使用它，因为历史遗留下来的内容，在未来版本中，组件渲染某些情况下可能会是异步的。对服务端渲染容器进行 <code>hydrate</code>操作的方式已被废弃，且会在 1<br>如果需要根组件 <code>ReactComponent</code> 实例的引用，推荐使用<a href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html">callback ref</a>。<br>使用<code>rend()</code>对服务端渲染容器进行 <code>hydrate</code>操作的方式已被废弃，且会在 17版中被 <a href="https://zh-hans.reactjs.org/docs/react-dom.html#hydrate">hydrate()</a></p>
 </blockquote>
 <h3 id="hydrate"><a href="#hydrate" class="headerlink" title="hydrate()"></a>hydrate()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.hydrate(element,container[, callback])</span><br></pre></td></tr></table></figure>
-<p>此方法和 <code>render()</code>相同，区别在于 <a href="https://zh-hans.reactjs.org/docs/react-dom-server.html" target="_blank" rel="noopener">ReactDOMServer</a> 渲染的容器中对HTML的内容进行 <code>hydrate</code> 操作。React 会尝试在已有的标记上绑定事件监听器。</p>
+<p>此方法和 <code>render()</code>相同，区别在于 <a href="https://zh-hans.reactjs.org/docs/react-dom-server.html">ReactDOMServer</a> 渲染的容器中对HTML的内容进行 <code>hydrate</code> 操作。React 会尝试在已有的标记上绑定事件监听器。</p>
 <h3 id="unmountComponentAtNode"><a href="#unmountComponentAtNode" class="headerlink" title="unmountComponentAtNode()"></a>unmountComponentAtNode()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.unmountComponentAtNode(container)</span><br></pre></td></tr></table></figure>
 <p>此方法将卸载 DOM 中的组件，会将事件处理器和 state 一并清除。如果指定的 container 中没有对应已挂在的组件，那么此方法什么也不会做，如果组件被移除将会返回 true，如果未移除将返回false</p>
 <h3 id="findDOMNode"><a href="#findDOMNode" class="headerlink" title="findDOMNode()"></a>findDOMNode()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.findDOMNode(component)</span><br></pre></td></tr></table></figure>
 <p>如果组件已被挂载到DOM上，此方法会返回浏览器中x相应的原生DOM，不能用于函数组件，对于在未挂载的组件中调用将发生异常。对于读取DOM中的值很有用，一般<strong>推荐使用 <code>ref</code>来获取DOM元素</strong></p>
 <p><strong>此方法是访问底层DOM节点的应急方案，严格模式中被弃用</strong></p>
 <h3 id="createPortal"><a href="#createPortal" class="headerlink" title="createPortal()"></a>createPortal()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.createPortal(child,container)</span><br></pre></td></tr></table></figure>
-<p>创建<a href="https://zh-hans.reactjs.org/docs/portals.html" target="_blank" rel="noopener">portal</a>，它提供一种将子节点渲染到DOM节点中的方式，该节点存在于DOM组件的乘此结构之外。</p>
+<p>创建<a href="https://zh-hans.reactjs.org/docs/portals.html">portal</a>，它提供一种将子节点渲染到DOM节点中的方式，该节点存在于DOM组件的乘此结构之外。</p>
 
       
     </div>
@@ -582,7 +582,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -593,7 +593,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -604,7 +604,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -702,7 +702,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74k</span>
+    <span title="Site words total count">75.1k</span>
   
   -->
 </div>

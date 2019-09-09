@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="数据库系统的结构 注：数据库（ DB ）数据库系统（DBS）数据库管理系统（DBMS） 数据库管理员（DBA）在一个DBS中有着不同类型的用户，每个用户都从不同的角度以各自的观点看待数据库，从而形成了DBS不同的视图结构。因此DBS的结构可以有多种不同的层次或不同的视角。  从数据库管理员（DBA）视角来看，DBS分为内部系统结构和外部体系结构，其中内部系统结构通常采用三级模式结构，外部体系结构通">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-08T15:50:21.613Z">
+<meta property="og:updated_time" content="2019-09-09T13:40:10.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库基础（Database Basis) (二)">
 <meta name="twitter:description" content="数据库系统的结构 注：数据库（ DB ）数据库系统（DBS）数据库管理系统（DBMS） 数据库管理员（DBA）在一个DBS中有着不同类型的用户，每个用户都从不同的角度以各自的观点看待数据库，从而形成了DBS不同的视图结构。因此DBS的结构可以有多种不同的层次或不同的视角。  从数据库管理员（DBA）视角来看，DBS分为内部系统结构和外部体系结构，其中内部系统结构通常采用三级模式结构，外部体系结构通">
@@ -344,6 +344,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -370,7 +392,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.2k
+                  4k
                 </span>
               
 
@@ -386,7 +408,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  13
                 </span>
               
             </div>
@@ -478,7 +500,7 @@ C3 --> D6(应用6)</pre>
 <li>便于在计算机上实现</li>
 </ol>
 <p>目前一种数据模型要完全满足三个要求，很困难，因此需针对不同对象和应用，采取逐步抽象的方法，在不同抽象层使用不同的数据模型。</p>
-<h4 id="概念层数据模型（数据的概念模型-（Conceptual-Model）-信息模型）"><a href="#概念层数据模型（数据的概念模型-（Conceptual-Model）-信息模型）" class="headerlink" title="概念层数据模型（数据的概念模型 （Conceptual Model）,信息模型）"></a>概念层数据模型（数据的概念模型 （Conceptual Model）,信息模型）</h4><p>概念层是数据抽象级别的最高层，目的是按照用户的观点对世界建模。概念层模型用来描述现实世界的事物，与具体的计算机系统无关，独立于任何DBMS，容易向DBMS所支持的逻辑数据库模型转换，此类模型主要用于数据库的设计阶段，表示现实世界的各个事物及其联系。</p>
+<h4 id="概念层数据模型（数据的概念模型-（Conceptual-Model）-信息模型）"><a href="#概念层数据模型（数据的概念模型-（Conceptual-Model）-信息模型）" class="headerlink" title="概念层数据模型（数据的概念模型 （Conceptual Model）,信息模型）"></a>概念层数据模型（数据的概念模型 （Conceptual Model）,信息模型）</h4><p>概念层是数据抽象级别的最高层，目的是按照用户的观点对世界建模。概念层模型用来描述现实世界的事物，是对信息世界建模，与具体的计算机系统无关，独立于任何DBMS，容易向DBMS所支持的逻辑数据库模型转换，此类模型主要用于数据库的设计阶段，表示现实世界的各个事物及其联系。</p>
 <h5 id="信息世界中的基本概念（类似于对象）重点"><a href="#信息世界中的基本概念（类似于对象）重点" class="headerlink" title="信息世界中的基本概念（类似于对象）重点"></a>信息世界中的基本概念（类似于对象）<label style="color:red;">重点</label></h5><p>概念模型用于信息世界的建模，是现实世界到信息世界的第一层抽象，是数据库设计人员进行数据库设计的有力工具，是设计人员和用户之间交流的语言，因此概念模型具有较强的语义表达能力，能够方便、直接地表达应用中的各种语义知识，它简单、清晰、易于理解。</p>
 <ul>
 <li>实体（Entity）：客观存在并可相互区别的事物，既可以是实体事物，也可以说抽象的概念或联系（学生、商品、部门、课程、比赛等都可以是实体）</li>
@@ -487,8 +509,21 @@ C3 --> D6(应用6)</pre>
 <li>域（Domain）：一个属性的取值范围。如学生实体中姓名的域</li>
 <li>实体型（Entity Type）：具有相同属性的实体必然具有共同的特征和性质。用实体名于属性名集合抽象和刻画同类实体即实体型。（学号，姓名，性别）</li>
 <li>实体集（Entity Set）：同实体的集合。（每个学生是一个实体，所以学生组成实体集）</li>
-<li>联系（Relatinship）：现实世界中，事物内部及事物之间是有联系的，反应到信息世界中即实体（型）内部的联系和实体（型）之间的联系。实体内部的联系通常指各属性之间的联系。如确定学号，即知道对应的姓名，学号与姓名两个属性之间有联系。</li>
+<li>联系（Relatinship）：现实世界中，事物内部及事物之间是有联系的，反应到信息世界中即实体（型）内部的联系和实体（型）之间的联系。实体内部的联系通常指各属性之间的联系。如确定学号，即知道对应的姓名，学号与姓名两个属性之间有联系。实体之间的联系指不同实体间的联系。如一个班有许多学生，一个学生只属于一个班级，这是学生与班级两个实体间的联系。</li>
 </ul>
+<p>数据模型中有<code>型【type】</code>（某一类数据的结构和属性说明）和<code>值【value】</code>（对型的赋值）的概念</p>
+<h5 id="概念模型的表示方法"><a href="#概念模型的表示方法" class="headerlink" title="概念模型的表示方法"></a>概念模型的表示方法</h5><p>概念模型的表示方法有很多种，最常用的是实体-联系方法（Entity-Relationship approach）也称E-R模型，它是抽象和描述现实世界的有力工具，它独立于具体的DBMS所支持的逻辑模型，是各种逻辑模型的共同基础。</p>
+<h4 id="逻辑层数据模型"><a href="#逻辑层数据模型" class="headerlink" title="逻辑层数据模型"></a>逻辑层数据模型</h4><p>逻辑层是数据抽象的中间层，描述数据整体逻辑结构；这层的数据抽象被称为逻辑模型，是用户通过DBMS看到的现实世界，基于计算机系统的观点来对数据进行建模和表示。因此，它既要让用户易于理解，又要便于DBMS实现。<br>主要的逻辑数据模型有 层次模型（Hierarchical）、网站模型（Network Model）、关系模型（Relational Model）和面向对象模型（Object Oriented Model）等</p>
+<h5 id="层次模型"><a href="#层次模型" class="headerlink" title="层次模型"></a>层次模型</h5><p>此模型是数据库最早的一种数据模型，它的数据结构是一颗“有向树”，数的每个结点对应一个记录集。特点：有且仅有一个结点没有父结点（根结点）；其他结点有且仅有一个父结点。</p>
+<h5 id="网状模型"><a href="#网状模型" class="headerlink" title="网状模型"></a>网状模型</h5><p>此模型以网状结构表示实体与实体之间的联系。是层次模型的扩展，允许结点又多个父结点，且可以有多个节点没有父结点。此模型可以方便的表示实体间各种类型的联系，但结构复杂，实现的算法难以规范化。</p>
+<h5 id="关系模型-lt-label-style-”color-red-gt-重点"><a href="#关系模型-lt-label-style-”color-red-gt-重点" class="headerlink" title="关系模型 &lt;label style=”color:red;&gt;重点"></a>关系模型 &lt;label style=”color:red;&gt;重点</h5><p>此模型用二维表结构来表示实体及实体间联系的模型，并以二维表格的形式组织数据库中的数据。<br><strong>特点：</strong></p>
+<ul>
+<li>建立在严格的数学概念基础之上</li>
+<li>概念单一，统一用关系表示实体及实体间的联系，对数据的检索与更新结果同样也用关系（即表）表示。</li>
+<li>关系模型的存取路径对用户透明，这样就具有更高的数据独立性、更好的安全保密性，简化了程序员的开发工作。目前流行的商用数据库大多基于关系模型（关系数据库管理系统）。</li>
+</ul>
+<h5 id="面向对象模型"><a href="#面向对象模型" class="headerlink" title="面向对象模型"></a>面向对象模型</h5><p>此模型是面向对象方法与数据库相结合所构成的数据模型。它既是概念模型又是逻辑模型。用面向对象观点描述现实世界实体逻辑组织、对象间的联系。</p>
+<h4 id="物理层数据模型"><a href="#物理层数据模型" class="headerlink" title="物理层数据模型"></a>物理层数据模型</h4><p>此模型又叫数据的物理模型，描述数据在存储介质上的组织结构，是逻辑模型的物理实现，每一种逻辑模型在实现时都有与其对应的物理模型。物理模型是数据库最底层的抽象，它确定数据的物理存储结构、数据存取路径及调整、优化数据库的性能。<br>物理数据结构一般向用户屏蔽，用户不必了解其细节。</p>
 
       
     </div>
@@ -536,6 +571,10 @@ C3 --> D6(应用6)</pre>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/09/relation_model_of_data/" rel="prev" title="关系数据模型">
+                关系数据模型 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -620,7 +659,7 @@ C3 --> D6(应用6)</pre>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -631,7 +670,7 @@ C3 --> D6(应用6)</pre>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -642,7 +681,7 @@ C3 --> D6(应用6)</pre>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -704,7 +743,7 @@ C3 --> D6(应用6)</pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库系统的结构"><span class="nav-number">1.</span> <span class="nav-text">数据库系统的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三级模式结构（DBA视角）"><span class="nav-number">1.1.</span> <span class="nav-text">三级模式结构（DBA视角）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外模式"><span class="nav-number">1.1.2.</span> <span class="nav-text">外模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内模式"><span class="nav-number">1.1.3.</span> <span class="nav-text">内模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两层映像与数据独立性-重点"><span class="nav-number">1.1.4.</span> <span class="nav-text">两层映像与数据独立性 重点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#映像"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">映像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DBS-的运行与应用结构（用户视角）"><span class="nav-number">1.2.</span> <span class="nav-text">DBS 的运行与应用结构（用户视角）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户-服务器结构"><span class="nav-number">1.2.1.</span> <span class="nav-text">客户/服务器结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器-服务器结构"><span class="nav-number">1.2.2.</span> <span class="nav-text">浏览器/服务器结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型"><span class="nav-number">2.</span> <span class="nav-text">数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据特征与数据模型组成要素"><span class="nav-number">2.1.</span> <span class="nav-text">数据特征与数据模型组成要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据模型的分类"><span class="nav-number">2.2.</span> <span class="nav-text">数据模型的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念层数据模型（数据的概念模型-（Conceptual-Model）-信息模型）"><span class="nav-number">2.2.1.</span> <span class="nav-text">概念层数据模型（数据的概念模型 （Conceptual Model）,信息模型）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#信息世界中的基本概念（类似于对象）重点"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">信息世界中的基本概念（类似于对象）重点</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库系统的结构"><span class="nav-number">1.</span> <span class="nav-text">数据库系统的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三级模式结构（DBA视角）"><span class="nav-number">1.1.</span> <span class="nav-text">三级模式结构（DBA视角）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外模式"><span class="nav-number">1.1.2.</span> <span class="nav-text">外模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内模式"><span class="nav-number">1.1.3.</span> <span class="nav-text">内模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两层映像与数据独立性-重点"><span class="nav-number">1.1.4.</span> <span class="nav-text">两层映像与数据独立性 重点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#映像"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">映像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DBS-的运行与应用结构（用户视角）"><span class="nav-number">1.2.</span> <span class="nav-text">DBS 的运行与应用结构（用户视角）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户-服务器结构"><span class="nav-number">1.2.1.</span> <span class="nav-text">客户/服务器结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器-服务器结构"><span class="nav-number">1.2.2.</span> <span class="nav-text">浏览器/服务器结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型"><span class="nav-number">2.</span> <span class="nav-text">数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据特征与数据模型组成要素"><span class="nav-number">2.1.</span> <span class="nav-text">数据特征与数据模型组成要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据模型的分类"><span class="nav-number">2.2.</span> <span class="nav-text">数据模型的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念层数据模型（数据的概念模型-（Conceptual-Model）-信息模型）"><span class="nav-number">2.2.1.</span> <span class="nav-text">概念层数据模型（数据的概念模型 （Conceptual Model）,信息模型）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#信息世界中的基本概念（类似于对象）重点"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">信息世界中的基本概念（类似于对象）重点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#概念模型的表示方法"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">概念模型的表示方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑层数据模型"><span class="nav-number">2.2.2.</span> <span class="nav-text">逻辑层数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#层次模型"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">层次模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#网状模型"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">网状模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关系模型-lt-label-style-”color-red-gt-重点"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">关系模型 &lt;label style=”color:red;&gt;重点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#面向对象模型"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">面向对象模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理层数据模型"><span class="nav-number">2.2.3.</span> <span class="nav-text">物理层数据模型</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -740,7 +779,7 @@ C3 --> D6(应用6)</pre>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74k</span>
+    <span title="Site words total count">75.1k</span>
   
   -->
 </div>
