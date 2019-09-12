@@ -19,7 +19,7 @@
     
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="数据库系统的结构 注：数据库（ DB ）数据库系统（DBS）数据库管理系统（DBMS） 数据库管理员（DBA）在一个DBS中有着不同类型的用户，每个用户都从不同的角度以各自的观点看待数据库，从而形成了DBS不同的视图结构。因此DBS的结构可以有多种不同的层次或不同的视角。  从数据库管理员（DBA）视角来看，DBS分为内部系统结构和外部体系结构，其中内部系统结构通常采用三级模式结构，外部体系结构通">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-09T13:40:10.207Z">
+<meta property="og:updated_time" content="2019-09-12T15:31:03.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库基础（Database Basis) (二)">
 <meta name="twitter:description" content="数据库系统的结构 注：数据库（ DB ）数据库系统（DBS）数据库管理系统（DBMS） 数据库管理员（DBA）在一个DBS中有着不同类型的用户，每个用户都从不同的角度以各自的观点看待数据库，从而形成了DBS不同的视图结构。因此DBS的结构可以有多种不同的层次或不同的视角。  从数据库管理员（DBA）视角来看，DBS分为内部系统结构和外部体系结构，其中内部系统结构通常采用三级模式结构，外部体系结构通">
@@ -516,7 +516,7 @@ C3 --> D6(应用6)</pre>
 <h4 id="逻辑层数据模型"><a href="#逻辑层数据模型" class="headerlink" title="逻辑层数据模型"></a>逻辑层数据模型</h4><p>逻辑层是数据抽象的中间层，描述数据整体逻辑结构；这层的数据抽象被称为逻辑模型，是用户通过DBMS看到的现实世界，基于计算机系统的观点来对数据进行建模和表示。因此，它既要让用户易于理解，又要便于DBMS实现。<br>主要的逻辑数据模型有 层次模型（Hierarchical）、网站模型（Network Model）、关系模型（Relational Model）和面向对象模型（Object Oriented Model）等</p>
 <h5 id="层次模型"><a href="#层次模型" class="headerlink" title="层次模型"></a>层次模型</h5><p>此模型是数据库最早的一种数据模型，它的数据结构是一颗“有向树”，数的每个结点对应一个记录集。特点：有且仅有一个结点没有父结点（根结点）；其他结点有且仅有一个父结点。</p>
 <h5 id="网状模型"><a href="#网状模型" class="headerlink" title="网状模型"></a>网状模型</h5><p>此模型以网状结构表示实体与实体之间的联系。是层次模型的扩展，允许结点又多个父结点，且可以有多个节点没有父结点。此模型可以方便的表示实体间各种类型的联系，但结构复杂，实现的算法难以规范化。</p>
-<h5 id="关系模型-lt-label-style-”color-red-gt-重点"><a href="#关系模型-lt-label-style-”color-red-gt-重点" class="headerlink" title="关系模型 &lt;label style=”color:red;&gt;重点"></a>关系模型 &lt;label style=”color:red;&gt;重点</h5><p>此模型用二维表结构来表示实体及实体间联系的模型，并以二维表格的形式组织数据库中的数据。<br><strong>特点：</strong></p>
+<h5 id="关系模型-重点"><a href="#关系模型-重点" class="headerlink" title="关系模型 重点"></a>关系模型 <label style="color:red;">重点</label></h5><p>此模型用二维表结构来表示实体及实体间联系的模型，并以二维表格的形式组织数据库中的数据。<br><strong>特点：</strong></p>
 <ul>
 <li>建立在严格的数学概念基础之上</li>
 <li>概念单一，统一用关系表示实体及实体间的联系，对数据的检索与更新结果同样也用关系（即表）表示。</li>
@@ -743,7 +743,7 @@ C3 --> D6(应用6)</pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库系统的结构"><span class="nav-number">1.</span> <span class="nav-text">数据库系统的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三级模式结构（DBA视角）"><span class="nav-number">1.1.</span> <span class="nav-text">三级模式结构（DBA视角）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外模式"><span class="nav-number">1.1.2.</span> <span class="nav-text">外模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内模式"><span class="nav-number">1.1.3.</span> <span class="nav-text">内模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两层映像与数据独立性-重点"><span class="nav-number">1.1.4.</span> <span class="nav-text">两层映像与数据独立性 重点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#映像"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">映像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DBS-的运行与应用结构（用户视角）"><span class="nav-number">1.2.</span> <span class="nav-text">DBS 的运行与应用结构（用户视角）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户-服务器结构"><span class="nav-number">1.2.1.</span> <span class="nav-text">客户/服务器结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器-服务器结构"><span class="nav-number">1.2.2.</span> <span class="nav-text">浏览器/服务器结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型"><span class="nav-number">2.</span> <span class="nav-text">数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据特征与数据模型组成要素"><span class="nav-number">2.1.</span> <span class="nav-text">数据特征与数据模型组成要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据模型的分类"><span class="nav-number">2.2.</span> <span class="nav-text">数据模型的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念层数据模型（数据的概念模型-（Conceptual-Model）-信息模型）"><span class="nav-number">2.2.1.</span> <span class="nav-text">概念层数据模型（数据的概念模型 （Conceptual Model）,信息模型）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#信息世界中的基本概念（类似于对象）重点"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">信息世界中的基本概念（类似于对象）重点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#概念模型的表示方法"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">概念模型的表示方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑层数据模型"><span class="nav-number">2.2.2.</span> <span class="nav-text">逻辑层数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#层次模型"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">层次模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#网状模型"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">网状模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关系模型-lt-label-style-”color-red-gt-重点"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">关系模型 &lt;label style=”color:red;&gt;重点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#面向对象模型"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">面向对象模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理层数据模型"><span class="nav-number">2.2.3.</span> <span class="nav-text">物理层数据模型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库系统的结构"><span class="nav-number">1.</span> <span class="nav-text">数据库系统的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三级模式结构（DBA视角）"><span class="nav-number">1.1.</span> <span class="nav-text">三级模式结构（DBA视角）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外模式"><span class="nav-number">1.1.2.</span> <span class="nav-text">外模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内模式"><span class="nav-number">1.1.3.</span> <span class="nav-text">内模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两层映像与数据独立性-重点"><span class="nav-number">1.1.4.</span> <span class="nav-text">两层映像与数据独立性 重点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#映像"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">映像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DBS-的运行与应用结构（用户视角）"><span class="nav-number">1.2.</span> <span class="nav-text">DBS 的运行与应用结构（用户视角）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户-服务器结构"><span class="nav-number">1.2.1.</span> <span class="nav-text">客户/服务器结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器-服务器结构"><span class="nav-number">1.2.2.</span> <span class="nav-text">浏览器/服务器结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型"><span class="nav-number">2.</span> <span class="nav-text">数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据特征与数据模型组成要素"><span class="nav-number">2.1.</span> <span class="nav-text">数据特征与数据模型组成要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据模型的分类"><span class="nav-number">2.2.</span> <span class="nav-text">数据模型的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念层数据模型（数据的概念模型-（Conceptual-Model）-信息模型）"><span class="nav-number">2.2.1.</span> <span class="nav-text">概念层数据模型（数据的概念模型 （Conceptual Model）,信息模型）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#信息世界中的基本概念（类似于对象）重点"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">信息世界中的基本概念（类似于对象）重点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#概念模型的表示方法"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">概念模型的表示方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑层数据模型"><span class="nav-number">2.2.2.</span> <span class="nav-text">逻辑层数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#层次模型"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">层次模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#网状模型"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">网状模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关系模型-重点"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">关系模型 重点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#面向对象模型"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">面向对象模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理层数据模型"><span class="nav-number">2.2.3.</span> <span class="nav-text">物理层数据模型</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -779,7 +779,7 @@ C3 --> D6(应用6)</pre>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">75.1k</span>
+    <span title="Site words total count">76k</span>
   
   -->
 </div>
@@ -872,8 +872,6 @@ C3 --> D6(应用6)</pre>
   
 
 
-  
-
 
 
 
@@ -912,11 +910,6 @@ C3 --> D6(应用6)</pre>
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
