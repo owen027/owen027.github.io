@@ -418,7 +418,7 @@ gitment:
 # This plugin is more useful in China, make sure you known how to use it.
 # And you can find the use guide at official webiste: http://www.jiathis.com/.
 # Warning: JiaThis does not support https.
-jiathis: 
+jiathis:
   ##uid: Get this uid from http://www.jiathis.com/
 add_this_id:
 
@@ -685,10 +685,9 @@ Themes list:
 #pace-theme-minimal
 # For example
 # pace_theme: pace-theme-center-simple
-pace_theme: pace-theme-minimal
-
+pace_theme: pace-theme-loading-bar
 # Canvas-nest
-canvas_nest: true
+canvas_nest: false
 
 # three_waves
 three_waves: false
@@ -706,9 +705,9 @@ canvas_sphere: false
 # zIndex: The display level of the ribbon.
 canvas_ribbon:
   enable: true
-  size: 400
+  size: 500
   alpha: 0.6
-  zIndex: -1
+  zIndex: -2
 
 # Script Vendors.
 # Set a CDN address for the vendor you want to customize.
@@ -806,5 +805,5 @@ images: images
 version: 5.1.4
 
 # 文章末尾添加“本文结束”标记
-passage_end_tag:   
+passage_end_tag:
 enabled: true
