@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -23,6 +23,10 @@
 
 
 
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
 
 
 
@@ -88,18 +92,18 @@
 
 
 
-<meta name="description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是吧数据库比赛为关系的集合，并以二维表格的形式组织">
+<meta name="description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是吧数据库比赛为关系的集合，并以二维表格的形式组织数">
 <meta name="keywords" content="relationDataModel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关系数据模型">
 <meta property="og:url" content="https://owen027.github.io/2019/09/09/relation_data_model/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是吧数据库比赛为关系的集合，并以二维表格的形式组织">
+<meta property="og:description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是吧数据库比赛为关系的集合，并以二维表格的形式组织数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-16T15:52:09.125Z">
+<meta property="og:updated_time" content="2019-09-17T15:46:37.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关系数据模型">
-<meta name="twitter:description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是吧数据库比赛为关系的集合，并以二维表格的形式组织">
+<meta name="twitter:description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是吧数据库比赛为关系的集合，并以二维表格的形式组织数">
 
 
 
@@ -135,7 +139,7 @@
 
 
 
-  <title>关系数据模型 | Owen</title>
+  <title>关系数据模型 | Owen</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -154,7 +158,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/gaoguowen/oweng.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -392,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.1k
+                  3.1k
                 </span>
               
 
@@ -408,7 +412,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  11
                 </span>
               
             </div>
@@ -423,13 +427,13 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
 
       
-        <link href="/static/css/relation_data_model.css" rel="stylesheet" type="text/css"> 
+        <link href="/static/css/relation_data_model.css" rel="stylesheet" type="text/css">
 
 <h2 id="概叙"><a href="#概叙" class="headerlink" title="概叙"></a>概叙</h2><p>关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。</p>
 <h2 id="关系数据模型"><a href="#关系数据模型" class="headerlink" title="关系数据模型"></a>关系数据模型</h2><p>作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。</p>
@@ -670,10 +674,325 @@
 <td>≠</td>
 <td>不等于</td>
 </tr>
+
+<tr>
+<td rowspan="3">比较操作符</td>
+<td> ¬ </td>
+<td>非</td>
+</tr>
+
+<tr>
+<td>∧</td>
+<td>与</td>
+</tr>
+
+<tr>
+<td> ∨ </td>
+<td>或</td>
+</tr>
+
 </tbody>
 </table>
 </p>
-
+<p>关系代数操作经过有限次复合的式子称为关系代数操作表达式（关系代数表达式），可使用表达式表示所需要执行的各种数据查询和修改处理，所有关系代数是一种抽象的查询语言，通过对关系的操作来表达查询。</p>
+<p>按运算符分类，关系代数操作可分为：传统的集合运算和专门的关系运算</p>
+<h5 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h5><p>传统集合运算是二目运算，将关系看成元组集合，运算从行的角度来进行，具有 并、差、交、迪卡尔积四种运算。<br><strong>example：</strong></p>
+<p><strong>表 T1</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">学号（SNO）</th>
+<th style="text-align:center">姓名（SNAME）</th>
+<th style="text-align:center">性别(SSEX)</th>
+<th style="text-align:center">宿舍(SROOM)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">张三</td>
+<td style="text-align:center">男</td>
+<td style="text-align:center">N101</td>
+</tr>
+<tr>
+<td style="text-align:center">0002</td>
+<td style="text-align:center">王二</td>
+<td style="text-align:center">男</td>
+<td style="text-align:center">N101</td>
+</tr>
+<tr>
+<td style="text-align:center">0003</td>
+<td style="text-align:center">李梅</td>
+<td style="text-align:center">女</td>
+<td style="text-align:center">C101</td>
+</tr>
+</tbody>
+</table>
+<p><strong>表 T2</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">学号（SNO）</th>
+<th style="text-align:center">姓名（SNAME）</th>
+<th style="text-align:center">性别(SSEX)</th>
+<th style="text-align:center">宿舍(SROOM)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0004</td>
+<td style="text-align:center">刘八</td>
+<td style="text-align:center">男</td>
+<td style="text-align:center">D101</td>
+</tr>
+<tr>
+<td style="text-align:center">0005</td>
+<td style="text-align:center">赵二</td>
+<td style="text-align:center">男</td>
+<td style="text-align:center">B201</td>
+</tr>
+<tr>
+<td style="text-align:center">0003</td>
+<td style="text-align:center">李梅</td>
+<td style="text-align:center">女</td>
+<td style="text-align:center">C101</td>
+</tr>
+</tbody>
+</table>
+<h6 id="并（UNION）"><a href="#并（UNION）" class="headerlink" title="并（UNION）"></a>并（UNION）</h6><p>表T1 和 表T2 使用并运算产生一个新表T3，（T3 = T1 ∪ T2）它是由T1和T2所有不同元组所组成，且 T1和T2属性个数、值域相同。下表为 T1 ∪ T2的结果<br><strong>表 T3</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">学号（SNO）</th>
+<th style="text-align:center">姓名（SNAME）</th>
+<th style="text-align:center">性别(SSEX)</th>
+<th style="text-align:center">宿舍(SROOM)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">张三</td>
+<td style="text-align:center">男</td>
+<td style="text-align:center">N101</td>
+</tr>
+<tr>
+<td style="text-align:center">0002</td>
+<td style="text-align:center">王二</td>
+<td style="text-align:center">男</td>
+<td style="text-align:center">N101</td>
+</tr>
+<tr>
+<td style="text-align:center">0003</td>
+<td style="text-align:center">李梅</td>
+<td style="text-align:center">女</td>
+<td style="text-align:center">C101</td>
+</tr>
+<tr>
+<td style="text-align:center">0004</td>
+<td style="text-align:center">刘八</td>
+<td style="text-align:center">男</td>
+<td style="text-align:center">D101</td>
+</tr>
+<tr>
+<td style="text-align:center">0005</td>
+<td style="text-align:center">赵二</td>
+<td style="text-align:center">男</td>
+<td style="text-align:center">B201</td>
+</tr>
+</tbody>
+</table>
+<h6 id="差（DIFFERENCE）"><a href="#差（DIFFERENCE）" class="headerlink" title="差（DIFFERENCE）"></a>差（DIFFERENCE）</h6><p>表T1 和 表T2 使用差运算产生一个新表T4，（T4 = T1 - T2）它有T1的所有元组但不包含T2的元组，且 T1和T2属性个数、值域必须相同。下表为 T1 - T2的结果</p>
+<p><strong>表 T4</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">学号（SNO）</th>
+<th style="text-align:center">姓名（SNAME）</th>
+<th style="text-align:center">性别(SSEX)</th>
+<th style="text-align:center">宿舍(SROOM)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">张三</td>
+<td style="text-align:center">男</td>
+<td style="text-align:center">N101</td>
+</tr>
+<tr>
+<td style="text-align:center">0002</td>
+<td style="text-align:center">王二</td>
+<td style="text-align:center">男</td>
+<td style="text-align:center">N101</td>
+</tr>
+</tbody>
+</table>
+<h6 id="交（INTERSECTION）"><a href="#交（INTERSECTION）" class="headerlink" title="交（INTERSECTION）"></a>交（INTERSECTION）</h6><p>表T1 和 表T2 使用交运算产生一个新表T5，（T5 = T1 ∩ T2）它同时包含T1和T2相同的所有元组，且 T1和T2属性个数、值域必须相同，交运算可由差运算表示（T1∩T2 = T1-(T1-T2)）。下表为 T1 ∩ T2的结果</p>
+<p><strong>表 T5</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">学号（SNO）</th>
+<th style="text-align:center">姓名（SNAME）</th>
+<th style="text-align:center">性别(SSEX)</th>
+<th style="text-align:center">宿舍(SROOM)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0003</td>
+<td style="text-align:center">李梅</td>
+<td style="text-align:center">女</td>
+<td style="text-align:center">C101</td>
+</tr>
+</tbody>
+</table>
+<h6 id="笛卡尔积（CARTESIAN-PRODUCT）"><a href="#笛卡尔积（CARTESIAN-PRODUCT）" class="headerlink" title="笛卡尔积（CARTESIAN PRODUCT）"></a>笛卡尔积（CARTESIAN PRODUCT）</h6><p>表T6 和 表T7 使用笛卡尔积运算产生一个新表T8，（T8 = T6 × T7）它是T6和T7的所有元组连接而成，即将两张表的元关系合并，且T6的每一元组都对应T7所有的元组<br>下表为 T6 × T7的结果</p>
+<p><strong>表 T6</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">学号（SNO）</th>
+<th style="text-align:center">姓名（SNAME）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">张三</td>
+</tr>
+<tr>
+<td style="text-align:center">0002</td>
+<td style="text-align:center">王二</td>
+</tr>
+</tbody>
+</table>
+<p><strong>表 T7</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">课程号（CNO）</th>
+<th style="text-align:center">课程名（CNAME）</th>
+<th style="text-align:center">教室(SSEX)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">数据库</td>
+<td style="text-align:center">C-101</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">操作系统</td>
+<td style="text-align:center">C-102</td>
+</tr>
+</tbody>
+</table>
+<p><strong>表 T8</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">学号（SNO）</th>
+<th style="text-align:center">姓名（SNAME）</th>
+<th style="text-align:center">课程号（CNO）</th>
+<th style="text-align:center">课程名（CNAME）</th>
+<th style="text-align:center">教室(SSEX)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">数据库</td>
+<td style="text-align:center">C-101</td>
+</tr>
+<tr>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">张三</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">操作系统</td>
+<td style="text-align:center">C-102</td>
+</tr>
+<tr>
+<td style="text-align:center">0002</td>
+<td style="text-align:center">王二</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">数据库</td>
+<td style="text-align:center">C-101</td>
+</tr>
+<tr>
+<td style="text-align:center">0002</td>
+<td style="text-align:center">王二</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">操作系统</td>
+<td style="text-align:center">C-102</td>
+</tr>
+</tbody>
+</table>
+<h5 id="专门的关系运算"><a href="#专门的关系运算" class="headerlink" title="专门的关系运算"></a>专门的关系运算</h5><p>此运算即涉及行，又涉及列，分为一元专门关系操作和二元专门关系操作</p>
+<ul>
+<li>一元关系操作：对单个关系进行垂直分解的投影运算和进行水平分解选择运算</li>
+<li>二元关系操作：对两个关系进行操作，包括连运算和除运算</li>
+</ul>
+<h6 id="选择（SELECT）"><a href="#选择（SELECT）" class="headerlink" title="选择（SELECT）"></a>选择（SELECT）</h6><p>选择运算( $σ_F(R)$ )，F为条件表达式，R为指定的被运算关系名。 从指定关系中选取满足条件的若干元组组成一个新关系<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 关系名 <span class="keyword">WHERE</span> 条件语句（表达式）</span><br></pre></td></tr></table></figure></p>
+<p>条件语句：由常数、属性名或列名、比较操作符及逻辑操作符组成</p>
+<p><strong>example：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> T8 <span class="keyword">WHERE</span> 姓名 = <span class="string">"张三"</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>表 T9</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">学号（SNO）</th>
+<th style="text-align:center">姓名（SNAME）</th>
+<th style="text-align:center">课程号（CNO）</th>
+<th style="text-align:center">课程名（CNAME）</th>
+<th style="text-align:center">教室(SSEX)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">数据库</td>
+<td style="text-align:center">C-101</td>
+</tr>
+<tr>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">张三</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">操作系统</td>
+<td style="text-align:center">C-102</td>
+</tr>
+</tbody>
+</table>
+<h6 id="投影（PROJECTION）"><a href="#投影（PROJECTION）" class="headerlink" title="投影（PROJECTION）"></a>投影（PROJECTION）</h6><p>投影运算( $π_A(R)$ ), R为被运算关系，A为属性序列，从指定关系中选取指定的若干属性值组成新关系<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PROJECTION 关系名 ( 属性名1, 属性名2 ,... )</span><br></pre></td></tr></table></figure></p>
+<p>组成的新关系自动去重</p>
+<p><strong>example：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PROJECTION T8 (课程号,课程名)</span><br></pre></td></tr></table></figure></p>
+<p><strong>表 T10</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">课程号（CNO）</th>
+<th style="text-align:center">课程名（CNAME）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">数据库</td>
+<td style="text-align:center">C-101</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">操作系统</td>
+<td style="text-align:center">C-102</td>
+</tr>
+</tbody>
+</table>
+<h6 id="θ连接（JOIN）"><a href="#θ连接（JOIN）" class="headerlink" title="θ连接（JOIN）"></a>θ连接（JOIN）</h6><!-- 连接运算（$$） -->
       
     </div>
     
@@ -888,7 +1207,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概叙"><span class="nav-number">1.</span> <span class="nav-text">概叙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系数据模型"><span class="nav-number">2.</span> <span class="nav-text">关系数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关系数据结构-重点"><span class="nav-number">2.1.</span> <span class="nav-text">关系数据结构  重点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本术语"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本术语</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系数据库对关系的限定："><span class="nav-number">2.1.2.</span> <span class="nav-text">关系数据库对关系的限定：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系操作集合"><span class="nav-number">2.2.</span> <span class="nav-text">关系操作集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本的关系操作"><span class="nav-number">2.2.1.</span> <span class="nav-text">基本的关系操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系数据语言的分类"><span class="nav-number">2.2.2.</span> <span class="nav-text">关系数据语言的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系代数"><span class="nav-number">2.2.3.</span> <span class="nav-text">关系代数</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概叙"><span class="nav-number">1.</span> <span class="nav-text">概叙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系数据模型"><span class="nav-number">2.</span> <span class="nav-text">关系数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关系数据结构-重点"><span class="nav-number">2.1.</span> <span class="nav-text">关系数据结构  重点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本术语"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本术语</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系数据库对关系的限定："><span class="nav-number">2.1.2.</span> <span class="nav-text">关系数据库对关系的限定：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系操作集合"><span class="nav-number">2.2.</span> <span class="nav-text">关系操作集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本的关系操作"><span class="nav-number">2.2.1.</span> <span class="nav-text">基本的关系操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系数据语言的分类"><span class="nav-number">2.2.2.</span> <span class="nav-text">关系数据语言的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系代数"><span class="nav-number">2.2.3.</span> <span class="nav-text">关系代数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#集合运算"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">集合运算</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#并（UNION）"><span class="nav-number">2.2.3.1.1.</span> <span class="nav-text">并（UNION）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#差（DIFFERENCE）"><span class="nav-number">2.2.3.1.2.</span> <span class="nav-text">差（DIFFERENCE）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#交（INTERSECTION）"><span class="nav-number">2.2.3.1.3.</span> <span class="nav-text">交（INTERSECTION）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#笛卡尔积（CARTESIAN-PRODUCT）"><span class="nav-number">2.2.3.1.4.</span> <span class="nav-text">笛卡尔积（CARTESIAN PRODUCT）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#专门的关系运算"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">专门的关系运算</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#选择（SELECT）"><span class="nav-number">2.2.3.2.1.</span> <span class="nav-text">选择（SELECT）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#投影（PROJECTION）"><span class="nav-number">2.2.3.2.2.</span> <span class="nav-text">投影（PROJECTION）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#θ连接（JOIN）"><span class="nav-number">2.2.3.2.3.</span> <span class="nav-text">θ连接（JOIN）</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -924,7 +1243,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">76.9k</span>
+    <span title="Site words total count">77.9k</span>
   
   -->
 </div>
@@ -1449,6 +1768,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 
