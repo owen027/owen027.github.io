@@ -102,3 +102,9 @@ math:
     # src: custom_mathjax_source
     config:
       # MathJax config
+
+sitemap:
+  path: sitemap.xml
+
+baidusitemap:
+  path: baidusitemap.xml
