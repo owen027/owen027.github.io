@@ -293,7 +293,7 @@ JOIN 关系1 AND 关系2 WHERE 条件语句
 |b|c|d|
 
 ```SQL
-JOIN  T11 AND T12 WHERE A = A
+JOIN  T11 AND T12 WHERE B= A
 ```
 
 **T11 × T12**
@@ -311,11 +311,14 @@ JOIN  T11 AND T12 WHERE A = A
 
 |A|B|C|D|E|A|
 |:-:|:-:|:-:|:-:|:-:|:-:|
-|a|b|c|g|h|a|
-|d|e|f|b|c|d|
+|a|b|c|b|c|d|
 
 
 - 自然连接：是一种特殊的等值连接，要求两个关系中比较的分量必须是 <span style="color:red">相同的属性组，且结果中去除重复的属性列</span>
+
+```SQL
+JOIN  T11 AND T12 WHERE A = A
+```
 
 **表 T14**
 
@@ -328,3 +331,33 @@ JOIN  T11 AND T12 WHERE A = A
 
 #### 除（DIVISION）
 除运算（R÷S） R和S代表两个不同的关系。
+假如被除关系R 为 m 元关系，除关系S 为 n 元关系，则运算结果的新关系为 m-n元关系。
+
+**表 T15**
+
+|A|B|C|D|E|F|G
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|a|b|c|d|e|f|g|
+|h|i|j|k|l|m|n|
+|a|b|c|a|b|c|d|
+|a|c|e|f|b|m|n|
+
+**表 T16**
+
+|F|G|
+|:-:|:-:|
+|f|g|
+|m|n|
+
+运算步骤：
+
+1. 被除关系R对除关系S不同的属性 X 进行投影
+**X 投影**
+|A|B|C|D|E|
+|:-:|:-:|:-:|:-:|:-:|
+|a|b|c|d|e|
+|h|i|j|k|l|
+|a|b|c|a|b|
+|a|c|e|f|b|
+
+待续。。。
