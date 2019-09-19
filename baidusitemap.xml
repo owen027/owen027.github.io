@@ -2,7 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://owen027.github.io/2019/09/18/relational_operation/</loc>
-    <lastmod>2019-09-18</lastmod>
+    <lastmod>2019-09-19</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/09/19/integrity_constraint_of_relational/</loc>
+    <lastmod>2019-09-19</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/09/19/normalization_theory/</loc>
+    <lastmod>2019-09-19</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/09/09/relation_data_model/</loc>
     <lastmod>2019-09-18</lastmod>
@@ -31,10 +37,10 @@
     <loc>https://owen027.github.io/2019/04/10/JSquestion/</loc>
     <lastmod>2019-09-06</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/07/29/reactLifeCycle/</loc>
+    <loc>https://owen027.github.io/2019/06/13/vueNotes/</loc>
     <lastmod>2019-07-31</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/06/13/vueNotes/</loc>
+    <loc>https://owen027.github.io/2019/07/29/reactLifeCycle/</loc>
     <lastmod>2019-07-31</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/07/29/react.Component/</loc>
@@ -85,10 +91,10 @@
     <loc>https://owen027.github.io/2019/05/20/array/</loc>
     <lastmod>2019-06-30</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/06/17/zoomAndScale/</loc>
+    <loc>https://owen027.github.io/2019/03/07/webpack/</loc>
     <lastmod>2019-06-24</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/03/07/webpack/</loc>
+    <loc>https://owen027.github.io/2019/06/17/zoomAndScale/</loc>
     <lastmod>2019-06-24</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/06/18/setProperty/</loc>
@@ -118,13 +124,13 @@
     <loc>https://owen027.github.io/2019/03/07/modularization/</loc>
     <lastmod>2019-05-19</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/03/15/symbol/</loc>
+    <loc>https://owen027.github.io/2019/03/26/proxy/</loc>
     <lastmod>2019-04-21</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/03/15/set/</loc>
     <lastmod>2019-04-21</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/03/26/proxy/</loc>
+    <loc>https://owen027.github.io/2019/03/15/symbol/</loc>
     <lastmod>2019-04-21</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/03/05/opp2/</loc>

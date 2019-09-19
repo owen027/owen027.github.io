@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="基本的关系操作增（插入 Insert）、删(Delete)、改(Update)、查（Query）。关系的查询表达能力是关系操作最主要的部分。查又可分为选择、投影、连接、除、并、差、交、笛卡尔积。集合操作方式（操作的对象和结果都是集合）。又称为一次一集合（set-at-a-time） 关系数据语言的分类通过关系语言实现关系操作。它高度非过程化用户不必请求DBM为其建立特殊的存取路径，由 DBM">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-18T15:45:37.980Z">
+<meta property="og:updated_time" content="2019-09-19T15:11:29.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关系数据模型要素二 （关系操作集合）">
 <meta name="twitter:description" content="基本的关系操作增（插入 Insert）、删(Delete)、改(Update)、查（Query）。关系的查询表达能力是关系操作最主要的部分。查又可分为选择、投影、连接、除、并、差、交、笛卡尔积。集合操作方式（操作的对象和结果都是集合）。又称为一次一集合（set-at-a-time） 关系数据语言的分类通过关系语言实现关系操作。它高度非过程化用户不必请求DBM为其建立特殊的存取路径，由 DBM">
@@ -1072,8 +1072,50 @@
 </table>
 <p>运算步骤：</p>
 <ol>
-<li>被除关系R对除关系S不同的属性 X 进行投影<br><strong>X 投影</strong><br>|A|B|C|D|E|<br>|:-:|:-:|:-:|:-:|:-:|<br>|a|b|c|d|e|<br>|h|i|j|k|l|<br>|a|b|c|a|b|<br>|a|c|e|f|b|</li>
+<li>被除关系R对除关系S不同的属性 X 进行投影</li>
 </ol>
+<p><strong>X 投影</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">D</th>
+<th style="text-align:center">E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">b</td>
+<td style="text-align:center">c</td>
+<td style="text-align:center">d</td>
+<td style="text-align:center">e</td>
+</tr>
+<tr>
+<td style="text-align:center">h</td>
+<td style="text-align:center">i</td>
+<td style="text-align:center">j</td>
+<td style="text-align:center">k</td>
+<td style="text-align:center">l</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">b</td>
+<td style="text-align:center">c</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">b</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">c</td>
+<td style="text-align:center">e</td>
+<td style="text-align:center">f</td>
+<td style="text-align:center">b</td>
+</tr>
+</tbody>
+</table>
 <p>待续。。。</p>
 
       
@@ -1122,6 +1164,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/19/integrity_constraint_of_relational/" rel="prev" title="关系数据模型要素三 关系完整性约束">
+                关系数据模型要素三 关系完整性约束 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1206,7 +1252,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1228,7 +1274,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1326,7 +1372,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">78.4k</span>
+    <span title="Site words total count">80.2k</span>
   
   -->
 </div>
