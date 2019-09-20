@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="概叙规范化理论研究的是关系模式中各属性间的依赖关系及对其概念性模式性能的影响，它提供了判断关系模式优劣的理论标准，能帮助数据库设计人员预测可能出现的问题。 关系模式中可能存在的冗余或异常问题关系模式可能存在如下问题：  数据冗余  数据冗余指同一数据被反复存储的情况。如在一个供应商关系模式中，一个供应商每供应一种货物，其地址就存储一次，如果供应成千上万种货物，地址就会反复成千上完成。  更新异常数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-19T15:10:50.621Z">
+<meta property="og:updated_time" content="2019-09-20T13:37:19.471Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关系数据库的规范化理论">
 <meta name="twitter:description" content="概叙规范化理论研究的是关系模式中各属性间的依赖关系及对其概念性模式性能的影响，它提供了判断关系模式优劣的理论标准，能帮助数据库设计人员预测可能出现的问题。 关系模式中可能存在的冗余或异常问题关系模式可能存在如下问题：  数据冗余  数据冗余指同一数据被反复存储的情况。如在一个供应商关系模式中，一个供应商每供应一种货物，其地址就存储一次，如果供应成千上万种货物，地址就会反复成千上完成。  更新异常数">
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  847
+                  1.4k
                 </span>
               
 
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  5
                 </span>
               
             </div>
@@ -521,8 +521,134 @@
 </tr>
 </tbody>
 </table>
-<p>T2 中，函数依赖：$（SNO,CNO）\to GRADE$ ，它为完全函数依赖。因为其中单个数学 SNO/CNO 都不能单独决定GRADE</p>
-<h3 id="部分函数依赖"><a href="#部分函数依赖" class="headerlink" title="部分函数依赖"></a>部分函数依赖</h3><p>设 R 为任一给定关系， X、Y 为其属性集合，若$X\to Y$,且 X 中存在某个真子集X^{‘} $X^{‘}$ - $满足 Y ，则 Y 部分依赖于 $X^{‘X}$</p>
+<p>T2 中，函数依赖：$（SNO,CNO）\to GRADE$ ，它为完全函数依赖。因为其中单个属性 SNO/CNO 都不能单独决定GRADE</p>
+<h3 id="部分函数依赖"><a href="#部分函数依赖" class="headerlink" title="部分函数依赖"></a>部分函数依赖</h3><p>设 R 为任一给定关系， X、Y 为其属性集合，若$X\to Y$,且 X 中存在某个真子集 $X^{‘}$满足  $X^{‘}\to Y$  ，则 Y 部分函数依赖于 X。</p>
+<p>T1 中 函数依赖$（SNO,SNAME）\to SSEX$,而其中$SNO\to SSEX$ ,那么 SSEX部分函数依赖于（SNO,SNAME）</p>
+<h3 id="传递函数依赖"><a href="#传递函数依赖" class="headerlink" title="传递函数依赖"></a>传递函数依赖</h3><p>设 R 为任一给定关系， X、Y、Z为不同属性子集，若$X\to Y$,X函数不依赖于Y，$Y\to Z$,则 $X\to Z$,即 Z传递函数依赖于X。</p>
+<p><strong>example：</strong></p>
+<p>有一个关系模式 T2（BNO(书号),PNAME（出版社名）,PADDRESS（出版社地址））,一种书对应一个唯一的书号，且只能为某一出版社出版；<br>一个出版社只有唯一名称和地址，但一个出版社可出版多种书。<br>那么该关系中存在函数依赖：$BNO \to PNAME$, $PNAME\to PADDRESS$, PNAME函数不依赖于BNO，所以$BNO\to PADDRESS$</p>
+<h3 id="严格的关键字定义"><a href="#严格的关键字定义" class="headerlink" title="严格的关键字定义"></a>严格的关键字定义</h3><p>设 R 为任一给定关系，U 为所有属性集合， X 为 U 的子集，若 U 完全依赖于 X，则 X 为 R 的候选关键字。</p>
+<h2 id="范式与关系规范化过程"><a href="#范式与关系规范化过程" class="headerlink" title="范式与关系规范化过程"></a>范式与关系规范化过程</h2><p>关系数据库中的关系需要满足一定的要求，不同程度的要求称为不同的范式（Normal Form,NF）。</p>
+<h3 id="第一范式（1FN）"><a href="#第一范式（1FN）" class="headerlink" title="第一范式（1FN）"></a>第一范式（1FN）</h3><p>设 R 为任一给定关系， R 中每个列和行的交点处的取值都是不可再分的基本元素，则 R 为 1FN。 1FN是范式的最低要求,是一个不含重复组的关系，不存在嵌套结构。</p>
+<p><strong>表 T3 </strong></p>
+
+<table>
+<caption>学生选课信息表</caption>
+<thead>
+ <tr>
+    <th>SNO</th>
+    <th>CNO</th>
+    <th>CTITLE</th>
+    <th>INAME</th>
+    <th>IPLACE</th>
+    <th>GRADE</th>
+ </tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1027</td>
+<td>C01</td>
+<td>操作系统</td>
+<td>王五</td>
+<td>东01</td>
+<td>100</td>
+</tr>
+
+<tr>
+<td>1028</td>
+<td>C02</td>
+<td>数据库</td>
+<td>刘备</td>
+<td>东02</td>
+<td>91</td>
+</tr>
+
+<tr>
+<td rowspan="2">1029</td>
+<td>C01</td>
+<td>操作系统</td>
+<td>王五</td>
+<td>东01</td>
+<td>88</td>
+</tr>
+<tr>
+<td>C03</td>
+<td>人工智能</td>
+<td>曹操</td>
+<td>东03</td>
+<td>100</td>
+</tr>
+
+<tr>
+<td>1030</td>
+<td>C04</td>
+<td>C语言</td>
+<td>刘备</td>
+<td>东02</td>
+<td>97</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>T3关系是一个非归范式关系，因为 SNO属性中 1029出现重复的组，可将T3转化为 1FN</p>
+<p><strong>T4 1FN</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">SNO</th>
+<th style="text-align:center">CNO</th>
+<th style="text-align:center">CTITLE</th>
+<th style="text-align:center">INAME</th>
+<th style="text-align:center">IPLACE</th>
+<th style="text-align:center">GRADE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1027</td>
+<td style="text-align:center">C01</td>
+<td style="text-align:center">操作系统</td>
+<td style="text-align:center">王五</td>
+<td style="text-align:center">东01</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">1028</td>
+<td style="text-align:center">C02</td>
+<td style="text-align:center">数据库</td>
+<td style="text-align:center">刘备</td>
+<td style="text-align:center">东02</td>
+<td style="text-align:center">91</td>
+</tr>
+<tr>
+<td style="text-align:center">1029</td>
+<td style="text-align:center">C01</td>
+<td style="text-align:center">操作系统</td>
+<td style="text-align:center">王五</td>
+<td style="text-align:center">东01</td>
+<td style="text-align:center">88</td>
+</tr>
+<tr>
+<td style="text-align:center">1029</td>
+<td style="text-align:center">C03</td>
+<td style="text-align:center">人工智能</td>
+<td style="text-align:center">曹操</td>
+<td style="text-align:center">东03</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">1030</td>
+<td style="text-align:center">C04</td>
+<td style="text-align:center">C语言</td>
+<td style="text-align:center">刘备</td>
+<td style="text-align:center">东02</td>
+<td style="text-align:center">97</td>
+</tr>
+</tbody>
+</table>
+<h3 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h3><p>设 R 为任一给定关系，如果 R 为 1FN，且所有非主属性都完全函数依赖于候选关键字，则 R为 2FN。</p>
 
       
     </div>
@@ -738,7 +864,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概叙"><span class="nav-number">1.</span> <span class="nav-text">概叙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系模式中可能存在的冗余或异常问题"><span class="nav-number">2.</span> <span class="nav-text">关系模式中可能存在的冗余或异常问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数依赖与关键字"><span class="nav-number">3.</span> <span class="nav-text">函数依赖与关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完全函数依赖"><span class="nav-number">3.2.</span> <span class="nav-text">完全函数依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部分函数依赖"><span class="nav-number">3.3.</span> <span class="nav-text">部分函数依赖</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概叙"><span class="nav-number">1.</span> <span class="nav-text">概叙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系模式中可能存在的冗余或异常问题"><span class="nav-number">2.</span> <span class="nav-text">关系模式中可能存在的冗余或异常问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数依赖与关键字"><span class="nav-number">3.</span> <span class="nav-text">函数依赖与关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完全函数依赖"><span class="nav-number">3.2.</span> <span class="nav-text">完全函数依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部分函数依赖"><span class="nav-number">3.3.</span> <span class="nav-text">部分函数依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传递函数依赖"><span class="nav-number">3.4.</span> <span class="nav-text">传递函数依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#严格的关键字定义"><span class="nav-number">3.5.</span> <span class="nav-text">严格的关键字定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#范式与关系规范化过程"><span class="nav-number">4.</span> <span class="nav-text">范式与关系规范化过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一范式（1FN）"><span class="nav-number">4.1.</span> <span class="nav-text">第一范式（1FN）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二范式"><span class="nav-number">4.2.</span> <span class="nav-text">第二范式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -774,7 +900,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">80.2k</span>
+    <span title="Site words total count">80.8k</span>
   
   -->
 </div>

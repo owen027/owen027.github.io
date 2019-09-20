@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://owen027.github.io/2019/09/19/normalization_theory/</loc>
+    <lastmod>2019-09-20</lastmod>
+  </url>  <url>
     <loc>https://owen027.github.io/2019/09/18/relational_operation/</loc>
     <lastmod>2019-09-19</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/09/19/integrity_constraint_of_relational/</loc>
-    <lastmod>2019-09-19</lastmod>
-  </url>  <url>
-    <loc>https://owen027.github.io/2019/09/19/normalization_theory/</loc>
     <lastmod>2019-09-19</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/09/09/relation_data_model/</loc>

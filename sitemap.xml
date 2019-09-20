@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://owen027.github.io/2019/09/19/normalization_theory/</loc>
+    
+    <lastmod>2019-09-20T13:37:19.471Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://owen027.github.io/2019/09/18/relational_operation/</loc>
     
     <lastmod>2019-09-19T15:11:29.721Z</lastmod>
@@ -10,13 +17,6 @@
   
   <url>
     <loc>https://owen027.github.io/2019/09/19/integrity_constraint_of_relational/</loc>
-    
-    <lastmod>2019-09-19T15:10:50.621Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://owen027.github.io/2019/09/19/normalization_theory/</loc>
     
     <lastmod>2019-09-19T15:10:50.621Z</lastmod>
     
