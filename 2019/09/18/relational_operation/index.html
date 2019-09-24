@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="基本的关系操作增（插入 Insert）、删(Delete)、改(Update)、查（Query）。关系的查询表达能力是关系操作最主要的部分。查又可分为选择、投影、连接、除、并、差、交、笛卡尔积。集合操作方式（操作的对象和结果都是集合）。又称为一次一集合（set-at-a-time） 关系数据语言的分类通过关系语言实现关系操作。它高度非过程化用户不必请求DBM为其建立特殊的存取路径，由 DBM">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-19T15:11:29.721Z">
+<meta property="og:updated_time" content="2019-09-24T12:33:09.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关系数据模型要素二 （关系操作集合）">
 <meta name="twitter:description" content="基本的关系操作增（插入 Insert）、删(Delete)、改(Update)、查（Query）。关系的查询表达能力是关系操作最主要的部分。查又可分为选择、投影、连接、除、并、差、交、笛卡尔积。集合操作方式（操作的对象和结果都是集合）。又称为一次一集合（set-at-a-time） 关系数据语言的分类通过关系语言实现关系操作。它高度非过程化用户不必请求DBM为其建立特殊的存取路径，由 DBM">
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2k
+                  2.1k
                 </span>
               
 
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  8
                 </span>
               
             </div>
@@ -548,7 +548,7 @@
 <p>关系代数操作经过有限次复合的式子称为关系代数操作表达式（关系代数表达式），可使用表达式表示所需要执行的各种数据查询和修改处理，所有关系代数是一种抽象的查询语言，通过对关系的操作来表达查询。</p>
 <p>按运算符分类，关系代数操作可分为：传统的集合运算和专门的关系运算</p>
 <h3 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h3><p>传统集合运算是二目运算，将关系看成元组集合，运算从行的角度来进行，具有 并、差、交、迪卡尔积四种运算。</p>
-<p><strong>example：</strong></p>
+<p><strong>Example：</strong></p>
 <p><strong>表 T1</strong></p>
 <table>
 <thead>
@@ -791,7 +791,7 @@
 </ul>
 <h4 id="选择（SELECT）"><a href="#选择（SELECT）" class="headerlink" title="选择（SELECT）"></a>选择（SELECT）</h4><p>选择运算( $σ_F(R)$ )，F为条件表达式，R为指定的被运算关系名。 从指定关系中选取满足条件的若干元组组成一个新关系<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 关系名 <span class="keyword">WHERE</span> 条件语句（表达式）</span><br></pre></td></tr></table></figure></p>
 <p>条件语句：由常数、属性名或列名、比较操作符及逻辑操作符组成</p>
-<p><strong>example：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> T8 <span class="keyword">WHERE</span> 姓名 = <span class="string">"张三"</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>Example：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> T8 <span class="keyword">WHERE</span> 姓名 = <span class="string">"张三"</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>表 T9</strong></p>
 <table>
 <thead>
@@ -822,7 +822,7 @@
 </table>
 <h4 id="投影（PROJECTION）"><a href="#投影（PROJECTION）" class="headerlink" title="投影（PROJECTION）"></a>投影（PROJECTION）</h4><p>投影运算( $π_A(R)$ ), R为被运算关系，A为属性序列，从指定关系中选取指定的若干属性值组成新关系<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PROJECTION 关系名 ( 属性名1, 属性名2 ,... )</span><br></pre></td></tr></table></figure></p>
 <p>组成的新关系自动去重</p>
-<p><strong>example：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PROJECTION T8 (课程号,课程名)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PROJECTION T8 (课程号,课程名)</span><br></pre></td></tr></table></figure></p>
 <p><strong>表 T10</strong></p>
 <table>
 <thead>
@@ -848,7 +848,7 @@
 <ul>
 <li>等值连接：θ值为 “=”，从R和S的笛卡尔积中选取 x、y 属性值相等的元组</li>
 </ul>
-<p><strong>example：</strong></p>
+<p><strong>Example：</strong></p>
 <p><strong>表 T11</strong></p>
 <table>
 <thead>
@@ -999,6 +999,7 @@
 </table>
 <p>自然连接是构造新关系的有效方法，投影和选择是分解关系的有效方法，自然连接中如果两个关系没有公共属性则变成笛卡尔积</p>
 <h4 id="除（DIVISION）"><a href="#除（DIVISION）" class="headerlink" title="除（DIVISION）"></a>除（DIVISION）</h4><p>除运算（R÷S） R和S代表两个不同的关系。<br>假如被除关系R 为 m 元关系，除关系S 为 n 元关系，则运算结果的新关系为 m-n元关系。</p>
+<p><strong>Example 1：</strong></p>
 <p><strong>表 T15</strong></p>
 <table>
 <thead>
@@ -1117,6 +1118,104 @@
 </tbody>
 </table>
 <p>待续。。。</p>
+<ol start="2">
+<li>提取每个属性集值对应S元关系的象集</li>
+</ol>
+<p>2.1 |a|b|c|d|e| 值的象集</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">D</th>
+<th style="text-align:center">E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">f</td>
+<td style="text-align:center">g</td>
+</tr>
+</tbody>
+</table>
+<p>2.2 |h|i|j|k|l| 值的象集</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">D</th>
+<th style="text-align:center">E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:center">n</td>
+</tr>
+</tbody>
+</table>
+<p>2.3 |a|b|c|a|b| 值的象集</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">D</th>
+<th style="text-align:center">E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">c</td>
+<td style="text-align:center">d</td>
+</tr>
+</tbody>
+</table>
+<p>2.4 |a|c|e|f|b| 值的象集</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">D</th>
+<th style="text-align:center">E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:center">n</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>S 关系在公共属性 F G 的投影</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">F</th>
+<th style="text-align:center">G</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">f</td>
+<td style="text-align:center">g</td>
+</tr>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:center">n</td>
+</tr>
+</tbody>
+</table>
+<p>通过 3 和 2 的对比 R÷S 为空</p>
+<p><strong>Example 2：</strong><br>待续。。。</p>
 
       
     </div>
@@ -1252,7 +1351,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1263,7 +1362,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1274,7 +1373,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1372,7 +1471,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">80.8k</span>
+    <span title="Site words total count">83.4k</span>
   
   -->
 </div>

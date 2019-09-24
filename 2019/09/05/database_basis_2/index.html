@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="数据库系统的结构 注：数据库（ DB ）数据库系统（DBS）数据库管理系统（DBMS） 数据库管理员（DBA）在一个DBS中有着不同类型的用户，每个用户都从不同的角度以各自的观点看待数据库，从而形成了DBS不同的视图结构。因此DBS的结构可以有多种不同的层次或不同的视角。  从数据库管理员（DBA）视角来看，DBS分为内部系统结构和外部体系结构，其中内部系统结构通常采用三级模式结构，外部体系结构通">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-12T15:31:03.950Z">
+<meta property="og:updated_time" content="2019-09-24T12:33:09.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库基础（Database Basis) (二)">
 <meta name="twitter:description" content="数据库系统的结构 注：数据库（ DB ）数据库系统（DBS）数据库管理系统（DBMS） 数据库管理员（DBA）在一个DBS中有着不同类型的用户，每个用户都从不同的角度以各自的观点看待数据库，从而形成了DBS不同的视图结构。因此DBS的结构可以有多种不同的层次或不同的视角。  从数据库管理员（DBA）视角来看，DBS分为内部系统结构和外部体系结构，其中内部系统结构通常采用三级模式结构，外部体系结构通">
@@ -360,8 +360,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Database/" itemprop="url" rel="index">
-                    <span itemprop="name">Database</span>
+                  <a href="/categories/Database-basis/" itemprop="url" rel="index">
+                    <span itemprop="name">Database basis</span>
                   </a>
                 </span>
 
@@ -442,7 +442,21 @@
 
 
 <h3 id="三级模式结构（DBA视角）"><a href="#三级模式结构（DBA视角）" class="headerlink" title="三级模式结构（DBA视角）"></a>三级模式结构（DBA视角）</h3><p>从DBA角度审视数据库系统，其内部基本遵循美国 <code>ANSI/SPAPRC</code> DBMS研究组提出的三体系结构（用户、概念级和物理级）。各个DBMS产品在体系结构上通常具有相同的特征（三级模式结构），并提供两层映像功能。DBS三模式结构是指 模式（Schema）、外模式（External Schema）和 内模式（Internal Schema）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A(数据库) --&gt; B(内模式)</span><br><span class="line">B --内模式/模式映像--&gt; C(模式)</span><br><span class="line"></span><br><span class="line">C --&gt;  C1(外模式1)</span><br><span class="line">C --外模式/模式映像--&gt;  C2(外模式2)</span><br><span class="line">C --&gt;  C3(外模式3)</span><br><span class="line"></span><br><span class="line">C1 --&gt; D1(应用1)</span><br><span class="line">C1 --&gt; D2(应用2)</span><br><span class="line">C2 --&gt; D3(应用3)</span><br><span class="line">C2 --&gt; D4(应用4)</span><br><span class="line">C3 --&gt; D5(应用5)</span><br><span class="line">C3 --&gt; D6(应用6)</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">graph LR
+A(数据库) --> B(内模式)
+B --内模式/模式映像--> C(模式)
+
+C -->  C1(外模式1)
+C --外模式/模式映像-->  C2(外模式2)
+C -->  C3(外模式3)
+
+C1 --> D1(应用1)
+C1 --> D2(应用2)
+C2 --> D3(应用3)
+C2 --> D4(应用4)
+C3 --> D5(应用5)
+C3 --> D6(应用6)</pre>
+
 <p>外模式的描述向客户提供数据，内模式的描述存储数据，模式是两者的中间层，机不涉及数据的物理存储和硬件环境，也与具体应用程序、开发工具及设计语言无关。</p>
 <p></p><h4>模式</h4><p></p>
 <label>模式也称为概念模式或逻辑模式，是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图，即数据在逻辑上的视图（又称概念视图）</label>
@@ -649,7 +663,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -660,7 +674,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -671,7 +685,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -769,7 +783,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">80.8k</span>
+    <span title="Site words total count">83.4k</span>
   
   -->
 </div>
