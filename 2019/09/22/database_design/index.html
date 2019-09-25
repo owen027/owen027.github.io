@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="概叙 针对具体的应用场景，使用现有的 DBMS 构建适合的数据库模式，建立数据库及其应用系统，使之能有效的收集、存储、操作和管理数据，满足实际业务中各类用户的应用需求、信息需求和处理需求，这个过程称为数据库设计。  1.数据库生命周期，从演变过程的角度分为两个阶段：分析与设计阶段 和 实现与操作阶段 1.1 分析与设计阶段细分为四个环节：需求方分析、概念设计、逻辑结构设计和物理结构设计。1.2 实">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-24T12:33:09.766Z">
+<meta property="og:updated_time" content="2019-09-25T13:37:36.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库设计">
 <meta name="twitter:description" content="概叙 针对具体的应用场景，使用现有的 DBMS 构建适合的数据库模式，建立数据库及其应用系统，使之能有效的收集、存储、操作和管理数据，满足实际业务中各类用户的应用需求、信息需求和处理需求，这个过程称为数据库设计。  1.数据库生命周期，从演变过程的角度分为两个阶段：分析与设计阶段 和 实现与操作阶段 1.1 分析与设计阶段细分为四个环节：需求方分析、概念设计、逻辑结构设计和物理结构设计。1.2 实">
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
+                  3.1k
                 </span>
               
 
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  10
                 </span>
               
             </div>
@@ -453,10 +453,17 @@
 <li><p>数据库设计的过程六大阶段：需求分析 -&gt; 结构设计（概念、逻辑和物理结构设计）∪ 行为设计（功能、事务和程序设计） -&gt; 数据库实施（加载数据库数据和调试运行应用程序） -&gt; 数据库运行和维护</p>
 </li>
 </ol>
-<p><pre class="mermaid">graph LR</pre></p>
-<p>A(需求分析) –&gt; B(结构设计)<br>A –&gt; C(行为设计)</p>
-<p>B –&gt; D(数据库实施)<br>C –&gt; D(数据库实施)</p>
-<p>D –&gt; E(数据库运行与维护)<br>数据库设计过程实际是一个反复修改、反复设计的迭代过程。</p>
+<pre class="mermaid">graph LR
+
+A(需求分析) --> B(结构设计)
+A --> C(行为设计)
+
+B --> D(数据库实施)
+C --> D(数据库实施)
+
+D --> E(数据库运行与维护)</pre>
+
+<p>数据库设计过程实际是一个反复修改、反复设计的迭代过程。</p>
 <h2 id="数据库设计的基本步骤"><a href="#数据库设计的基本步骤" class="headerlink" title="数据库设计的基本步骤"></a>数据库设计的基本步骤</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><blockquote>
 <p>需求分析是数据库设计的起点，直接影响后续阶段的设计和数据库系统能否被合理使用。分四个步骤：确定数据库范围、分析数据应用过程、收集与分析数据和编写需求分析报告。<br>需求分析的目标是了解与分析用户的信息及应用处理的要求，并将结果按一定格式整理形成需求分析报告。</p>
 </blockquote>
@@ -489,8 +496,119 @@
 </tbody>
 </table>
 <p>2）数据元素表<br>数据元素表指通常意义下的数据项或属性。数据分类表中的每一类数据的所有数据元素名称、类型、长度、意义及算法等都应在数据元素表中进行详尽说明。格式如下：</p>
-<p>|数据ID|数据元素ID|元素名|意义|类型|长度|算法|备注|<br>|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据ID</th>
+<th style="text-align:center">数据元素ID</th>
+<th style="text-align:center">元素名</th>
+<th style="text-align:center">意义</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">长度</th>
+<th style="text-align:center">算法</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>类型：描述元素的数据特征（字符串、整数型、实数型）</p>
+<h5 id="动态结构"><a href="#动态结构" class="headerlink" title="动态结构"></a>动态结构</h5><p>动态结构指将应用操作施加于数据之上的数据状况，可通过任务分类表和数据操作特征表进行说明</p>
+<p>1）任务分类表<br>根据对数据流程图的分析，可将业务处理过程划分不同任务。 一个任务指为完成某一特定处理功能的相对独立的操作序列。格式如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">任务ID</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">主人</th>
+<th style="text-align:center">用户</th>
+<th style="text-align:center">执行日期</th>
+<th style="text-align:center">频率</th>
+<th style="text-align:center">操作过程</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>类型：输入、查询、制表、统计、修改、删除等</p>
+<p>2）数据操作特征表<br>数据操作特征表用来描述任务和数据之间的关系，包括不同任务对数据执行不同操作的频率。一条任务或数据分类表须建立对应的操作特征表。格式如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">任务ID</th>
+<th style="text-align:center">数据ID</th>
+<th style="text-align:center">建立</th>
+<th style="text-align:center">查询</th>
+<th style="text-align:center">插入</th>
+<th style="text-align:center">修改</th>
+<th style="text-align:center">删除</th>
+<th style="text-align:center">数据量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h5 id="数据约束"><a href="#数据约束" class="headerlink" title="数据约束"></a>数据约束</h5><p>数据约束指使用数据时的特殊要求。主要有四个方面：</p>
+<ol>
+<li>数据的安全保密性，针对不同类型数据的操作权限。</li>
+<li>数据完整性，指数据正确性的约束和验证准则，及一致性保护的要求</li>
+<li>响应时间，主要指某些特点应用要求的数据存取时间限制</li>
+<li>数据恢复，主要指转储及恢复的时机与范围等</li>
+</ol>
+<h4 id="编写需求分析报告"><a href="#编写需求分析报告" class="headerlink" title="编写需求分析报告"></a>编写需求分析报告</h4><p>需求分析报告要求包括6个方面（数据库的应用功能目标（明确数据库应用范围及应达到的应用处理功能）、标明不同用户视图范围）、应用处理过程需求说明、数据字典、数据量、数据约束：</p>
+<h4 id="需求说明"><a href="#需求说明" class="headerlink" title="需求说明"></a>需求说明</h4><ol>
+<li>要求有数据流程图，反映应用部门原始业务处理的工作流程</li>
+<li>任务分类表，标明不同任务的功能及使用状况</li>
+<li>数据库特征表，标明任务和数据间的联系及不同数据的不同澳洲特征与执行频率</li>
+<li>操作过程说明书，根据流程图、任务分类表及数据特征表等，标明各个任务的主要逻辑执行步骤</li>
+</ol>
+<h4 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h4><p>数据字典是DBS中存储三级结构定义的数据库，通常指数据库系统中各类数据详细描述的集合。功能是存储和检索各种数据描述（元数据），提供对各类数据的集中管理，是一种数据分析、系统设计和管理的有力工具。</p>
+<p>数据字典包括数据分类表、数据元素表和各类原始资料（所有单据、报表、文件及设计所需的原始资料，并根据数据分类表的数据ID统一分类编号）。</p>
+<h3 id="概念结构设计"><a href="#概念结构设计" class="headerlink" title="概念结构设计"></a>概念结构设计</h3><p>概念设计结构是在需求分析中产生的需求分析报告基础上按照特定的方法设计满足应用需求的用户信息结构，通常称为概念模型</p>
+<p>概念模型独立于任何软件硬件，主要目标是最大限度的满足应用需求，完全不顾忌软件硬件的限制，尤其是DBMS 的限制，它是一个符合用户要求的趋于理想化的信息结构，常用方法有实体分析法（自顶向下）和属性综合法（自顶向上）</p>
+<h3 id="逻辑结构设计"><a href="#逻辑结构设计" class="headerlink" title="逻辑结构设计"></a>逻辑结构设计</h3><p>逻辑模型是将概念模型转换为等价的、并为特定 DBMS 所支持数据模型的结构。主要有层次、网状、关系模型</p>
+<h4 id="逻辑模型的输入与输出信息"><a href="#逻辑模型的输入与输出信息" class="headerlink" title="逻辑模型的输入与输出信息"></a>逻辑模型的输入与输出信息</h4><p>逻辑模型是在需求分析与概念模型的基础上进行的，主要提供如下输入信息：</p>
+<ol>
+<li>独立于特定 DBMS 的概念模型。</li>
+<li>有关响应时间、安全保密性、数据完整性及恢复方面的要求说明，包括数据的一致性的规则说明。</li>
+<li>数据量及使用频率</li>
+<li>特定 DBMS 特性，包括其支持的数据模型及数据定义语言的说明。</li>
+</ol>
+<p>输出信息：</p>
+<ol>
+<li>一个特定 DBMS 支持的模式（概念模式）</li>
+<li>一个或多个外部视图（子模式）</li>
+<li>物理设计说明，主要有存入数据库中的数据量、使用频率及响应时间要求</li>
+<li>程序设计说明，在需求分析的基础上，根据逻辑模型，编制各程序名、执行逻辑步、存取数据的名、顺序及操作特征（读、写、改、删）的说明。</li>
+</ol>
+<h4 id="逻辑结构设计的步骤"><a href="#逻辑结构设计的步骤" class="headerlink" title="逻辑结构设计的步骤"></a>逻辑结构设计的步骤</h4><pre class="mermaid">graph LR
+A(概念设计) --> B(模型转换)
+B --> C(子模型设计)
+B --> D(应用程序设计说明)
+C --> E(设计评价)
+D --> E
+E --> F(物理设计)</pre>
 
+<ol>
+<li>模型转换：将概念模型等价转换为特定 DBMS 支持的关系、层次或网站模型</li>
+<li>子模式设计的目标是抽取或导出模式的子集，以构造不同用户使用的局部数据逻辑结构</li>
+<li>应用程序说明是为可实际运行的应用程序设计提供依据与指导，作为设计评价的基础</li>
+<li>设计评价任务是分析并检验模式及子模式的正确性与合理性。</li>
+</ol>
+<h3 id="物理设计"><a href="#物理设计" class="headerlink" title="物理设计"></a>物理设计</h3><p>物理设计指对于一个给定的数据库逻辑结构，研究并构造物理结构的过程，主要是确定数据库在存储设备上的存储结构及存储方法， 因 DBMS 不同可能包括建立索引和聚集等待。</p>
+<h3 id="数据库实施"><a href="#数据库实施" class="headerlink" title="数据库实施"></a>数据库实施</h3>
       
     </div>
     
@@ -705,7 +823,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概叙"><span class="nav-number">1.</span> <span class="nav-text">概叙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库设计的基本步骤"><span class="nav-number">2.</span> <span class="nav-text">数据库设计的基本步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析"><span class="nav-number">2.1.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#确定数据库范围"><span class="nav-number">2.1.1.</span> <span class="nav-text">确定数据库范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用过程分析"><span class="nav-number">2.1.2.</span> <span class="nav-text">应用过程分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#收集与分析数据"><span class="nav-number">2.1.3.</span> <span class="nav-text">收集与分析数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#静态结构"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">静态结构</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概叙"><span class="nav-number">1.</span> <span class="nav-text">概叙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库设计的基本步骤"><span class="nav-number">2.</span> <span class="nav-text">数据库设计的基本步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析"><span class="nav-number">2.1.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#确定数据库范围"><span class="nav-number">2.1.1.</span> <span class="nav-text">确定数据库范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用过程分析"><span class="nav-number">2.1.2.</span> <span class="nav-text">应用过程分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#收集与分析数据"><span class="nav-number">2.1.3.</span> <span class="nav-text">收集与分析数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#静态结构"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">静态结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态结构"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">动态结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据约束"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">数据约束</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写需求分析报告"><span class="nav-number">2.1.4.</span> <span class="nav-text">编写需求分析报告</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需求说明"><span class="nav-number">2.1.5.</span> <span class="nav-text">需求说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据字典"><span class="nav-number">2.1.6.</span> <span class="nav-text">数据字典</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念结构设计"><span class="nav-number">2.2.</span> <span class="nav-text">概念结构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑结构设计"><span class="nav-number">2.3.</span> <span class="nav-text">逻辑结构设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑模型的输入与输出信息"><span class="nav-number">2.3.1.</span> <span class="nav-text">逻辑模型的输入与输出信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑结构设计的步骤"><span class="nav-number">2.3.2.</span> <span class="nav-text">逻辑结构设计的步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理设计"><span class="nav-number">2.4.</span> <span class="nav-text">物理设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库实施"><span class="nav-number">2.5.</span> <span class="nav-text">数据库实施</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -741,7 +859,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">83.4k</span>
+    <span title="Site words total count">84.8k</span>
   
   -->
 </div>
