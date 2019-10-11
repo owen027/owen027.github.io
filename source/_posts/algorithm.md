@@ -1,9 +1,9 @@
 ---
-title: algorithm
+title:  算法
 date: 2019-04-21 23:39:47
 categories:
 - algorithm
-tags: 
+tags:
 - Sum of two numbers
 ---
 
@@ -50,7 +50,7 @@ var twoSum = function(nums, target) {
          }
     }
 };
-// 方法二 嵌套循环 比 方法一 更快 
+// 方法二 嵌套循环 比 方法一 更快
 var twoSum = function(nums, target) {
             let len = nums.length;
             for (let i = 0; i<len; i++){
@@ -63,19 +63,19 @@ var twoSum = function(nums, target) {
 };
 // 方法三 has表   时间复杂度：O(n) 空间：O(n)
 /**
- * 存储对应的值 和 索引 
+ * 存储对应的值 和 索引
  */
 var twoSum = function(nums, target) {userManage
       const m = new Map();
       const len = nums.length；
     for (let i = 0; i < len; i++ ) {
-        
+
         if(m.has(nums[i]) && m.get(nums[i]) !== i){
             return [m.get(nums[i]),i]
         }
-            m.set((target - nums[i]),i); 
+            m.set((target - nums[i]),i);
     }
-      
+
 };
 
 //or
@@ -87,7 +87,7 @@ var twoSum = function(nums, target) {
         if(m.has(res) && m.get(res) !== i){
             return [m.get(res),i]
         }
-            m.set(nums[i],i); 
+            m.set(nums[i],i);
       }
 };
 ```
@@ -102,20 +102,20 @@ var twoSum = function(nums, target) {
  */
 var reverse = function(x) {
      let res =( x+'' ).split("");
-     
+
     if(res[0] !== '-'){
         let num = parseInt(res.reverse().join(''),10);
          if( num> Math.pow(2,31) -1){
              return 0
          }
-       return num; 
+       return num;
     }else{
         res.reverse().pop();
       let num = parseInt(res.join(''),10);
         if( num> Math.pow(2,31) -1){
              return 0
          }
-        return  '-' + num; 
+        return  '-' + num;
     }
 };
 ```
@@ -128,7 +128,7 @@ var reverse = function(x) {
 > 输入: 10  输出: false  解释: 从右向左读, 为 01 。因此它不是一个回文数。
 > 注意 0 是回文数
 
-- 进阶: 不将整数转为字符串来解决这个问题 
+- 进阶: 不将整数转为字符串来解决这个问题
 ```javascript
 /**
  * @param {number} x
@@ -136,16 +136,16 @@ var reverse = function(x) {
  */
  // 方法 一 转化未字符串
 var isPalindrome = function(x) {
-     
+
     return  x < 0? false: (parseInt((x+'').split('').reverse().join('')) === x ? true : false);
 };
 /**
- * 方法二  中间数的右边反转后 等于 左边 
- * 提取中间数的右边 通过 *10 、 %10 来提取   
- * */ 
+ * 方法二  中间数的右边反转后 等于 左边
+ * 提取中间数的右边 通过 *10 、 %10 来提取
+ * */
 var isPalindrome = function(int) {
    if(int < 0 ||  (int%10 === 0 && int !== 0)) return false;
-    
+
     let num = 0;
     while (int > num ){
         num = num * 10 + int % 10;
@@ -154,5 +154,5 @@ var isPalindrome = function(int) {
 console.log(int,num)
     return  int === num || int === parseInt(num/10);
 };
- 
+
 ```
