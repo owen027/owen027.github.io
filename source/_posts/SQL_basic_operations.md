@@ -88,4 +88,106 @@ MySQL在SQL标准的基础上增加了部分扩展的语言要素包括常量、
 
 ## 数据定义
 
+SQL 的数据定义功能包括数据库模式、表、索引和视图的定义
+SQL 标准不提供修改数库模式定义和修改视图定义的操作，如需修改对象，可先删除再创建，或通过RDBMS提供的扩展语句实现
+SQL 标准不提供索引相关的语句
+
+### 数据库模式定义
+
+对数据库的增、删、改、查、选择等操作
+
+#### 创建数据库
+
+在MySQL中，使用 CREATE DATABASE 或 CREATE SCHEMA 语句创建数据库
+语法结构：
+```SQL
+CREATE {DATABASE|SCHEMA}[IF NOT EXISTS] db_name
+[DEFAULT]CHARACTER SET [=]charest_name
+|[DEFAULT]COLLATE [=]collation_name
+
+```
+`[]`: 表示为可选
+`|`: 用于分隔花括号中的选项，表示任选一项语法
+`db_name`: 标识具体的数据库命名，必须符合操作系统文件夹命名规则，在MySQL中不区分大小写
+`DEFAULT`: 默认值
+`CHAREST SET`: 指定数据库字符集
+`COLLATE`: 指定字符集校对规则
+`IF NOT EXISTS`：创建数据库前进行判断，只有该数据库不存在时才能创建数据库
+
+**example：**
+创建名称位 mysql_test 的数据库
+```SQL
+CREATE DATABASE mysql_test;
+```
+在次输入同样的命令 将会报错 可添加 `IF NOT EXISTS` 避免报错
+
+#### 选择数据库
+ MySQL 中创建数据库之后，不会自动使用新创建的数据库，可使用 `USE` 语句从当前环境切换换至新创建的数据库或其它数据库
+**example：**
+```SQL
+USE mysql_test;
+```
+
+#### 修改数据库
+
+MySQL 中使用 ALTERDATABASE 或使用 ALTER SCHEMA 语句，修改数据库的相关参数
+语法结构：
+```SQL
+ALTER {DATABASE|SCHEMA}[db_name]
+```
+**example：**
+修改已有数据库默认字符集和校对规则
+```SQL
+ALTER DATABASE mysqle_test
+...
+```
+
+#### 删除数据库
+
+MySQL 中使用 DROP DATABASE 或 DROP SCHEMA 来删除数据库,其数据永久删除
+语法结构：
+```SQL
+DROP {DATABASE|SCHEMA}[IF EXISITS]db_name
+```
+**example：**
+```SQL
+DROP DATABASE IF EXISITS  mysqle_test
+...
+```
+
+#### 查看数据库
+MySQL 中使用 SHOW DATABASE 或 SHOW SCHEMA 来看可用数据库列表，只会列从出权限范围内的数据库
+语法结构：
+```SQL
+SHOW {DATABASE|SCHEMA}[LIKE'pattern'|WHERE expr]
+
+```
+`LIKE`: 匹配指定数据库名称
+`WHERE`: 指定数据库名称查询范围
+
+**example：**
+```SQL
+SHOW DATABASE
+```
+
+### 表定义
+
+只有成功创建数据库后，才能创建数据表，数据表是字段的集合，在表中数据按行和列的格式存储
+
+#### 创建表
+MySQL 使用 CREATE TABLE 创建表。其中有多个选择，主要由表创建定义（create definition）、表选项定义（table options） 和区分选项（partition options）等内容构成。
+
+表创建定义：由表列的名字、列的定义集可能的一个空值声明、一个完整性约束或表索引项组成，表索引项主要定义表的索引、主键、外键等。
+
+语法结构：
+```SQL
+CREATE[TEMPORARY]TABLE tbl_name
+(
+    字段名|数据类型[列级完整性约束条件][默认值]
+    [,字段名2 数据类型[列级完整性约束条件][默认值]]
+    [,....]
+    [,表级完整性约束条件]
+)[ENGINE=引擎类型]
+```
+
 
