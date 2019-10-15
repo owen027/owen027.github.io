@@ -1,5 +1,5 @@
 ---
-title: mysql_database_definition_syntax
+title: MySQL的数据库定义语法
 date: 2019-10-14 20:19:31
 catagories:
 - MySQL

@@ -1,5 +1,5 @@
 ---
-title: database_table_syntax
+title: MySQL的表定义语法
 date: 2019-10-14 20:15:35
 catagories:
 - MySQL
@@ -160,6 +160,32 @@ mysql> RENAME TABLE mysql_test.back.customers TO mysqle_test.customers
 
 ### 查看表
 
+- `SHOW [FULL] TABLES [{FROM|IN}db_name] [LIKE'pattern'|WHERE expr]`：  显示指定数据库中所有表名
+
+**Example：**
+```SQL
+mysql> USE mysql_test
+Database changed
+mysql> SHOW TABLES:
+ Tables_in_mysql_test
+ customers
+ 1 row in set <0.01 sec>
+```
+
+- `SHOW [FULL] COLUMNS {FROM|IN}tb_name[{FROM|IN}db_name] 或 {DESCRIBE|DESC} tbl_name[col_name|wild]`: 显示指定数据库表结构。
+
+MySQL 支持使用 DESCRIBE 代替 SHOW COLUMNS FROM 来查看表结构
+
+**Example:**
+```SQL
+mysql> DESC mysql_test.custormes
+Field         Type       Null key  Default Extra
+cust_id       int<11>    NO   PRI  NULL    auto_increment
+cust_name     char<50>   NO        Null
+cust_sex      int<1>     NO        0
+
+3 row in set <1.56 sec>
+```
 
 
 
