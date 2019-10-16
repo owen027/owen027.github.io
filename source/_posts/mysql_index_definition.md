@@ -75,4 +75,52 @@ Query OK, 0 rows affected (0.20 sec)
 
 ```
 
-#### ALTER TABLE
+#### `ALTER TABLE`
+
+- `ADD {INDEX|KEY} [index_name] (index_col_name,...)`: 新增表列的同时添加索引
+- `ADD [CONTRAIN [smbol]] PRIMARY KEY [index_name] (index_col_name,...)`：新增列的同时添加主键
+- `ADD [CONTRAIN [smbol]] UNIQUE [INDEX|KEY] [index_name] (index_col_name,...)`: 新增列的同时添加唯一性索引
+- `ADD [CONTRAIN [smbol]] FOREIGN KEY [index_name] (index_col_name,...)`: 新增列的同时添加外键
+```SQL
+mysql> ALTER TABLE mysql_test.seller
+    -> ADD INDEX index_seller_name(seller_name)
+Query OK, 0 rows affected (0.20 sec)
+ Records: 0 Duplicates: 0 Warning: 0
+```
+
+### 查看索引
+
+使用 SHOW INDEX 查看索引
+语法：
+```SQL
+SHOW {INDEX|INDEXES|KEYS}
+ {FROM|IN} tbl_name
+ [{FROM|IN}db_name]
+ [WHERE expr]
+```
+
+### 删除索引
+
+使用 DROP INDEX 或 ALTER TABLE 删除索引
+
+- DROP INDEX
+
+```SQL
+DROP INDEX index_name ON tbl_name
+```
+
+- ALTER TABLE
+
+1. DROP PRIMARY KEY 删除表中主键
+
+2. DROP INDEX 删除对应索引
+
+3. DROP FOREIGN KEY 删除外键
+
+```SQL
+mysql> ALTER TABLE mysql_test.customers
+    -> DROP PRIMARY KEY
+    -> DROP INDEX index_custormes
+Query OK, 0 rows affected (0.20 sec)
+ Records: 0 Duplicates: 0 Warning: 0
+```
