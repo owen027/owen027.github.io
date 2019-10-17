@@ -46,3 +46,96 @@ mysql> INSERT INTO mysql_test.customers
 Query OK, 1 row affected(0.09 sec)
 ```
 
+上述中未给出待插入表的列清单，这样的操作是不安全的须改成：
+```SQL
+mysql> INSERT INTO mysql_test.customers(cust_Id,cust_name,cust_address)
+    -> Values(0,'李四',DEFAULT,'北京市')
+Query OK, 1 row affected(0.09 sec)
+```
+
+#### INSERT...SET
+
+`INSERT...SET` 可以直接给表中的某些列指定对应的列值
+```SQL
+INSERT [INTO] tbl_name
+    SET col_name={expr|DEFAULT},....
+```
+未指定的列为默认值
+```SQL
+mysql> INSERT INTO mysql_test.customers
+    -> SET cust_address='武汉',cust_name="李四"，cust_sex=DEFAULT
+Query OK, 1 row affected(0.09 sec)
+```
+
+<!-- #### INSERT...SELECT 插入子查询数据
+
+```SQL
+INSERT [INTO] tbl_name[(col_name),...]
+    SELECT ...
+``` -->
+
+### 删除数据
+
+使用`DELETE FROM tbl_name` 可删除行数据
+
+```SQL
+DELETE FROM tbl_name
+    [WHERE where_condition]
+    [ORDER BY ...]
+    [LIMIT row_count]
+```
+
+-` WHERE`：限定删除条件，从而删除特定的行，如不指定条件则删除指定表的所有行数据
+- `ORDER BY`：各行按指定顺序进行删除
+- `LIMIT`：告知服务器在控制命令被返回到客户端前被删除行的最大值
+
+```SQL
+DELETE FROM mysql_test.customers
+   WHERE cust_name='王五'
+Query OK, 1 row affected(0.09 sec)
+```
+
+### 修改数据
+
+使用`UPDATE` 更新表中的数据
+
+```SQL
+UPDATE  tbl_name
+    SET col_name={expr|DEFAULT}[,col_name={expr|DEFAULT}]...
+    [WHERE where_condition]
+    [ORDER BY ...]
+    [LIMIT row_count]
+```
+-` WHERE`：限定修改条件，从而修改特定的行，如不指定条件则修改指定表的所有行数据
+- `ORDER BY`：各行按指定顺序进行修改
+- `LIMIT`：限定被修改的行数
+
+```SQL
+UPDATE  mysql_test.customers
+   SET cust_address = '北京'
+   WHERE cust_name='王五'
+Query OK, 1 row affected(0.09 sec)
+```
+
+---
+
+## 查询数据
+数据查询是SQL 语言的核心功能，是使用最多的操作
+
+### SELECT
+
+SELECT 可以从数据库中检索、统计或输出数据
+执行过程是从数据库中选取匹配的特定行和列，并组成一个结果集放到临时表中返回。
+```SQL
+SELECT
+ [ALL|DISTINCT|DISTINCTROW]
+ select_expr[,select_expr ...]
+ FROM table_references
+ [WHERE where_condition]
+ [GROUP BY {col_name|expr|position}
+    [ASC|DESC],...[WITH ROLLUP]]
+ [HAVING where_condition]
+ [ORDER BY {col_name|expr|position}
+    [ASC|DESC],...]
+ [LIMIT {[offset,]row_count|row_count OFFSET offset}]
+```
