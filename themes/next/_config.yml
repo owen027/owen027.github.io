@@ -87,12 +87,12 @@ index_with_subtitle: false
 menu:
   home: / || home
   archives: /archives/ || archive
-  #categories: /categories/ || th
+  categories: /categories/ || th
   tags: /tags/ || tags
-  about: /about/ || user
+  #about: /about/ || user
   #schedule: /schedule/ || calendar
-  #sitemap: /sitemap.xml || sitemap
-  commonweal: /404/ || heartbeat
+  sitemap: /sitemap.xml || sitemap
+  #commonweal: /404/ || heartbeat
 
 # Enable/Disable menu icons.
 menu_icons:
@@ -134,7 +134,7 @@ social:
 social_icons:
   enable: true
   icons_only: false
-  transition: false
+  transition: true
 
 # Blog rolls
 links_icon: link
@@ -175,7 +175,7 @@ sidebar:
   #  - always  expand for all pages automatically
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  Totally remove sidebar including sidebar toggle.
-  display: post
+  display: always
   #display: always
   #display: hide
   #display: remove
