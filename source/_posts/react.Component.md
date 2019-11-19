@@ -90,7 +90,7 @@ Example.defaultProps = {
 - React.PureComponent 中以层对比 prop 和state 的方式实现`shouldComponentUpdate`方法
 
 在某些情况下使用`React.PureComponent`可提高性能
-**注意：如果对象中包含赋值的数据结构，可能因无法监测深层次的差别，产生错误的对比结果。所以仅在props和state较为简单时使用`React.PureComponent`。此外，`shouldComponentUpdate`方法会跳过所以子组件树的prop 更新**
+**注意：如果对象中包含赋值的数据结构，可能因无法监测深层次的差别，产生错误的对比结果。所以仅在props和state较为简单时使用`React.PureComponent`。此外，`shouldComponentUpdate`方法会跳过所有子组件树的prop 更新**
 
 ## React.memo
 > `React.memo` 是高级函数组件，它与 React.pureComponent 相似，但不支持class组件。此方法仅做为[性能优化](https://zh-hans.reactjs.org/docs/optimizing-performance.html)的方式存在

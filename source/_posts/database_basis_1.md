@@ -1,8 +1,9 @@
 ---
 title: 数据库基础（Database Basis) (一)
 date: 2019-09-04 21:50:21
+
 categories:
-- Datebase basis
+- Database basis
 tags:
 - Database_basis_1
 ---

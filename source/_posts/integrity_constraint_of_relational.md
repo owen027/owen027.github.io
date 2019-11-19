@@ -2,7 +2,7 @@
 title: 关系数据模型要素三 关系完整性约束
 date: 2019-09-19 19:18:07
 categories:
-- Datebase basis
+- Database basis
 tags:
 - integrity constraint of relational
 ---

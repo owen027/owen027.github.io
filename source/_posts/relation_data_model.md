@@ -2,7 +2,7 @@
 title: 关系数据模型要素一 （关系数据结构）
 date: 2019-09-09 21:37:35
 categories:
-- Datebase basis
+- Database basis
 tags:
 - relationDataModel
 ---

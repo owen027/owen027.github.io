@@ -1,7 +1,7 @@
 ---
 title: MySQL的数据库定义语法
 date: 2019-10-14 20:19:31
-catagories:
+categories:
 - MySQL
 tags:
 - Database definition syntax
@@ -42,7 +42,7 @@ USE mysql_test;
 
 ### 修改数据库
 
-MySQL 中使用 ALTERDATABASE 或使用 ALTER SCHEMA 语句，修改数据库的相关参数
+MySQL 中使用 ALTER DATABASE 或使用 ALTER SCHEMA 语句，修改数据库的相关参数
 语法结构：
 ```SQL
 ALTER {DATABASE|SCHEMA}[db_name]
@@ -50,7 +50,9 @@ ALTER {DATABASE|SCHEMA}[db_name]
 **Example：**
 修改已有数据库默认字符集和校对规则
 ```SQL
-ALTER DATABASE mysqle_test
+mysql> ALTER DATABASE mysqle_test
+-> DEFAULT CHARACTER SET gb2312
+-> DEFAULT COLLATE gb2312_chinese_ci;
 ...
 ```
 

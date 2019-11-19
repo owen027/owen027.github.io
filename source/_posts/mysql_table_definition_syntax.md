@@ -1,7 +1,7 @@
 ---
 title: MySQL的表定义语法
 date: 2019-10-14 20:15:35
-catagories:
+categories:
 - MySQL
 tags:
 - Table definiton syntax
@@ -46,7 +46,7 @@ Query OK, 0 rows affected(0.11 sec)
 
 #### 临时表与持久表
 
-TEMPORARY：表示临时表，如果不选用则位持久表。
+TEMPORARY：表示临时表，如果不选用则为持久表。
 持久表一直存在，多个用户或应用程序可同时使用持久表，如果只需临时存放数据可添加 TEMPORARY 关键字
 临时表只能对创建它的用户可见，断开数据库连接时，表会自动清除
 

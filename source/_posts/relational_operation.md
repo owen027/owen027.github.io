@@ -2,7 +2,7 @@
 title: 关系数据模型要素二 （关系操作集合）
 date: 2019-09-18 19:15:49
 categories:
-- Datebase basis
+- Database basis
 tags:
 - relational operation
 ---

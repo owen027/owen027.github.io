@@ -19,6 +19,38 @@ tags:
  // or
  Vue.use(bus);
 ```
+
+### template 中的 全局变量白名单
+```js
+Infinity,undefined,NaN,isFinite,isNaN,'
+parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,
+Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,
+require
+```
+
+### $slots
+只读熟悉，可访问 插槽分发的内容，每个具名插槽都挂载到 `$slots` 中,默认插槽则未 `default`
+使用渲染函数JSX时非常有用
+```js
+Vue.component('anchored-heading', {
+  render: function (createElement) {
+    return createElement(
+      'h' + this.level,   // 标签名称
+      this.$slots.default // 子节点数组
+    )
+  },
+  props: {
+    level: {
+      type: Number,
+      required: true
+    }
+  }
+})
+```
+
+###
+
+
 ## axios 问题
 
 ### 接收二进制流文件乱码问题。

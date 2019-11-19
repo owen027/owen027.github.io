@@ -2,7 +2,7 @@
 title: 关系数据库的规范化理论
 date: 2019-09-19 20:00:02
 categories:
-- Datebase basis
+- Database basis
 tags:
 - normalization theroy
 ---
