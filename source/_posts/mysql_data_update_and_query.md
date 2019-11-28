@@ -9,7 +9,7 @@ tags:
 
 ## 更新
 
-数据更新有三种操作：向表中添加若干行数据（INSERT）、修改表中的数据(UPDATE)、删除数据(DELETE)
+数据更新有三种操作：插入数据（INSERT）、修改表中的数据(UPDATE)、删除数据(DELETE)
 
 ### 插入数据
 
@@ -22,6 +22,7 @@ INSERT [INTO] tbl_name [col_name,...]
 ```
 
 col_name :指定需要插入数据的列名列表。 如果向表中所有列插入数据，则全部列名可省略，这样做是不安全的，如果表结构发生变化，数据将会错乱。
+
 向表的部分列插入数据，对于没被指定的列，其规则如下：
 
 1. 对于具有标识（IDENTITY）属性的列，系统会自动生成序号值类唯一标识该列
@@ -33,6 +34,7 @@ col_name :指定需要插入数据的列名列表。 如果向表中所有列插
 `VALUES 或 VALUE`：包含各列需要插入数据的清单。 数据的顺序必须与列的顺序相对应，该子句的值可以是：
 - 'expr': 一个常量、变量或表达式，也可以是NULL，其值的数据类型须与列的数据类型一致，否则报错
 - 'DEFAULT'：指定默认该列值为该列的默认值，前提该列已经明确指定了默认值，否则报错
+
 
 ```SQL
 mysql> INSERT INTO mysql_test.customers
@@ -48,31 +50,26 @@ Query OK, 1 row affected(0.09 sec)
 
 上述中未给出待插入表的列清单，这样的操作是不安全的须改成：
 ```SQL
-mysql> INSERT INTO mysql_test.customers(cust_Id,cust_name,cust_address)
+mysql> INSERT INTO mysql_test.customers(cust_Id,cust_name,cust_sex,cust_address)
     -> Values(0,'李四',DEFAULT,'北京市')
 Query OK, 1 row affected(0.09 sec)
 ```
+当表的结构发生改变, INSERT 语句任能正确执行。
 
 #### INSERT...SET
 
 `INSERT...SET` 可以直接给表中的某些列指定对应的列值
 ```SQL
 INSERT [INTO] tbl_name
-    SET col_name={expr|DEFAULT},....
+    SET col_name1={expr|DEFAULT},col_name2={expr|DEFAULT},....
 ```
-未指定的列为默认值
+对于未指定的列为默认值
 ```SQL
 mysql> INSERT INTO mysql_test.customers
     -> SET cust_address='武汉',cust_name="李四"，cust_sex=DEFAULT
 Query OK, 1 row affected(0.09 sec)
 ```
 
-<!-- #### INSERT...SELECT 插入子查询数据
-
-```SQL
-INSERT [INTO] tbl_name[(col_name),...]
-    SELECT ...
-``` -->
 
 ### 删除数据
 
@@ -112,7 +109,7 @@ UPDATE  tbl_name
 
 ```SQL
 UPDATE  mysql_test.customers
-   SET cust_address = '北京'
+   SET cust_address = '北京',cust_sex = NULL
    WHERE cust_name='王五'
 Query OK, 1 row affected(0.09 sec)
 ```
@@ -139,3 +136,16 @@ SELECT
     [ASC|DESC],...]
  [LIMIT {[offset,]row_count|row_count OFFSET offset}]
 ```
+SELECT 子句用于指定输出的字段； （必选）
+FROM 子句用于指定数据的来源；   （从表选择数据时使用）
+WHERE 用于指数据的选择条件；
+GROUP BY 用于对检索到的记录进行分组；（在按组计算聚合时使用）
+HAVING 用于指定组的选择条件；
+ORDER BY 用于对查询结果的排序；
+
+<label>必须按照SELECT 语句的语法格式所罗列的顺序格式查找数据。</label>
+
+如 HAVING 语句必须位于BROUP BY之后 OREDR BY 之前。
+
+
+

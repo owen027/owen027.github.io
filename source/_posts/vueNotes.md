@@ -89,6 +89,11 @@ getUserInfoExport(data).then(({data,headers}) => {
 ```
 [参考连接](https://www.w3.org/TR/FileAPI/#url)
 
+## DOM
+在其他情况下，一切都很简单 —— 如果文档中有空格（就像任何字符一样），那么它们将成为 DOM 中的文本节点，如果我们删除它们，则不会有任何内容。
+`<head>` 之前的空格和换行符被忽略
+`</body>` 之后放置了一些东西，那么它会自动移动到 body 内部，因为 HTML 规范要求所有内容必须位于 <body> 内。所以 </body> 后面可能没有空格。
+
 ## Node 中的问题
 ### 获取本机 IP 地址
 ```javascript

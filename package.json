@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.8.0"
+    "version": "3.9.0"
   },
   "dependencies": {
-    "hexo": "^3.8.0",
+    "hexo": "^3.9.0",
     "hexo-deployer-git": "^1.0.0",
     "hexo-filter-mermaid-diagrams": "^1.0.5",
     "hexo-generator-archive": "^0.1.5",
@@ -14,7 +14,7 @@
     "hexo-generator-feed": "^1.2.2",
     "hexo-generator-index": "^0.2.1",
     "hexo-generator-search": "^2.4.0",
-    "hexo-generator-searchdb": "^1.0.8",
+    "hexo-generator-searchdb": "^1.2.0",
     "hexo-generator-tag": "^0.2.0",
     "hexo-inject": "^1.0.0",
     "hexo-math": "^3.0.4",
