@@ -1,15 +1,16 @@
 ---
-title: vueNotes
+title: 笔记
 date: 2019-06-13 18:17:27
 categories:
 - notes
 tags:
-- vue question
+-  question
 ---
 
 ##  vue 框架中遇到的问题
 
-###可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化
+### props
+如果 data中的属性取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化
 
 ### 如果想要组件或者原生HTML节点重新渲染可以使用 v-if
 
@@ -22,14 +23,36 @@ tags:
 
 ### template 中的 全局变量白名单
 ```js
-Infinity,undefined,NaN,isFinite,isNaN,'
-parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,
-Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,
+Infinity,
+undefined,
+NaN,
+isNaN,
+isFinite,
+parseFloat,
+parseInt,
+decodeURI,
+decodeURIComponent,
+encodeURI,
+encodeURIComponent,
+Math,
+Number,
+Date,
+Array,
+Object,
+Boolean,
+String,
+RegExp,
+Map,
+Set,
+JSON,
+Intl,
 require
 ```
 
 ### $slots
-只读熟悉，可访问 插槽分发的内容，每个具名插槽都挂载到 `$slots` 中,默认插槽则未 `default`
+
+只读属性，可访问插槽分发的内容，每个具名插槽都挂载到 `$slots` 中,默认插槽则为 `default`
+
 使用渲染函数JSX时非常有用
 ```js
 Vue.component('anchored-heading', {
@@ -48,7 +71,7 @@ Vue.component('anchored-heading', {
 })
 ```
 
-###
+---
 
 
 ## axios 问题
@@ -89,12 +112,100 @@ getUserInfoExport(data).then(({data,headers}) => {
 ```
 [参考连接](https://www.w3.org/TR/FileAPI/#url)
 
-## DOM
-在其他情况下，一切都很简单 —— 如果文档中有空格（就像任何字符一样），那么它们将成为 DOM 中的文本节点，如果我们删除它们，则不会有任何内容。
+## DOM 树
+HTML 文档的骨干是标签。
+根据文档对象模型(DOM)，每个HTML标签都是一个对象，同样标签内的文本也是一个对象。因此这些对象都可通过 JavaScript 操作
+如果文档中有空格（就像任何字符一样），那么它们将成为 DOM 中的文本节点，如果我们删除它们，则不会有任何内容。
 `<head>` 之前的空格和换行符被忽略
 `</body>` 之后放置了一些东西，那么它会自动移动到 body 内部，因为 HTML 规范要求所有内容必须位于 <body> 内。所以 </body> 后面可能没有空格。
 
+通常再浏览器中的文本不会显示开头/结尾的空文本节点，标签之间也不会显示空文本节点。
+
+如果浏览器遇到格式不正确的HTML，在形成DOM是会自动修复它
+如：
+`<html>` 即使不在文档中，浏览器也会自动创建它
+
+按DOM规范，table 必须具有 `<tbody>`,因此table中未使用`<tbody>` 形成DOM时会自动添加。
+
+**其它 节点：**
+注释不会以任何方式影响视觉表示，但是必须遵循一条规则 —— 如果HTML中有东西，那么它必须在DOM树中。
+HTML中所有内容都是DOM的一部分，
+注释是一个节点甚至`<!DOCTYPE...>`也是一个节
+DOM总有[12种节点](https://dom.spec.whatwg.org/#node)
+
+### 遍历DOM节点
+所有对DOM的操作都是从`document`对象开始，将这个对象赋予一个变量，对其进行修改操作
+
+#### 最顶端的节点
+
+DOM节点树可以通过 `document`属性使用
+顶端的节点对应`<html>` 并且 `<html> = document.documentElement`
+而`<body> = document.body`,`<head> = document.head`
+`docment.body`可能为null，如果将`script`脚本放入 `<head>`标签种，那么此脚本无法访问到`document.body`，即为null
+
+#### childNodes
+`childNodes` 集合提供对所有子节点包括文本节点的访问，它看起来是一个数字，实际上只是一个可迭代的类数组对象，因此没有数组的方法
+**所有的Dom 集合节点都是只读的无法通过赋值来替换对应的节点**
+**除小部分节点，几乎所有的DOM集合都是实时的，它们反应的是DOM的实时状态**
+**不要是有 `for...in`来遍历DOM集合，此方法会列出其所有的属性。**
+**注意此属性只能访问到当前`script`脚本之前对应的节点**
+可以通过`elem.hasChildNodes()`来检测是否含有子节点
+
+#### parentNOde / siblingNode
+通过`elem.parentNode`可访问当前节点的父节点
+通过`elem.previousSibling/elem.nextSibling`可访问对应节点的上/下兄弟节点
+
+#### 只访问元素节点
+- children： 只获取类型为元素节点的子节点
+- firstElementChild,lastElementChild：只获取第一或最后一个子元素
+- previousElementSibling, nextElementSibling：兄弟元素
+- parentElement：父元素
+
+**parentElement 可能为null,因为其方法返回的是父元素节点，而parentNode返回的是任何类型的父节点，因此,`document.documentElement.parentElement === null`**
+
+#### HTMLCollection （动态）
+通过元素查找子元素如果子元素是一个集合将返回 `HTMLCollection` 类数组
+```js
+let tb = documet.querySelector('table')
+let tbs = tb.tBodies  // HTMLCollection [tbody]
+let trs =tbs.rows // HTMLCollection [tr,tr,tr,...]
+let tr1 = trs[0]
+    tr1.sectionRowIndex //0 当前 tr 在集合中的位置
+    tr1.rowIndex // 1 当前 tr 在整张表中的 位置
+let tds = tr1.cells // HTMLCollection [td,td,td,...]
+    td[0].cellIndex //0 当前 td 在父元素 tr节点 中的位置
+```
+#### NodeList （静态）
+通过 `document` 中的方法 `document.querySelectorAll` 或`elem.querySelectorAll`获取的元素集合将返回`NodeList`类数组
+`getElement*` 方法只能通过 `document`对象调用
+```js
+let divs = document.querySelectorAll('div') // NodeList(4) [div.Owen, div#modal, div.main, div]
+ document.getElementsByTagName('div')//HTMLCollection [div.Owen]
+```
+
+#### matches
+`elem.matches(css)`会检测 `elem`是否匹配到给定的css选择器，返回 true 或 false
+
+#### closest
+`elem.closest(css)`此方法会查找css选择器匹配到的祖先HTML，包括自身，并返回最先找到的元素
+
+#### contains
+`elem.catains(dom)` 判断 dom 是否为 elem 的后代，或等于elem，返回true 或false
+
+#### 节点属性
+所有的节点都继承自根节点 `EventTarget`
+- EventTarget:作为基础，让所有DOM 节点都支持事件
+- Node：作为DOM 节点的基础，提供DOM树的核心功能：`parentNode`、`nextSibling`、`previousSibling`、`ChildNodes`等（只能读取 getter）;文本节点 `Text`,元素节点`Element`,注释节点`Comment`都继承自Node
+- Element：做为DOM 元素的基类。提供元素级导航： `nextElementSibling`、`children`、`getElement*`、`querySelector`等等，浏览器不仅支持HTML，还支持 XML、SVG等，分别对应的基类 `HTMLElement`、`XMLElement`、`SVGElement`
+- HTMLElement:作为所有元素的基类，被各种元素继承
+
+##### innerHTML 和 outerHTML
+
+- innerHTML: 获取或替换当前节点的所有子节点（不包含当前节点）
+- outerHTML: 替换当前节点
+
 ## Node 中的问题
+
 ### 获取本机 IP 地址
 ```javascript
 const os = require('os');
