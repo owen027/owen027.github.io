@@ -204,6 +204,123 @@ let divs = document.querySelectorAll('div') // NodeList(4) [div.Owen, div#modal
 - innerHTML: 获取或替换当前节点的所有子节点（不包含当前节点）
 - outerHTML: 替换当前节点
 
+#### 文档片段 DocumentFragment
+用于存储节点的包装器，不会再浏览器中展示，需要通过插值方法才能展示包装器里面的内容
+```js
+function creatEl(){
+let frag = new DocumentFragment();
+ for (let i=1;i<4;i++) {
+let li = document.createElement('li')
+  li.append(i)
+  frag.append(li)
+}
+
+return frag
+}
+ul.append(creatEl())
+```
+#### 类样式的修改等操作
+`elem.className` 对应元素的类名，多个类目以空格分隔
+```js
+ul.className // "class1 class2 ..."
+```
+同时还要一个 `elem.classList` 对象可访问类名，它以类数组的方式存在，同时具有 `add/remove/toggle/contains` 等方法
+```js
+ul.classList //  DOMTokenList(2) ["333", "444", value: "333 444"]
+ul.classList.add('class1')
+ul.classList.remove('class1')
+ul.classList.toggle('class1') // true 新增
+ul.classList.toggle('class1') // false 去除
+ul.classList.contains('class1') //false 是否包含
+
+```
+通常我们使用 `style.*`单独对样式属性进行修改，如果想要对多种样式进行调整可使用 `cssText`，**此方法会直接替换之前的样式**
+```js
+ul.style.cssText = `
+    color: red ;
+    background-color: skyblue;
+    width: 20px;
+    text-align: center;`
+```
+style 属性仅针对 style 属性值进行操作，无法读取css类中的属性值
+```html
+<style>
+body {margin:20 auto;}
+</style>
+<script>
+document.body.style.margin // ""
+</script>
+```
+
+这时我们需要使用 `getComputedStyle(el,[,pseudo])`方法来获取对应的值
+如果不传参或值无意义，将返回元素所有样式,其属性值都为解析值，如 `font-size:1em` 最后获取的可能为解析后的值"16px"
+
+```js
+let res = getComputedStyle(document.body)
+res.marginTop // "20px"
+res.margin // 谷歌 "20px 0px" 在火狐中为 ""  因此访问确切属性值须使用完整属性名
+
+
+```
+#### 获取元素的尺寸和滚动距离
+
+- offsetTop/Left: 获取相对于设置有position属性为 absolute relative、fixed 的值或td、th、table、body的元素的距离
+- offsetWidth/Height：获取外部宽度/高度，包含border,padding,scrollbar (display:none 或自身不在文档中，其值为0或null，由此可判断当前元素是否被隐藏)
+- clientTop/Left：获取内侧与外侧的距离（滚动条在左边时，包含滚动条的宽度）
+- clientWidth/Height：获取可视区内容的宽高，即不包含滚动条和border
+- scrollWidth/Height：获取全部内容（包含隐藏部分）的宽高
+- scrollTop/Left: 获取 元素隐藏部分的上/左距离，包含border,这两个属性可修改，其它属性能只读取
+**HTML 文件里如果没有 `<!DOCTYPE HTML>` 上述的属性可能会有所不同，这不是一个 JavaScript 的问题，但会影响到 JavaScript。**
+
+#### 滚动浏览器窗口
+pageXOffset/pageYOffset: 获取可视窗口移动的距离 无法设值
+
+可通过 window.scrollBy, window.scrollTo, elem.scrollIntoView来滚动窗口
+- `scrollBy(x,y)`：滚动页面至相对于现在位置的(x,y)位置
+- `scrollTo(x,y)`：滚动到页面相对于文档左上方的（x,y）,位置，类似于 `scrollTop/scrollLeft`
+- `elem.scrollIntoView(truly)`：如果 truly 为真则使 当前元素 滚动至窗口顶部，元素顶部与窗口顶部对齐，如果truly 为false,则当前元素底部与窗口底部对齐。
+
+如果禁止窗口滚动可使 样式属性 `overflow` 值为 `hidden`
+
+#### 坐标
+##### getBoundingClientRect()`方法获取相对于可视窗口的坐标对象
+其所有属性都是以可视窗口左端（X）和顶部（Y）为起点
+```js
+ul.getBoundingClientRect()
+/*
+
+DOMRect {
+    bottom: 829.59375  // 元素底部的Y坐标
+    height: 210  // 元素真实高度
+    left: 0 // 元素左边 X 坐标
+    right: 1903 // 元素右边 X 坐标
+    top: 619.59375 // 元素顶部 Y 坐标
+    width: 1903 // 元素自身真实宽度即不包含滚动条
+    x: 0
+    y: 619.59375
+}
+
+*/
+```
+###### document.elementFromPoint
+`document.elementFromPoint(x,y)`返回可视窗口坐标（x,y），最顶层的元素
+```js
+let elem = document.elementFromPoint(0,0) // <p>556666</p>
+```
+如果`x,y`不在正常范围内将返回 null,
+
+##### 相对于文档坐标，JS并未提供原生标准方法，可自己写一个出来：
+```
+function getDomCoords(el){
+    let {top,left} = el.getBoundingClientRect()
+  return {
+    top:top+ window.pageYOffset,
+    left:left+window.pageXOffest
+  }
+}
+```
+
+
 ## Node 中的问题
 
 ### 获取本机 IP 地址
