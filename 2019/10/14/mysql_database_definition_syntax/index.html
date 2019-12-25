@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="javascript">
+  <meta name="keywords" content="Database definition syntax,">
 
 
 
@@ -92,17 +92,18 @@
 
 
 
-<meta name="description" content="ES5/6/7, Axios, Promise, Vue, NodeJs">
-<meta name="keywords" content="Javascript, ES5&#x2F;6&#x2F;7, Axios, Promise, Vue, NodeJs">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Owen">
-<meta property="og:url" content="https://owen027.github.io/tags/vue-question/index.html">
+<meta name="description" content="创建数据库在MySQL中，使用 CREATE DATABASE 或 CREATE SCHEMA 语句创建数据库语法结构：123CREATE &amp;#123;DATABASE|SCHEMA&amp;#125;[IF NOT EXISTS] db_name[DEFAULT]CHARACTER SET [=]charest_name|[DEFAULT]COLLATE [=]collation_name []: 表示">
+<meta name="keywords" content="Database definition syntax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL的数据库定义语法">
+<meta property="og:url" content="https://owen027.github.io/2019/10/14/mysql_database_definition_syntax/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="ES5/6/7, Axios, Promise, Vue, NodeJs">
+<meta property="og:description" content="创建数据库在MySQL中，使用 CREATE DATABASE 或 CREATE SCHEMA 语句创建数据库语法结构：123CREATE &amp;#123;DATABASE|SCHEMA&amp;#125;[IF NOT EXISTS] db_name[DEFAULT]CHARACTER SET [=]charest_name|[DEFAULT]COLLATE [=]collation_name []: 表示">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-25T13:34:08.620Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Owen">
-<meta name="twitter:description" content="ES5/6/7, Axios, Promise, Vue, NodeJs">
+<meta name="twitter:title" content="MySQL的数据库定义语法">
+<meta name="twitter:description" content="创建数据库在MySQL中，使用 CREATE DATABASE 或 CREATE SCHEMA 语句创建数据库语法结构：123CREATE &amp;#123;DATABASE|SCHEMA&amp;#125;[IF NOT EXISTS] db_name[DEFAULT]CHARACTER SET [=]charest_name|[DEFAULT]COLLATE [=]collation_name []: 表示">
 
 
 
@@ -112,7 +113,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -132,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://owen027.github.io/tags/vue-question/">
+  <link rel="canonical" href="https://owen027.github.io/2019/10/14/mysql_database_definition_syntax/">
 
 
 
 
 
-  <title>标签: vue question | Owen</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>MySQL的数据库定义语法 | Owen</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -157,7 +158,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/gaoguowen/oweng.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,6 +214,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
@@ -223,22 +234,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
             
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
+            站点地图
           </a>
         </li>
       
@@ -293,52 +294,234 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>vue question<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://owen027.github.io/2019/10/14/mysql_database_definition_syntax/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Owen Gao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Owen">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/06/13/vueNotes/" itemprop="url">
-              
-                <span itemprop="name">vueNotes</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">MySQL的数据库定义语法</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-13T18:17:27+08:00" content="2019-06-13">
-          06-13
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T20:19:31+08:00">
+                2019-10-14
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  439
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p>在MySQL中，使用 CREATE DATABASE 或 CREATE SCHEMA 语句创建数据库<br>语法结构：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> &#123;<span class="keyword">DATABASE</span>|<span class="keyword">SCHEMA</span>&#125;[<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] db_name</span><br><span class="line">[<span class="keyword">DEFAULT</span>]<span class="built_in">CHARACTER</span> <span class="keyword">SET</span> [=]charest_name</span><br><span class="line">|[<span class="keyword">DEFAULT</span>]<span class="keyword">COLLATE</span> [=]collation_name</span><br></pre></td></tr></table></figure></p>
+<p><code>[]</code>: 表示为可选<br><code>|</code>: 用于分隔花括号中的选项，表示任选一项语法<br><code>db_name</code>: 标识具体的数据库命名，必须符合操作系统文件夹命名规则，在MySQL中不区分大小写<br><code>DEFAULT</code>: 默认值<br><code>CHAREST SET</code>: 指定数据库字符集<br><code>COLLATE</code>: 指定字符集校对规则<br><code>IF NOT EXISTS</code>：创建数据库前进行判断，只有该数据库不存在时才能创建数据库</p>
+<p><strong>Example：</strong><br>创建名称位 mysql_test 的数据库<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> mysql_test;</span><br></pre></td></tr></table></figure></p>
+<p>在次输入同样的命令 将会报错 可添加 <code>IF NOT EXISTS</code> 避免报错</p>
+<h3 id="选择数据库"><a href="#选择数据库" class="headerlink" title="选择数据库"></a>选择数据库</h3><p> MySQL 中创建数据库之后，不会自动使用新创建的数据库，可使用 <code>USE</code> 语句从当前环境切换换至新创建的数据库或其它数据库<br><strong>Example：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> mysql_test;</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改数据库"><a href="#修改数据库" class="headerlink" title="修改数据库"></a>修改数据库</h3><p>MySQL 中使用 ALTER DATABASE 或使用 ALTER SCHEMA 语句，修改数据库的相关参数<br>语法结构：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> &#123;<span class="keyword">DATABASE</span>|<span class="keyword">SCHEMA</span>&#125;[db_name]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example：</strong><br>修改已有数据库默认字符集和校对规则<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER DATABASE mysqle_test</span><br><span class="line">-&gt; DEFAULT CHARACTER SET gb2312</span><br><span class="line">-&gt; DEFAULT COLLATE gb2312_chinese_ci;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><p>MySQL 中使用 DROP DATABASE 或 DROP SCHEMA 来删除数据库,其数据永久删除<br>语法结构：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> &#123;<span class="keyword">DATABASE</span>|<span class="keyword">SCHEMA</span>&#125;[<span class="keyword">IF</span> EXISITS]db_name</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> EXISITS  mysqle_test</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看数据库"><a href="#查看数据库" class="headerlink" title="查看数据库"></a>查看数据库</h3><p>MySQL 中使用 SHOW DATABASE 或 SHOW SCHEMA 来看可用数据库列表，只会列从出权限范围内的数据库<br>语法结构：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> &#123;<span class="keyword">DATABASE</span>|<span class="keyword">SCHEMA</span>&#125;[<span class="keyword">LIKE</span><span class="string">'pattern'</span>|<span class="keyword">WHERE</span> expr]</span><br></pre></td></tr></table></figure></p>
+<p><code>LIKE</code>: 匹配指定数据库名称<br><code>WHERE</code>: 指定数据库名称查询范围</p>
+<p><strong>Example：</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASE</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #999;font-size:14px;">--------------------- Thank you <i class="fa fa-paw"></i> for reading ---------------------</div>
+    
+</div>
+      
+    </div>
+    
 
+    
+  
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Database-definition-syntax/" rel="tag"><i class="fa fa-tag"></i> Database definition syntax</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/14/mysql_table_definition_syntax/" rel="next" title="MySQL的表定义语法">
+                <i class="fa fa-chevron-left"></i> MySQL的表定义语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/15/mysql_index_definition/" rel="prev" title="MySQL的表索引定义">
+                MySQL的表索引定义 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Share" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -346,6 +529,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -366,8 +553,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -384,7 +580,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -395,7 +591,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -406,7 +602,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -459,6 +655,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库"><span class="nav-number">1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择数据库"><span class="nav-number">2.</span> <span class="nav-text">选择数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改数据库"><span class="nav-number">3.</span> <span class="nav-text">修改数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据库"><span class="nav-number">4.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看数据库"><span class="nav-number">5.</span> <span class="nav-text">查看数据库</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -488,7 +700,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">84.8k</span>
+    <span title="Site words total count">98.3k</span>
   
   -->
 </div>
@@ -635,6 +847,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

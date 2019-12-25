@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="uniappPages,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Owen" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="uniapp通过根目录中的pages.json文件决定页面文件的路径、窗口样式、原生导航栏、底部原生tarBar等 配置像列表   属性 类型 是否必填 功能 兼容     globalStyle Object 否 设置默认页面的窗口表现,可设置应用的状态栏、导航条、标题、窗口背景色等。   pages Object,Array 是 设置页面的路径及窗口表现   easycom Object 否">
+<meta name="keywords" content="uniappPages">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uniapp的路由配置">
+<meta property="og:url" content="https://owen027.github.io/2019/12/25/uniappPagesConfigs/index.html">
+<meta property="og:site_name" content="Owen">
+<meta property="og:description" content="uniapp通过根目录中的pages.json文件决定页面文件的路径、窗口样式、原生导航栏、底部原生tarBar等 配置像列表   属性 类型 是否必填 功能 兼容     globalStyle Object 否 设置默认页面的窗口表现,可设置应用的状态栏、导航条、标题、窗口背景色等。   pages Object,Array 是 设置页面的路径及窗口表现   easycom Object 否">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-25T16:06:01.996Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="uniapp的路由配置">
+<meta name="twitter:description" content="uniapp通过根目录中的pages.json文件决定页面文件的路径、窗口样式、原生导航栏、底部原生tarBar等 配置像列表   属性 类型 是否必填 功能 兼容     globalStyle Object 否 设置默认页面的窗口表现,可设置应用的状态栏、导航条、标题、窗口背景色等。   pages Object,Array 是 设置页面的路径及窗口表现   easycom Object 否">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://owen027.github.io/2019/12/25/uniappPagesConfigs/">
+
+
+
+
+
+  <title>uniapp的路由配置 | Owen</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/gaoguowen/oweng.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Owen</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://owen027.github.io/2019/12/25/uniappPagesConfigs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Owen Gao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Owen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">uniapp的路由配置</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T14:36:18+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><code>uniapp</code>通过根目录中的<code>pages.json</code>文件决定页面文件的路径、窗口样式、原生导航栏、底部原生tarBar等</p>
+<h2 id="配置像列表"><a href="#配置像列表" class="headerlink" title="配置像列表"></a>配置像列表</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">是否必填</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">兼容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://uniapp.dcloud.io/collocation/pages?id=globalstyle">globalStyle</a></td>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">设置默认页面的窗口表现,可设置应用的状态栏、导航条、标题、窗口背景色等。</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://uniapp.dcloud.io/collocation/pages?id=pages">pages</a></td>
+<td style="text-align:center">Object,Array</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">设置页面的路径及窗口表现</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://uniapp.dcloud.io/collocation/pages?id=easycom">easycom</a></td>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">组件自动引入规则</td>
+<td style="text-align:center">2.5.0+</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://uniapp.dcloud.io/collocation/pages?id=tabBar">tabBar</a></td>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">设置底部tab的表现</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://uniapp.dcloud.io/collocation/pages?id=condition">condition</a></td>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">启动模式配置</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://uniapp.dcloud.io/collocation/pages?id=subPackages">subPackages</a></td>
+<td style="text-align:center">Object,Array</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">分包加载配置</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://uniapp.dcloud.io/collocation/pages?id=preloadRule">preloadRule</a></td>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">分包预下载规则</td>
+<td style="text-align:center">微信小程序</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://uniapp.dcloud.io/collocation/pages?id=workers">workers</a></td>
+<td style="text-align:center">Scring</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">Worker 代码放置目录</td>
+<td style="text-align:center">微信小程序</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"pages"</span>: [&#123; <span class="comment">// pages节点的第一项为应用入口页（即首页）,应用中新增/减少页面，都需要对 pages 数组进行修改,文件名不需要写后缀，框架会自动寻找路径下的页面资源</span></span><br><span class="line">        <span class="string">"path"</span>: <span class="string">"pages/component/index"</span>, <span class="comment">// 配置页面路径</span></span><br><span class="line">        <span class="string">"style"</span>: &#123; <span class="comment">// 配置页面窗口表现,用于设置对应页面的状态栏、导航条、标题、窗口背景色等。 其配置项与 globalStyle 一致，此配置会覆盖 globalStyle</span></span><br><span class="line">            <span class="string">"disableScroll"</span>: <span class="literal">false</span>,<span class="comment">//禁用滚动 全局中无此设置 //仅支持微信小程序（iOS）、百度小程序（iOS）</span></span><br><span class="line">            <span class="string">"navigationBarShadow"</span>:&#123;</span><br><span class="line">                <span class="comment">//导航栏阴影</span></span><br><span class="line">                <span class="string">"colorType"</span>:<span class="string">"grey"</span> <span class="comment">// 支持颜色：grey、blue、green、orange、red、yellow</span></span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        <span class="string">"path"</span>: <span class="string">"pages/API/index"</span>,</span><br><span class="line">        <span class="string">"style"</span>: &#123;</span><br><span class="line">            <span class="string">"navigationBarTitleText"</span>: <span class="string">"接口"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        <span class="string">"path"</span>: <span class="string">"pages/component/view/index"</span>,</span><br><span class="line">        <span class="string">"style"</span>: &#123;</span><br><span class="line">            <span class="string">"navigationBarTitleText"</span>: <span class="string">"view"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">"condition"</span>: &#123; <span class="comment">//模式配置，仅开发期间生效</span></span><br><span class="line">        <span class="string">"current"</span>: <span class="number">0</span>, <span class="comment">//当前激活的模式（list 的索引项）</span></span><br><span class="line">        <span class="string">"list"</span>: [&#123;</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"test"</span>, <span class="comment">//模式名称</span></span><br><span class="line">            <span class="string">"path"</span>: <span class="string">"pages/component/view/index"</span> <span class="comment">//启动页面，必选</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"globalStyle"</span>: &#123;</span><br><span class="line">        <span class="string">"navigationBarTextStyle"</span>: <span class="string">"black"</span>, <span class="comment">// 导航栏标题颜色及状态栏前景颜色，仅支持 black/white</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"navigationBarTitleText"</span>: <span class="string">"演示"</span>, <span class="comment">// 导航栏标题文字内容</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"navigationBarBackgroundColor"</span>: <span class="string">"#F8F8F8"</span>, <span class="comment">// 导航栏背景色</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"backgroundColor"</span>: <span class="string">"#F8F8F8"</span>,</span><br><span class="line">        </span><br><span class="line">        <span class="string">"navigationStyle"</span>:<span class="string">"default"</span>, <span class="comment">// 导航栏样式，仅支持 default/custom。custom即取消默认的原生导航栏 //仅支持 微信小程序 7.0+、百度小程序、H5、App（2.0.3+）</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"backgroundColor"</span>:<span class="string">"#ffffff"</span>, <span class="comment">//窗口背景色 //仅支持微信小程序</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"backgroundTextStyle"</span>:<span class="string">"dark"</span>, <span class="comment">// 下拉loading样式，仅支持dark/light //仅支持微信小程序</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"enablePullDownRefresh"</span>:<span class="literal">false</span>,<span class="comment">// 是否开启下拉刷新</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"onReachBottomDistance"</span>:<span class="number">50</span>,<span class="comment">// 上拉触底事件触发时距离页面底部距离，单位仅支持px</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"backgroundColorTop"</span>:<span class="string">"#ffffff"</span>,<span class="comment">// 顶部窗口的背景色（bounce回弹区域）//仅支持iOS</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"backgroundColorBottom"</span>:<span class="string">"#ffffff"</span>,<span class="comment">// 底部部窗口的背景色（bounce回弹区域）//仅支持iOS</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"titleImage"</span>:<span class="string">""</span>, <span class="comment">// 导航栏图片地址（替换当前文字标题），支付宝小程序内必须使用https的图片链接地址 //仅支持支付宝小程序、H5、APP</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"transparentTitle"</span>:<span class="string">"none"</span>, <span class="comment">// 导航栏透明设置。支持 always 一直透明 / auto 滑动自适应 / none 不透明//仅支持支付宝小程序、H5、APP</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"titlePenetrate"</span>:<span class="string">"NO"</span>,<span class="comment">// 导航栏点击穿透</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"pageOrientation"</span>:<span class="string">"portrait"</span>, <span class="comment">// 横屏配置，屏幕旋转设置，仅支持 auto/portrait/landscape // 仅支持App 2.4.7+、微信小程序</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"animationType"</span>:<span class="string">"pop-in"</span>, <span class="comment">// 窗口显示的动画效果 // 仅支持App</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"animationDuration"</span>:<span class="number">300</span>, <span class="comment">// 窗口动画的持续时间 // 仅支持App</span></span><br><span class="line"></span><br><span class="line">        <span class="string">"app-plus"</span>:&#123;<span class="comment">//编译到APP 平台的特定样式 详情见uniapp官网 https://uniapp.dcloud.io/collocation/pages?id=app-plus // 仅支持App</span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        <span class="string">"h5"</span>:&#123;<span class="comment">//编译到h5 平台的特定样式 // 仅支持h5</span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        <span class="string">"mp-alipay"</span>:&#123;<span class="comment">//编译到mp-alipay 平台的特定样式 // 仅支持mp-alipay 支付包</span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        <span class="string">"mp-weixin"</span>:&#123;<span class="comment">//编译到mp-weixin平台的特定样式 // 仅支持微信小程序</span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        <span class="string">"mp-baidu"</span>:&#123;<span class="comment">//编译到"mp-baidu 平台的特定样式 // 仅支持百度小程序</span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        <span class="string">"mp-toutiao"</span>:&#123;<span class="comment">//编译到mp-toutiao 平台的特定样式 // 仅支持字节跳动小程序</span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        <span class="string">"mp-qq"</span>:&#123;<span class="comment">//编译到mp-qq 平台的特定样式 // 仅支持QQ小程序</span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        <span class="string">"usingComponents"</span>:&#123; <span class="comment">// 引用小程序组件</span></span><br><span class="line">            <span class="string">"collapse-tree-item"</span>:<span class="string">"/components/collapse-tree-item"</span></span><br><span class="line">        &#125;,</span><br><span class="line">    <span class="string">"pageOrientation"</span>: <span class="string">"portrait"</span><span class="comment">//横屏配置，全局屏幕旋转设置(仅 APP/微信/QQ小程序)，支持 auto / portrait / landscape</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"tabBar"</span>: &#123;</span><br><span class="line">        <span class="string">"color"</span>: <span class="string">"#7A7E83"</span>,</span><br><span class="line">        <span class="string">"selectedColor"</span>: <span class="string">"#3cc51f"</span>,</span><br><span class="line">        <span class="string">"borderStyle"</span>: <span class="string">"black"</span>,</span><br><span class="line">        <span class="string">"backgroundColor"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">        <span class="string">"height"</span>: <span class="string">"50px"</span>,</span><br><span class="line">        <span class="string">"fontSize"</span>: <span class="string">"10px"</span>,</span><br><span class="line">        <span class="string">"iconWidth"</span>: <span class="string">"24px"</span>,</span><br><span class="line">        <span class="string">"spacing"</span>: <span class="string">"3px"</span>,</span><br><span class="line">        <span class="string">"list"</span>: [&#123;</span><br><span class="line">            <span class="string">"pagePath"</span>: <span class="string">"pages/component/index"</span>,</span><br><span class="line">            <span class="string">"iconPath"</span>: <span class="string">"static/image/icon_component.png"</span>,</span><br><span class="line">            <span class="string">"selectedIconPath"</span>: <span class="string">"static/image/icon_component_HL.png"</span>,</span><br><span class="line">            <span class="string">"text"</span>: <span class="string">"组件"</span></span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="string">"pagePath"</span>: <span class="string">"pages/API/index"</span>,</span><br><span class="line">            <span class="string">"iconPath"</span>: <span class="string">"static/image/icon_API.png"</span>,</span><br><span class="line">            <span class="string">"selectedIconPath"</span>: <span class="string">"static/image/icon_API_HL.png"</span>,</span><br><span class="line">            <span class="string">"text"</span>: <span class="string">"接口"</span></span><br><span class="line">        &#125;],</span><br><span class="line">        <span class="string">"midButton"</span>: &#123;</span><br><span class="line">            <span class="string">"width"</span>: <span class="string">"80px"</span>,</span><br><span class="line">            <span class="string">"height"</span>: <span class="string">"50px"</span>,</span><br><span class="line">            <span class="string">"text"</span>: <span class="string">"文字"</span>,</span><br><span class="line">            <span class="string">"iconPath"</span>: <span class="string">"static/image/midButton_iconPath.png"</span>,</span><br><span class="line">            <span class="string">"iconWidth"</span>: <span class="string">"24px"</span>,</span><br><span class="line">            <span class="string">"backgroundImage"</span>: <span class="string">"static/image/midButton_backgroundImage.png"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  <span class="string">"easycom"</span>: &#123;</span><br><span class="line">    <span class="string">"uni-(.*)"</span>: <span class="string">"@/components/uni-$1/uni-$1.vue"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义导航栏使用注意事项"><a href="#自定义导航栏使用注意事项" class="headerlink" title="自定义导航栏使用注意事项"></a>自定义导航栏使用注意事项</h3><p>当 <code>navigationStyle&quot;:custom</code>或<code>titleNView:false</code>时，原生导航栏不显示同时需注意：</p>
+<ul>
+<li>非H5段，手机顶部状态栏区域会被页面内容覆盖。<code>uniapp</code>提供状态栏css变量，可使用view占用其位置</li>
+<li>如果原生导航不满足要求，可使用自定义导航栏 <a href="https://ext.dcloud.net.cn/plugin?id=52">NavBar</a></li>
+<li>导航栏搭配原生下拉刷新问题：微信小程序ios端需要拉更长才能看到下来刷新，Android则从屏幕底部下拉，无法从状态栏下拉，如需，请前端模拟， <a href="https://ext.dcloud.net.cn/plugin?id=343">推荐插件</a></li>
+<li>非H5段，前端导航盖不住原生组件，如页面有viedo,map等原生组件，滚动时会覆盖导航栏，小程序可使用<code>cover-view</code>来解决，APP可使用titleNView 或subNVue</li>
+<li>前端组件渲染不如原生导航，原生导航可保证动画期间不白屏</li>
+<li>页面禁用原生导航后想，改变状态栏前景字体，可设置<code>navigationBarTextStyle</code>,部分低端手机不支持</li>
+</ul>
+<p>鉴于以上问题，原生导航等满足业务需求，使用原生导航，甚至可牺牲一些不重要的需求。<a href="https://ask.dcloud.net.cn/article/34921">更多详情</a></p>
+<h3 id="easycom-配置说明"><a href="#easycom-配置说明" class="headerlink" title="easycom 配置说明"></a>easycom 配置说明</h3><ul>
+<li>通过正则匹配来自动引入组件</li>
+<li>此方式引入的组件无需在页面内<code>import</code>,也无需在<code>components</code>中声明，即可在页面中使用</li>
+<li>组件名完全一致的情况下，优先级低于手动</li>
+<li>修改easycom 不会重新编译，须手动改动页面触发</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"easycom"</span>: &#123;</span><br><span class="line">  <span class="string">"uni-(.*)"</span>: <span class="string">"@/components/uni-$1/uni-$1.vue"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="tabBar-配置说明"><a href="#tabBar-配置说明" class="headerlink" title="tabBar 配置说明"></a>tabBar 配置说明</h3><ul>
+<li>position为top时 不显示ICON, top值仅支持微信小程序</li>
+<li>tabBar中list是数组最少配置2个，最多5个tab,按数组顺序排列</li>
+<li>切换第一次加载时可能渲染不及时，可在每个Tabbar页面的onLoad生命周期中先弹出一个loading</li>
+<li>页面出现过后，保存在内存中，切换tabbar,之后触发onShow,不在触发onLoad</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">是否必选</th>
+<th style="text-align:center">值类型</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">平台差异</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">color</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">HexColor</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">tab字体默认颜色</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">selectedColor</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">HexColor</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">选中颜色</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">backgroundColor</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">HexColor</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">背景色</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">borderStyle</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">black</td>
+<td style="text-align:center">边框颜色仅支持black/white</td>
+<td style="text-align:center">App最新版支持其它颜色</td>
+</tr>
+<tr>
+<td style="text-align:center">list</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">Array</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">tab列表最少2，最多5</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">position</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">bottom</td>
+<td style="text-align:center">位置 bottom\top</td>
+<td style="text-align:center">仅微信支持top</td>
+</tr>
+<tr>
+<td style="text-align:center">fontSize</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">10px</td>
+<td style="text-align:center">字体大小</td>
+<td style="text-align:center">App2.3.4+</td>
+</tr>
+<tr>
+<td style="text-align:center">iconWidth</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">24px</td>
+<td style="text-align:center">icon默认宽度</td>
+<td style="text-align:center">App2.3.4+</td>
+</tr>
+<tr>
+<td style="text-align:center">spacing</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">3px</td>
+<td style="text-align:center">图标与文字间间距</td>
+<td style="text-align:center">App2.3.4+</td>
+</tr>
+<tr>
+<td style="text-align:center">height</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">50px</td>
+<td style="text-align:center">默认高度</td>
+<td style="text-align:center">App2.3.4+</td>
+</tr>
+<tr>
+<td style="text-align:center">mindButton</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">Object</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">中间按钮仅在list为偶数时生效</td>
+<td style="text-align:center">App2.3.4+</td>
+</tr>
+</tbody>
+</table>
+<h4 id="list-属性说明"><a href="#list-属性说明" class="headerlink" title="list 属性说明"></a>list 属性说明</h4><p>list数组中的子项都为对象，其属性为：<br>|属性|值类型|是否必选|说明<br>|:-:|:-:|:-:|:-:|<br>|pagePath|String|是|页面路径，须在pages中选定义|<br>|text|String|是|tab是按钮文字，H5、5+APP平台非必填|<br>|iconPath|String|否|图片路径，大小40kB,尺寸81*81，只支持静态图片，不支持字体图|<br>|selectedIconPath|String|否|选中时的图片|</p>
+<h4 id="midButton"><a href="#midButton" class="headerlink" title="midButton"></a>midButton</h4>
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #999;font-size:14px;">--------------------- Thank you <i class="fa fa-paw"></i> for reading ---------------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+  
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/uniappPages/" rel="tag"><i class="fa fa-tag"></i> uniappPages</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/24/uniappStudy/" rel="next" title="uniapp 开发文档">
+                <i class="fa fa-chevron-left"></i> uniapp 开发文档
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Share" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Owen Gao">
+            
+              <p class="site-author-name" itemprop="name">Owen Gao</p>
+              <p class="site-description motion-element" itemprop="description"> ES5/6/7, Axios, Promise, Vue, NodeJs</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/owen027" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zgaoguowen@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/gaoguowen/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置像列表"><span class="nav-number">1.</span> <span class="nav-text">配置像列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义导航栏使用注意事项"><span class="nav-number">1.1.</span> <span class="nav-text">自定义导航栏使用注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#easycom-配置说明"><span class="nav-number">1.2.</span> <span class="nav-text">easycom 配置说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tabBar-配置说明"><span class="nav-number">1.3.</span> <span class="nav-text">tabBar 配置说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#list-属性说明"><span class="nav-number">1.3.1.</span> <span class="nav-text">list 属性说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#midButton"><span class="nav-number">1.3.2.</span> <span class="nav-text">midButton</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Owen Gao</span>
+<!--
+  
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">98.3k</span>
+  
+  -->
+</div>
+
+  <!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+
+-->
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src>
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="vue question,">
+  <meta name="keywords" content="question,">
 
 
 
@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="vue 框架中遇到的问题###可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化 如果想要组件或者原生HTML节点重新渲染可以使用 v-if使用 prototype 挂载自定义方法或插件123Vue.prototype.$bus = Bus;// orVue.use(bus); axios 问题接收二进制流文件乱码问题。1. 须将">
-<meta name="keywords" content="vue question">
+<meta name="description" content="vue 框架中遇到的问题props如果 data中的属性取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化 如果想要组件或者原生HTML节点重新渲染可以使用 v-if使用 prototype 挂载自定义方法或插件123Vue.prototype.$bus = Bus;// orVue.use(bus); template 中的 全局变量白名单123456789">
+<meta name="keywords" content="question">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vueNotes">
+<meta property="og:title" content="笔记">
 <meta property="og:url" content="https://owen027.github.io/2019/06/13/vueNotes/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="vue 框架中遇到的问题###可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化 如果想要组件或者原生HTML节点重新渲染可以使用 v-if使用 prototype 挂载自定义方法或插件123Vue.prototype.$bus = Bus;// orVue.use(bus); axios 问题接收二进制流文件乱码问题。1. 须将">
+<meta property="og:description" content="vue 框架中遇到的问题props如果 data中的属性取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化 如果想要组件或者原生HTML节点重新渲染可以使用 v-if使用 prototype 挂载自定义方法或插件123Vue.prototype.$bus = Bus;// orVue.use(bus); template 中的 全局变量白名单123456789">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-31T14:27:01.282Z">
+<meta property="og:updated_time" content="2019-12-25T13:34:08.626Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vueNotes">
-<meta name="twitter:description" content="vue 框架中遇到的问题###可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化 如果想要组件或者原生HTML节点重新渲染可以使用 v-if使用 prototype 挂载自定义方法或插件123Vue.prototype.$bus = Bus;// orVue.use(bus); axios 问题接收二进制流文件乱码问题。1. 须将">
+<meta name="twitter:title" content="笔记">
+<meta name="twitter:description" content="vue 框架中遇到的问题props如果 data中的属性取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化 如果想要组件或者原生HTML节点重新渲染可以使用 v-if使用 prototype 挂载自定义方法或插件123Vue.prototype.$bus = Bus;// orVue.use(bus); template 中的 全局变量白名单123456789">
 
 
 
@@ -113,7 +113,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -139,7 +139,7 @@
 
 
 
-  <title>vueNotes | Owen</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>笔记 | Owen</title>
   
 
 
@@ -158,7 +158,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/gaoguowen/oweng.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,6 +214,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
@@ -224,22 +234,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
             
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
+            站点地图
           </a>
         </li>
       
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vueNotes</h1>
+          <h1 class="post-title" itemprop="name headline">笔记</h1>
         
 
         <div class="post-meta">
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  728
+                  3k
                 </span>
               
 
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  12
                 </span>
               
             </div>
@@ -433,11 +433,74 @@
       
 
       
-        <h2 id="vue-框架中遇到的问题"><a href="#vue-框架中遇到的问题" class="headerlink" title="vue 框架中遇到的问题"></a>vue 框架中遇到的问题</h2><p>###可以取到 data 中的数据，取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化</p>
+        <h2 id="vue-框架中遇到的问题"><a href="#vue-框架中遇到的问题" class="headerlink" title="vue 框架中遇到的问题"></a>vue 框架中遇到的问题</h2><h3 id="props"><a href="#props" class="headerlink" title="props"></a>props</h3><p>如果 data中的属性取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化</p>
 <h3 id="如果想要组件或者原生HTML节点重新渲染可以使用-v-if"><a href="#如果想要组件或者原生HTML节点重新渲染可以使用-v-if" class="headerlink" title="如果想要组件或者原生HTML节点重新渲染可以使用 v-if"></a>如果想要组件或者原生HTML节点重新渲染可以使用 v-if</h3><h3 id="使用-prototype-挂载自定义方法或插件"><a href="#使用-prototype-挂载自定义方法或插件" class="headerlink" title="使用 prototype 挂载自定义方法或插件"></a>使用 prototype 挂载自定义方法或插件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$bus = Bus;</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line">Vue.use(bus);</span><br></pre></td></tr></table></figure>
+<h3 id="template-中的-全局变量白名单"><a href="#template-中的-全局变量白名单" class="headerlink" title="template 中的 全局变量白名单"></a>template 中的 全局变量白名单</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">Infinity</span>,</span><br><span class="line"><span class="literal">undefined</span>,</span><br><span class="line"><span class="literal">NaN</span>,</span><br><span class="line"><span class="built_in">isNaN</span>,</span><br><span class="line"><span class="built_in">isFinite</span>,</span><br><span class="line"><span class="built_in">parseFloat</span>,</span><br><span class="line"><span class="built_in">parseInt</span>,</span><br><span class="line"><span class="built_in">decodeURI</span>,</span><br><span class="line"><span class="built_in">decodeURIComponent</span>,</span><br><span class="line"><span class="built_in">encodeURI</span>,</span><br><span class="line"><span class="built_in">encodeURIComponent</span>,</span><br><span class="line"><span class="built_in">Math</span>,</span><br><span class="line"><span class="built_in">Number</span>,</span><br><span class="line"><span class="built_in">Date</span>,</span><br><span class="line"><span class="built_in">Array</span>,</span><br><span class="line"><span class="built_in">Object</span>,</span><br><span class="line"><span class="built_in">Boolean</span>,</span><br><span class="line"><span class="built_in">String</span>,</span><br><span class="line"><span class="built_in">RegExp</span>,</span><br><span class="line"><span class="built_in">Map</span>,</span><br><span class="line"><span class="built_in">Set</span>,</span><br><span class="line"><span class="built_in">JSON</span>,</span><br><span class="line"><span class="built_in">Intl</span>,</span><br><span class="line"><span class="built_in">require</span></span><br></pre></td></tr></table></figure>
+<h3 id="slots"><a href="#slots" class="headerlink" title="$slots"></a>$slots</h3><p>只读属性，可访问插槽分发的内容，每个具名插槽都挂载到 <code>$slots</code> 中,默认插槽则为 <code>default</code></p>
+<p>使用渲染函数JSX时非常有用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'anchored-heading'</span>, &#123;</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> createElement(</span><br><span class="line">      <span class="string">'h'</span> + <span class="keyword">this</span>.level,   <span class="comment">// 标签名称</span></span><br><span class="line">      <span class="keyword">this</span>.$slots.default <span class="comment">// 子节点数组</span></span><br><span class="line">    )</span><br><span class="line">  &#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    level: &#123;</span><br><span class="line">      type: <span class="built_in">Number</span>,</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<hr>
 <h2 id="axios-问题"><a href="#axios-问题" class="headerlink" title="axios 问题"></a>axios 问题</h2><h3 id="接收二进制流文件乱码问题。"><a href="#接收二进制流文件乱码问题。" class="headerlink" title="接收二进制流文件乱码问题。"></a>接收二进制流文件乱码问题。</h3><p><strong>1. 须将axios 配置中的<code>responseType</code>设置为’arraybuffer’，这样就不会让表格出现乱码现象；</strong><br><strong>2. 如果要动态设置文件名则需要让后台将名字设置到响应头中，否则将是一个乱码的文件名；</strong><br><strong>3. 然后通过<code>&lt;a&gt;&lt;/a&gt;</code> 标签的特性来，自动点击下载文件；</strong><br><strong>4. 如果要兼容IE则需要利用<code>navigator.msSaveOrOpenBlob</code>方法；</strong><br><strong>5. 兼容Firefox 须将<code>&lt;a&gt;&lt;/a&gt;</code> 标签添加到<code>body</code>中，最后再移除<code>&lt;a&gt;&lt;/a&gt;</code> 标签</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// axios config</span></span><br><span class="line"> config = &#123;</span><br><span class="line">     responseType: <span class="string">'arraybuffer'</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回数据处理</span></span><br><span class="line">getUserInfoExport(data).then(<span class="function">(<span class="params">&#123;data,headers&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> blob = <span class="keyword">new</span> Blob([data], &#123; <span class="attr">type</span>: <span class="string">'application/vnd.ms-excel'</span> &#125;) <span class="comment">// 将服务端返回的文件流（二进制）excel文件转化为blob</span></span><br><span class="line">        <span class="keyword">let</span> fileName = headers.filename</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">window</span>.navigator &amp;&amp; <span class="built_in">window</span>.navigator.msSaveOrOpenBlob) &#123; <span class="comment">// IE10+</span></span><br><span class="line">          <span class="built_in">window</span>.navigator.msSaveOrOpenBlob(blob, fileName)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">let</span> objectUrl = (<span class="built_in">window</span>.URL || <span class="built_in">window</span>.webkitURL).createObjectURL(blob)</span><br><span class="line">          <span class="keyword">let</span> downFile = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>)</span><br><span class="line">          downFile.style.display = <span class="string">'none'</span></span><br><span class="line">          downFile.href = objectUrl</span><br><span class="line">          downFile.download = fileName <span class="comment">// 下载后文件名</span></span><br><span class="line">          <span class="built_in">document</span>.body.appendChild(downFile)</span><br><span class="line">          downFile.click()</span><br><span class="line">          <span class="built_in">document</span>.body.removeChild(downFile) <span class="comment">// 下载完成移除元素</span></span><br><span class="line">          <span class="comment">// window.location.href = objectUrl</span></span><br><span class="line">          <span class="built_in">window</span>.URL.revokeObjectURL(objectUrl) <span class="comment">// 只要映射存在，Blob就不能进行垃圾回收，因此一旦不再需要引用，就必须小心撤销URL，释放掉blob对象。</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
 <p><a href="https://www.w3.org/TR/FileAPI/#url">参考连接</a></p>
+<h2 id="DOM-树"><a href="#DOM-树" class="headerlink" title="DOM 树"></a>DOM 树</h2><p>HTML 文档的骨干是标签。<br>根据文档对象模型(DOM)，每个HTML标签都是一个对象，同样标签内的文本也是一个对象。因此这些对象都可通过 JavaScript 操作<br>如果文档中有空格（就像任何字符一样），那么它们将成为 DOM 中的文本节点，如果我们删除它们，则不会有任何内容。<br><code>&lt;head&gt;</code> 之前的空格和换行符被忽略<br><code>&lt;/body&gt;</code> 之后放置了一些东西，那么它会自动移动到 body 内部，因为 HTML 规范要求所有内容必须位于 <body> 内。所以 </body> 后面可能没有空格。</p>
+<p>通常再浏览器中的文本不会显示开头/结尾的空文本节点，标签之间也不会显示空文本节点。</p>
+<p>如果浏览器遇到格式不正确的HTML，在形成DOM是会自动修复它<br>如：<br><code>&lt;html&gt;</code> 即使不在文档中，浏览器也会自动创建它</p>
+<p>按DOM规范，table 必须具有 <code>&lt;tbody&gt;</code>,因此table中未使用<code>&lt;tbody&gt;</code> 形成DOM时会自动添加。</p>
+<p><strong>其它 节点：</strong><br>注释不会以任何方式影响视觉表示，但是必须遵循一条规则 —— 如果HTML中有东西，那么它必须在DOM树中。<br>HTML中所有内容都是DOM的一部分，<br>注释是一个节点甚至<code>&lt;!DOCTYPE...&gt;</code>也是一个节<br>DOM总有<a href="https://dom.spec.whatwg.org/#node">12种节点</a></p>
+<h3 id="遍历DOM节点"><a href="#遍历DOM节点" class="headerlink" title="遍历DOM节点"></a>遍历DOM节点</h3><p>所有对DOM的操作都是从<code>document</code>对象开始，将这个对象赋予一个变量，对其进行修改操作</p>
+<h4 id="最顶端的节点"><a href="#最顶端的节点" class="headerlink" title="最顶端的节点"></a>最顶端的节点</h4><p>DOM节点树可以通过 <code>document</code>属性使用<br>顶端的节点对应<code>&lt;html&gt;</code> 并且 <code>&lt;html&gt; = document.documentElement</code><br>而<code>&lt;body&gt; = document.body</code>,<code>&lt;head&gt; = document.head</code><br><code>docment.body</code>可能为null，如果将<code>script</code>脚本放入 <code>&lt;head&gt;</code>标签种，那么此脚本无法访问到<code>document.body</code>，即为null</p>
+<h4 id="childNodes"><a href="#childNodes" class="headerlink" title="childNodes"></a>childNodes</h4><p><code>childNodes</code> 集合提供对所有子节点包括文本节点的访问，它看起来是一个数字，实际上只是一个可迭代的类数组对象，因此没有数组的方法<br><strong>所有的Dom 集合节点都是只读的无法通过赋值来替换对应的节点</strong><br><strong>除小部分节点，几乎所有的DOM集合都是实时的，它们反应的是DOM的实时状态</strong><br><strong>不要是有 <code>for...in</code>来遍历DOM集合，此方法会列出其所有的属性。</strong><br><strong>注意此属性只能访问到当前<code>script</code>脚本之前对应的节点</strong><br>可以通过<code>elem.hasChildNodes()</code>来检测是否含有子节点</p>
+<h4 id="parentNOde-siblingNode"><a href="#parentNOde-siblingNode" class="headerlink" title="parentNOde / siblingNode"></a>parentNOde / siblingNode</h4><p>通过<code>elem.parentNode</code>可访问当前节点的父节点<br>通过<code>elem.previousSibling/elem.nextSibling</code>可访问对应节点的上/下兄弟节点</p>
+<h4 id="只访问元素节点"><a href="#只访问元素节点" class="headerlink" title="只访问元素节点"></a>只访问元素节点</h4><ul>
+<li>children： 只获取类型为元素节点的子节点</li>
+<li>firstElementChild,lastElementChild：只获取第一或最后一个子元素</li>
+<li>previousElementSibling, nextElementSibling：兄弟元素</li>
+<li>parentElement：父元素</li>
+</ul>
+<p><strong>parentElement 可能为null,因为其方法返回的是父元素节点，而parentNode返回的是任何类型的父节点，因此,<code>document.documentElement.parentElement === null</code></strong></p>
+<h4 id="HTMLCollection-（动态）"><a href="#HTMLCollection-（动态）" class="headerlink" title="HTMLCollection （动态）"></a>HTMLCollection （动态）</h4><p>通过元素查找子元素如果子元素是一个集合将返回 <code>HTMLCollection</code> 类数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tb = documet.querySelector(<span class="string">'table'</span>)</span><br><span class="line"><span class="keyword">let</span> tbs = tb.tBodies  <span class="comment">// HTMLCollection [tbody]</span></span><br><span class="line"><span class="keyword">let</span> trs =tbs.rows <span class="comment">// HTMLCollection [tr,tr,tr,...]</span></span><br><span class="line"><span class="keyword">let</span> tr1 = trs[<span class="number">0</span>]</span><br><span class="line">    tr1.sectionRowIndex <span class="comment">//0 当前 tr 在集合中的位置</span></span><br><span class="line">    tr1.rowIndex <span class="comment">// 1 当前 tr 在整张表中的 位置</span></span><br><span class="line"><span class="keyword">let</span> tds = tr1.cells <span class="comment">// HTMLCollection [td,td,td,...]</span></span><br><span class="line">    td[<span class="number">0</span>].cellIndex <span class="comment">//0 当前 td 在父元素 tr节点 中的位置</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="NodeList-（静态）"><a href="#NodeList-（静态）" class="headerlink" title="NodeList （静态）"></a>NodeList （静态）</h4><p>通过 <code>document</code> 中的方法 <code>document.querySelectorAll</code> 或<code>elem.querySelectorAll</code>获取的元素集合将返回<code>NodeList</code>类数组<br><code>getElement*</code> 方法只能通过 <code>document</code>对象调用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> divs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>) <span class="comment">// NodeList(4) [div.Owen, div#modal, div.main, div]</span></span><br><span class="line"> <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)<span class="comment">//HTMLCollection [div.Owen]</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="matches"><a href="#matches" class="headerlink" title="matches"></a>matches</h4><p><code>elem.matches(css)</code>会检测 <code>elem</code>是否匹配到给定的css选择器，返回 true 或 false</p>
+<h4 id="closest"><a href="#closest" class="headerlink" title="closest"></a>closest</h4><p><code>elem.closest(css)</code>此方法会查找css选择器匹配到的祖先HTML，包括自身，并返回最先找到的元素</p>
+<h4 id="contains"><a href="#contains" class="headerlink" title="contains"></a>contains</h4><p><code>elem.catains(dom)</code> 判断 dom 是否为 elem 的后代，或等于elem，返回true 或false</p>
+<h4 id="节点属性"><a href="#节点属性" class="headerlink" title="节点属性"></a>节点属性</h4><p>所有的节点都继承自根节点 <code>EventTarget</code></p>
+<ul>
+<li>EventTarget:作为基础，让所有DOM 节点都支持事件</li>
+<li>Node：作为DOM 节点的基础，提供DOM树的核心功能：<code>parentNode</code>、<code>nextSibling</code>、<code>previousSibling</code>、<code>ChildNodes</code>等（只能读取 getter）;文本节点 <code>Text</code>,元素节点<code>Element</code>,注释节点<code>Comment</code>都继承自Node</li>
+<li>Element：做为DOM 元素的基类。提供元素级导航： <code>nextElementSibling</code>、<code>children</code>、<code>getElement*</code>、<code>querySelector</code>等等，浏览器不仅支持HTML，还支持 XML、SVG等，分别对应的基类 <code>HTMLElement</code>、<code>XMLElement</code>、<code>SVGElement</code></li>
+<li>HTMLElement:作为所有元素的基类，被各种元素继承</li>
+</ul>
+<h5 id="innerHTML-和-outerHTML"><a href="#innerHTML-和-outerHTML" class="headerlink" title="innerHTML 和 outerHTML"></a>innerHTML 和 outerHTML</h5><ul>
+<li>innerHTML: 获取或替换当前节点的所有子节点（不包含当前节点）</li>
+<li>outerHTML: 替换当前节点</li>
+</ul>
+<h4 id="文档片段-DocumentFragment"><a href="#文档片段-DocumentFragment" class="headerlink" title="文档片段 DocumentFragment"></a>文档片段 DocumentFragment</h4><p>用于存储节点的包装器，不会再浏览器中展示，需要通过插值方法才能展示包装器里面的内容<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">creatEl</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">let</span> frag = <span class="keyword">new</span> DocumentFragment();</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">1</span>;i&lt;<span class="number">4</span>;i++) &#123;</span><br><span class="line"><span class="keyword">let</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>)</span><br><span class="line">  li.append(i)</span><br><span class="line">  frag.append(li)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> frag</span><br><span class="line">&#125;</span><br><span class="line">ul.append(creatEl())</span><br></pre></td></tr></table></figure></p>
+<h4 id="类样式的修改等操作"><a href="#类样式的修改等操作" class="headerlink" title="类样式的修改等操作"></a>类样式的修改等操作</h4><p><code>elem.className</code> 对应元素的类名，多个类目以空格分隔<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ul.className <span class="comment">// "class1 class2 ..."</span></span><br></pre></td></tr></table></figure></p>
+<p>同时还要一个 <code>elem.classList</code> 对象可访问类名，它以类数组的方式存在，同时具有 <code>add/remove/toggle/contains</code> 等方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ul.classList <span class="comment">//  DOMTokenList(2) ["333", "444", value: "333 444"]</span></span><br><span class="line">ul.classList.add(<span class="string">'class1'</span>)</span><br><span class="line">ul.classList.remove(<span class="string">'class1'</span>)</span><br><span class="line">ul.classList.toggle(<span class="string">'class1'</span>) <span class="comment">// true 新增</span></span><br><span class="line">ul.classList.toggle(<span class="string">'class1'</span>) <span class="comment">// false 去除</span></span><br><span class="line">ul.classList.contains(<span class="string">'class1'</span>) <span class="comment">//false 是否包含</span></span><br></pre></td></tr></table></figure></p>
+<p>通常我们使用 <code>style.*</code>单独对样式属性进行修改，如果想要对多种样式进行调整可使用 <code>cssText</code>，<strong>此方法会直接替换之前的样式</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ul.style.cssText = <span class="string">`</span></span><br><span class="line"><span class="string">    color: red ;</span></span><br><span class="line"><span class="string">    background-color: skyblue;</span></span><br><span class="line"><span class="string">    width: 20px;</span></span><br><span class="line"><span class="string">    text-align: center;`</span></span><br></pre></td></tr></table></figure></p>
+<p>style 属性仅针对 style 属性值进行操作，无法读取css类中的属性值<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-tag">body</span> &#123;<span class="attribute">margin</span>:<span class="number">20</span> auto;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="built_in">document</span>.body.style.margin <span class="comment">// ""</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这时我们需要使用 <code>getComputedStyle(el,[,pseudo])</code>方法来获取对应的值<br>如果不传参或值无意义，将返回元素所有样式,其属性值都为解析值，如 <code>font-size:1em</code> 最后获取的可能为解析后的值”16px”</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> res = getComputedStyle(<span class="built_in">document</span>.body)</span><br><span class="line">res.marginTop <span class="comment">// "20px"</span></span><br><span class="line">res.margin <span class="comment">// 谷歌 "20px 0px" 在火狐中为 ""  因此访问确切属性值须使用完整属性名</span></span><br></pre></td></tr></table></figure>
+<h4 id="获取元素的尺寸和滚动距离"><a href="#获取元素的尺寸和滚动距离" class="headerlink" title="获取元素的尺寸和滚动距离"></a>获取元素的尺寸和滚动距离</h4><ul>
+<li>offsetTop/Left: 获取相对于设置有position属性为 absolute relative、fixed 的值或td、th、table、body的元素的距离</li>
+<li>offsetWidth/Height：获取外部宽度/高度，包含border,padding,scrollbar (display:none 或自身不在文档中，其值为0或null，由此可判断当前元素是否被隐藏)</li>
+<li>clientTop/Left：获取内侧与外侧的距离（滚动条在左边时，包含滚动条的宽度）</li>
+<li>clientWidth/Height：获取可视区内容的宽高，即不包含滚动条和border</li>
+<li>scrollWidth/Height：获取全部内容（包含隐藏部分）的宽高</li>
+<li>scrollTop/Left: 获取 元素隐藏部分的上/左距离，包含border,这两个属性可修改，其它属性能只读取<br><strong>HTML 文件里如果没有 <code>&lt;!DOCTYPE HTML&gt;</code> 上述的属性可能会有所不同，这不是一个 JavaScript 的问题，但会影响到 JavaScript。</strong></li>
+</ul>
+<h4 id="滚动浏览器窗口"><a href="#滚动浏览器窗口" class="headerlink" title="滚动浏览器窗口"></a>滚动浏览器窗口</h4><p>pageXOffset/pageYOffset: 获取可视窗口移动的距离 无法设值</p>
+<p>可通过 window.scrollBy, window.scrollTo, elem.scrollIntoView来滚动窗口</p>
+<ul>
+<li><code>scrollBy(x,y)</code>：滚动页面至相对于现在位置的(x,y)位置</li>
+<li><code>scrollTo(x,y)</code>：滚动到页面相对于文档左上方的（x,y）,位置，类似于 <code>scrollTop/scrollLeft</code></li>
+<li><code>elem.scrollIntoView(truly)</code>：如果 truly 为真则使 当前元素 滚动至窗口顶部，元素顶部与窗口顶部对齐，如果truly 为false,则当前元素底部与窗口底部对齐。</li>
+</ul>
+<p>如果禁止窗口滚动可使 样式属性 <code>overflow</code> 值为 <code>hidden</code></p>
+<h4 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h4><h5 id="getBoundingClientRect-方法获取相对于可视窗口的坐标对象"><a href="#getBoundingClientRect-方法获取相对于可视窗口的坐标对象" class="headerlink" title="getBoundingClientRect()`方法获取相对于可视窗口的坐标对象"></a>getBoundingClientRect()`方法获取相对于可视窗口的坐标对象</h5><p>其所有属性都是以可视窗口左端（X）和顶部（Y）为起点<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ul.getBoundingClientRect()</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">DOMRect &#123;</span></span><br><span class="line"><span class="comment">    bottom: 829.59375  // 元素底部的Y坐标</span></span><br><span class="line"><span class="comment">    height: 210  // 元素真实高度</span></span><br><span class="line"><span class="comment">    left: 0 // 元素左边 X 坐标</span></span><br><span class="line"><span class="comment">    right: 1903 // 元素右边 X 坐标</span></span><br><span class="line"><span class="comment">    top: 619.59375 // 元素顶部 Y 坐标</span></span><br><span class="line"><span class="comment">    width: 1903 // 元素自身真实宽度即不包含滚动条</span></span><br><span class="line"><span class="comment">    x: 0</span></span><br><span class="line"><span class="comment">    y: 619.59375</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></p>
+<h6 id="document-elementFromPoint"><a href="#document-elementFromPoint" class="headerlink" title="document.elementFromPoint"></a>document.elementFromPoint</h6><p><code>document.elementFromPoint(x,y)</code>返回可视窗口坐标（x,y），最顶层的元素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> elem = <span class="built_in">document</span>.elementFromPoint(<span class="number">0</span>,<span class="number">0</span>) <span class="comment">// &lt;p&gt;556666&lt;/p&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>如果<code>x,y</code>不在正常范围内将返回 null,</p>
+<h5 id="相对于文档坐标，JS并未提供原生标准方法，可自己写一个出来："><a href="#相对于文档坐标，JS并未提供原生标准方法，可自己写一个出来：" class="headerlink" title="相对于文档坐标，JS并未提供原生标准方法，可自己写一个出来："></a>相对于文档坐标，JS并未提供原生标准方法，可自己写一个出来：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function getDomCoords(el)&#123;</span><br><span class="line">    let &#123;top,left&#125; = el.getBoundingClientRect()</span><br><span class="line">  return &#123;</span><br><span class="line">    top:top+ window.pageYOffset,</span><br><span class="line">    left:left+window.pageXOffest</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Node-中的问题"><a href="#Node-中的问题" class="headerlink" title="Node 中的问题"></a>Node 中的问题</h2><h3 id="获取本机-IP-地址"><a href="#获取本机-IP-地址" class="headerlink" title="获取本机 IP 地址"></a>获取本机 IP 地址</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> os = <span class="built_in">require</span>(<span class="string">'os'</span>);</span><br><span class="line"><span class="keyword">const</span> ip = showObj(os.networkInterfaces());</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showObj</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line"><span class="comment">/*     for (let devName in obj)&#123;</span></span><br><span class="line"><span class="comment">        let iface = obj[devName];</span></span><br><span class="line"><span class="comment">        for (let i = 0;i &lt; iface.length;i++)&#123;</span></span><br><span class="line"><span class="comment">            let alias = iface[i];</span></span><br><span class="line"><span class="comment">            if (alias.family === 'IPv4'</span></span><br><span class="line"><span class="comment">                &amp;&amp; alias.address !== '127.0.0.1'</span></span><br><span class="line"><span class="comment">                &amp;&amp; !alias.internal)&#123;</span></span><br><span class="line"><span class="comment">                return alias.address;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125; */</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> devName <span class="keyword">in</span> obj)&#123;</span><br><span class="line">             <span class="keyword">let</span> iface = obj[devName];</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">let</span> alias <span class="keyword">of</span> iface )&#123;</span><br><span class="line">                <span class="keyword">if</span> ( alias.family === <span class="string">'IPv4'</span>  &amp;&amp; alias.address !== <span class="string">'127.0.0.1'</span>  &amp;&amp; !alias.internal) <span class="keyword">return</span> alias.address;</span><br><span class="line">             &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="开发方式"><a href="#开发方式" class="headerlink" title="开发方式"></a>开发方式</h2><p><strong>当我们确定组件层级时，最容易的方式就是先用已有的数据模型渲染一个不包含交互功能的UI。最好将渲染UI 和添加交互两个过程分开</strong></p>
 <p>因为，编写一个应用的静态版本时，往往需要编写大量代码，不需要考虑太多交互细节；<br>添加交互细节功能时则需考虑大量细节，而不需要编写太多代码。<br>所以将两个过程分开进行更为合适。</p>
@@ -468,7 +531,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vue-question/" rel="tag"><i class="fa fa-tag"></i> vue question</a>
+            <a href="/tags/question/" rel="tag"><i class="fa fa-tag"></i> question</a>
           
         </div>
       
@@ -491,8 +554,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/17/zoomAndScale/" rel="prev" title="zoomAndScale">
-                zoomAndScale <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/17/zoomAndScale/" rel="prev" title="CSS中的 zoom 和 scale 区别">
+                CSS中的 zoom 和 scale 区别 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -578,7 +641,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -589,7 +652,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -600,7 +663,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -662,7 +725,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-框架中遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">vue 框架中遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如果想要组件或者原生HTML节点重新渲染可以使用-v-if"><span class="nav-number">1.1.</span> <span class="nav-text">如果想要组件或者原生HTML节点重新渲染可以使用 v-if</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-prototype-挂载自定义方法或插件"><span class="nav-number">1.2.</span> <span class="nav-text">使用 prototype 挂载自定义方法或插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios-问题"><span class="nav-number">2.</span> <span class="nav-text">axios 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接收二进制流文件乱码问题。"><span class="nav-number">2.1.</span> <span class="nav-text">接收二进制流文件乱码问题。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-中的问题"><span class="nav-number">3.</span> <span class="nav-text">Node 中的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取本机-IP-地址"><span class="nav-number">3.1.</span> <span class="nav-text">获取本机 IP 地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发方式"><span class="nav-number">4.</span> <span class="nav-text">开发方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自上而下"><span class="nav-number">4.1.</span> <span class="nav-text">自上而下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自下而上"><span class="nav-number">4.2.</span> <span class="nav-text">自下而上</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-框架中遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">vue 框架中遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#props"><span class="nav-number">1.1.</span> <span class="nav-text">props</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果想要组件或者原生HTML节点重新渲染可以使用-v-if"><span class="nav-number">1.2.</span> <span class="nav-text">如果想要组件或者原生HTML节点重新渲染可以使用 v-if</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-prototype-挂载自定义方法或插件"><span class="nav-number">1.3.</span> <span class="nav-text">使用 prototype 挂载自定义方法或插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#template-中的-全局变量白名单"><span class="nav-number">1.4.</span> <span class="nav-text">template 中的 全局变量白名单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slots"><span class="nav-number">1.5.</span> <span class="nav-text">$slots</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios-问题"><span class="nav-number">2.</span> <span class="nav-text">axios 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接收二进制流文件乱码问题。"><span class="nav-number">2.1.</span> <span class="nav-text">接收二进制流文件乱码问题。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-树"><span class="nav-number">3.</span> <span class="nav-text">DOM 树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历DOM节点"><span class="nav-number">3.1.</span> <span class="nav-text">遍历DOM节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最顶端的节点"><span class="nav-number">3.1.1.</span> <span class="nav-text">最顶端的节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#childNodes"><span class="nav-number">3.1.2.</span> <span class="nav-text">childNodes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#parentNOde-siblingNode"><span class="nav-number">3.1.3.</span> <span class="nav-text">parentNOde / siblingNode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只访问元素节点"><span class="nav-number">3.1.4.</span> <span class="nav-text">只访问元素节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTMLCollection-（动态）"><span class="nav-number">3.1.5.</span> <span class="nav-text">HTMLCollection （动态）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NodeList-（静态）"><span class="nav-number">3.1.6.</span> <span class="nav-text">NodeList （静态）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#matches"><span class="nav-number">3.1.7.</span> <span class="nav-text">matches</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#closest"><span class="nav-number">3.1.8.</span> <span class="nav-text">closest</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#contains"><span class="nav-number">3.1.9.</span> <span class="nav-text">contains</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#节点属性"><span class="nav-number">3.1.10.</span> <span class="nav-text">节点属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#innerHTML-和-outerHTML"><span class="nav-number">3.1.10.1.</span> <span class="nav-text">innerHTML 和 outerHTML</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文档片段-DocumentFragment"><span class="nav-number">3.1.11.</span> <span class="nav-text">文档片段 DocumentFragment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类样式的修改等操作"><span class="nav-number">3.1.12.</span> <span class="nav-text">类样式的修改等操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取元素的尺寸和滚动距离"><span class="nav-number">3.1.13.</span> <span class="nav-text">获取元素的尺寸和滚动距离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#滚动浏览器窗口"><span class="nav-number">3.1.14.</span> <span class="nav-text">滚动浏览器窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#坐标"><span class="nav-number">3.1.15.</span> <span class="nav-text">坐标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#getBoundingClientRect-方法获取相对于可视窗口的坐标对象"><span class="nav-number">3.1.15.1.</span> <span class="nav-text">getBoundingClientRect()`方法获取相对于可视窗口的坐标对象</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#document-elementFromPoint"><span class="nav-number">3.1.15.1.1.</span> <span class="nav-text">document.elementFromPoint</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相对于文档坐标，JS并未提供原生标准方法，可自己写一个出来："><span class="nav-number">3.1.15.2.</span> <span class="nav-text">相对于文档坐标，JS并未提供原生标准方法，可自己写一个出来：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-中的问题"><span class="nav-number">4.</span> <span class="nav-text">Node 中的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取本机-IP-地址"><span class="nav-number">4.1.</span> <span class="nav-text">获取本机 IP 地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发方式"><span class="nav-number">5.</span> <span class="nav-text">开发方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自上而下"><span class="nav-number">5.1.</span> <span class="nav-text">自上而下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自下而上"><span class="nav-number">5.2.</span> <span class="nav-text">自下而上</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -698,7 +761,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">84.8k</span>
+    <span title="Site words total count">98.3k</span>
   
   -->
 </div>
@@ -1242,24 +1305,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src>
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

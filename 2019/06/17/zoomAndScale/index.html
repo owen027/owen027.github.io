@@ -95,14 +95,14 @@
 <meta name="description" content="zoom 不是标准属性 对文字最小缩到 12pX 缩放位置相对于左上角缩放 调整时改变了元素占据的空间大小、尺寸，等比例缩放元素 *zoom:1 用来给老版本IE浏览器（IE6/7）清除浮动 由于缩小改变原来的空间尺寸，所以整个页面会重新渲染单位   百分比 zoom:50% 缩小到原来的一半 数值 zoom:0.5 等同 zoom:50%，不能为负数 zoom:normal 等同于 zoom:1">
 <meta name="keywords" content="zoom and transform:scale">
 <meta property="og:type" content="article">
-<meta property="og:title" content="zoomAndScale">
+<meta property="og:title" content="CSS中的 zoom 和 scale 区别">
 <meta property="og:url" content="https://owen027.github.io/2019/06/17/zoomAndScale/index.html">
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="zoom 不是标准属性 对文字最小缩到 12pX 缩放位置相对于左上角缩放 调整时改变了元素占据的空间大小、尺寸，等比例缩放元素 *zoom:1 用来给老版本IE浏览器（IE6/7）清除浮动 由于缩小改变原来的空间尺寸，所以整个页面会重新渲染单位   百分比 zoom:50% 缩小到原来的一半 数值 zoom:0.5 等同 zoom:50%，不能为负数 zoom:normal 等同于 zoom:1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T16:14:37.071Z">
+<meta property="og:updated_time" content="2019-12-25T13:34:08.627Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zoomAndScale">
+<meta name="twitter:title" content="CSS中的 zoom 和 scale 区别">
 <meta name="twitter:description" content="zoom 不是标准属性 对文字最小缩到 12pX 缩放位置相对于左上角缩放 调整时改变了元素占据的空间大小、尺寸，等比例缩放元素 *zoom:1 用来给老版本IE浏览器（IE6/7）清除浮动 由于缩小改变原来的空间尺寸，所以整个页面会重新渲染单位   百分比 zoom:50% 缩小到原来的一半 数值 zoom:0.5 等同 zoom:50%，不能为负数 zoom:normal 等同于 zoom:1">
 
 
@@ -113,7 +113,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -139,7 +139,7 @@
 
 
 
-  <title>zoomAndScale | Owen</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>CSS中的 zoom 和 scale 区别 | Owen</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -214,6 +214,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
@@ -224,22 +234,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
             
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
+            站点地图
           </a>
         </li>
       
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">zoomAndScale</h1>
+          <h1 class="post-title" itemprop="name headline">CSS中的 zoom 和 scale 区别</h1>
         
 
         <div class="post-meta">
@@ -444,7 +444,7 @@
 <ol>
 <li>百分比 <code>zoom:50%</code> 缩小到原来的一半</li>
 <li>数值 <code>zoom:0.5</code> 等同 <code>zoom:50%</code>，不能为负数</li>
-<li><code>zoom:normal</code> 等同于 <code>zoom:1</code> </li>
+<li><code>zoom:normal</code> 等同于 <code>zoom:1</code></li>
 </ol>
 <h1 id="scale"><a href="#scale" class="headerlink" title="scale"></a>scale</h1><ul>
 <li>等比例缩放元素  <code>transform: scale(1)</code></li>
@@ -515,7 +515,7 @@
 <li>ease-out 由快到慢</li>
 <li>ease-in-out 由慢到快在到慢</li>
 <li>linear 线性过度</li>
-<li>step-start </li>
+<li>step-start</li>
 <li>step-end</li>
 <li>steps(5,end)</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/timing-function">其它参数设置</a></li>
@@ -533,7 +533,7 @@
 </ul>
 <h4 id="值"><a href="#值" class="headerlink" title="值"></a>值</h4><ul>
 <li>none 默认静止</li>
-<li>定义 @keyframes 后的 名字 </li>
+<li>定义 @keyframes 后的 名字</li>
 <li>由大小写不敏感的字母a-z、数字0-9、下划线(_)和/或横线(-)组成。第一个非横线字符必须是字母，数字不能在字母前面，不允许两个横线出现在开始位置。<h5 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.cylon_eye</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-animation-name</span>: resize;</span><br><span class="line">&#125;</span><br><span class="line">@-<span class="keyword">webkit</span>-<span class="keyword">keyframes</span> resize &#123; <span class="selector-tag">from</span> &#123; <span class="attribute">margin-left</span>: -<span class="number">20%</span>; &#125; <span class="selector-tag">to</span> &#123; <span class="attribute">margin-left</span>: <span class="number">100%</span>; &#125;  &#125;</span><br><span class="line">        @<span class="keyword">keyframes</span> resize &#123; <span class="selector-tag">from</span> &#123; <span class="attribute">margin-left</span>: -<span class="number">20%</span>; &#125; <span class="selector-tag">to</span> &#123; <span class="attribute">margin-left</span>: <span class="number">100%</span>; &#125;  &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -550,7 +550,7 @@
 <h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><ul>
 <li>默认运行一次</li>
 <li>infinite 无限循环</li>
-<li>播放的次数 不可为负值. 可以用小数定义循环(0.5 将播放动画到关键帧的一半 </li>
+<li>播放的次数 不可为负值. 可以用小数定义循环(0.5 将播放动画到关键帧的一半</li>
 </ul>
 <h3 id="webkit-animation-direction"><a href="#webkit-animation-direction" class="headerlink" title="-webkit-animation-direction"></a>-webkit-animation-direction</h3><ul>
 <li>指示动画是否反向播放 <code>-webkit-animation-direction: alternate;</code></li>
@@ -560,7 +560,7 @@
 <li>alternate  动画交替反向运行，反向运行时，动画按步后退，同时，带时间功能的函数也反向 计数取决于开始时是奇数迭代还是偶数迭代</li>
 <li>reverse 反向运行动画，每周期结束动画由尾到头运行。</li>
 <li>alternate-reverse 动画第一次运行时是反向的，然后下一次是正向，后面依次循环。决定奇数次或偶数次的计数从1开始。<br>  -webkit-animation-timing-function: ease-in-out;<h3 id="animation-timing-function"><a href="#animation-timing-function" class="headerlink" title="animation-timing-function"></a>animation-timing-function</h3></li>
-<li>每一个动画周期中执行的节奏，作用于一个关键帧周期而非整个动画周期<h4 id="值-1"><a href="#值-1" class="headerlink" title="值"></a>值</h4>同 <code>transition-timing-function</code> </li>
+<li>每一个动画周期中执行的节奏，作用于一个关键帧周期而非整个动画周期<h4 id="值-1"><a href="#值-1" class="headerlink" title="值"></a>值</h4>同 <code>transition-timing-function</code></li>
 </ul>
 <h2 id="简写语法"><a href="#简写语法" class="headerlink" title="简写语法"></a>简写语法</h2><ul>
 <li>animation-name，animation-duration, animation-timing-function，animation-delay，animation-iteration-count，animation-direction，animation-fill-mode 和 animation-play-state 属性的一个简写属性形式<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.cylon_eye</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">linear-gradient</span>(to right,</span><br><span class="line">      rgba(0, 0, 0, .9) <span class="number">25%</span>,</span><br><span class="line">      <span class="built_in">rgba</span>(0, 0, 0, .1) <span class="number">50%</span>,</span><br><span class="line">      <span class="built_in">rgba</span>(0, 0, 0, .9) <span class="number">75%</span>);</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">20%</span>;</span><br><span class="line"><span class="comment">/* 调用动画 指定对应 持续时间 运动时的节奏 延迟时间 循环次数 对应动画 */</span></span><br><span class="line">  <span class="attribute">-webkit-animation</span>: <span class="number">4s</span> linear <span class="number">0s</span> infinite alternate move_eye;</span><br><span class="line">          <span class="attribute">animation</span>: <span class="number">4s</span> linear <span class="number">0s</span> infinite alternate move_eye;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 定义动画 */</span></span><br><span class="line">@-<span class="keyword">webkit</span>-<span class="keyword">keyframes</span> move_eye &#123; <span class="selector-tag">from</span> &#123; <span class="attribute">margin-left</span>: -<span class="number">20%</span>; &#125; <span class="selector-tag">to</span> &#123; <span class="attribute">margin-left</span>: <span class="number">100%</span>; &#125;  &#125;</span><br><span class="line">        @<span class="keyword">keyframes</span> move_eye &#123; <span class="selector-tag">from</span> &#123; <span class="attribute">margin-left</span>: -<span class="number">20%</span>; &#125; <span class="selector-tag">to</span> &#123; <span class="attribute">margin-left</span>: <span class="number">100%</span>; &#125;  &#125;</span><br></pre></td></tr></table></figure></li>
@@ -603,8 +603,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/13/vueNotes/" rel="next" title="vueNotes">
-                <i class="fa fa-chevron-left"></i> vueNotes
+              <a href="/2019/06/13/vueNotes/" rel="next" title="笔记">
+                <i class="fa fa-chevron-left"></i> 笔记
               </a>
             
           </div>
@@ -700,7 +700,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -711,7 +711,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -722,7 +722,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -820,7 +820,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">84.8k</span>
+    <span title="Site words total count">98.3k</span>
   
   -->
 </div>

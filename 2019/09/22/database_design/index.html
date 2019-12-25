@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="概叙 针对具体的应用场景，使用现有的 DBMS 构建适合的数据库模式，建立数据库及其应用系统，使之能有效的收集、存储、操作和管理数据，满足实际业务中各类用户的应用需求、信息需求和处理需求，这个过程称为数据库设计。  1.数据库生命周期，从演变过程的角度分为两个阶段：分析与设计阶段 和 实现与操作阶段 1.1 分析与设计阶段细分为四个环节：需求方分析、概念设计、逻辑结构设计和物理结构设计。1.2 实">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-25T13:37:36.266Z">
+<meta property="og:updated_time" content="2019-12-25T13:34:08.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库设计">
 <meta name="twitter:description" content="概叙 针对具体的应用场景，使用现有的 DBMS 构建适合的数据库模式，建立数据库及其应用系统，使之能有效的收集、存储、操作和管理数据，满足实际业务中各类用户的应用需求、信息需求和处理需求，这个过程称为数据库设计。  1.数据库生命周期，从演变过程的角度分为两个阶段：分析与设计阶段 和 实现与操作阶段 1.1 分析与设计阶段细分为四个环节：需求方分析、概念设计、逻辑结构设计和物理结构设计。1.2 实">
@@ -113,7 +113,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -214,6 +214,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
@@ -224,22 +234,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
             
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
+            站点地图
           </a>
         </li>
       
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.1k
+                  3.3k
                 </span>
               
 
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  11
                 </span>
               
             </div>
@@ -608,7 +608,10 @@ E --> F(物理设计)</pre>
 <li>设计评价任务是分析并检验模式及子模式的正确性与合理性。</li>
 </ol>
 <h3 id="物理设计"><a href="#物理设计" class="headerlink" title="物理设计"></a>物理设计</h3><p>物理设计指对于一个给定的数据库逻辑结构，研究并构造物理结构的过程，主要是确定数据库在存储设备上的存储结构及存储方法， 因 DBMS 不同可能包括建立索引和聚集等待。</p>
-<h3 id="数据库实施"><a href="#数据库实施" class="headerlink" title="数据库实施"></a>数据库实施</h3>
+<h3 id="数据库实施"><a href="#数据库实施" class="headerlink" title="数据库实施"></a>数据库实施</h3><p>本阶段需要完成 加载数据、应用程序设计和数据库试的运行工作</p>
+<p>加载数据：将符合要求的初始数据装载到数据库中，包括数据的收集、分类、整理校验和输入等过程</p>
+<h3 id="数据库运行和维护"><a href="#数据库运行和维护" class="headerlink" title="数据库运行和维护"></a>数据库运行和维护</h3><p>经过试运行后，确认系统无故障或暂未发现故障时，系统才可投入生成实际中运行，随着应用的深入和拓展，可能会暴露原未发现的问题，也有可能对数据的不断增、删、改使系统的物理结构变坏或存取效率下降，或者需要拓展应用功能，这些都需要开发人员做好维护工作。</p>
+
       
     </div>
     
@@ -655,6 +658,10 @@ E --> F(物理设计)</pre>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/08/relational_database_design_method/" rel="prev" title="关系数据库设计方法">
+                关系数据库设计方法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -739,7 +746,7 @@ E --> F(物理设计)</pre>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -750,7 +757,7 @@ E --> F(物理设计)</pre>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -761,7 +768,7 @@ E --> F(物理设计)</pre>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -823,7 +830,7 @@ E --> F(物理设计)</pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概叙"><span class="nav-number">1.</span> <span class="nav-text">概叙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库设计的基本步骤"><span class="nav-number">2.</span> <span class="nav-text">数据库设计的基本步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析"><span class="nav-number">2.1.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#确定数据库范围"><span class="nav-number">2.1.1.</span> <span class="nav-text">确定数据库范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用过程分析"><span class="nav-number">2.1.2.</span> <span class="nav-text">应用过程分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#收集与分析数据"><span class="nav-number">2.1.3.</span> <span class="nav-text">收集与分析数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#静态结构"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">静态结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态结构"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">动态结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据约束"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">数据约束</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写需求分析报告"><span class="nav-number">2.1.4.</span> <span class="nav-text">编写需求分析报告</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需求说明"><span class="nav-number">2.1.5.</span> <span class="nav-text">需求说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据字典"><span class="nav-number">2.1.6.</span> <span class="nav-text">数据字典</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念结构设计"><span class="nav-number">2.2.</span> <span class="nav-text">概念结构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑结构设计"><span class="nav-number">2.3.</span> <span class="nav-text">逻辑结构设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑模型的输入与输出信息"><span class="nav-number">2.3.1.</span> <span class="nav-text">逻辑模型的输入与输出信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑结构设计的步骤"><span class="nav-number">2.3.2.</span> <span class="nav-text">逻辑结构设计的步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理设计"><span class="nav-number">2.4.</span> <span class="nav-text">物理设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库实施"><span class="nav-number">2.5.</span> <span class="nav-text">数据库实施</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概叙"><span class="nav-number">1.</span> <span class="nav-text">概叙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库设计的基本步骤"><span class="nav-number">2.</span> <span class="nav-text">数据库设计的基本步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析"><span class="nav-number">2.1.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#确定数据库范围"><span class="nav-number">2.1.1.</span> <span class="nav-text">确定数据库范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用过程分析"><span class="nav-number">2.1.2.</span> <span class="nav-text">应用过程分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#收集与分析数据"><span class="nav-number">2.1.3.</span> <span class="nav-text">收集与分析数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#静态结构"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">静态结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态结构"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">动态结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据约束"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">数据约束</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写需求分析报告"><span class="nav-number">2.1.4.</span> <span class="nav-text">编写需求分析报告</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需求说明"><span class="nav-number">2.1.5.</span> <span class="nav-text">需求说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据字典"><span class="nav-number">2.1.6.</span> <span class="nav-text">数据字典</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念结构设计"><span class="nav-number">2.2.</span> <span class="nav-text">概念结构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑结构设计"><span class="nav-number">2.3.</span> <span class="nav-text">逻辑结构设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑模型的输入与输出信息"><span class="nav-number">2.3.1.</span> <span class="nav-text">逻辑模型的输入与输出信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑结构设计的步骤"><span class="nav-number">2.3.2.</span> <span class="nav-text">逻辑结构设计的步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理设计"><span class="nav-number">2.4.</span> <span class="nav-text">物理设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库实施"><span class="nav-number">2.5.</span> <span class="nav-text">数据库实施</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库运行和维护"><span class="nav-number">2.6.</span> <span class="nav-text">数据库运行和维护</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -859,7 +866,7 @@ E --> F(物理设计)</pre>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">84.8k</span>
+    <span title="Site words total count">98.3k</span>
   
   -->
 </div>

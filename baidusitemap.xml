@@ -1,34 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://owen027.github.io/2019/09/22/database_design/</loc>
-    <lastmod>2019-09-25</lastmod>
+    <loc>https://owen027.github.io/2019/12/25/uniappPagesConfigs/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/12/24/uniappStudy/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/06/17/zoomAndScale/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/06/13/vueNotes/</loc>
+    <lastmod>2019-12-25</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/09/18/relational_operation/</loc>
-    <lastmod>2019-09-24</lastmod>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/10/08/relational_database_design_method/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/09/09/relation_data_model/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/07/29/react.Component/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/10/14/mysql_table_definition_syntax/</loc>
+    <lastmod>2019-12-25</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/09/19/normalization_theory/</loc>
-    <lastmod>2019-09-24</lastmod>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/10/14/mysql_database_definition_syntax/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/10/15/mysql_index_definition/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/10/16/mysql_data_update_and_query/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/12/18/javascript_events/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/09/19/integrity_constraint_of_relational/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/09/22/database_design/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/09/04/database_basis_1/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/04/21/algorithm/</loc>
+    <lastmod>2019-12-25</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/10/09/SQL_basic_operations/</loc>
+    <lastmod>2019-12-25</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/09/05/database_basis_2/</loc>
     <lastmod>2019-09-24</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/09/04/database_basis_1/</loc>
-    <lastmod>2019-09-24</lastmod>
-  </url>  <url>
-    <loc>https://owen027.github.io/2019/09/19/integrity_constraint_of_relational/</loc>
-    <lastmod>2019-09-19</lastmod>
-  </url>  <url>
-    <loc>https://owen027.github.io/2019/09/09/relation_data_model/</loc>
-    <lastmod>2019-09-18</lastmod>
-  </url>  <url>
     <loc>https://owen027.github.io/2019/08/04/redux/</loc>
     <lastmod>2019-09-06</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/07/31/reactAPI/</loc>
+    <loc>https://owen027.github.io/2019/08/02/reactDomAPI/</loc>
     <lastmod>2019-09-06</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/08/02/reactDomAPI/</loc>
+    <loc>https://owen027.github.io/2019/07/31/reactAPI/</loc>
     <lastmod>2019-09-06</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/08/12/mediaDevices/</loc>
@@ -40,13 +79,7 @@
     <loc>https://owen027.github.io/2019/04/10/JSquestion/</loc>
     <lastmod>2019-09-06</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/06/13/vueNotes/</loc>
-    <lastmod>2019-07-31</lastmod>
-  </url>  <url>
     <loc>https://owen027.github.io/2019/07/29/reactLifeCycle/</loc>
-    <lastmod>2019-07-31</lastmod>
-  </url>  <url>
-    <loc>https://owen027.github.io/2019/07/29/react.Component/</loc>
     <lastmod>2019-07-31</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/06/28/timer/</loc>
@@ -76,10 +109,10 @@
     <loc>https://owen027.github.io/2019/03/05/oop3/</loc>
     <lastmod>2019-07-21</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/06/24/fetch/</loc>
+    <loc>https://owen027.github.io/2019/07/05/nginx/</loc>
     <lastmod>2019-07-21</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/07/05/nginx/</loc>
+    <loc>https://owen027.github.io/2019/06/24/fetch/</loc>
     <lastmod>2019-07-21</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/06/27/closure/</loc>
@@ -97,9 +130,6 @@
     <loc>https://owen027.github.io/2019/03/07/webpack/</loc>
     <lastmod>2019-06-24</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/06/17/zoomAndScale/</loc>
-    <lastmod>2019-06-24</lastmod>
-  </url>  <url>
     <loc>https://owen027.github.io/2019/06/18/setProperty/</loc>
     <lastmod>2019-06-24</lastmod>
   </url>  <url>
@@ -115,9 +145,6 @@
     <loc>https://owen027.github.io/2019/03/19/extend/</loc>
     <lastmod>2019-06-05</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/04/21/algorithm/</loc>
-    <lastmod>2019-06-05</lastmod>
-  </url>  <url>
     <loc>https://owen027.github.io/2019/04/04/Interator/</loc>
     <lastmod>2019-05-19</lastmod>
   </url>  <url>
@@ -127,10 +154,10 @@
     <loc>https://owen027.github.io/2019/03/07/modularization/</loc>
     <lastmod>2019-05-19</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/03/15/symbol/</loc>
+    <loc>https://owen027.github.io/2019/03/26/proxy/</loc>
     <lastmod>2019-04-21</lastmod>
   </url>  <url>
-    <loc>https://owen027.github.io/2019/03/26/proxy/</loc>
+    <loc>https://owen027.github.io/2019/03/15/symbol/</loc>
     <lastmod>2019-04-21</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/03/15/set/</loc>

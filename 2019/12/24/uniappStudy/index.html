@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="uniapp,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Owen" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="概叙uni-app是基于vueJS框架开发的微端应用框架，可一套代码跨ios\Android\H5\小程序等多个平台运行 可通过官方开发的HBuilderX IDE 创建uni-app项目，开箱即用，可快速上手。 开发规范 页面文件遵循Vue 单文件组件规范，数据绑定及数据处理支持vue规范 组件标签靠近小程序规范 接口API靠近微信小程序规范，将前缀wx改为uni 推荐使用Flex布局  目录结">
+<meta name="keywords" content="uniapp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uniapp 开发文档">
+<meta property="og:url" content="https://owen027.github.io/2019/12/24/uniappStudy/index.html">
+<meta property="og:site_name" content="Owen">
+<meta property="og:description" content="概叙uni-app是基于vueJS框架开发的微端应用框架，可一套代码跨ios\Android\H5\小程序等多个平台运行 可通过官方开发的HBuilderX IDE 创建uni-app项目，开箱即用，可快速上手。 开发规范 页面文件遵循Vue 单文件组件规范，数据绑定及数据处理支持vue规范 组件标签靠近小程序规范 接口API靠近微信小程序规范，将前缀wx改为uni 推荐使用Flex布局  目录结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-25T15:58:07.434Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="uniapp 开发文档">
+<meta name="twitter:description" content="概叙uni-app是基于vueJS框架开发的微端应用框架，可一套代码跨ios\Android\H5\小程序等多个平台运行 可通过官方开发的HBuilderX IDE 创建uni-app项目，开箱即用，可快速上手。 开发规范 页面文件遵循Vue 单文件组件规范，数据绑定及数据处理支持vue规范 组件标签靠近小程序规范 接口API靠近微信小程序规范，将前缀wx改为uni 推荐使用Flex布局  目录结">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://owen027.github.io/2019/12/24/uniappStudy/">
+
+
+
+
+
+  <title>uniapp 开发文档 | Owen</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/gaoguowen/oweng.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Owen</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://owen027.github.io/2019/12/24/uniappStudy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Owen Gao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Owen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">uniapp 开发文档</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-24T10:33:23+08:00">
+                2019-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概叙"><a href="#概叙" class="headerlink" title="概叙"></a>概叙</h2><p><code>uni-app</code>是基于vueJS框架开发的微端应用框架，可一套代码跨ios\Android\H5\小程序等多个平台运行</p>
+<p>可通过官方开发的<a href="https://www.dcloud.io/hbuilderx.html">HBuilderX</a> IDE 创建<code>uni-app</code>项目，开箱即用，可<a href="https://uniapp.dcloud.io/quickstart">快速上手</a>。</p>
+<h2 id="开发规范"><a href="#开发规范" class="headerlink" title="开发规范"></a>开发规范</h2><ul>
+<li>页面文件遵循Vue 单文件组件<a href="https://vue-loader.vuejs.org/zh/spec.html">规范</a>，数据绑定及数据处理支持<code>vue</code>规范</li>
+<li>组件标签靠近小程序<a href="https://uniapp.dcloud.io/component/README">规范</a></li>
+<li>接口API靠近微信小程序<a href="https://uniapp.dcloud.io/api/README">规范</a>，将前缀<code>wx</code>改为<code>uni</code></li>
+<li>推荐使用<code>Flex</code>布局</li>
+</ul>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>┌─common                uni-app公共资源目录<br>│  └─com-a.js<br>│  └─com-a.css<br>┌─components            uni-app组件目录<br>│  └─comp-a.vue         可复用的a组件<br>├─hybrid                存放本地网页的目录，<a href="https://uniapp.dcloud.io/component/web-view">详见</a><br>├─platforms             存放各平台专用页面的目录，<a href="https://uniapp.dcloud.io/platform">详见</a><br>├─pages                 业务页面文件存放的目录<br>│  ├─index<br>│  │  └─index.vue       index页面<br>│  └─list<br>│     └─list.vue        list页面<br>├─static                存放应用引用静态资源（如图片、视频等）的目录，注意：静态资源只能存放于此<br>├─wxcomponents          存放小程序组件的目录，<a href="https://uniapp.dcloud.io/frame?id=%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%BB%84%E4%BB%B6%E6%94%AF%E6%8C%81">详见</a><br>├─main.js               Vue初始化入口文件<br>├─App.vue               应用配置，用来配置App全局样式以及监听 应用生命周期 <a href="https://uniapp.dcloud.io/frame?id=%E5%BA%94%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">详见</a><br>├─manifest.json         配置应用名称、appid、logo、版本等打包信息，<a href="https://uniapp.dcloud.io/collocation/manifest">详见</a><br>└─pages.json            配置页面路由、导航条、选项卡等页面类信息，<a href="https://uniapp.dcloud.io/collocation/pages">详见</a></p>
+<blockquote>
+<p>static中的 js文件不会被编译，如果使用ES6将会报错<br>css、less等资源放入公共资源目录中</p>
+</blockquote>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><h3 id="应用生命周期"><a href="#应用生命周期" class="headerlink" title="应用生命周期"></a>应用生命周期</h3><p>应用生命周期仅只 <code>App.vue</code>中可监听</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">onLaunch</td>
+<td style="text-align:center">初始化项目完成时触发（仅触发一次）</td>
+</tr>
+<tr>
+<td style="text-align:center">onShow</td>
+<td style="text-align:center">启动项目或从后台进入前台显示时触发</td>
+</tr>
+<tr>
+<td style="text-align:center">onHide</td>
+<td style="text-align:center">从前台隐藏至后台时触发</td>
+</tr>
+<tr>
+<td style="text-align:center">onError</td>
+<td style="text-align:center">程序出错时触发</td>
+</tr>
+<tr>
+<td style="text-align:center">onuniViewMessage</td>
+<td style="text-align:center">对 nvue 页面发送数据进行监听 <a href="https://uniapp.dcloud.io/use-weex?id=nvue-%e5%90%91-vue-%e9%80%9a%e8%ae%af">详情</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="页面生命周期-详情"><a href="#页面生命周期-详情" class="headerlink" title="页面生命周期 详情"></a>页面生命周期 <a href="https://uniapp.dcloud.io/frame?id=%e9%a1%b5%e9%9d%a2%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">详情</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">onLoad</td>
+<td style="text-align:center">监听页面加载，可接受上个页面传递的数据，param[Object], <a href="https://uniapp.dcloud.io/api/router?id=navigateto">详情</a></td>
+</tr>
+<tr>
+<td style="text-align:center">onShow</td>
+<td style="text-align:center">监听页面显示，每次出现在屏幕时触发</td>
+</tr>
+<tr>
+<td style="text-align:center">onReady</td>
+<td style="text-align:center">页面初次渲染完成时触发，可能会在页面进入动画完成前触发</td>
+</tr>
+<tr>
+<td style="text-align:center">onHide</td>
+<td style="text-align:center">从隐藏至后台时触发</td>
+</tr>
+<tr>
+<td style="text-align:center">onUnload</td>
+<td style="text-align:center">监听页面卸载</td>
+</tr>
+<tr>
+<td style="text-align:center">onResize</td>
+<td style="text-align:center">监听窗口变化 仅支持 5+App、微信小程序</td>
+</tr>
+<tr>
+<td style="text-align:center">onPullDownRefresh</td>
+<td style="text-align:center">监听用户下拉动作，<a href="https://uniapp.dcloud.io/api/ui/pulldown">详情</a></td>
+</tr>
+<tr>
+<td style="text-align:center">onReachBottom</td>
+<td style="text-align:center">监听页面上拉触底事件</td>
+</tr>
+<tr>
+<td style="text-align:center">onTabItemTap</td>
+<td style="text-align:center">点击Tab触发，param[Object]：( &nbsp;{index:String,pagePath:String,text:String} &nbsp;)。仅支持 微信小程序、百度小程序、H5、5+App（自定义组件模式）</td>
+</tr>
+<tr>
+<td style="text-align:center">onShareAppMessage</td>
+<td style="text-align:center">用户点击右上角分享触发  仅支持 微信小程序、百度小程序、头条小程序、支付宝小程序</td>
+</tr>
+<tr>
+<td style="text-align:center">onPageScroll</td>
+<td style="text-align:center">监听页面滚动，param[Object]：（ &nbsp; {scrollTop:Number} 页面在垂直方向已滚动的距离（单位px） ）</td>
+</tr>
+<tr>
+<td style="text-align:center">onNavigationBarButtonTap</td>
+<td style="text-align:center">监听原生标题栏按钮点击事件，param[Object]:(&nbsp; {index:Number} &nbsp;) 原生标题栏按钮数组的下标 仅支持     5+ App、H5</td>
+</tr>
+<tr>
+<td style="text-align:center">onBackPress</td>
+<td style="text-align:center">监听页面返回，event对象为 {from:backbutton,navigateBack},backbutton:来源于左上角按钮或android返回键，navigateBack:来源于uni.navigateBack。<a href="https://ask.dcloud.net.cn/article/35120">详情</a> 仅支持     5+ App、H5</td>
+</tr>
+<tr>
+<td style="text-align:center">onNavigationBarSearchInputChanged</td>
+<td style="text-align:center">监听原生标题栏搜索输入框内容变化，param[Object] 仅支持     5+ App、H5</td>
+</tr>
+<tr>
+<td style="text-align:center">onNavigationBarSearchInputConfirmed</td>
+<td style="text-align:center">监听原生标题栏搜索输入框搜索事件，点击软键盘上的搜索按钮，param[Object] 仅支持     5+ App、H5</td>
+</tr>
+<tr>
+<td style="text-align:center">onNavigationBarSearchInputClicked</td>
+<td style="text-align:center">监听原生标题栏搜索输入框点击事件，param[Object] 仅支持     5+ App、H5</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>onTabItemTap 常用于点击当前tabItem,滚动或刷新当前页面。</li>
+</ul>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p><code>uni-app</code> 的路由全权由框架统一管理，通过<code>pages.json</code>配置每个路由页面路径及样式，不支持 <code>vueRouter</code><br>其路由有两种方式可跳转：使用 <a href="https://uniapp.dcloud.io/component/navigator">navigation</a> 组件跳转、调用<a href="https://uniapp.dcloud.io/api/router">API</a>跳转<br>框架是以栈的形式管理所有页面，当路由切换时，页面栈的表现详见<a href="https://uniapp.dcloud.io/frame?id=%e9%a1%b5%e9%9d%a2%e6%a0%88">详情</a></p>
+<h2 id="运行环境的判断"><a href="#运行环境的判断" class="headerlink" title="运行环境的判断"></a>运行环境的判断</h2><ul>
+<li><p>判断开发生产环境（process.env.NODE_ENV）<a href="https://uniapp.dcloud.io/frame?id=%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83%e5%92%8c%e7%94%9f%e4%ba%a7%e7%8e%af%e5%a2%83">详情</a></p>
+</li>
+<li><p>判断平台通过编辑条件判断编译出包后的代码<a href="https://uniapp.dcloud.io/platform">详情</a>,通过API <code>uni.getSystemInfoSync().platform</code> 判断客户端环境 android/ios/devtools （小程序）</p>
+</li>
+</ul>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><h3 id="单位-详见"><a href="#单位-详见" class="headerlink" title="单位 详见"></a>单位 <a href="https://uniapp.dcloud.io/frame?id=%e9%a1%b5%e9%9d%a2%e6%a0%b7%e5%bc%8f%e4%b8%8e%e5%b8%83%e5%b1%80">详见</a></h3><p><code>uni-app</code>支持通用单位<code>px</code>,<code>rpx</code><br><code>px</code>：固定的屏幕像素<br><code>rpx</code>：响应式像素，是相对于基准宽度的单位，可以根据屏幕宽度进行自适应，<code>uni-app</code> 规定屏幕基准宽度 750rpx。转化公式（750 * 元素在设计稿中的宽度 / 设计稿基准宽度）</p>
+<ul>
+<li>rpx和宽度相关，屏幕越框，实际像素越大，它不支持动态横竖屏切换计算，如果使用<code>rpx</code>建议锁定屏幕方向</li>
+<li>设计师可用iphone6作为视稿标准</li>
+<li>如果设计稿不是 750px，HBuilderX提供了工具自动换算，<a href="https://ask.dcloud.net.cn/article/35445">详见</a></li>
+</ul>
+<h4 id="H5单位"><a href="#H5单位" class="headerlink" title="H5单位"></a>H5单位</h4><ul>
+<li>rem: 默认根字体大小为 屏幕宽度/20 (支持 微信小程序、头条小程序、App、H5)</li>
+<li>vh: 1vh等于视窗高度的1%</li>
+<li>vw: 1vw等于视窗宽度的1%</li>
+</ul>
+<p><strong>nvue 不支持百分比，App端，在 pages.json仅支持px</strong></p>
+<h3 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h3><p>静态样式统一写至class中，style只接受动态样式，这样可以避免性能的消耗</p>
+<p>目前支持的选择器<br>class,id,element,::before:/::after(仅微信小程序和5+APP生效)</p>
+<p><strong>无法使用<code>*</code>,page相当于body</strong><br>App.vue 中的样式为全局样式，nvue不支持全局样式</p>
+<h4 id="css变量"><a href="#css变量" class="headerlink" title="css变量"></a>css变量</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">变量</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">–status-bar-height</td>
+<td style="text-align:center">系统状态栏高度，小程序为25px，H5为0</td>
+</tr>
+<tr>
+<td style="text-align:center">–window-top</td>
+<td style="text-align:center">内容区域距离顶部的距离，小程序为0 ，H5为NavigationBar高度</td>
+</tr>
+<tr>
+<td style="text-align:center">–window-bottom</td>
+<td style="text-align:center">内容区域距离底部部的距离，小程序为0 ，H5为TabBar高度</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>当设置 <code>navigationStyle:&quot;custom&quot;</code>取消原生导航栏，由于窗体沉浸式，占据了状态栏位置。此时可使用<code>var(--status-bar-height)</code>的view放在页面顶部，避免页面内容出现在状态栏。</li>
+<li>由于H5端部存在原生导航栏和tabBar,因此由前端模拟</li>
+<li>目前 nvue 不支持<code>--status-bar-height</code>,可在页面onLoad时通过<code>uni.getSystemInfoSync().statusBarHeight</code>获取状态栏高度，然后通过style绑定方式给占位view设定高度。</li>
+</ul>
+<p><strong>NavigationBar导航栏( 固定高度<code>44px</code> 不可修改),TabBar 底部选项卡( 固定高度<code>50px</code> 不可修改)</strong></p>
+<h4 id="背景图注意点"><a href="#背景图注意点" class="headerlink" title="背景图注意点"></a>背景图注意点</h4><ul>
+<li>支持base64、网络路径图</li>
+<li>本地路径图小于40Kb,自动转化为base64,大于则须手动转化，或使用网络路径的方式引用。</li>
+<li>推荐以<code>~@</code>的方式引用图片，而V3版本设定为不自动转化成base64</li>
+<li><strong>微信小程序不支持相对路径</strong></li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">'~@/static/logo.png'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="字体图"><a href="#字体图" class="headerlink" title="字体图"></a>字体图</h5><ul>
+<li>网络路径必须加协议头 <code>https</code></li>
+<li>字体文件大于等于 40kb， 需开发者自己转换，否则使用将不生效；<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> @<span class="keyword">font-face</span> &#123;</span><br><span class="line">     <span class="attribute">font-family</span>: test1-icon;</span><br><span class="line">     <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'~@/static/iconfont.ttf'</span>);</span><br><span class="line"> &#125;</span><br><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line"><span class="attribute">font-family</span>: <span class="string">'iconfont'</span>;</span><br><span class="line"><span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'https://at.alicdn.com/t/font_865816_17gjspmmrkti.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><p><a href="https://cn.vuejs.org/v2/guide/typescript.html">Vue.js 对 TypeScript 支持详情</a></p>
+<h2 id="对应小程序自定义组件存放目录"><a href="#对应小程序自定义组件存放目录" class="headerlink" title="对应小程序自定义组件存放目录"></a><a href="https://uniapp.dcloud.io/frame?id=%e5%b0%8f%e7%a8%8b%e5%ba%8f%e7%bb%84%e4%bb%b6%e6%94%af%e6%8c%81">对应小程序自定义组件存放目录</a></h2>
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #999;font-size:14px;">--------------------- Thank you <i class="fa fa-paw"></i> for reading ---------------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+  
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/uniapp/" rel="tag"><i class="fa fa-tag"></i> uniapp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/18/javascript_events/" rel="next" title="javascript_events">
+                <i class="fa fa-chevron-left"></i> javascript_events
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/25/uniappPagesConfigs/" rel="prev" title="uniapp的路由配置">
+                uniapp的路由配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=Share" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Owen Gao">
+            
+              <p class="site-author-name" itemprop="name">Owen Gao</p>
+              <p class="site-description motion-element" itemprop="description"> ES5/6/7, Axios, Promise, Vue, NodeJs</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/owen027" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zgaoguowen@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/gaoguowen/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概叙"><span class="nav-number">1.</span> <span class="nav-text">概叙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发规范"><span class="nav-number">2.</span> <span class="nav-text">开发规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构"><span class="nav-number">3.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">4.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用生命周期"><span class="nav-number">4.1.</span> <span class="nav-text">应用生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面生命周期-详情"><span class="nav-number">4.2.</span> <span class="nav-text">页面生命周期 详情</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由"><span class="nav-number">5.</span> <span class="nav-text">路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行环境的判断"><span class="nav-number">6.</span> <span class="nav-text">运行环境的判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布局"><span class="nav-number">7.</span> <span class="nav-text">布局</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单位-详见"><span class="nav-number">7.1.</span> <span class="nav-text">单位 详见</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#H5单位"><span class="nav-number">7.1.1.</span> <span class="nav-text">H5单位</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内联样式"><span class="nav-number">7.2.</span> <span class="nav-text">内联样式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#css变量"><span class="nav-number">7.2.1.</span> <span class="nav-text">css变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#背景图注意点"><span class="nav-number">7.2.2.</span> <span class="nav-text">背景图注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字体图"><span class="nav-number">7.2.2.1.</span> <span class="nav-text">字体图</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TypeScript"><span class="nav-number">8.</span> <span class="nav-text">TypeScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对应小程序自定义组件存放目录"><span class="nav-number">9.</span> <span class="nav-text">对应小程序自定义组件存放目录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Owen Gao</span>
+<!--
+  
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">98.3k</span>
+  
+  -->
+</div>
+
+  <!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+
+-->
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src>
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

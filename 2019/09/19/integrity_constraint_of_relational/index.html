@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="概述 数据完整性指数据库中数据的正确性、相容性和一致性。包括现实世界中的应用需求的完整性。数据的完整性由完整性规则来定义。 关系模型的完整性规则是对关系的某种约束，提供一种手段来保证用户对数据库的修改时不会破坏数据库中数据的完整性。保证数据是有意义的。 关系模型分三类约束：实体完整性约束、参照完整性约束和用户自定义完整性约束。 前两者是必须满足的条件，称作关系的两个不变性。由DBMS自动支持 实体">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-19T15:10:50.621Z">
+<meta property="og:updated_time" content="2019-12-25T13:34:08.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关系数据模型要素三 关系完整性约束">
 <meta name="twitter:description" content="概述 数据完整性指数据库中数据的正确性、相容性和一致性。包括现实世界中的应用需求的完整性。数据的完整性由完整性规则来定义。 关系模型的完整性规则是对关系的某种约束，提供一种手段来保证用户对数据库的修改时不会破坏数据库中数据的完整性。保证数据是有意义的。 关系模型分三类约束：实体完整性约束、参照完整性约束和用户自定义完整性约束。 前两者是必须满足的条件，称作关系的两个不变性。由DBMS自动支持 实体">
@@ -113,7 +113,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -214,6 +214,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
@@ -224,22 +234,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
             
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
+            站点地图
           </a>
         </li>
       
@@ -360,8 +360,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Datebase-basis/" itemprop="url" rel="index">
-                    <span itemprop="name">Datebase basis</span>
+                  <a href="/categories/Database-basis/" itemprop="url" rel="index">
+                    <span itemprop="name">Database basis</span>
                   </a>
                 </span>
 
@@ -439,8 +439,9 @@
 <h3 id="实体完整性约束（Entity-Integrity-Constraint）"><a href="#实体完整性约束（Entity-Integrity-Constraint）" class="headerlink" title="实体完整性约束（Entity Integrity Constraint）"></a>实体完整性约束（Entity Integrity Constraint）</h3><p>此约束指关系的主属性，主码不能为空，在关系数据库系统中，一个关系对应一张表，实体完整性指在数据存储数据的表中，主键/码不能取控值 NULL</p>
 <h3 id="参照完整性约束-（Referential-Integrity-Constraint）"><a href="#参照完整性约束-（Referential-Integrity-Constraint）" class="headerlink" title="参照完整性约束 （Referential Integrity Constraint）"></a>参照完整性约束 （Referential Integrity Constraint）</h3><p>现实世界中实体之间往往存在某种联系，在关系模型中这种联系通过关系来描述</p>
 <blockquote>
-<p>参照完整性约束就说定义外码和主码之间的引用规则，是对关系间引用数据的一种限制。若属性（属性组）X 是基本关系 R 的外码，它与基本关系 S 的主码 Y 对应，那么 R 中每个元组在 F 上的值要么取 NULL，要么等于 S中对应元组的主码值。 R 和 S 可以是不同的关系，也可以是同一关系。<br>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">教师（职工号，姓名，性别，系编号）</span><br><span class="line">系（系编号，系名，办公地点）</span><br></pre></td></tr></table></figure></p>
+<p>参照完整性约束就说定义外码和主码之间的引用规则，是对关系间引用数据的一种限制。若属性（属性组）X 是基本关系 R 的外码，它与基本关系 S 的主码 Y 对应，那么 R 中每个元组在 F 上的值要么取 NULL，要么等于 S中对应元组的主码值。 R 和 S 可以是不同的关系，也可以是同一关系。</p>
 </blockquote>
+<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">教师（职工号，姓名，性别，系编号）</span><br><span class="line">系（系编号，系名，办公地点）</span><br></pre></td></tr></table></figure></p>
 <p>上述两个关系之间存在属性的引用，系编码既是 <code>系</code> 关系的主码又是<code>教师</code>关系的外部码。那么<code>教师</code> 关系中系编码属性的取值需要参照 <code>系</code>关系中系编码的值或为 NULL。</p>
 <h3 id="用户定义完整性约束-（User-defined-Integrity-constraint）"><a href="#用户定义完整性约束-（User-defined-Integrity-constraint）" class="headerlink" title="用户定义完整性约束 （User-defined Integrity constraint）"></a>用户定义完整性约束 （User-defined Integrity constraint）</h3><p>此约束针对某一应用环境的完整性约束条件，反映了某一具体应用所涉及的数据应满足的要求。关系模型提供定义和检验的机制，此类规则一般在建立数据库表的同时进行定义，如果某些条件未建立在库表一级，则应在各个模块的具体编程中通过程序进行检查和控制。</p>
 <h3 id="关系模型完整性约束检验-重点"><a href="#关系模型完整性约束检验-重点" class="headerlink" title="关系模型完整性约束检验   重点"></a>关系模型完整性约束检验   <label style="color:red; ">重点</label></h3><p>在对数据库进行修改时须检验是否满足对上述三类完整性约束</p>
@@ -582,7 +583,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -593,7 +594,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -604,7 +605,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -702,7 +703,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">84.8k</span>
+    <span title="Site words total count">98.3k</span>
   
   -->
 </div>

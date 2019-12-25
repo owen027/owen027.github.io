@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="React.Component 使用ES6 classes 方式定义React组件的基类最好不要建立自己的组件基类，因为，在React组件中，代码重用的主要方式是组合而不是继承  setState(updater[, callback]) 用于更新用户界面以响应事件处理器和处理服务器数据的主要方法  此方法不会总数立即更新组件，他会批量推迟更新，如果需要使用setState 后立即读取 state">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-31T14:27:01.281Z">
+<meta property="og:updated_time" content="2019-12-25T13:34:08.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React.Component API">
 <meta name="twitter:description" content="React.Component 使用ES6 classes 方式定义React组件的基类最好不要建立自己的组件基类，因为，在React组件中，代码重用的主要方式是组合而不是继承  setState(updater[, callback]) 用于更新用户界面以响应事件处理器和处理服务器数据的主要方法  此方法不会总数立即更新组件，他会批量推迟更新，如果需要使用setState 后立即读取 state">
@@ -113,7 +113,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -214,6 +214,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
@@ -224,22 +234,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
             
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
+            站点地图
           </a>
         </li>
       
@@ -461,7 +461,7 @@
 <li>React.PureComponent 中以层对比 prop 和state 的方式实现<code>shouldComponentUpdate</code>方法</li>
 </ul>
 </blockquote>
-<p>在某些情况下使用<code>React.PureComponent</code>可提高性能<br><strong>注意：如果对象中包含赋值的数据结构，可能因无法监测深层次的差别，产生错误的对比结果。所以仅在props和state较为简单时使用<code>React.PureComponent</code>。此外，<code>shouldComponentUpdate</code>方法会跳过所以子组件树的prop 更新</strong></p>
+<p>在某些情况下使用<code>React.PureComponent</code>可提高性能<br><strong>注意：如果对象中包含赋值的数据结构，可能因无法监测深层次的差别，产生错误的对比结果。所以仅在props和state较为简单时使用<code>React.PureComponent</code>。此外，<code>shouldComponentUpdate</code>方法会跳过所有子组件树的prop 更新</strong></p>
 <h2 id="React-memo"><a href="#React-memo" class="headerlink" title="React.memo"></a>React.memo</h2><blockquote>
 <p><code>React.memo</code> 是高级函数组件，它与 React.pureComponent 相似，但不支持class组件。此方法仅做为<a href="https://zh-hans.reactjs.org/docs/optimizing-performance.html">性能优化</a>的方式存在<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyMemo = <span class="function">(<span class="params">props</span>) =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &lt;li&gt;/* ... */&lt;/li&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> MemoComponent = React.memo(MyMemo)</span><br></pre></td></tr></table></figure></p>
 </blockquote>
@@ -602,7 +602,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -613,7 +613,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -624,7 +624,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -722,7 +722,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">84.8k</span>
+    <span title="Site words total count">98.3k</span>
   
   -->
 </div>

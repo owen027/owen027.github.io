@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是吧数据库比赛为关系的集合，并以二维表格的形式组织数">
+<meta name="description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是把数据库表示为关系的集合，并以二维表格的形式组织数">
 <meta name="keywords" content="relationDataModel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关系数据模型要素一 （关系数据结构）">
 <meta property="og:url" content="https://owen027.github.io/2019/09/09/relation_data_model/index.html">
 <meta property="og:site_name" content="Owen">
-<meta property="og:description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是吧数据库比赛为关系的集合，并以二维表格的形式组织数">
+<meta property="og:description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是把数据库表示为关系的集合，并以二维表格的形式组织数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-18T13:48:28.345Z">
+<meta property="og:updated_time" content="2019-12-25T13:34:08.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关系数据模型要素一 （关系数据结构）">
-<meta name="twitter:description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是吧数据库比赛为关系的集合，并以二维表格的形式组织数">
+<meta name="twitter:description" content="概叙关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。 关系数据模型作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。 关系数据结构  重点 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是把数据库表示为关系的集合，并以二维表格的形式组织数">
 
 
 
@@ -113,7 +113,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -214,6 +214,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
@@ -224,22 +234,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
             
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
+            站点地图
           </a>
         </li>
       
@@ -360,8 +360,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Datebase-basis/" itemprop="url" rel="index">
-                    <span itemprop="name">Datebase basis</span>
+                  <a href="/categories/Database-basis/" itemprop="url" rel="index">
+                    <span itemprop="name">Database basis</span>
                   </a>
                 </span>
 
@@ -437,7 +437,7 @@
 
 <h2 id="概叙"><a href="#概叙" class="headerlink" title="概叙"></a>概叙</h2><p>关系数据库的基本特征是使用关系模型的组织数据，20世纪80年代以后，在商用DBMS中，关系模型逐步取代早期的网状模型和层次模型。</p>
 <h2 id="关系数据模型"><a href="#关系数据模型" class="headerlink" title="关系数据模型"></a>关系数据模型</h2><p>作为数据模型，关系模型包含三个组成要素：关系数据结构、关系操作集合和关系完整性约束。</p>
-<h3 id="关系数据结构-重点"><a href="#关系数据结构-重点" class="headerlink" title="关系数据结构  重点"></a>关系数据结构  <label style="color:red; ">重点</label></h3><p> 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是吧数据库比赛为关系的集合，并以二维表格的形式组织数据。</p>
+<h3 id="关系数据结构-重点"><a href="#关系数据结构-重点" class="headerlink" title="关系数据结构  重点"></a>关系数据结构  <label style="color:red; ">重点</label></h3><p> 结构只包含单一的数据结构（关系），现实世界的实体与实体间的各种联系均用关系来表示。关系模型是把数据库表示为关系的集合，并以二维表格的形式组织数据。</p>
 <p> 录入一张二维表格如：</p>
 <table>
 <thead>
@@ -734,7 +734,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -745,7 +745,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -756,7 +756,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -854,7 +854,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">84.8k</span>
+    <span title="Site words total count">98.3k</span>
   
   -->
 </div>
