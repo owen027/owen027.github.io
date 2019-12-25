@@ -1,5 +1,5 @@
 ---
-title: uniapp 学习
+title: uniapp 开发规范
 date: 2019-12-24 10:33:23
 categorise:
 - notes
