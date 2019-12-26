@@ -189,7 +189,9 @@ tags:
 |mindButton|否|Object||中间按钮仅在list为偶数时生效|App2.3.4+|
 
 #### list 属性说明
+
 list数组中的子项都为对象，其属性为：
+
 |属性|值类型|是否必选|说明
 |:-:|:-:|:-:|:-:|
 |pagePath|String|是|页面路径，须在pages中选定义|
@@ -198,4 +200,139 @@ list数组中的子项都为对象，其属性为：
 |selectedIconPath|String|否|选中时的图片|
 
 #### midButton
+
+|属性|值类型|是否必选|默认值|说明
+|:-:|:-:|:-:|:-:|:-:|
+|width|String|否|中间按钮的宽度，tabBar中其它项为减去此宽度后平分，默认值为与其它项平分|
+|height|String|否|中间按钮的高度|
+|text|String|否|中间按钮的文字|
+|iconPath|String|否|中间按钮的图片路径|
+|iconWidth|String|否|图片宽度|
+|backgroundImage|String|否|背景图|
+
+mindButton 没有pagePath,需监听点击事件，自行处理点击后的逻辑，监听事件：`uni.onTabBarMidBottonTap`[详情](https://uniapp.dcloud.io/api/ui/tabbar?id=ontabbarmidbuttontap)，此事件仅支持 App
+
+#### tabBar常见问题 [详情](tabbar常见问题)
+- tabBar在各个平台的默认高度不一，App在HBuilderX 2.3.4起从56px调整为50px,
+- 通过`JS API`实现动态修改[tabBar](https://uniapp.dcloud.io/api/ui/tabbar)
+- JS代码跳转至tabBar页面，API 只能使用`uni.switchTab`,不能使用`uni.navigateTo`、`uni,rediretTo`,使用 `navigator`组件跳转时须设置属性`open-type="switchTab"`
+- 原生tabBar有且只有一个在首页，二级页如需Tab,须自行实现
+- 如需先登录，后进入tab页面，无须将登录页设为首页，可参考HBuilderX新建项目时的登录模板
+
+ ```js
+"tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+        "pagePath": "pages/component/index",
+        "iconPath": "static/image/icon_component.png",
+        "selectedIconPath": "static/image/icon_component_HL.png",
+        "text": "组件"
+    }, {
+        "pagePath": "pages/API/index",
+        "iconPath": "static/image/icon_API.png",
+        "selectedIconPath": "static/image/icon_API_HL.png",
+        "text": "接口"
+    }]
+}
+ ```
+ 
+### condition
+
+启动模式配置，仅开放环境有效，模拟直达页面的场景，（如：小程序转发后，用户点击所打开的页面）
+
+|属性|值类型|是否必选|描述|
+|:-:|:-:|:-:|:-:|
+|current|Number|是|当前激活的模式，list节点的索引值|
+|list|Array|是|启动模式列表|
+
+#### list
+
+|属性|值类型|是否必选|描述|
+|:-:|:-:|:-:|:-:|
+|name|String|是|启动模式名|
+|path|String|是|启动页面路径|
+|query|String|否|启动参数，可在onLoad中获取|
+
+```js 
+"condition": { //模式配置，仅开发期间生效
+    "current": 0, //当前激活的模式（list 的索引项）
+    "list": [{
+            "name": "swiper", //模式名称
+            "path": "pages/component/swiper/swiper", //启动页面，必选
+            "query": "interval=4000&autoplay=false" //启动参数，在页面的onLoad函数里面得到。
+        },
+        {
+            "name": "test",
+            "path": "pages/component/switch/switch"
+        }
+    ]
+}
+```
+
+### subPackages
+分包加载配置**此配置为小程序的分包加载机制**
+- 微信、百度每个分包大概2M，总共不能超过8M
+- 支付宝每个分包大概2M，不能超过4M
+- **subPackages 的pages路径为 `root`下的相对路径**
+- [分包优化详情](https://uniapp.dcloud.io/collocation/manifest?id=%e5%85%b3%e4%ba%8e%e5%88%86%e5%8c%85%e4%bc%98%e5%8c%96%e7%9a%84%e8%af%b4%e6%98%8e)
+- 对于`vendor.js`过大情况可使用运行是压缩代码：HBuilderX创建的项目勾选 运行->运行到小程序模拟器->运行时是否压缩代码；cli项目可在 `packge.json`中添加参数 `--minimize`
+
+|属性|值类型|是否必选|描述|
+|:-:|:-:|:-:|:-:|
+|root|String|是|子包根目录|
+|pages|Array|是|子包由哪些页面组成参数同 `pages`|
+
+```js
+{
+    "pages": [{
+        "path": "pages/index/index",
+        "style": { ...}
+        }, {
+        "path": "pages/login/login",
+        "style": { ...}
+        }
+    ],
+    "subPackages": [{
+        "root": "pagesA",
+        "pages": [{
+            "path": "list/list",
+            "style": { ...}
+            }]
+        }, 
+
+        {
+        "root": "pagesB",
+        "pages": [{
+            "path": "detail/detail",
+            "style": { ...}
+            }]
+        }
+    ],
+    "preloadRule": {
+        "pagesA/list/list": {
+            "network": "all",
+            "packages": ["__APP__"]
+        },
+        "pagesB/detail/detail": {
+            "network": "all",
+            "packages": ["pagesA"]
+        }
+    }
+}
+
+```
+
+### preloadRule
+
+分包预加载配置。
+
+|属性|值类型|是否必选|描述|
+|:-:|:-:|:-:|:-:|
+|packages|Array<String>|是|进入页面后预下载分包的root或name|
+|network|String|否|在指定网络下预下载，all(不限网络)、wifi(默认仅WiFi下预下载)|
+
+
 
