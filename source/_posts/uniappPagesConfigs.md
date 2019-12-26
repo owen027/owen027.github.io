@@ -1,16 +1,16 @@
 ---
 title: uniapp的路由配置
 date: 2019-12-25 14:36:18
-categorise:
+categories:
 - notes
 tags:
 - uniappPages
 ---
 `uniapp`通过根目录中的`pages.json`文件决定页面文件的路径、窗口样式、原生导航栏、底部原生tarBar等
 
-## 配置像列表
+## 配置项列表
 
-|属性|类型|是否必填|功能|兼容|
+|属性|值类型|是否必选|描述|兼容|
 |:-:|:-:|:-:|:-:|:-:|
 |[globalStyle](https://uniapp.dcloud.io/collocation/pages?id=globalstyle)|Object|否|设置默认页面的窗口表现,可设置应用的状态栏、导航条、标题、窗口背景色等。|
 |[pages](https://uniapp.dcloud.io/collocation/pages?id=pages)|Object,Array|是|设置页面的路径及窗口表现|
@@ -58,7 +58,7 @@ tags:
         "navigationBarBackgroundColor": "#F8F8F8", // 导航栏背景色
 
         "backgroundColor": "#F8F8F8",
-        
+
         "navigationStyle":"default", // 导航栏样式，仅支持 default/custom。custom即取消默认的原生导航栏 //仅支持 微信小程序 7.0+、百度小程序、H5、App（2.0.3+）
 
         "backgroundColor":"#ffffff", //窗口背景色 //仅支持微信小程序
@@ -173,7 +173,7 @@ tags:
 - tabBar中list是数组最少配置2个，最多5个tab,按数组顺序排列
 - 切换第一次加载时可能渲染不及时，可在每个Tabbar页面的onLoad生命周期中先弹出一个loading
 - 页面出现过后，保存在内存中，切换tabbar,之后触发onShow,不在触发onLoad
-  
+
 |属性|是否必选|值类型|默认值|描述|平台差异|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |color|是|HexColor||tab字体默认颜色||
@@ -238,7 +238,7 @@ mindButton 没有pagePath,需监听点击事件，自行处理点击后的逻辑
     }]
 }
  ```
- 
+
 ### condition
 
 启动模式配置，仅开放环境有效，模拟直达页面的场景，（如：小程序转发后，用户点击所打开的页面）
@@ -256,7 +256,7 @@ mindButton 没有pagePath,需监听点击事件，自行处理点击后的逻辑
 |path|String|是|启动页面路径|
 |query|String|否|启动参数，可在onLoad中获取|
 
-```js 
+```js
 "condition": { //模式配置，仅开发期间生效
     "current": 0, //当前激活的模式（list 的索引项）
     "list": [{
@@ -301,7 +301,7 @@ mindButton 没有pagePath,需监听点击事件，自行处理点击后的逻辑
             "path": "list/list",
             "style": { ...}
             }]
-        }, 
+        },
 
         {
         "root": "pagesB",

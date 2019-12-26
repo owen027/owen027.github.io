@@ -4,7 +4,7 @@ date: 2019-12-18 13:55:26
 categories:
 - notes
 tags:
-- js events
+- JS_events
 ---
 ## 事件
 事件是某事发生的信号，它可以被系统侦测到，从而触发某个函数或程序
