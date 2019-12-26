@@ -672,11 +672,11 @@ pace: true
 Themes list:
 #pace-theme-big-counter
 #pace-theme-bounce
- ace-theme-barber-shop
+#ace-theme-barber-shop
 #pace-theme-center-atom
 #pace-theme-center-circle
 #pace-theme-center-radar
-#pace-theme-center-simple
+# pace-theme-center-simple
 #pace-theme-corner-indicator
 #pace-theme-fill-left
 #pace-theme-flash
@@ -685,7 +685,7 @@ Themes list:
 #pace-theme-minimal
 # For example
 # pace_theme: pace-theme-center-simple
-pace_theme: pace-theme-loading-bar
+pace_theme: pace-theme-bounce
 # Canvas-nest
 canvas_nest: false
 
