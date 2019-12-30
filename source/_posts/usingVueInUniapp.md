@@ -10,8 +10,10 @@ tags:
 **uniapp完全支持vue的生命钩子函数、模板语法、计算属性、条件渲染、列表渲染**
 
 ## 组件
+**uni-app只支持vue单文件组件（.vue 组件）**render，和`<script type="text/x-template"> `字符串模版等 非H5端都不支持
+uni-app 支持配置全局组件，需在 main.js 里进行全局注册，注册后就可在所有页面里使用该组件。
 
-表单控件使用原生或uniapp生态库中的[组件](https://ext.dcloud.net.cn/)
+表单控件推荐使用原生或uniapp生态库中的[组件](https://ext.dcloud.net.cn/)
 非H5不支持v-html [跨端的富文本处理方案详情](https://ask.dcloud.net.cn/article/35772)
 非H5端不支持列表：
 - Slot（scoped 暂时还没做支持）
@@ -23,8 +25,108 @@ tags:
 - transition （可使用 animation 或 CSS 动画替代）
 - 老的非自定义组件编译模式不支持在组件引用时，在组件上定义 click 等原生事件、v-show（可用 v-if 代替）和 class style 等样式属性(例：<card - class="class-name"> </card> 样式是不会生效的)。建议更新为自定义组件模式
 - [老的非自定义组件编译模式](https://ask.dcloud.net.cn/article/35843)组件里使用 slot 嵌套的其他组件时不支持 v-for。建议更新为自定义组件模式
-**uni-app只支持vue单文件组件（.vue 组件）**render，和<script type="text/x-template"> 字符串模版等 非H5端都不支持
 
+### 保留关键字
+标准的 HTML 及 SVG 标签名不能作为组件名。
+```html
+a
+canvas
+cell
+content
+countdown
+datepicker
+div
+element
+embed
+header
+image
+img
+indicator
+input
+link
+list
+loading-indicator
+loading
+marquee
+meta
+refresh
+richtext
+script
+scrollable
+scroller
+select
+slider-neighbor
+slider
+slot
+span
+spinner
+style
+svg
+switch
+tabbar
+tabheader
+template
+text
+textarea
+timepicker
+trisition-group
+trisition
+video
+view
+web
+```
+### 组件属性设置不生效解决办法
+当重复设置某些属性为相同的值时，不会同步到view层。每次将scroll-view组件的scroll-top属性值设置为0，只有第一次能顺利返回顶部。 这和props的单向数据流特性有关，组件内部scroll-top的实际值改动后，其绑定的属性并不会一同变化。
+解决方法：
+- 监听scroll事件，记录组件内部变化的值，在设置新值之前先设置为记录的当前值 （推荐使用）
+```html
+<scroll-view :scroll-top="scrollTop" scroll-y="true" @scroll="scroll">
+<script>
+export default {
+    data() {
+        return {
+            scrollTop: 0,
+            old: {
+                scrollTop: 0
+            }
+        }
+    },
+    methods: {
+        scroll: function(e) {
+            this.old.scrollTop = e.detail.scrollTop
+        },
+        goTop: function(e) {
+            this.scrollTop = this.old.scrollTop
+            this.$nextTick(function() {
+                this.scrollTop = 0
+            });
+        }
+    }
+}
+</script>
+```
+- 监听scroll事件，获取组件内部变化的值，实时更新其绑定值
+```js
+export default {
+    data() {
+        return {
+            scrollTop: 0,
+        }
+    },
+    methods: {
+        scroll: function(e) {
+            this.scrollTop = e.detail.scrollTop
+        },
+        goTop: function(e) {
+            this.scrollTop = 0
+        }
+    }
+}
+```
+### 获取上页传递的数据
+
+可在onLoad 里得到，onLoad 的参数是其他页面打开当前页面所传递的数据。
+uni-app 内置了 vuex ，在app里的使用，可参考hello-uniapp store/index.js。
 ## 各个平台使用v-for的差异
 - 在H5中，`v-for="(item, index) in 10"` item 是从 1开始，其它平台从0开始
 - 非H5中，不支持第三个参数 `v-for="(value, name, index) in object"` index 是不支持的
@@ -116,4 +218,6 @@ vue与uniapp对应的事件名称：
 **禁止蒙版下的页面滚动可使用 @touchmove.stop.prevent="handle"**
 
 无按键修饰符
+
+
 
