@@ -1157,6 +1157,7 @@ pre .javascript .function {
 @media (max-width: 767px) {
   .site-nav-toggle {
     display: block;
+    float: left;
   }
 }
 .site-nav-toggle button {
@@ -1201,7 +1202,7 @@ pre .javascript .function {
 }
 .menu .menu-item a {
   display: block;
-  font-size: 13px;
+  font-size: 18px;
   line-height: inherit;
   border-bottom: 1px solid transparent;
   transition-property: border-color;
@@ -1942,7 +1943,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #829406;
+  background: #061199;
 }
 .links-of-blogroll {
   font-size: 13px;

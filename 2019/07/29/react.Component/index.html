@@ -19,7 +19,7 @@
     
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -463,7 +463,7 @@
 </blockquote>
 <p>在某些情况下使用<code>React.PureComponent</code>可提高性能<br><strong>注意：如果对象中包含赋值的数据结构，可能因无法监测深层次的差别，产生错误的对比结果。所以仅在props和state较为简单时使用<code>React.PureComponent</code>。此外，<code>shouldComponentUpdate</code>方法会跳过所有子组件树的prop 更新</strong></p>
 <h2 id="React-memo"><a href="#React-memo" class="headerlink" title="React.memo"></a>React.memo</h2><blockquote>
-<p><code>React.memo</code> 是高级函数组件，它与 React.pureComponent 相似，但不支持class组件。此方法仅做为<a href="https://zh-hans.reactjs.org/docs/optimizing-performance.html">性能优化</a>的方式存在<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyMemo = <span class="function">(<span class="params">props</span>) =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &lt;li&gt;/* ... */&lt;/li&gt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> MemoComponent = React.memo(MyMemo)</span><br></pre></td></tr></table></figure></p>
+<p><code>React.memo</code> 是高级函数组件，它与 React.pureComponent 相似，但不支持class组件。此方法仅做为<a href="https://zh-hans.reactjs.org/docs/optimizing-performance.html">性能优化</a>的方式存在<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyMemo = <span class="function">(<span class="params">props</span>) =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>/* ... */<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> MemoComponent = React.memo(MyMemo)</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>如果函数组件在给定相同的 props 情况下渲染结果相同，就可将其保证在 <code>React.memo</code>中调用，这样就可通过记忆组件渲染结果的方式来提高组件的性能，意味着React 将跳过渲染组件的操作并直接复用最近一次渲染的结果。</p>
 <p><strong>默认情况下其只会对复杂对象做浅层对比，如果你想要控制对比过程，那么请将自定义的比较函数通过第二个参数传入来实现。</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyComponent</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/* 使用 props 渲染 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">areEqual</span>(<span class="params">prevProps, nextProps</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  如果把 nextProps 传入 render 方法的返回结果与</span></span><br><span class="line"><span class="comment">  将 prevProps 传入 render 方法的返回结果一致则返回 true，</span></span><br><span class="line"><span class="comment">  否则返回 false</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> React.memo(MyComponent, areEqual);</span><br></pre></td></tr></table></figure></p>
@@ -602,7 +602,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -613,7 +613,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -624,7 +624,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -722,7 +722,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">98.3k</span>
+    <span title="Site words total count">103.1k</span>
   
   -->
 </div>

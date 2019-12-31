@@ -19,7 +19,7 @@
     
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -478,7 +478,7 @@
 <h2 id="React-createRef"><a href="#React-createRef" class="headerlink" title="React.createRef"></a>React.createRef</h2><blockquote>
 <p>创建一个能通过 ref 属性附加到 React元素的 <a href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html">ref</a></p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Componet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">        <span class="keyword">this</span>.inputRef = React.createRef();</span><br><span class="line">    &#125;</span><br><span class="line">    reder()&#123;</span><br><span class="line">        <span class="keyword">return</span> &lt;input type="text" ref= &#123;this.inputRef&#125; /&gt;；</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount()&#123;</span><br><span class="line">        this.inputRef.current.focus()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Componet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props)&#123;</span><br><span class="line">        <span class="keyword">this</span>.inputRef = React.createRef();</span><br><span class="line">    &#125;</span><br><span class="line">    reder()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ref</span>= <span class="string">&#123;this.inputRef&#125;</span> /&gt;</span>；</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    componentDidMount()&#123;</span></span><br><span class="line"><span class="xml">        this.inputRef.current.focus()</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
 <h2 id="React-forwardRef"><a href="#React-forwardRef" class="headerlink" title="React.forwardRef"></a>React.forwardRef</h2><blockquote>
 <p><code>React.forwardRef</code> 会创建一个React组件，能将其接受的<code>ref</code> 属性转发到其组件树下的另一个组件中。</p>
 <ul>
@@ -487,7 +487,7 @@
 </ul>
 </blockquote>
 <p><strong><code>React.forwardRef</code>接受渲染函数作为参数。使用props和ref z作为参数调用此函数，返回 React节点</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Example = React.forwardRef(<span class="function">(<span class="params">props,ref</span>)=&gt;</span> ( &lt;button ref=&#123;ref&#125; className="FancyButton"&gt;</span><br><span class="line">    &#123;props.children&#125;</span><br><span class="line">  &lt;/button&gt;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// You can now get a ref directly to the DOM button:</span></span><br><span class="line"><span class="keyword">const</span> ref = React.createRef();</span><br><span class="line">&lt;FancyButton ref=&#123;ref&#125;&gt;Click me!&lt;/FancyButton&gt;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Example = React.forwardRef(<span class="function">(<span class="params">props,ref</span>)=&gt;</span> ( <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">ref</span>=<span class="string">&#123;ref&#125;</span> <span class="attr">className</span>=<span class="string">"FancyButton"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    &#123;props.children&#125;</span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// You can now get a ref directly to the DOM button:</span></span><br><span class="line"><span class="keyword">const</span> ref = React.createRef();</span><br><span class="line">&lt;FancyButton ref=&#123;ref&#125;&gt;Click me!<span class="xml"><span class="tag">&lt;/<span class="name">FancyButton</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
 <h2 id="React-lazy"><a href="#React-lazy" class="headerlink" title="React.lazy"></a>React.lazy</h2><blockquote>
 <p>React.lazy()允许你定义一个动态加载组件。有助于减少 bundle的体积，并提高首屏加载效率</p>
 </blockquote>
@@ -635,7 +635,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -646,7 +646,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -657,7 +657,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -755,7 +755,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">98.3k</span>
+    <span title="Site words total count">103.1k</span>
   
   -->
 </div>
