@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://owen027.github.io/2019/09/18/relational_operation/</loc>
+    <loc>https://owen027.github.io/2019/06/13/vueNotes/</loc>
     
-    <lastmod>2020-05-16T11:07:19.599Z</lastmod>
+    <lastmod>2020-05-29T15:21:59.988Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://owen027.github.io/2020/05/28/js-utils/</loc>
+    
+    <lastmod>2020-05-28T06:31:00.457Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://owen027.github.io/2020/04/02/webRTCsignalingControl/</loc>
     
-    <lastmod>2020-05-16T11:07:01.717Z</lastmod>
+    <lastmod>2020-05-20T10:55:00.620Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://owen027.github.io/2019/09/18/relational_operation/</loc>
+    
+    <lastmod>2020-05-16T11:07:19.599Z</lastmod>
     
   </url>
   
@@ -61,13 +75,6 @@
     <loc>https://owen027.github.io/2019/06/17/zoomAndScale/</loc>
     
     <lastmod>2019-12-25T13:34:08.627Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://owen027.github.io/2019/06/13/vueNotes/</loc>
-    
-    <lastmod>2019-12-25T13:34:08.626Z</lastmod>
     
   </url>
   

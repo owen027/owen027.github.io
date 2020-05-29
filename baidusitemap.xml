@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://owen027.github.io/2019/09/18/relational_operation/</loc>
-    <lastmod>2020-05-16</lastmod>
+    <loc>https://owen027.github.io/2019/06/13/vueNotes/</loc>
+    <lastmod>2020-05-29</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2020/05/28/js-utils/</loc>
+    <lastmod>2020-05-28</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2020/04/02/webRTCsignalingControl/</loc>
+    <lastmod>2020-05-20</lastmod>
+  </url>  <url>
+    <loc>https://owen027.github.io/2019/09/18/relational_operation/</loc>
     <lastmod>2020-05-16</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2020/04/02/webRTC_signaling/</loc>
@@ -26,9 +32,6 @@
     <lastmod>2019-12-29</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/06/17/zoomAndScale/</loc>
-    <lastmod>2019-12-25</lastmod>
-  </url>  <url>
-    <loc>https://owen027.github.io/2019/06/13/vueNotes/</loc>
     <lastmod>2019-12-25</lastmod>
   </url>  <url>
     <loc>https://owen027.github.io/2019/09/09/relation_data_model/</loc>

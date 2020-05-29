@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Owen">
 <meta property="og:description" content="信令服务器用于交换三种类型的信息：  会话控制消息：初始化/关闭，各种业务逻辑消息以及错误报告。 网络相关：外部可识别的IP地址和端口。 媒体能力：客户端能控制的编解码器、分辩率，以及它想与谁通讯。  会话控制消息  房间的创建与销毁、加入房间、离开房间、开启音频/关闭音频、开启视频/关闭、获取房间人数、静音/取消静音、切换主讲人、视频轮询、白板中的画笔、各种图型等等这些都是会话控制消息。  相">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-16T11:07:01.717Z">
+<meta property="og:updated_time" content="2020-05-20T10:55:00.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebRTC信令控制与STUN&#x2F;TURN服务器搭建 学习">
 <meta name="twitter:description" content="信令服务器用于交换三种类型的信息：  会话控制消息：初始化/关闭，各种业务逻辑消息以及错误报告。 网络相关：外部可识别的IP地址和端口。 媒体能力：客户端能控制的编解码器、分辩率，以及它想与谁通讯。  会话控制消息  房间的创建与销毁、加入房间、离开房间、开启音频/关闭音频、开启视频/关闭、获取房间人数、静音/取消静音、切换主讲人、视频轮询、白板中的画笔、各种图型等等这些都是会话控制消息。  相">
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  676
+                  958
                 </span>
               
 
@@ -412,7 +412,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -439,18 +439,30 @@
 <li>网络相关：外部可识别的IP地址和端口。</li>
 <li>媒体能力：客户端能控制的编解码器、分辩率，以及它想与谁通讯。</li>
 </ul>
-<h3 id="会话控制消息"><a href="#会话控制消息" class="headerlink" title="会话控制消息"></a>会话控制消息</h3><p>  房间的创建与销毁、加入房间、离开房间、开启音频/关闭音频、开启视频/关闭、获取房间人数、静音/取消静音、切换主讲人、视频轮询、白板中的画笔、各种图型等等这些都是会话控制消息。<br>  相对来说都是一引起比较简单的消息。</p>
+<h3 id="会话控制消息"><a href="#会话控制消息" class="headerlink" title="会话控制消息"></a>会话控制消息</h3><p>  房间的创建与销毁、加入房间、离开房间、开启音频/关闭音频、开启视频/关闭、获取房间人数、静音/取消静音、切换主讲人、视频轮询、白板中的画笔、各种图型等等这些都是会话控制消息。<br>  相对来说都是一些比较简单的消息。</p>
 <h3 id="网络信息消息"><a href="#网络信息消息" class="headerlink" title="网络信息消息"></a>网络信息消息</h3><p>网络信息消息用于两个客户端之间交换网络信息。<br>由于它是基于点对点连接的，自然而然需要NAT （Network Address Translator 网络地址转换）穿越的技术，否则消息将无法传递。</p>
-<p>在WebRTC中使用 ICE 机制建立网络连接。</p>
+<p>在WebRTC中使用 <a href="https://www.rfc-editor.org/info/rfc5245">ICE</a> 机制建立网络连接。</p>
 <h4 id="ICE-交互式连接创建"><a href="#ICE-交互式连接创建" class="headerlink" title="ICE(交互式连接创建)"></a>ICE(交互式连接创建)</h4><blockquote>
-<p>交互式连接创建是由 IETF 的MMUSIC工作组开发出来的一种framework，可集成各种<a href="https://zh.wikipedia.org/wiki/NAT%E7%A9%BF%E9%80%8F">NAT穿透技术</a>，如STUN、TURN（Traversal Using Relay NAT，中继NAT实现的穿透）、RSIP（Realm Specific IP，特定域IP）等。该framework可以让SIP的客户端利用各种NAT穿透方式打穿远程的防火墙。</p>
+<p>交互式连接创建是由 <strong>IETF</strong> 的  MMUSIC  工作组开发出来的一种framework，可集成各种<a href="https://zh.wikipedia.org/wiki/NAT%E7%A9%BF%E9%80%8F">NAT穿透技术</a>，如STUN、TURN（Traversal Using Relay NAT，中继NAT实现的穿透）、RSIP（Realm Specific IP，特定域IP）等。该framework可以让SIP的客户端利用各种NAT穿透方式打穿远程的防火墙。</p>
 </blockquote>
 <h4 id="网络地址转换（NAT-又称网络掩蔽、IP掩蔽）"><a href="#网络地址转换（NAT-又称网络掩蔽、IP掩蔽）" class="headerlink" title="网络地址转换（NAT 又称网络掩蔽、IP掩蔽）"></a>网络地址转换（NAT 又称网络掩蔽、IP掩蔽）</h4><blockquote>
 <p>在计算机网络中是一种在IP数据包通过路由器或防火墙时重写来源IP地址或目的IP地址的技术。这种技术被普遍使用在有多台主机但只通过一个公有IP地址访问互联网的私有网络中。它是一个方便且得到了广泛应用的技术。当然，NAT也让主机之间的通信变得复杂，导致了通信效率的降低。</p>
 </blockquote>
 <p>我们上网很可能会处在一个 <a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2">NAT</a> 设备（无线路由器之类）之后。NAT设备会在IP封包通过设备时修改源/目的IP地址. 对于家用路由器来说, 使用的是网络地址端口转换(NAPT), 它不仅改IP, 还修改TCP和UDP协议的端口号, 这样就能让内网中的设备共用同一个外网IP</p>
 <p>国内移动无线网络运营商在链路上一段时间内没有数据通讯后, 会淘汰NAT表中的对应项, 造成链路中断，出现<strong>NAT超时</strong>。 国内的运营商一般NAT超时的时间为5分钟，所以通常我们TCP长连接的心跳设置的时间间隔为3-5分钟</p>
-<h4 id="STUN"><a href="#STUN" class="headerlink" title="STUN"></a>STUN</h4>
+<h4 id="STUN"><a href="#STUN" class="headerlink" title="STUN"></a>STUN</h4><blockquote>
+<p><a href="https://www.rfc-editor.org/rfc/rfc5389.html">STUN/RFC5389</a> 是一种处理NAT传输的协议，但主要作为一个工具来服务于其他协议。<br>运行位于 NAT 后的客户端找出自己的公网地址，可以被终端用来发现其公网IP和端口。<br>同时可以检测端点间的连接性，也可以作为一种保活（keep-alive）协议来维持NAT的绑定。<br>这些信息被用在两个同时处在 NAT 路由器后的主机创建UDP通信。</p>
+</blockquote>
+<ul>
+<li>参考地址 <a href="https://zhuanlan.zhihu.com/p/26797664">P2P通信标准协议之STUN</a></li>
+</ul>
+<h4 id="TURN"><a href="#TURN" class="headerlink" title="TURN"></a>TURN</h4><blockquote>
+<p>一种数据传输协议,是STUN/RFC5389的一个拓展。允许在 TCP 或 UDP 的连线上在线跨域 NAT 或防火墙<br>为了保证通信能够建立，我们可以在没办法的情况下用保证成功的中继方法（Relaying）， 虽然使用中继会对服务器负担加重，而且也算不上P2P，但是至少保证了最坏情况下信道的通畅，从而不至于受NAT类型的限制。<br>TURN/RFC5766就是为此目的而进行的拓展。</p>
+</blockquote>
+<ul>
+<li>参考地址 <a href="https://zhuanlan.zhihu.com/p/26797422">P2P通信标准协议之STUN</a></li>
+</ul>
+
       
     </div>
     
@@ -488,8 +500,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/02/webRTC_signaling/" rel="next" title="webRTC 搭建信令服务器学习">
-                <i class="fa fa-chevron-left"></i> webRTC 搭建信令服务器学习
+              <a href="/2019/12/26/usingVueInUniapp/" rel="next" title="uniapp中使用vue的问题">
+                <i class="fa fa-chevron-left"></i> uniapp中使用vue的问题
               </a>
             
           </div>
@@ -497,6 +509,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/02/webRTC_signaling/" rel="prev" title="webRTC 搭建信令服务器学习">
+                webRTC 搭建信令服务器学习 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -581,7 +597,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -665,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#会话控制消息"><span class="nav-number">1.</span> <span class="nav-text">会话控制消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络信息消息"><span class="nav-number">2.</span> <span class="nav-text">网络信息消息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ICE-交互式连接创建"><span class="nav-number">2.1.</span> <span class="nav-text">ICE(交互式连接创建)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络地址转换（NAT-又称网络掩蔽、IP掩蔽）"><span class="nav-number">2.2.</span> <span class="nav-text">网络地址转换（NAT 又称网络掩蔽、IP掩蔽）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#STUN"><span class="nav-number">2.3.</span> <span class="nav-text">STUN</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#会话控制消息"><span class="nav-number">1.</span> <span class="nav-text">会话控制消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络信息消息"><span class="nav-number">2.</span> <span class="nav-text">网络信息消息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ICE-交互式连接创建"><span class="nav-number">2.1.</span> <span class="nav-text">ICE(交互式连接创建)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络地址转换（NAT-又称网络掩蔽、IP掩蔽）"><span class="nav-number">2.2.</span> <span class="nav-text">网络地址转换（NAT 又称网络掩蔽、IP掩蔽）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#STUN"><span class="nav-number">2.3.</span> <span class="nav-text">STUN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TURN"><span class="nav-number">2.4.</span> <span class="nav-text">TURN</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -701,7 +717,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">105k</span>
+    <span title="Site words total count">106k</span>
   
   -->
 </div>
