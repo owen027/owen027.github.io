@@ -13,16 +13,18 @@ tags:
 
 ### 会话控制消息
   房间的创建与销毁、加入房间、离开房间、开启音频/关闭音频、开启视频/关闭、获取房间人数、静音/取消静音、切换主讲人、视频轮询、白板中的画笔、各种图型等等这些都是会话控制消息。
-  相对来说都是一引起比较简单的消息。
+  相对来说都是一些比较简单的消息。
 
 ### 网络信息消息
 
 网络信息消息用于两个客户端之间交换网络信息。
 由于它是基于点对点连接的，自然而然需要NAT （Network Address Translator 网络地址转换）穿越的技术，否则消息将无法传递。
  
-在WebRTC中使用 ICE 机制建立网络连接。
+在WebRTC中使用 [ICE](https://www.rfc-editor.org/info/rfc5245) 机制建立网络连接。
+
 #### ICE(交互式连接创建)
-> 交互式连接创建是由 IETF 的MMUSIC工作组开发出来的一种framework，可集成各种[NAT穿透技术](https://zh.wikipedia.org/wiki/NAT%E7%A9%BF%E9%80%8F)，如STUN、TURN（Traversal Using Relay NAT，中继NAT实现的穿透）、RSIP（Realm Specific IP，特定域IP）等。该framework可以让SIP的客户端利用各种NAT穿透方式打穿远程的防火墙。
+
+> 交互式连接创建是由 **IETF** 的  MMUSIC  工作组开发出来的一种framework，可集成各种[NAT穿透技术](https://zh.wikipedia.org/wiki/NAT%E7%A9%BF%E9%80%8F)，如STUN、TURN（Traversal Using Relay NAT，中继NAT实现的穿透）、RSIP（Realm Specific IP，特定域IP）等。该framework可以让SIP的客户端利用各种NAT穿透方式打穿远程的防火墙。
 
 ####  网络地址转换（NAT 又称网络掩蔽、IP掩蔽）
 
@@ -33,3 +35,19 @@ tags:
 国内移动无线网络运营商在链路上一段时间内没有数据通讯后, 会淘汰NAT表中的对应项, 造成链路中断，出现**NAT超时**。 国内的运营商一般NAT超时的时间为5分钟，所以通常我们TCP长连接的心跳设置的时间间隔为3-5分钟
 
 #### STUN
+>[STUN/RFC5389](https://www.rfc-editor.org/rfc/rfc5389.html) 是一种处理NAT传输的协议，但主要作为一个工具来服务于其他协议。
+>运行位于 NAT 后的客户端找出自己的公网地址，可以被终端用来发现其公网IP和端口。
+>同时可以检测端点间的连接性，也可以作为一种保活（keep-alive）协议来维持NAT的绑定。
+> 这些信息被用在两个同时处在 NAT 路由器后的主机创建UDP通信。
+
+- 参考地址 [P2P通信标准协议之STUN](https://zhuanlan.zhihu.com/p/26797664)
+  
+
+#### TURN
+
+> 一种数据传输协议,是STUN/RFC5389的一个拓展。允许在 TCP 或 UDP 的连线上在线跨域 NAT 或防火墙
+> 为了保证通信能够建立，我们可以在没办法的情况下用保证成功的中继方法（Relaying）， 虽然使用中继会对服务器负担加重，而且也算不上P2P，但是至少保证了最坏情况下信道的通畅，从而不至于受NAT类型的限制。
+> TURN/RFC5766就是为此目的而进行的拓展。
+>
+- 参考地址 [P2P通信标准协议之STUN](https://zhuanlan.zhihu.com/p/26797422)
+

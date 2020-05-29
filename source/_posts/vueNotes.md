@@ -9,6 +9,47 @@ tags:
 
 ##  vue 框架中遇到的问题
 
+### 组件化机制
+
+#### $refs 和 $children 区别
+前者用可以获取所有的ref
+后者只能获取组件且始终是数组
+
+#### input组件的双向数据绑定
+主要是 value属性 和 input事件的对应关系 
+
+```js
+<input :value="value" @input="e=>$emit('value',e.target.value)"/>
+```
+### 跨级组件的通信（编写高级组件时使用）
+form 组件包含子组件，需要使用 provide/inject 来通信，增强代码健壮性 form和表单组件间可以嵌套其他组件啦 表单验证可使用 async-validator 库
+
+```js
+// parent : provide
+provede(){
+    return {
+        form:this
+    }
+}
+
+// children
+inject:['form']
+// or
+inject:{
+    parent:{
+        from:'form',
+        default:''
+    }
+}
+
+// 子组件中就可使用 parent 
+```
+#### 使用 Vue.extend(Component) 扩展组件
+.vue文件 导出的是普通的对象，最后通过编译转成render ->jsx -> dom
+Component 就是 .vue文件导出的 vue配置对象
+
+
+
 ### props
 如果 data中的属性取不到 props 中的数据，可以通过 computed 或者 watch 属性监听变化
 
@@ -22,6 +63,7 @@ tags:
 ```
 
 ### template 中的 全局变量白名单
+
 ```js
 Infinity,
 undefined,
@@ -54,6 +96,7 @@ require
 只读属性，可访问插槽分发的内容，每个具名插槽都挂载到 `$slots` 中,默认插槽则为 `default`
 
 使用渲染函数JSX时非常有用
+
 ```js
 Vue.component('anchored-heading', {
   render: function (createElement) {
@@ -73,44 +116,86 @@ Vue.component('anchored-heading', {
 
 ---
 
+### vue plugin 
 
-## axios 问题
+plugin 必须暴露一个 install 方法，其第一个参数为 Vue 构造器，第二个参数为可选项options
 
-### 接收二进制流文件乱码问题。
-**1. 须将axios 配置中的`responseType`设置为'arraybuffer'，这样就不会让表格出现乱码现象；**
-**2. 如果要动态设置文件名则需要让后台将名字设置到响应头中，否则将是一个乱码的文件名；**
-**3. 然后通过`<a></a>` 标签的特性来，自动点击下载文件；**
-**4. 如果要兼容IE则需要利用`navigator.msSaveOrOpenBlob`方法；**
-**5. 兼容Firefox 须将`<a></a>` 标签添加到`body`中，最后再移除`<a></a>` 标签**
+```js
+myPluginName.install = function (Vue,options){
+  // 添加全局静态方法
+  // Vue.gloabMethod = function (){}
 
-```javascript
-// axios config
- config = {
-     responseType: 'arraybuffer'
-    }
+  // 全局指令
+  // Vue.directive('name',{})
 
-// 返回数据处理
-getUserInfoExport(data).then(({data,headers}) => {
-        let blob = new Blob([data], { type: 'application/vnd.ms-excel' }) // 将服务端返回的文件流（二进制）excel文件转化为blob
-        let fileName = headers.filename
+  // 全局mixin选项
 
-        if (window.navigator && window.navigator.msSaveOrOpenBlob) { // IE10+
-          window.navigator.msSaveOrOpenBlob(blob, fileName)
-        } else {
-          let objectUrl = (window.URL || window.webkitURL).createObjectURL(blob)
-          let downFile = document.createElement('a')
-          downFile.style.display = 'none'
-          downFile.href = objectUrl
-          downFile.download = fileName // 下载后文件名
-          document.body.appendChild(downFile)
-          downFile.click()
-          document.body.removeChild(downFile) // 下载完成移除元素
-          // window.location.href = objectUrl
-          window.URL.revokeObjectURL(objectUrl) // 只要映射存在，Blob就不能进行垃圾回收，因此一旦不再需要引用，就必须小心撤销URL，释放掉blob对象。
-        }
-      })
+  Vue.mixin({ })
+
+
+  // 全局实例方法
+  // Vue.prototype.$method = function(){}
+
+  // ....
+}
+
+// 示例
+
+const gloabCom = {
+  install(Vue,options){
+    Vue.component('comName',{})
+  }
+}
+
+if(typeof window !=='undefined' && window.Vue){
+  // 注册
+  window.Vue.use(gloabCom)
+}
 ```
-[参考连接](https://www.w3.org/TR/FileAPI/#url)
+
+
+### 增加图片健壮性函数
+
+```js
+//检测图片是否存在
+const imgIsExist = url =>
+  new Promise(resolve => {
+    var img = new Image();
+    img.onload = function() {
+      if (this.complete === true) {
+        resolve(true);
+        img = null;
+      }
+    };
+    img.onerror = function() {
+      resolve(false);
+      img = null;
+    };
+    img.src = url;
+  });
+
+    // 用于判断当前图片是否能够加载成功，可以加载成功则赋值为img的src属性，否则使用默认图片
+Vue.directive('realImg',    async (el, binding) {
+      let imgURL = binding.value; //获取图片地址
+      let defaultURL = el.getAttribute("default-img"); //获取默认图片地址
+      if (!imgURL) return false;
+      let exist = await imgIsExist(imgURL);
+      if (exist) {
+        el.setAttribute("src", imgURL);
+      } else if (defaultURL) {
+        el.setAttribute("src", defaultURL);
+      }
+    })
+
+// 使用
+
+ <img
+   v-realImg="actual-url"
+   :src="default-img"
+   :default-img="default-img"
+ />
+
+```
 
 ## DOM 树
 HTML 文档的骨干是标签。
@@ -320,34 +405,6 @@ function getDomCoords(el){
 }
 ```
 
-
-## Node 中的问题
-
-### 获取本机 IP 地址
-```javascript
-const os = require('os');
-const ip = showObj(os.networkInterfaces());
-
-function showObj(obj){
-/*     for (let devName in obj){
-        let iface = obj[devName];
-        for (let i = 0;i < iface.length;i++){
-            let alias = iface[i];
-            if (alias.family === 'IPv4'
-                && alias.address !== '127.0.0.1'
-                && !alias.internal){
-                return alias.address;
-            }
-        }
-    } */
-     for (let devName in obj){
-             let iface = obj[devName];
-             for (let alias of iface ){
-                if ( alias.family === 'IPv4'  && alias.address !== '127.0.0.1'  && !alias.internal) return alias.address;
-             }
-     }
-}
-```
 
 ## 开发方式
 **当我们确定组件层级时，最容易的方式就是先用已有的数据模型渲染一个不包含交互功能的UI。最好将渲染UI 和添加交互两个过程分开**
